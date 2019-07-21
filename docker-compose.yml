@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  lexer:
+    image: petervaczi/antlr
+    volumes:
+      - ./antlr/:/app/
+    command: -Dlanguage=CSharp /app/MySqlLexer.g4 -o /app/.antlr
+  
+  parser:
+    image: petervaczi/antlr
+    volumes:
+      - ./antlr/:/app/
+    command: -Dlanguage=CSharp /app/MySqlParser.g4 -o /app/.antlr
+    depends_on:
+      - lexer
