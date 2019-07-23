@@ -19,5899 +19,6988 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
+namespace MySQLToCSharp.Parsers.MySql {
+
 using Antlr4.Runtime.Misc;
-using IParseTreeListener = Antlr4.Runtime.Tree.IParseTreeListener;
+using IErrorNode = Antlr4.Runtime.Tree.IErrorNode;
+using ITerminalNode = Antlr4.Runtime.Tree.ITerminalNode;
 using IToken = Antlr4.Runtime.IToken;
+using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 
 /// <summary>
-/// This interface defines a complete listener for a parse tree produced by
-/// <see cref="MySqlParser"/>.
+/// This class provides an empty implementation of <see cref="IMySqlParserListener"/>,
+/// which can be extended to create a listener which only needs to handle a subset
+/// of the available methods.
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.6")]
 [System.CLSCompliant(false)]
-public interface IMySqlParserListener : IParseTreeListener {
+public partial class MySqlParserBaseListener : IMySqlParserListener {
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.root"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRoot([NotNull] MySqlParser.RootContext context);
+	public virtual void EnterRoot([NotNull] MySqlParser.RootContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.root"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRoot([NotNull] MySqlParser.RootContext context);
+	public virtual void ExitRoot([NotNull] MySqlParser.RootContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.sqlStatements"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSqlStatements([NotNull] MySqlParser.SqlStatementsContext context);
+	public virtual void EnterSqlStatements([NotNull] MySqlParser.SqlStatementsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.sqlStatements"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSqlStatements([NotNull] MySqlParser.SqlStatementsContext context);
+	public virtual void ExitSqlStatements([NotNull] MySqlParser.SqlStatementsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.sqlStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSqlStatement([NotNull] MySqlParser.SqlStatementContext context);
+	public virtual void EnterSqlStatement([NotNull] MySqlParser.SqlStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.sqlStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSqlStatement([NotNull] MySqlParser.SqlStatementContext context);
+	public virtual void ExitSqlStatement([NotNull] MySqlParser.SqlStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.emptyStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterEmptyStatement([NotNull] MySqlParser.EmptyStatementContext context);
+	public virtual void EnterEmptyStatement([NotNull] MySqlParser.EmptyStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.emptyStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitEmptyStatement([NotNull] MySqlParser.EmptyStatementContext context);
+	public virtual void ExitEmptyStatement([NotNull] MySqlParser.EmptyStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.ddlStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDdlStatement([NotNull] MySqlParser.DdlStatementContext context);
+	public virtual void EnterDdlStatement([NotNull] MySqlParser.DdlStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.ddlStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDdlStatement([NotNull] MySqlParser.DdlStatementContext context);
+	public virtual void ExitDdlStatement([NotNull] MySqlParser.DdlStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dmlStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDmlStatement([NotNull] MySqlParser.DmlStatementContext context);
+	public virtual void EnterDmlStatement([NotNull] MySqlParser.DmlStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dmlStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDmlStatement([NotNull] MySqlParser.DmlStatementContext context);
+	public virtual void ExitDmlStatement([NotNull] MySqlParser.DmlStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.transactionStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTransactionStatement([NotNull] MySqlParser.TransactionStatementContext context);
+	public virtual void EnterTransactionStatement([NotNull] MySqlParser.TransactionStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.transactionStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTransactionStatement([NotNull] MySqlParser.TransactionStatementContext context);
+	public virtual void ExitTransactionStatement([NotNull] MySqlParser.TransactionStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.replicationStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterReplicationStatement([NotNull] MySqlParser.ReplicationStatementContext context);
+	public virtual void EnterReplicationStatement([NotNull] MySqlParser.ReplicationStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.replicationStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitReplicationStatement([NotNull] MySqlParser.ReplicationStatementContext context);
+	public virtual void ExitReplicationStatement([NotNull] MySqlParser.ReplicationStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.preparedStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPreparedStatement([NotNull] MySqlParser.PreparedStatementContext context);
+	public virtual void EnterPreparedStatement([NotNull] MySqlParser.PreparedStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.preparedStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPreparedStatement([NotNull] MySqlParser.PreparedStatementContext context);
+	public virtual void ExitPreparedStatement([NotNull] MySqlParser.PreparedStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.compoundStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCompoundStatement([NotNull] MySqlParser.CompoundStatementContext context);
+	public virtual void EnterCompoundStatement([NotNull] MySqlParser.CompoundStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.compoundStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCompoundStatement([NotNull] MySqlParser.CompoundStatementContext context);
+	public virtual void ExitCompoundStatement([NotNull] MySqlParser.CompoundStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.administrationStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAdministrationStatement([NotNull] MySqlParser.AdministrationStatementContext context);
+	public virtual void EnterAdministrationStatement([NotNull] MySqlParser.AdministrationStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.administrationStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAdministrationStatement([NotNull] MySqlParser.AdministrationStatementContext context);
+	public virtual void ExitAdministrationStatement([NotNull] MySqlParser.AdministrationStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.utilityStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUtilityStatement([NotNull] MySqlParser.UtilityStatementContext context);
+	public virtual void EnterUtilityStatement([NotNull] MySqlParser.UtilityStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.utilityStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUtilityStatement([NotNull] MySqlParser.UtilityStatementContext context);
+	public virtual void ExitUtilityStatement([NotNull] MySqlParser.UtilityStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createDatabase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateDatabase([NotNull] MySqlParser.CreateDatabaseContext context);
+	public virtual void EnterCreateDatabase([NotNull] MySqlParser.CreateDatabaseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createDatabase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateDatabase([NotNull] MySqlParser.CreateDatabaseContext context);
+	public virtual void ExitCreateDatabase([NotNull] MySqlParser.CreateDatabaseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createEvent"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateEvent([NotNull] MySqlParser.CreateEventContext context);
+	public virtual void EnterCreateEvent([NotNull] MySqlParser.CreateEventContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createEvent"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateEvent([NotNull] MySqlParser.CreateEventContext context);
+	public virtual void ExitCreateEvent([NotNull] MySqlParser.CreateEventContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createIndex"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateIndex([NotNull] MySqlParser.CreateIndexContext context);
+	public virtual void EnterCreateIndex([NotNull] MySqlParser.CreateIndexContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createIndex"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateIndex([NotNull] MySqlParser.CreateIndexContext context);
+	public virtual void ExitCreateIndex([NotNull] MySqlParser.CreateIndexContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createLogfileGroup"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateLogfileGroup([NotNull] MySqlParser.CreateLogfileGroupContext context);
+	public virtual void EnterCreateLogfileGroup([NotNull] MySqlParser.CreateLogfileGroupContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createLogfileGroup"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateLogfileGroup([NotNull] MySqlParser.CreateLogfileGroupContext context);
+	public virtual void ExitCreateLogfileGroup([NotNull] MySqlParser.CreateLogfileGroupContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createProcedure"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateProcedure([NotNull] MySqlParser.CreateProcedureContext context);
+	public virtual void EnterCreateProcedure([NotNull] MySqlParser.CreateProcedureContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createProcedure"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateProcedure([NotNull] MySqlParser.CreateProcedureContext context);
+	public virtual void ExitCreateProcedure([NotNull] MySqlParser.CreateProcedureContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateFunction([NotNull] MySqlParser.CreateFunctionContext context);
+	public virtual void EnterCreateFunction([NotNull] MySqlParser.CreateFunctionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateFunction([NotNull] MySqlParser.CreateFunctionContext context);
+	public virtual void ExitCreateFunction([NotNull] MySqlParser.CreateFunctionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createServer"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateServer([NotNull] MySqlParser.CreateServerContext context);
+	public virtual void EnterCreateServer([NotNull] MySqlParser.CreateServerContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createServer"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateServer([NotNull] MySqlParser.CreateServerContext context);
+	public virtual void ExitCreateServer([NotNull] MySqlParser.CreateServerContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>copyCreateTable</c>
 	/// labeled alternative in <see cref="MySqlParser.createTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCopyCreateTable([NotNull] MySqlParser.CopyCreateTableContext context);
+	public virtual void EnterCopyCreateTable([NotNull] MySqlParser.CopyCreateTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>copyCreateTable</c>
 	/// labeled alternative in <see cref="MySqlParser.createTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCopyCreateTable([NotNull] MySqlParser.CopyCreateTableContext context);
+	public virtual void ExitCopyCreateTable([NotNull] MySqlParser.CopyCreateTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>queryCreateTable</c>
 	/// labeled alternative in <see cref="MySqlParser.createTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterQueryCreateTable([NotNull] MySqlParser.QueryCreateTableContext context);
+	public virtual void EnterQueryCreateTable([NotNull] MySqlParser.QueryCreateTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>queryCreateTable</c>
 	/// labeled alternative in <see cref="MySqlParser.createTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitQueryCreateTable([NotNull] MySqlParser.QueryCreateTableContext context);
+	public virtual void ExitQueryCreateTable([NotNull] MySqlParser.QueryCreateTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>columnCreateTable</c>
 	/// labeled alternative in <see cref="MySqlParser.createTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterColumnCreateTable([NotNull] MySqlParser.ColumnCreateTableContext context);
+	public virtual void EnterColumnCreateTable([NotNull] MySqlParser.ColumnCreateTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>columnCreateTable</c>
 	/// labeled alternative in <see cref="MySqlParser.createTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitColumnCreateTable([NotNull] MySqlParser.ColumnCreateTableContext context);
+	public virtual void ExitColumnCreateTable([NotNull] MySqlParser.ColumnCreateTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createTablespaceInnodb"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateTablespaceInnodb([NotNull] MySqlParser.CreateTablespaceInnodbContext context);
+	public virtual void EnterCreateTablespaceInnodb([NotNull] MySqlParser.CreateTablespaceInnodbContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createTablespaceInnodb"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateTablespaceInnodb([NotNull] MySqlParser.CreateTablespaceInnodbContext context);
+	public virtual void ExitCreateTablespaceInnodb([NotNull] MySqlParser.CreateTablespaceInnodbContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createTablespaceNdb"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateTablespaceNdb([NotNull] MySqlParser.CreateTablespaceNdbContext context);
+	public virtual void EnterCreateTablespaceNdb([NotNull] MySqlParser.CreateTablespaceNdbContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createTablespaceNdb"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateTablespaceNdb([NotNull] MySqlParser.CreateTablespaceNdbContext context);
+	public virtual void ExitCreateTablespaceNdb([NotNull] MySqlParser.CreateTablespaceNdbContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createTrigger"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateTrigger([NotNull] MySqlParser.CreateTriggerContext context);
+	public virtual void EnterCreateTrigger([NotNull] MySqlParser.CreateTriggerContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createTrigger"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateTrigger([NotNull] MySqlParser.CreateTriggerContext context);
+	public virtual void ExitCreateTrigger([NotNull] MySqlParser.CreateTriggerContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createView"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateView([NotNull] MySqlParser.CreateViewContext context);
+	public virtual void EnterCreateView([NotNull] MySqlParser.CreateViewContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createView"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateView([NotNull] MySqlParser.CreateViewContext context);
+	public virtual void ExitCreateView([NotNull] MySqlParser.CreateViewContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createDatabaseOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateDatabaseOption([NotNull] MySqlParser.CreateDatabaseOptionContext context);
+	public virtual void EnterCreateDatabaseOption([NotNull] MySqlParser.CreateDatabaseOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createDatabaseOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateDatabaseOption([NotNull] MySqlParser.CreateDatabaseOptionContext context);
+	public virtual void ExitCreateDatabaseOption([NotNull] MySqlParser.CreateDatabaseOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.ownerStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterOwnerStatement([NotNull] MySqlParser.OwnerStatementContext context);
+	public virtual void EnterOwnerStatement([NotNull] MySqlParser.OwnerStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.ownerStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitOwnerStatement([NotNull] MySqlParser.OwnerStatementContext context);
+	public virtual void ExitOwnerStatement([NotNull] MySqlParser.OwnerStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>preciseSchedule</c>
 	/// labeled alternative in <see cref="MySqlParser.scheduleExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPreciseSchedule([NotNull] MySqlParser.PreciseScheduleContext context);
+	public virtual void EnterPreciseSchedule([NotNull] MySqlParser.PreciseScheduleContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>preciseSchedule</c>
 	/// labeled alternative in <see cref="MySqlParser.scheduleExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPreciseSchedule([NotNull] MySqlParser.PreciseScheduleContext context);
+	public virtual void ExitPreciseSchedule([NotNull] MySqlParser.PreciseScheduleContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>intervalSchedule</c>
 	/// labeled alternative in <see cref="MySqlParser.scheduleExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIntervalSchedule([NotNull] MySqlParser.IntervalScheduleContext context);
+	public virtual void EnterIntervalSchedule([NotNull] MySqlParser.IntervalScheduleContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>intervalSchedule</c>
 	/// labeled alternative in <see cref="MySqlParser.scheduleExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIntervalSchedule([NotNull] MySqlParser.IntervalScheduleContext context);
+	public virtual void ExitIntervalSchedule([NotNull] MySqlParser.IntervalScheduleContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.timestampValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTimestampValue([NotNull] MySqlParser.TimestampValueContext context);
+	public virtual void EnterTimestampValue([NotNull] MySqlParser.TimestampValueContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.timestampValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTimestampValue([NotNull] MySqlParser.TimestampValueContext context);
+	public virtual void ExitTimestampValue([NotNull] MySqlParser.TimestampValueContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.intervalExpr"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIntervalExpr([NotNull] MySqlParser.IntervalExprContext context);
+	public virtual void EnterIntervalExpr([NotNull] MySqlParser.IntervalExprContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.intervalExpr"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIntervalExpr([NotNull] MySqlParser.IntervalExprContext context);
+	public virtual void ExitIntervalExpr([NotNull] MySqlParser.IntervalExprContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.intervalType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIntervalType([NotNull] MySqlParser.IntervalTypeContext context);
+	public virtual void EnterIntervalType([NotNull] MySqlParser.IntervalTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.intervalType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIntervalType([NotNull] MySqlParser.IntervalTypeContext context);
+	public virtual void ExitIntervalType([NotNull] MySqlParser.IntervalTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.enableType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterEnableType([NotNull] MySqlParser.EnableTypeContext context);
+	public virtual void EnterEnableType([NotNull] MySqlParser.EnableTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.enableType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitEnableType([NotNull] MySqlParser.EnableTypeContext context);
+	public virtual void ExitEnableType([NotNull] MySqlParser.EnableTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.indexType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIndexType([NotNull] MySqlParser.IndexTypeContext context);
+	public virtual void EnterIndexType([NotNull] MySqlParser.IndexTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.indexType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIndexType([NotNull] MySqlParser.IndexTypeContext context);
+	public virtual void ExitIndexType([NotNull] MySqlParser.IndexTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.indexOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIndexOption([NotNull] MySqlParser.IndexOptionContext context);
+	public virtual void EnterIndexOption([NotNull] MySqlParser.IndexOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.indexOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIndexOption([NotNull] MySqlParser.IndexOptionContext context);
+	public virtual void ExitIndexOption([NotNull] MySqlParser.IndexOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.procedureParameter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterProcedureParameter([NotNull] MySqlParser.ProcedureParameterContext context);
+	public virtual void EnterProcedureParameter([NotNull] MySqlParser.ProcedureParameterContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.procedureParameter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitProcedureParameter([NotNull] MySqlParser.ProcedureParameterContext context);
+	public virtual void ExitProcedureParameter([NotNull] MySqlParser.ProcedureParameterContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.functionParameter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFunctionParameter([NotNull] MySqlParser.FunctionParameterContext context);
+	public virtual void EnterFunctionParameter([NotNull] MySqlParser.FunctionParameterContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.functionParameter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFunctionParameter([NotNull] MySqlParser.FunctionParameterContext context);
+	public virtual void ExitFunctionParameter([NotNull] MySqlParser.FunctionParameterContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>routineComment</c>
 	/// labeled alternative in <see cref="MySqlParser.routineOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRoutineComment([NotNull] MySqlParser.RoutineCommentContext context);
+	public virtual void EnterRoutineComment([NotNull] MySqlParser.RoutineCommentContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>routineComment</c>
 	/// labeled alternative in <see cref="MySqlParser.routineOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRoutineComment([NotNull] MySqlParser.RoutineCommentContext context);
+	public virtual void ExitRoutineComment([NotNull] MySqlParser.RoutineCommentContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>routineLanguage</c>
 	/// labeled alternative in <see cref="MySqlParser.routineOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRoutineLanguage([NotNull] MySqlParser.RoutineLanguageContext context);
+	public virtual void EnterRoutineLanguage([NotNull] MySqlParser.RoutineLanguageContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>routineLanguage</c>
 	/// labeled alternative in <see cref="MySqlParser.routineOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRoutineLanguage([NotNull] MySqlParser.RoutineLanguageContext context);
+	public virtual void ExitRoutineLanguage([NotNull] MySqlParser.RoutineLanguageContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>routineBehavior</c>
 	/// labeled alternative in <see cref="MySqlParser.routineOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRoutineBehavior([NotNull] MySqlParser.RoutineBehaviorContext context);
+	public virtual void EnterRoutineBehavior([NotNull] MySqlParser.RoutineBehaviorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>routineBehavior</c>
 	/// labeled alternative in <see cref="MySqlParser.routineOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRoutineBehavior([NotNull] MySqlParser.RoutineBehaviorContext context);
+	public virtual void ExitRoutineBehavior([NotNull] MySqlParser.RoutineBehaviorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>routineData</c>
 	/// labeled alternative in <see cref="MySqlParser.routineOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRoutineData([NotNull] MySqlParser.RoutineDataContext context);
+	public virtual void EnterRoutineData([NotNull] MySqlParser.RoutineDataContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>routineData</c>
 	/// labeled alternative in <see cref="MySqlParser.routineOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRoutineData([NotNull] MySqlParser.RoutineDataContext context);
+	public virtual void ExitRoutineData([NotNull] MySqlParser.RoutineDataContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>routineSecurity</c>
 	/// labeled alternative in <see cref="MySqlParser.routineOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRoutineSecurity([NotNull] MySqlParser.RoutineSecurityContext context);
+	public virtual void EnterRoutineSecurity([NotNull] MySqlParser.RoutineSecurityContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>routineSecurity</c>
 	/// labeled alternative in <see cref="MySqlParser.routineOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRoutineSecurity([NotNull] MySqlParser.RoutineSecurityContext context);
+	public virtual void ExitRoutineSecurity([NotNull] MySqlParser.RoutineSecurityContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.serverOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterServerOption([NotNull] MySqlParser.ServerOptionContext context);
+	public virtual void EnterServerOption([NotNull] MySqlParser.ServerOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.serverOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitServerOption([NotNull] MySqlParser.ServerOptionContext context);
+	public virtual void ExitServerOption([NotNull] MySqlParser.ServerOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createDefinitions"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateDefinitions([NotNull] MySqlParser.CreateDefinitionsContext context);
+	public virtual void EnterCreateDefinitions([NotNull] MySqlParser.CreateDefinitionsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createDefinitions"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateDefinitions([NotNull] MySqlParser.CreateDefinitionsContext context);
+	public virtual void ExitCreateDefinitions([NotNull] MySqlParser.CreateDefinitionsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>columnDeclaration</c>
 	/// labeled alternative in <see cref="MySqlParser.createDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterColumnDeclaration([NotNull] MySqlParser.ColumnDeclarationContext context);
+	public virtual void EnterColumnDeclaration([NotNull] MySqlParser.ColumnDeclarationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>columnDeclaration</c>
 	/// labeled alternative in <see cref="MySqlParser.createDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitColumnDeclaration([NotNull] MySqlParser.ColumnDeclarationContext context);
+	public virtual void ExitColumnDeclaration([NotNull] MySqlParser.ColumnDeclarationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>constraintDeclaration</c>
 	/// labeled alternative in <see cref="MySqlParser.createDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterConstraintDeclaration([NotNull] MySqlParser.ConstraintDeclarationContext context);
+	public virtual void EnterConstraintDeclaration([NotNull] MySqlParser.ConstraintDeclarationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>constraintDeclaration</c>
 	/// labeled alternative in <see cref="MySqlParser.createDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitConstraintDeclaration([NotNull] MySqlParser.ConstraintDeclarationContext context);
+	public virtual void ExitConstraintDeclaration([NotNull] MySqlParser.ConstraintDeclarationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>indexDeclaration</c>
 	/// labeled alternative in <see cref="MySqlParser.createDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIndexDeclaration([NotNull] MySqlParser.IndexDeclarationContext context);
+	public virtual void EnterIndexDeclaration([NotNull] MySqlParser.IndexDeclarationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>indexDeclaration</c>
 	/// labeled alternative in <see cref="MySqlParser.createDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIndexDeclaration([NotNull] MySqlParser.IndexDeclarationContext context);
+	public virtual void ExitIndexDeclaration([NotNull] MySqlParser.IndexDeclarationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.columnDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterColumnDefinition([NotNull] MySqlParser.ColumnDefinitionContext context);
+	public virtual void EnterColumnDefinition([NotNull] MySqlParser.ColumnDefinitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.columnDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitColumnDefinition([NotNull] MySqlParser.ColumnDefinitionContext context);
+	public virtual void ExitColumnDefinition([NotNull] MySqlParser.ColumnDefinitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>nullColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNullColumnConstraint([NotNull] MySqlParser.NullColumnConstraintContext context);
+	public virtual void EnterNullColumnConstraint([NotNull] MySqlParser.NullColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>nullColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNullColumnConstraint([NotNull] MySqlParser.NullColumnConstraintContext context);
+	public virtual void ExitNullColumnConstraint([NotNull] MySqlParser.NullColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>defaultColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDefaultColumnConstraint([NotNull] MySqlParser.DefaultColumnConstraintContext context);
+	public virtual void EnterDefaultColumnConstraint([NotNull] MySqlParser.DefaultColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>defaultColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDefaultColumnConstraint([NotNull] MySqlParser.DefaultColumnConstraintContext context);
+	public virtual void ExitDefaultColumnConstraint([NotNull] MySqlParser.DefaultColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>autoIncrementColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAutoIncrementColumnConstraint([NotNull] MySqlParser.AutoIncrementColumnConstraintContext context);
+	public virtual void EnterAutoIncrementColumnConstraint([NotNull] MySqlParser.AutoIncrementColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>autoIncrementColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAutoIncrementColumnConstraint([NotNull] MySqlParser.AutoIncrementColumnConstraintContext context);
+	public virtual void ExitAutoIncrementColumnConstraint([NotNull] MySqlParser.AutoIncrementColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>primaryKeyColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPrimaryKeyColumnConstraint([NotNull] MySqlParser.PrimaryKeyColumnConstraintContext context);
+	public virtual void EnterPrimaryKeyColumnConstraint([NotNull] MySqlParser.PrimaryKeyColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>primaryKeyColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPrimaryKeyColumnConstraint([NotNull] MySqlParser.PrimaryKeyColumnConstraintContext context);
+	public virtual void ExitPrimaryKeyColumnConstraint([NotNull] MySqlParser.PrimaryKeyColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>uniqueKeyColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUniqueKeyColumnConstraint([NotNull] MySqlParser.UniqueKeyColumnConstraintContext context);
+	public virtual void EnterUniqueKeyColumnConstraint([NotNull] MySqlParser.UniqueKeyColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>uniqueKeyColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUniqueKeyColumnConstraint([NotNull] MySqlParser.UniqueKeyColumnConstraintContext context);
+	public virtual void ExitUniqueKeyColumnConstraint([NotNull] MySqlParser.UniqueKeyColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>commentColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCommentColumnConstraint([NotNull] MySqlParser.CommentColumnConstraintContext context);
+	public virtual void EnterCommentColumnConstraint([NotNull] MySqlParser.CommentColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>commentColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCommentColumnConstraint([NotNull] MySqlParser.CommentColumnConstraintContext context);
+	public virtual void ExitCommentColumnConstraint([NotNull] MySqlParser.CommentColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>formatColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFormatColumnConstraint([NotNull] MySqlParser.FormatColumnConstraintContext context);
+	public virtual void EnterFormatColumnConstraint([NotNull] MySqlParser.FormatColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>formatColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFormatColumnConstraint([NotNull] MySqlParser.FormatColumnConstraintContext context);
+	public virtual void ExitFormatColumnConstraint([NotNull] MySqlParser.FormatColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>storageColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStorageColumnConstraint([NotNull] MySqlParser.StorageColumnConstraintContext context);
+	public virtual void EnterStorageColumnConstraint([NotNull] MySqlParser.StorageColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>storageColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStorageColumnConstraint([NotNull] MySqlParser.StorageColumnConstraintContext context);
+	public virtual void ExitStorageColumnConstraint([NotNull] MySqlParser.StorageColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>referenceColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterReferenceColumnConstraint([NotNull] MySqlParser.ReferenceColumnConstraintContext context);
+	public virtual void EnterReferenceColumnConstraint([NotNull] MySqlParser.ReferenceColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>referenceColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitReferenceColumnConstraint([NotNull] MySqlParser.ReferenceColumnConstraintContext context);
+	public virtual void ExitReferenceColumnConstraint([NotNull] MySqlParser.ReferenceColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>collateColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCollateColumnConstraint([NotNull] MySqlParser.CollateColumnConstraintContext context);
+	public virtual void EnterCollateColumnConstraint([NotNull] MySqlParser.CollateColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>collateColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCollateColumnConstraint([NotNull] MySqlParser.CollateColumnConstraintContext context);
+	public virtual void ExitCollateColumnConstraint([NotNull] MySqlParser.CollateColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>generatedColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterGeneratedColumnConstraint([NotNull] MySqlParser.GeneratedColumnConstraintContext context);
+	public virtual void EnterGeneratedColumnConstraint([NotNull] MySqlParser.GeneratedColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>generatedColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitGeneratedColumnConstraint([NotNull] MySqlParser.GeneratedColumnConstraintContext context);
+	public virtual void ExitGeneratedColumnConstraint([NotNull] MySqlParser.GeneratedColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>serialDefaultColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSerialDefaultColumnConstraint([NotNull] MySqlParser.SerialDefaultColumnConstraintContext context);
+	public virtual void EnterSerialDefaultColumnConstraint([NotNull] MySqlParser.SerialDefaultColumnConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>serialDefaultColumnConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.columnConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSerialDefaultColumnConstraint([NotNull] MySqlParser.SerialDefaultColumnConstraintContext context);
+	public virtual void ExitSerialDefaultColumnConstraint([NotNull] MySqlParser.SerialDefaultColumnConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>primaryKeyTableConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.tableConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPrimaryKeyTableConstraint([NotNull] MySqlParser.PrimaryKeyTableConstraintContext context);
+	public virtual void EnterPrimaryKeyTableConstraint([NotNull] MySqlParser.PrimaryKeyTableConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>primaryKeyTableConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.tableConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPrimaryKeyTableConstraint([NotNull] MySqlParser.PrimaryKeyTableConstraintContext context);
+	public virtual void ExitPrimaryKeyTableConstraint([NotNull] MySqlParser.PrimaryKeyTableConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>uniqueKeyTableConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.tableConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUniqueKeyTableConstraint([NotNull] MySqlParser.UniqueKeyTableConstraintContext context);
+	public virtual void EnterUniqueKeyTableConstraint([NotNull] MySqlParser.UniqueKeyTableConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>uniqueKeyTableConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.tableConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUniqueKeyTableConstraint([NotNull] MySqlParser.UniqueKeyTableConstraintContext context);
+	public virtual void ExitUniqueKeyTableConstraint([NotNull] MySqlParser.UniqueKeyTableConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>foreignKeyTableConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.tableConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterForeignKeyTableConstraint([NotNull] MySqlParser.ForeignKeyTableConstraintContext context);
+	public virtual void EnterForeignKeyTableConstraint([NotNull] MySqlParser.ForeignKeyTableConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>foreignKeyTableConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.tableConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitForeignKeyTableConstraint([NotNull] MySqlParser.ForeignKeyTableConstraintContext context);
+	public virtual void ExitForeignKeyTableConstraint([NotNull] MySqlParser.ForeignKeyTableConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>checkTableConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.tableConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCheckTableConstraint([NotNull] MySqlParser.CheckTableConstraintContext context);
+	public virtual void EnterCheckTableConstraint([NotNull] MySqlParser.CheckTableConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>checkTableConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.tableConstraint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCheckTableConstraint([NotNull] MySqlParser.CheckTableConstraintContext context);
+	public virtual void ExitCheckTableConstraint([NotNull] MySqlParser.CheckTableConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.referenceDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterReferenceDefinition([NotNull] MySqlParser.ReferenceDefinitionContext context);
+	public virtual void EnterReferenceDefinition([NotNull] MySqlParser.ReferenceDefinitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.referenceDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitReferenceDefinition([NotNull] MySqlParser.ReferenceDefinitionContext context);
+	public virtual void ExitReferenceDefinition([NotNull] MySqlParser.ReferenceDefinitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.referenceAction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterReferenceAction([NotNull] MySqlParser.ReferenceActionContext context);
+	public virtual void EnterReferenceAction([NotNull] MySqlParser.ReferenceActionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.referenceAction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitReferenceAction([NotNull] MySqlParser.ReferenceActionContext context);
+	public virtual void ExitReferenceAction([NotNull] MySqlParser.ReferenceActionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.referenceControlType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterReferenceControlType([NotNull] MySqlParser.ReferenceControlTypeContext context);
+	public virtual void EnterReferenceControlType([NotNull] MySqlParser.ReferenceControlTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.referenceControlType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitReferenceControlType([NotNull] MySqlParser.ReferenceControlTypeContext context);
+	public virtual void ExitReferenceControlType([NotNull] MySqlParser.ReferenceControlTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>simpleIndexDeclaration</c>
 	/// labeled alternative in <see cref="MySqlParser.indexColumnDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSimpleIndexDeclaration([NotNull] MySqlParser.SimpleIndexDeclarationContext context);
+	public virtual void EnterSimpleIndexDeclaration([NotNull] MySqlParser.SimpleIndexDeclarationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>simpleIndexDeclaration</c>
 	/// labeled alternative in <see cref="MySqlParser.indexColumnDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSimpleIndexDeclaration([NotNull] MySqlParser.SimpleIndexDeclarationContext context);
+	public virtual void ExitSimpleIndexDeclaration([NotNull] MySqlParser.SimpleIndexDeclarationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>specialIndexDeclaration</c>
 	/// labeled alternative in <see cref="MySqlParser.indexColumnDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSpecialIndexDeclaration([NotNull] MySqlParser.SpecialIndexDeclarationContext context);
+	public virtual void EnterSpecialIndexDeclaration([NotNull] MySqlParser.SpecialIndexDeclarationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>specialIndexDeclaration</c>
 	/// labeled alternative in <see cref="MySqlParser.indexColumnDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSpecialIndexDeclaration([NotNull] MySqlParser.SpecialIndexDeclarationContext context);
+	public virtual void ExitSpecialIndexDeclaration([NotNull] MySqlParser.SpecialIndexDeclarationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionEngine</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionEngine([NotNull] MySqlParser.TableOptionEngineContext context);
+	public virtual void EnterTableOptionEngine([NotNull] MySqlParser.TableOptionEngineContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionEngine</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionEngine([NotNull] MySqlParser.TableOptionEngineContext context);
+	public virtual void ExitTableOptionEngine([NotNull] MySqlParser.TableOptionEngineContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionAutoIncrement</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionAutoIncrement([NotNull] MySqlParser.TableOptionAutoIncrementContext context);
+	public virtual void EnterTableOptionAutoIncrement([NotNull] MySqlParser.TableOptionAutoIncrementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionAutoIncrement</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionAutoIncrement([NotNull] MySqlParser.TableOptionAutoIncrementContext context);
+	public virtual void ExitTableOptionAutoIncrement([NotNull] MySqlParser.TableOptionAutoIncrementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionAverage</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionAverage([NotNull] MySqlParser.TableOptionAverageContext context);
+	public virtual void EnterTableOptionAverage([NotNull] MySqlParser.TableOptionAverageContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionAverage</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionAverage([NotNull] MySqlParser.TableOptionAverageContext context);
+	public virtual void ExitTableOptionAverage([NotNull] MySqlParser.TableOptionAverageContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionCharset</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionCharset([NotNull] MySqlParser.TableOptionCharsetContext context);
+	public virtual void EnterTableOptionCharset([NotNull] MySqlParser.TableOptionCharsetContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionCharset</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionCharset([NotNull] MySqlParser.TableOptionCharsetContext context);
+	public virtual void ExitTableOptionCharset([NotNull] MySqlParser.TableOptionCharsetContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionChecksum</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionChecksum([NotNull] MySqlParser.TableOptionChecksumContext context);
+	public virtual void EnterTableOptionChecksum([NotNull] MySqlParser.TableOptionChecksumContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionChecksum</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionChecksum([NotNull] MySqlParser.TableOptionChecksumContext context);
+	public virtual void ExitTableOptionChecksum([NotNull] MySqlParser.TableOptionChecksumContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionCollate</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionCollate([NotNull] MySqlParser.TableOptionCollateContext context);
+	public virtual void EnterTableOptionCollate([NotNull] MySqlParser.TableOptionCollateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionCollate</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionCollate([NotNull] MySqlParser.TableOptionCollateContext context);
+	public virtual void ExitTableOptionCollate([NotNull] MySqlParser.TableOptionCollateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionComment</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionComment([NotNull] MySqlParser.TableOptionCommentContext context);
+	public virtual void EnterTableOptionComment([NotNull] MySqlParser.TableOptionCommentContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionComment</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionComment([NotNull] MySqlParser.TableOptionCommentContext context);
+	public virtual void ExitTableOptionComment([NotNull] MySqlParser.TableOptionCommentContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionCompression</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionCompression([NotNull] MySqlParser.TableOptionCompressionContext context);
+	public virtual void EnterTableOptionCompression([NotNull] MySqlParser.TableOptionCompressionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionCompression</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionCompression([NotNull] MySqlParser.TableOptionCompressionContext context);
+	public virtual void ExitTableOptionCompression([NotNull] MySqlParser.TableOptionCompressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionConnection</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionConnection([NotNull] MySqlParser.TableOptionConnectionContext context);
+	public virtual void EnterTableOptionConnection([NotNull] MySqlParser.TableOptionConnectionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionConnection</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionConnection([NotNull] MySqlParser.TableOptionConnectionContext context);
+	public virtual void ExitTableOptionConnection([NotNull] MySqlParser.TableOptionConnectionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionDataDirectory</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionDataDirectory([NotNull] MySqlParser.TableOptionDataDirectoryContext context);
+	public virtual void EnterTableOptionDataDirectory([NotNull] MySqlParser.TableOptionDataDirectoryContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionDataDirectory</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionDataDirectory([NotNull] MySqlParser.TableOptionDataDirectoryContext context);
+	public virtual void ExitTableOptionDataDirectory([NotNull] MySqlParser.TableOptionDataDirectoryContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionDelay</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionDelay([NotNull] MySqlParser.TableOptionDelayContext context);
+	public virtual void EnterTableOptionDelay([NotNull] MySqlParser.TableOptionDelayContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionDelay</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionDelay([NotNull] MySqlParser.TableOptionDelayContext context);
+	public virtual void ExitTableOptionDelay([NotNull] MySqlParser.TableOptionDelayContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionEncryption</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionEncryption([NotNull] MySqlParser.TableOptionEncryptionContext context);
+	public virtual void EnterTableOptionEncryption([NotNull] MySqlParser.TableOptionEncryptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionEncryption</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionEncryption([NotNull] MySqlParser.TableOptionEncryptionContext context);
+	public virtual void ExitTableOptionEncryption([NotNull] MySqlParser.TableOptionEncryptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionIndexDirectory</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionIndexDirectory([NotNull] MySqlParser.TableOptionIndexDirectoryContext context);
+	public virtual void EnterTableOptionIndexDirectory([NotNull] MySqlParser.TableOptionIndexDirectoryContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionIndexDirectory</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionIndexDirectory([NotNull] MySqlParser.TableOptionIndexDirectoryContext context);
+	public virtual void ExitTableOptionIndexDirectory([NotNull] MySqlParser.TableOptionIndexDirectoryContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionInsertMethod</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionInsertMethod([NotNull] MySqlParser.TableOptionInsertMethodContext context);
+	public virtual void EnterTableOptionInsertMethod([NotNull] MySqlParser.TableOptionInsertMethodContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionInsertMethod</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionInsertMethod([NotNull] MySqlParser.TableOptionInsertMethodContext context);
+	public virtual void ExitTableOptionInsertMethod([NotNull] MySqlParser.TableOptionInsertMethodContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionKeyBlockSize</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionKeyBlockSize([NotNull] MySqlParser.TableOptionKeyBlockSizeContext context);
+	public virtual void EnterTableOptionKeyBlockSize([NotNull] MySqlParser.TableOptionKeyBlockSizeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionKeyBlockSize</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionKeyBlockSize([NotNull] MySqlParser.TableOptionKeyBlockSizeContext context);
+	public virtual void ExitTableOptionKeyBlockSize([NotNull] MySqlParser.TableOptionKeyBlockSizeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionMaxRows</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionMaxRows([NotNull] MySqlParser.TableOptionMaxRowsContext context);
+	public virtual void EnterTableOptionMaxRows([NotNull] MySqlParser.TableOptionMaxRowsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionMaxRows</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionMaxRows([NotNull] MySqlParser.TableOptionMaxRowsContext context);
+	public virtual void ExitTableOptionMaxRows([NotNull] MySqlParser.TableOptionMaxRowsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionMinRows</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionMinRows([NotNull] MySqlParser.TableOptionMinRowsContext context);
+	public virtual void EnterTableOptionMinRows([NotNull] MySqlParser.TableOptionMinRowsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionMinRows</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionMinRows([NotNull] MySqlParser.TableOptionMinRowsContext context);
+	public virtual void ExitTableOptionMinRows([NotNull] MySqlParser.TableOptionMinRowsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionPackKeys</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionPackKeys([NotNull] MySqlParser.TableOptionPackKeysContext context);
+	public virtual void EnterTableOptionPackKeys([NotNull] MySqlParser.TableOptionPackKeysContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionPackKeys</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionPackKeys([NotNull] MySqlParser.TableOptionPackKeysContext context);
+	public virtual void ExitTableOptionPackKeys([NotNull] MySqlParser.TableOptionPackKeysContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionPassword</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionPassword([NotNull] MySqlParser.TableOptionPasswordContext context);
+	public virtual void EnterTableOptionPassword([NotNull] MySqlParser.TableOptionPasswordContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionPassword</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionPassword([NotNull] MySqlParser.TableOptionPasswordContext context);
+	public virtual void ExitTableOptionPassword([NotNull] MySqlParser.TableOptionPasswordContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionRowFormat</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionRowFormat([NotNull] MySqlParser.TableOptionRowFormatContext context);
+	public virtual void EnterTableOptionRowFormat([NotNull] MySqlParser.TableOptionRowFormatContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionRowFormat</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionRowFormat([NotNull] MySqlParser.TableOptionRowFormatContext context);
+	public virtual void ExitTableOptionRowFormat([NotNull] MySqlParser.TableOptionRowFormatContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionRecalculation</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionRecalculation([NotNull] MySqlParser.TableOptionRecalculationContext context);
+	public virtual void EnterTableOptionRecalculation([NotNull] MySqlParser.TableOptionRecalculationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionRecalculation</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionRecalculation([NotNull] MySqlParser.TableOptionRecalculationContext context);
+	public virtual void ExitTableOptionRecalculation([NotNull] MySqlParser.TableOptionRecalculationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionPersistent</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionPersistent([NotNull] MySqlParser.TableOptionPersistentContext context);
+	public virtual void EnterTableOptionPersistent([NotNull] MySqlParser.TableOptionPersistentContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionPersistent</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionPersistent([NotNull] MySqlParser.TableOptionPersistentContext context);
+	public virtual void ExitTableOptionPersistent([NotNull] MySqlParser.TableOptionPersistentContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionSamplePage</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionSamplePage([NotNull] MySqlParser.TableOptionSamplePageContext context);
+	public virtual void EnterTableOptionSamplePage([NotNull] MySqlParser.TableOptionSamplePageContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionSamplePage</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionSamplePage([NotNull] MySqlParser.TableOptionSamplePageContext context);
+	public virtual void ExitTableOptionSamplePage([NotNull] MySqlParser.TableOptionSamplePageContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionTablespace</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionTablespace([NotNull] MySqlParser.TableOptionTablespaceContext context);
+	public virtual void EnterTableOptionTablespace([NotNull] MySqlParser.TableOptionTablespaceContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionTablespace</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionTablespace([NotNull] MySqlParser.TableOptionTablespaceContext context);
+	public virtual void ExitTableOptionTablespace([NotNull] MySqlParser.TableOptionTablespaceContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableOptionUnion</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableOptionUnion([NotNull] MySqlParser.TableOptionUnionContext context);
+	public virtual void EnterTableOptionUnion([NotNull] MySqlParser.TableOptionUnionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableOptionUnion</c>
 	/// labeled alternative in <see cref="MySqlParser.tableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableOptionUnion([NotNull] MySqlParser.TableOptionUnionContext context);
+	public virtual void ExitTableOptionUnion([NotNull] MySqlParser.TableOptionUnionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.tablespaceStorage"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTablespaceStorage([NotNull] MySqlParser.TablespaceStorageContext context);
+	public virtual void EnterTablespaceStorage([NotNull] MySqlParser.TablespaceStorageContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.tablespaceStorage"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTablespaceStorage([NotNull] MySqlParser.TablespaceStorageContext context);
+	public virtual void ExitTablespaceStorage([NotNull] MySqlParser.TablespaceStorageContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.partitionDefinitions"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionDefinitions([NotNull] MySqlParser.PartitionDefinitionsContext context);
+	public virtual void EnterPartitionDefinitions([NotNull] MySqlParser.PartitionDefinitionsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.partitionDefinitions"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionDefinitions([NotNull] MySqlParser.PartitionDefinitionsContext context);
+	public virtual void ExitPartitionDefinitions([NotNull] MySqlParser.PartitionDefinitionsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionFunctionHash</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionFunctionHash([NotNull] MySqlParser.PartitionFunctionHashContext context);
+	public virtual void EnterPartitionFunctionHash([NotNull] MySqlParser.PartitionFunctionHashContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionFunctionHash</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionFunctionHash([NotNull] MySqlParser.PartitionFunctionHashContext context);
+	public virtual void ExitPartitionFunctionHash([NotNull] MySqlParser.PartitionFunctionHashContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionFunctionKey</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionFunctionKey([NotNull] MySqlParser.PartitionFunctionKeyContext context);
+	public virtual void EnterPartitionFunctionKey([NotNull] MySqlParser.PartitionFunctionKeyContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionFunctionKey</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionFunctionKey([NotNull] MySqlParser.PartitionFunctionKeyContext context);
+	public virtual void ExitPartitionFunctionKey([NotNull] MySqlParser.PartitionFunctionKeyContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionFunctionRange</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionFunctionRange([NotNull] MySqlParser.PartitionFunctionRangeContext context);
+	public virtual void EnterPartitionFunctionRange([NotNull] MySqlParser.PartitionFunctionRangeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionFunctionRange</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionFunctionRange([NotNull] MySqlParser.PartitionFunctionRangeContext context);
+	public virtual void ExitPartitionFunctionRange([NotNull] MySqlParser.PartitionFunctionRangeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionFunctionList</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionFunctionList([NotNull] MySqlParser.PartitionFunctionListContext context);
+	public virtual void EnterPartitionFunctionList([NotNull] MySqlParser.PartitionFunctionListContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionFunctionList</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionFunctionList([NotNull] MySqlParser.PartitionFunctionListContext context);
+	public virtual void ExitPartitionFunctionList([NotNull] MySqlParser.PartitionFunctionListContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>subPartitionFunctionHash</c>
 	/// labeled alternative in <see cref="MySqlParser.subpartitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSubPartitionFunctionHash([NotNull] MySqlParser.SubPartitionFunctionHashContext context);
+	public virtual void EnterSubPartitionFunctionHash([NotNull] MySqlParser.SubPartitionFunctionHashContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>subPartitionFunctionHash</c>
 	/// labeled alternative in <see cref="MySqlParser.subpartitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSubPartitionFunctionHash([NotNull] MySqlParser.SubPartitionFunctionHashContext context);
+	public virtual void ExitSubPartitionFunctionHash([NotNull] MySqlParser.SubPartitionFunctionHashContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>subPartitionFunctionKey</c>
 	/// labeled alternative in <see cref="MySqlParser.subpartitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSubPartitionFunctionKey([NotNull] MySqlParser.SubPartitionFunctionKeyContext context);
+	public virtual void EnterSubPartitionFunctionKey([NotNull] MySqlParser.SubPartitionFunctionKeyContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>subPartitionFunctionKey</c>
 	/// labeled alternative in <see cref="MySqlParser.subpartitionFunctionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSubPartitionFunctionKey([NotNull] MySqlParser.SubPartitionFunctionKeyContext context);
+	public virtual void ExitSubPartitionFunctionKey([NotNull] MySqlParser.SubPartitionFunctionKeyContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionComparision</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionComparision([NotNull] MySqlParser.PartitionComparisionContext context);
+	public virtual void EnterPartitionComparision([NotNull] MySqlParser.PartitionComparisionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionComparision</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionComparision([NotNull] MySqlParser.PartitionComparisionContext context);
+	public virtual void ExitPartitionComparision([NotNull] MySqlParser.PartitionComparisionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionListAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionListAtom([NotNull] MySqlParser.PartitionListAtomContext context);
+	public virtual void EnterPartitionListAtom([NotNull] MySqlParser.PartitionListAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionListAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionListAtom([NotNull] MySqlParser.PartitionListAtomContext context);
+	public virtual void ExitPartitionListAtom([NotNull] MySqlParser.PartitionListAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionListVector</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionListVector([NotNull] MySqlParser.PartitionListVectorContext context);
+	public virtual void EnterPartitionListVector([NotNull] MySqlParser.PartitionListVectorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionListVector</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionListVector([NotNull] MySqlParser.PartitionListVectorContext context);
+	public virtual void ExitPartitionListVector([NotNull] MySqlParser.PartitionListVectorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionSimple</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionSimple([NotNull] MySqlParser.PartitionSimpleContext context);
+	public virtual void EnterPartitionSimple([NotNull] MySqlParser.PartitionSimpleContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionSimple</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionSimple([NotNull] MySqlParser.PartitionSimpleContext context);
+	public virtual void ExitPartitionSimple([NotNull] MySqlParser.PartitionSimpleContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.partitionDefinerAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionDefinerAtom([NotNull] MySqlParser.PartitionDefinerAtomContext context);
+	public virtual void EnterPartitionDefinerAtom([NotNull] MySqlParser.PartitionDefinerAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.partitionDefinerAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionDefinerAtom([NotNull] MySqlParser.PartitionDefinerAtomContext context);
+	public virtual void ExitPartitionDefinerAtom([NotNull] MySqlParser.PartitionDefinerAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.partitionDefinerVector"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionDefinerVector([NotNull] MySqlParser.PartitionDefinerVectorContext context);
+	public virtual void EnterPartitionDefinerVector([NotNull] MySqlParser.PartitionDefinerVectorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.partitionDefinerVector"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionDefinerVector([NotNull] MySqlParser.PartitionDefinerVectorContext context);
+	public virtual void ExitPartitionDefinerVector([NotNull] MySqlParser.PartitionDefinerVectorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.subpartitionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSubpartitionDefinition([NotNull] MySqlParser.SubpartitionDefinitionContext context);
+	public virtual void EnterSubpartitionDefinition([NotNull] MySqlParser.SubpartitionDefinitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.subpartitionDefinition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSubpartitionDefinition([NotNull] MySqlParser.SubpartitionDefinitionContext context);
+	public virtual void ExitSubpartitionDefinition([NotNull] MySqlParser.SubpartitionDefinitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionOptionEngine</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionOptionEngine([NotNull] MySqlParser.PartitionOptionEngineContext context);
+	public virtual void EnterPartitionOptionEngine([NotNull] MySqlParser.PartitionOptionEngineContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionOptionEngine</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionOptionEngine([NotNull] MySqlParser.PartitionOptionEngineContext context);
+	public virtual void ExitPartitionOptionEngine([NotNull] MySqlParser.PartitionOptionEngineContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionOptionComment</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionOptionComment([NotNull] MySqlParser.PartitionOptionCommentContext context);
+	public virtual void EnterPartitionOptionComment([NotNull] MySqlParser.PartitionOptionCommentContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionOptionComment</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionOptionComment([NotNull] MySqlParser.PartitionOptionCommentContext context);
+	public virtual void ExitPartitionOptionComment([NotNull] MySqlParser.PartitionOptionCommentContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionOptionDataDirectory</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionOptionDataDirectory([NotNull] MySqlParser.PartitionOptionDataDirectoryContext context);
+	public virtual void EnterPartitionOptionDataDirectory([NotNull] MySqlParser.PartitionOptionDataDirectoryContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionOptionDataDirectory</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionOptionDataDirectory([NotNull] MySqlParser.PartitionOptionDataDirectoryContext context);
+	public virtual void ExitPartitionOptionDataDirectory([NotNull] MySqlParser.PartitionOptionDataDirectoryContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionOptionIndexDirectory</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionOptionIndexDirectory([NotNull] MySqlParser.PartitionOptionIndexDirectoryContext context);
+	public virtual void EnterPartitionOptionIndexDirectory([NotNull] MySqlParser.PartitionOptionIndexDirectoryContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionOptionIndexDirectory</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionOptionIndexDirectory([NotNull] MySqlParser.PartitionOptionIndexDirectoryContext context);
+	public virtual void ExitPartitionOptionIndexDirectory([NotNull] MySqlParser.PartitionOptionIndexDirectoryContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionOptionMaxRows</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionOptionMaxRows([NotNull] MySqlParser.PartitionOptionMaxRowsContext context);
+	public virtual void EnterPartitionOptionMaxRows([NotNull] MySqlParser.PartitionOptionMaxRowsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionOptionMaxRows</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionOptionMaxRows([NotNull] MySqlParser.PartitionOptionMaxRowsContext context);
+	public virtual void ExitPartitionOptionMaxRows([NotNull] MySqlParser.PartitionOptionMaxRowsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionOptionMinRows</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionOptionMinRows([NotNull] MySqlParser.PartitionOptionMinRowsContext context);
+	public virtual void EnterPartitionOptionMinRows([NotNull] MySqlParser.PartitionOptionMinRowsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionOptionMinRows</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionOptionMinRows([NotNull] MySqlParser.PartitionOptionMinRowsContext context);
+	public virtual void ExitPartitionOptionMinRows([NotNull] MySqlParser.PartitionOptionMinRowsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionOptionTablespace</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionOptionTablespace([NotNull] MySqlParser.PartitionOptionTablespaceContext context);
+	public virtual void EnterPartitionOptionTablespace([NotNull] MySqlParser.PartitionOptionTablespaceContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionOptionTablespace</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionOptionTablespace([NotNull] MySqlParser.PartitionOptionTablespaceContext context);
+	public virtual void ExitPartitionOptionTablespace([NotNull] MySqlParser.PartitionOptionTablespaceContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>partitionOptionNodeGroup</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPartitionOptionNodeGroup([NotNull] MySqlParser.PartitionOptionNodeGroupContext context);
+	public virtual void EnterPartitionOptionNodeGroup([NotNull] MySqlParser.PartitionOptionNodeGroupContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>partitionOptionNodeGroup</c>
 	/// labeled alternative in <see cref="MySqlParser.partitionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPartitionOptionNodeGroup([NotNull] MySqlParser.PartitionOptionNodeGroupContext context);
+	public virtual void ExitPartitionOptionNodeGroup([NotNull] MySqlParser.PartitionOptionNodeGroupContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterSimpleDatabase</c>
 	/// labeled alternative in <see cref="MySqlParser.alterDatabase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterSimpleDatabase([NotNull] MySqlParser.AlterSimpleDatabaseContext context);
+	public virtual void EnterAlterSimpleDatabase([NotNull] MySqlParser.AlterSimpleDatabaseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterSimpleDatabase</c>
 	/// labeled alternative in <see cref="MySqlParser.alterDatabase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterSimpleDatabase([NotNull] MySqlParser.AlterSimpleDatabaseContext context);
+	public virtual void ExitAlterSimpleDatabase([NotNull] MySqlParser.AlterSimpleDatabaseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterUpgradeName</c>
 	/// labeled alternative in <see cref="MySqlParser.alterDatabase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterUpgradeName([NotNull] MySqlParser.AlterUpgradeNameContext context);
+	public virtual void EnterAlterUpgradeName([NotNull] MySqlParser.AlterUpgradeNameContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterUpgradeName</c>
 	/// labeled alternative in <see cref="MySqlParser.alterDatabase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterUpgradeName([NotNull] MySqlParser.AlterUpgradeNameContext context);
+	public virtual void ExitAlterUpgradeName([NotNull] MySqlParser.AlterUpgradeNameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.alterEvent"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterEvent([NotNull] MySqlParser.AlterEventContext context);
+	public virtual void EnterAlterEvent([NotNull] MySqlParser.AlterEventContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.alterEvent"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterEvent([NotNull] MySqlParser.AlterEventContext context);
+	public virtual void ExitAlterEvent([NotNull] MySqlParser.AlterEventContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.alterFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterFunction([NotNull] MySqlParser.AlterFunctionContext context);
+	public virtual void EnterAlterFunction([NotNull] MySqlParser.AlterFunctionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.alterFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterFunction([NotNull] MySqlParser.AlterFunctionContext context);
+	public virtual void ExitAlterFunction([NotNull] MySqlParser.AlterFunctionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.alterInstance"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterInstance([NotNull] MySqlParser.AlterInstanceContext context);
+	public virtual void EnterAlterInstance([NotNull] MySqlParser.AlterInstanceContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.alterInstance"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterInstance([NotNull] MySqlParser.AlterInstanceContext context);
+	public virtual void ExitAlterInstance([NotNull] MySqlParser.AlterInstanceContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.alterLogfileGroup"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterLogfileGroup([NotNull] MySqlParser.AlterLogfileGroupContext context);
+	public virtual void EnterAlterLogfileGroup([NotNull] MySqlParser.AlterLogfileGroupContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.alterLogfileGroup"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterLogfileGroup([NotNull] MySqlParser.AlterLogfileGroupContext context);
+	public virtual void ExitAlterLogfileGroup([NotNull] MySqlParser.AlterLogfileGroupContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.alterProcedure"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterProcedure([NotNull] MySqlParser.AlterProcedureContext context);
+	public virtual void EnterAlterProcedure([NotNull] MySqlParser.AlterProcedureContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.alterProcedure"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterProcedure([NotNull] MySqlParser.AlterProcedureContext context);
+	public virtual void ExitAlterProcedure([NotNull] MySqlParser.AlterProcedureContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.alterServer"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterServer([NotNull] MySqlParser.AlterServerContext context);
+	public virtual void EnterAlterServer([NotNull] MySqlParser.AlterServerContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.alterServer"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterServer([NotNull] MySqlParser.AlterServerContext context);
+	public virtual void ExitAlterServer([NotNull] MySqlParser.AlterServerContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.alterTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterTable([NotNull] MySqlParser.AlterTableContext context);
+	public virtual void EnterAlterTable([NotNull] MySqlParser.AlterTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.alterTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterTable([NotNull] MySqlParser.AlterTableContext context);
+	public virtual void ExitAlterTable([NotNull] MySqlParser.AlterTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.alterTablespace"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterTablespace([NotNull] MySqlParser.AlterTablespaceContext context);
+	public virtual void EnterAlterTablespace([NotNull] MySqlParser.AlterTablespaceContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.alterTablespace"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterTablespace([NotNull] MySqlParser.AlterTablespaceContext context);
+	public virtual void ExitAlterTablespace([NotNull] MySqlParser.AlterTablespaceContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.alterView"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterView([NotNull] MySqlParser.AlterViewContext context);
+	public virtual void EnterAlterView([NotNull] MySqlParser.AlterViewContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.alterView"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterView([NotNull] MySqlParser.AlterViewContext context);
+	public virtual void ExitAlterView([NotNull] MySqlParser.AlterViewContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByTableOption</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByTableOption([NotNull] MySqlParser.AlterByTableOptionContext context);
+	public virtual void EnterAlterByTableOption([NotNull] MySqlParser.AlterByTableOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByTableOption</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByTableOption([NotNull] MySqlParser.AlterByTableOptionContext context);
+	public virtual void ExitAlterByTableOption([NotNull] MySqlParser.AlterByTableOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByAddColumn</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByAddColumn([NotNull] MySqlParser.AlterByAddColumnContext context);
+	public virtual void EnterAlterByAddColumn([NotNull] MySqlParser.AlterByAddColumnContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByAddColumn</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByAddColumn([NotNull] MySqlParser.AlterByAddColumnContext context);
+	public virtual void ExitAlterByAddColumn([NotNull] MySqlParser.AlterByAddColumnContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByAddColumns</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByAddColumns([NotNull] MySqlParser.AlterByAddColumnsContext context);
+	public virtual void EnterAlterByAddColumns([NotNull] MySqlParser.AlterByAddColumnsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByAddColumns</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByAddColumns([NotNull] MySqlParser.AlterByAddColumnsContext context);
+	public virtual void ExitAlterByAddColumns([NotNull] MySqlParser.AlterByAddColumnsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByAddIndex</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByAddIndex([NotNull] MySqlParser.AlterByAddIndexContext context);
+	public virtual void EnterAlterByAddIndex([NotNull] MySqlParser.AlterByAddIndexContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByAddIndex</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByAddIndex([NotNull] MySqlParser.AlterByAddIndexContext context);
+	public virtual void ExitAlterByAddIndex([NotNull] MySqlParser.AlterByAddIndexContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByAddPrimaryKey</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByAddPrimaryKey([NotNull] MySqlParser.AlterByAddPrimaryKeyContext context);
+	public virtual void EnterAlterByAddPrimaryKey([NotNull] MySqlParser.AlterByAddPrimaryKeyContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByAddPrimaryKey</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByAddPrimaryKey([NotNull] MySqlParser.AlterByAddPrimaryKeyContext context);
+	public virtual void ExitAlterByAddPrimaryKey([NotNull] MySqlParser.AlterByAddPrimaryKeyContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByAddUniqueKey</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByAddUniqueKey([NotNull] MySqlParser.AlterByAddUniqueKeyContext context);
+	public virtual void EnterAlterByAddUniqueKey([NotNull] MySqlParser.AlterByAddUniqueKeyContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByAddUniqueKey</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByAddUniqueKey([NotNull] MySqlParser.AlterByAddUniqueKeyContext context);
+	public virtual void ExitAlterByAddUniqueKey([NotNull] MySqlParser.AlterByAddUniqueKeyContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByAddSpecialIndex</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByAddSpecialIndex([NotNull] MySqlParser.AlterByAddSpecialIndexContext context);
+	public virtual void EnterAlterByAddSpecialIndex([NotNull] MySqlParser.AlterByAddSpecialIndexContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByAddSpecialIndex</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByAddSpecialIndex([NotNull] MySqlParser.AlterByAddSpecialIndexContext context);
+	public virtual void ExitAlterByAddSpecialIndex([NotNull] MySqlParser.AlterByAddSpecialIndexContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByAddForeignKey</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByAddForeignKey([NotNull] MySqlParser.AlterByAddForeignKeyContext context);
+	public virtual void EnterAlterByAddForeignKey([NotNull] MySqlParser.AlterByAddForeignKeyContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByAddForeignKey</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByAddForeignKey([NotNull] MySqlParser.AlterByAddForeignKeyContext context);
+	public virtual void ExitAlterByAddForeignKey([NotNull] MySqlParser.AlterByAddForeignKeyContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByAddCheckTableConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByAddCheckTableConstraint([NotNull] MySqlParser.AlterByAddCheckTableConstraintContext context);
+	public virtual void EnterAlterByAddCheckTableConstraint([NotNull] MySqlParser.AlterByAddCheckTableConstraintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByAddCheckTableConstraint</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByAddCheckTableConstraint([NotNull] MySqlParser.AlterByAddCheckTableConstraintContext context);
+	public virtual void ExitAlterByAddCheckTableConstraint([NotNull] MySqlParser.AlterByAddCheckTableConstraintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterBySetAlgorithm</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterBySetAlgorithm([NotNull] MySqlParser.AlterBySetAlgorithmContext context);
+	public virtual void EnterAlterBySetAlgorithm([NotNull] MySqlParser.AlterBySetAlgorithmContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterBySetAlgorithm</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterBySetAlgorithm([NotNull] MySqlParser.AlterBySetAlgorithmContext context);
+	public virtual void ExitAlterBySetAlgorithm([NotNull] MySqlParser.AlterBySetAlgorithmContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByChangeDefault</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByChangeDefault([NotNull] MySqlParser.AlterByChangeDefaultContext context);
+	public virtual void EnterAlterByChangeDefault([NotNull] MySqlParser.AlterByChangeDefaultContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByChangeDefault</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByChangeDefault([NotNull] MySqlParser.AlterByChangeDefaultContext context);
+	public virtual void ExitAlterByChangeDefault([NotNull] MySqlParser.AlterByChangeDefaultContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByChangeColumn</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByChangeColumn([NotNull] MySqlParser.AlterByChangeColumnContext context);
+	public virtual void EnterAlterByChangeColumn([NotNull] MySqlParser.AlterByChangeColumnContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByChangeColumn</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByChangeColumn([NotNull] MySqlParser.AlterByChangeColumnContext context);
+	public virtual void ExitAlterByChangeColumn([NotNull] MySqlParser.AlterByChangeColumnContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByRenameColumn</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByRenameColumn([NotNull] MySqlParser.AlterByRenameColumnContext context);
+	public virtual void EnterAlterByRenameColumn([NotNull] MySqlParser.AlterByRenameColumnContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByRenameColumn</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByRenameColumn([NotNull] MySqlParser.AlterByRenameColumnContext context);
+	public virtual void ExitAlterByRenameColumn([NotNull] MySqlParser.AlterByRenameColumnContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByLock</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByLock([NotNull] MySqlParser.AlterByLockContext context);
+	public virtual void EnterAlterByLock([NotNull] MySqlParser.AlterByLockContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByLock</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByLock([NotNull] MySqlParser.AlterByLockContext context);
+	public virtual void ExitAlterByLock([NotNull] MySqlParser.AlterByLockContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByModifyColumn</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByModifyColumn([NotNull] MySqlParser.AlterByModifyColumnContext context);
+	public virtual void EnterAlterByModifyColumn([NotNull] MySqlParser.AlterByModifyColumnContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByModifyColumn</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByModifyColumn([NotNull] MySqlParser.AlterByModifyColumnContext context);
+	public virtual void ExitAlterByModifyColumn([NotNull] MySqlParser.AlterByModifyColumnContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByDropColumn</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByDropColumn([NotNull] MySqlParser.AlterByDropColumnContext context);
+	public virtual void EnterAlterByDropColumn([NotNull] MySqlParser.AlterByDropColumnContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByDropColumn</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByDropColumn([NotNull] MySqlParser.AlterByDropColumnContext context);
+	public virtual void ExitAlterByDropColumn([NotNull] MySqlParser.AlterByDropColumnContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByDropPrimaryKey</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByDropPrimaryKey([NotNull] MySqlParser.AlterByDropPrimaryKeyContext context);
+	public virtual void EnterAlterByDropPrimaryKey([NotNull] MySqlParser.AlterByDropPrimaryKeyContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByDropPrimaryKey</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByDropPrimaryKey([NotNull] MySqlParser.AlterByDropPrimaryKeyContext context);
+	public virtual void ExitAlterByDropPrimaryKey([NotNull] MySqlParser.AlterByDropPrimaryKeyContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByRenameIndex</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByRenameIndex([NotNull] MySqlParser.AlterByRenameIndexContext context);
+	public virtual void EnterAlterByRenameIndex([NotNull] MySqlParser.AlterByRenameIndexContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByRenameIndex</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByRenameIndex([NotNull] MySqlParser.AlterByRenameIndexContext context);
+	public virtual void ExitAlterByRenameIndex([NotNull] MySqlParser.AlterByRenameIndexContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByDropIndex</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByDropIndex([NotNull] MySqlParser.AlterByDropIndexContext context);
+	public virtual void EnterAlterByDropIndex([NotNull] MySqlParser.AlterByDropIndexContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByDropIndex</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByDropIndex([NotNull] MySqlParser.AlterByDropIndexContext context);
+	public virtual void ExitAlterByDropIndex([NotNull] MySqlParser.AlterByDropIndexContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByDropForeignKey</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByDropForeignKey([NotNull] MySqlParser.AlterByDropForeignKeyContext context);
+	public virtual void EnterAlterByDropForeignKey([NotNull] MySqlParser.AlterByDropForeignKeyContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByDropForeignKey</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByDropForeignKey([NotNull] MySqlParser.AlterByDropForeignKeyContext context);
+	public virtual void ExitAlterByDropForeignKey([NotNull] MySqlParser.AlterByDropForeignKeyContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByDisableKeys</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByDisableKeys([NotNull] MySqlParser.AlterByDisableKeysContext context);
+	public virtual void EnterAlterByDisableKeys([NotNull] MySqlParser.AlterByDisableKeysContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByDisableKeys</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByDisableKeys([NotNull] MySqlParser.AlterByDisableKeysContext context);
+	public virtual void ExitAlterByDisableKeys([NotNull] MySqlParser.AlterByDisableKeysContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByEnableKeys</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByEnableKeys([NotNull] MySqlParser.AlterByEnableKeysContext context);
+	public virtual void EnterAlterByEnableKeys([NotNull] MySqlParser.AlterByEnableKeysContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByEnableKeys</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByEnableKeys([NotNull] MySqlParser.AlterByEnableKeysContext context);
+	public virtual void ExitAlterByEnableKeys([NotNull] MySqlParser.AlterByEnableKeysContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByRename</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByRename([NotNull] MySqlParser.AlterByRenameContext context);
+	public virtual void EnterAlterByRename([NotNull] MySqlParser.AlterByRenameContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByRename</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByRename([NotNull] MySqlParser.AlterByRenameContext context);
+	public virtual void ExitAlterByRename([NotNull] MySqlParser.AlterByRenameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByOrder</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByOrder([NotNull] MySqlParser.AlterByOrderContext context);
+	public virtual void EnterAlterByOrder([NotNull] MySqlParser.AlterByOrderContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByOrder</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByOrder([NotNull] MySqlParser.AlterByOrderContext context);
+	public virtual void ExitAlterByOrder([NotNull] MySqlParser.AlterByOrderContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByConvertCharset</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByConvertCharset([NotNull] MySqlParser.AlterByConvertCharsetContext context);
+	public virtual void EnterAlterByConvertCharset([NotNull] MySqlParser.AlterByConvertCharsetContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByConvertCharset</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByConvertCharset([NotNull] MySqlParser.AlterByConvertCharsetContext context);
+	public virtual void ExitAlterByConvertCharset([NotNull] MySqlParser.AlterByConvertCharsetContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByDefaultCharset</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByDefaultCharset([NotNull] MySqlParser.AlterByDefaultCharsetContext context);
+	public virtual void EnterAlterByDefaultCharset([NotNull] MySqlParser.AlterByDefaultCharsetContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByDefaultCharset</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByDefaultCharset([NotNull] MySqlParser.AlterByDefaultCharsetContext context);
+	public virtual void ExitAlterByDefaultCharset([NotNull] MySqlParser.AlterByDefaultCharsetContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByDiscardTablespace</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByDiscardTablespace([NotNull] MySqlParser.AlterByDiscardTablespaceContext context);
+	public virtual void EnterAlterByDiscardTablespace([NotNull] MySqlParser.AlterByDiscardTablespaceContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByDiscardTablespace</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByDiscardTablespace([NotNull] MySqlParser.AlterByDiscardTablespaceContext context);
+	public virtual void ExitAlterByDiscardTablespace([NotNull] MySqlParser.AlterByDiscardTablespaceContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByImportTablespace</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByImportTablespace([NotNull] MySqlParser.AlterByImportTablespaceContext context);
+	public virtual void EnterAlterByImportTablespace([NotNull] MySqlParser.AlterByImportTablespaceContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByImportTablespace</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByImportTablespace([NotNull] MySqlParser.AlterByImportTablespaceContext context);
+	public virtual void ExitAlterByImportTablespace([NotNull] MySqlParser.AlterByImportTablespaceContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByForce</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByForce([NotNull] MySqlParser.AlterByForceContext context);
+	public virtual void EnterAlterByForce([NotNull] MySqlParser.AlterByForceContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByForce</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByForce([NotNull] MySqlParser.AlterByForceContext context);
+	public virtual void ExitAlterByForce([NotNull] MySqlParser.AlterByForceContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByValidate</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByValidate([NotNull] MySqlParser.AlterByValidateContext context);
+	public virtual void EnterAlterByValidate([NotNull] MySqlParser.AlterByValidateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByValidate</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByValidate([NotNull] MySqlParser.AlterByValidateContext context);
+	public virtual void ExitAlterByValidate([NotNull] MySqlParser.AlterByValidateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByAddPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByAddPartition([NotNull] MySqlParser.AlterByAddPartitionContext context);
+	public virtual void EnterAlterByAddPartition([NotNull] MySqlParser.AlterByAddPartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByAddPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByAddPartition([NotNull] MySqlParser.AlterByAddPartitionContext context);
+	public virtual void ExitAlterByAddPartition([NotNull] MySqlParser.AlterByAddPartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByDropPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByDropPartition([NotNull] MySqlParser.AlterByDropPartitionContext context);
+	public virtual void EnterAlterByDropPartition([NotNull] MySqlParser.AlterByDropPartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByDropPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByDropPartition([NotNull] MySqlParser.AlterByDropPartitionContext context);
+	public virtual void ExitAlterByDropPartition([NotNull] MySqlParser.AlterByDropPartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByDiscardPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByDiscardPartition([NotNull] MySqlParser.AlterByDiscardPartitionContext context);
+	public virtual void EnterAlterByDiscardPartition([NotNull] MySqlParser.AlterByDiscardPartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByDiscardPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByDiscardPartition([NotNull] MySqlParser.AlterByDiscardPartitionContext context);
+	public virtual void ExitAlterByDiscardPartition([NotNull] MySqlParser.AlterByDiscardPartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByImportPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByImportPartition([NotNull] MySqlParser.AlterByImportPartitionContext context);
+	public virtual void EnterAlterByImportPartition([NotNull] MySqlParser.AlterByImportPartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByImportPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByImportPartition([NotNull] MySqlParser.AlterByImportPartitionContext context);
+	public virtual void ExitAlterByImportPartition([NotNull] MySqlParser.AlterByImportPartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByTruncatePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByTruncatePartition([NotNull] MySqlParser.AlterByTruncatePartitionContext context);
+	public virtual void EnterAlterByTruncatePartition([NotNull] MySqlParser.AlterByTruncatePartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByTruncatePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByTruncatePartition([NotNull] MySqlParser.AlterByTruncatePartitionContext context);
+	public virtual void ExitAlterByTruncatePartition([NotNull] MySqlParser.AlterByTruncatePartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByCoalescePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByCoalescePartition([NotNull] MySqlParser.AlterByCoalescePartitionContext context);
+	public virtual void EnterAlterByCoalescePartition([NotNull] MySqlParser.AlterByCoalescePartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByCoalescePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByCoalescePartition([NotNull] MySqlParser.AlterByCoalescePartitionContext context);
+	public virtual void ExitAlterByCoalescePartition([NotNull] MySqlParser.AlterByCoalescePartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByReorganizePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByReorganizePartition([NotNull] MySqlParser.AlterByReorganizePartitionContext context);
+	public virtual void EnterAlterByReorganizePartition([NotNull] MySqlParser.AlterByReorganizePartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByReorganizePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByReorganizePartition([NotNull] MySqlParser.AlterByReorganizePartitionContext context);
+	public virtual void ExitAlterByReorganizePartition([NotNull] MySqlParser.AlterByReorganizePartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByExchangePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByExchangePartition([NotNull] MySqlParser.AlterByExchangePartitionContext context);
+	public virtual void EnterAlterByExchangePartition([NotNull] MySqlParser.AlterByExchangePartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByExchangePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByExchangePartition([NotNull] MySqlParser.AlterByExchangePartitionContext context);
+	public virtual void ExitAlterByExchangePartition([NotNull] MySqlParser.AlterByExchangePartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByAnalyzePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByAnalyzePartition([NotNull] MySqlParser.AlterByAnalyzePartitionContext context);
+	public virtual void EnterAlterByAnalyzePartition([NotNull] MySqlParser.AlterByAnalyzePartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByAnalyzePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByAnalyzePartition([NotNull] MySqlParser.AlterByAnalyzePartitionContext context);
+	public virtual void ExitAlterByAnalyzePartition([NotNull] MySqlParser.AlterByAnalyzePartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByCheckPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByCheckPartition([NotNull] MySqlParser.AlterByCheckPartitionContext context);
+	public virtual void EnterAlterByCheckPartition([NotNull] MySqlParser.AlterByCheckPartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByCheckPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByCheckPartition([NotNull] MySqlParser.AlterByCheckPartitionContext context);
+	public virtual void ExitAlterByCheckPartition([NotNull] MySqlParser.AlterByCheckPartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByOptimizePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByOptimizePartition([NotNull] MySqlParser.AlterByOptimizePartitionContext context);
+	public virtual void EnterAlterByOptimizePartition([NotNull] MySqlParser.AlterByOptimizePartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByOptimizePartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByOptimizePartition([NotNull] MySqlParser.AlterByOptimizePartitionContext context);
+	public virtual void ExitAlterByOptimizePartition([NotNull] MySqlParser.AlterByOptimizePartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByRebuildPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByRebuildPartition([NotNull] MySqlParser.AlterByRebuildPartitionContext context);
+	public virtual void EnterAlterByRebuildPartition([NotNull] MySqlParser.AlterByRebuildPartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByRebuildPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByRebuildPartition([NotNull] MySqlParser.AlterByRebuildPartitionContext context);
+	public virtual void ExitAlterByRebuildPartition([NotNull] MySqlParser.AlterByRebuildPartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByRepairPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByRepairPartition([NotNull] MySqlParser.AlterByRepairPartitionContext context);
+	public virtual void EnterAlterByRepairPartition([NotNull] MySqlParser.AlterByRepairPartitionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByRepairPartition</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByRepairPartition([NotNull] MySqlParser.AlterByRepairPartitionContext context);
+	public virtual void ExitAlterByRepairPartition([NotNull] MySqlParser.AlterByRepairPartitionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByRemovePartitioning</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByRemovePartitioning([NotNull] MySqlParser.AlterByRemovePartitioningContext context);
+	public virtual void EnterAlterByRemovePartitioning([NotNull] MySqlParser.AlterByRemovePartitioningContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByRemovePartitioning</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByRemovePartitioning([NotNull] MySqlParser.AlterByRemovePartitioningContext context);
+	public virtual void ExitAlterByRemovePartitioning([NotNull] MySqlParser.AlterByRemovePartitioningContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterByUpgradePartitioning</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterByUpgradePartitioning([NotNull] MySqlParser.AlterByUpgradePartitioningContext context);
+	public virtual void EnterAlterByUpgradePartitioning([NotNull] MySqlParser.AlterByUpgradePartitioningContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterByUpgradePartitioning</c>
 	/// labeled alternative in <see cref="MySqlParser.alterSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterByUpgradePartitioning([NotNull] MySqlParser.AlterByUpgradePartitioningContext context);
+	public virtual void ExitAlterByUpgradePartitioning([NotNull] MySqlParser.AlterByUpgradePartitioningContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropDatabase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropDatabase([NotNull] MySqlParser.DropDatabaseContext context);
+	public virtual void EnterDropDatabase([NotNull] MySqlParser.DropDatabaseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropDatabase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropDatabase([NotNull] MySqlParser.DropDatabaseContext context);
+	public virtual void ExitDropDatabase([NotNull] MySqlParser.DropDatabaseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropEvent"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropEvent([NotNull] MySqlParser.DropEventContext context);
+	public virtual void EnterDropEvent([NotNull] MySqlParser.DropEventContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropEvent"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropEvent([NotNull] MySqlParser.DropEventContext context);
+	public virtual void ExitDropEvent([NotNull] MySqlParser.DropEventContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropIndex"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropIndex([NotNull] MySqlParser.DropIndexContext context);
+	public virtual void EnterDropIndex([NotNull] MySqlParser.DropIndexContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropIndex"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropIndex([NotNull] MySqlParser.DropIndexContext context);
+	public virtual void ExitDropIndex([NotNull] MySqlParser.DropIndexContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropLogfileGroup"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropLogfileGroup([NotNull] MySqlParser.DropLogfileGroupContext context);
+	public virtual void EnterDropLogfileGroup([NotNull] MySqlParser.DropLogfileGroupContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropLogfileGroup"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropLogfileGroup([NotNull] MySqlParser.DropLogfileGroupContext context);
+	public virtual void ExitDropLogfileGroup([NotNull] MySqlParser.DropLogfileGroupContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropProcedure"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropProcedure([NotNull] MySqlParser.DropProcedureContext context);
+	public virtual void EnterDropProcedure([NotNull] MySqlParser.DropProcedureContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropProcedure"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropProcedure([NotNull] MySqlParser.DropProcedureContext context);
+	public virtual void ExitDropProcedure([NotNull] MySqlParser.DropProcedureContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropFunction([NotNull] MySqlParser.DropFunctionContext context);
+	public virtual void EnterDropFunction([NotNull] MySqlParser.DropFunctionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropFunction([NotNull] MySqlParser.DropFunctionContext context);
+	public virtual void ExitDropFunction([NotNull] MySqlParser.DropFunctionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropServer"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropServer([NotNull] MySqlParser.DropServerContext context);
+	public virtual void EnterDropServer([NotNull] MySqlParser.DropServerContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropServer"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropServer([NotNull] MySqlParser.DropServerContext context);
+	public virtual void ExitDropServer([NotNull] MySqlParser.DropServerContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropTable([NotNull] MySqlParser.DropTableContext context);
+	public virtual void EnterDropTable([NotNull] MySqlParser.DropTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropTable([NotNull] MySqlParser.DropTableContext context);
+	public virtual void ExitDropTable([NotNull] MySqlParser.DropTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropTablespace"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropTablespace([NotNull] MySqlParser.DropTablespaceContext context);
+	public virtual void EnterDropTablespace([NotNull] MySqlParser.DropTablespaceContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropTablespace"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropTablespace([NotNull] MySqlParser.DropTablespaceContext context);
+	public virtual void ExitDropTablespace([NotNull] MySqlParser.DropTablespaceContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropTrigger"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropTrigger([NotNull] MySqlParser.DropTriggerContext context);
+	public virtual void EnterDropTrigger([NotNull] MySqlParser.DropTriggerContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropTrigger"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropTrigger([NotNull] MySqlParser.DropTriggerContext context);
+	public virtual void ExitDropTrigger([NotNull] MySqlParser.DropTriggerContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropView"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropView([NotNull] MySqlParser.DropViewContext context);
+	public virtual void EnterDropView([NotNull] MySqlParser.DropViewContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropView"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropView([NotNull] MySqlParser.DropViewContext context);
+	public virtual void ExitDropView([NotNull] MySqlParser.DropViewContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.renameTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRenameTable([NotNull] MySqlParser.RenameTableContext context);
+	public virtual void EnterRenameTable([NotNull] MySqlParser.RenameTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.renameTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRenameTable([NotNull] MySqlParser.RenameTableContext context);
+	public virtual void ExitRenameTable([NotNull] MySqlParser.RenameTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.renameTableClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRenameTableClause([NotNull] MySqlParser.RenameTableClauseContext context);
+	public virtual void EnterRenameTableClause([NotNull] MySqlParser.RenameTableClauseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.renameTableClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRenameTableClause([NotNull] MySqlParser.RenameTableClauseContext context);
+	public virtual void ExitRenameTableClause([NotNull] MySqlParser.RenameTableClauseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.truncateTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTruncateTable([NotNull] MySqlParser.TruncateTableContext context);
+	public virtual void EnterTruncateTable([NotNull] MySqlParser.TruncateTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.truncateTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTruncateTable([NotNull] MySqlParser.TruncateTableContext context);
+	public virtual void ExitTruncateTable([NotNull] MySqlParser.TruncateTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.callStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCallStatement([NotNull] MySqlParser.CallStatementContext context);
+	public virtual void EnterCallStatement([NotNull] MySqlParser.CallStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.callStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCallStatement([NotNull] MySqlParser.CallStatementContext context);
+	public virtual void ExitCallStatement([NotNull] MySqlParser.CallStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.deleteStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDeleteStatement([NotNull] MySqlParser.DeleteStatementContext context);
+	public virtual void EnterDeleteStatement([NotNull] MySqlParser.DeleteStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.deleteStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDeleteStatement([NotNull] MySqlParser.DeleteStatementContext context);
+	public virtual void ExitDeleteStatement([NotNull] MySqlParser.DeleteStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.doStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDoStatement([NotNull] MySqlParser.DoStatementContext context);
+	public virtual void EnterDoStatement([NotNull] MySqlParser.DoStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.doStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDoStatement([NotNull] MySqlParser.DoStatementContext context);
+	public virtual void ExitDoStatement([NotNull] MySqlParser.DoStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.handlerStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHandlerStatement([NotNull] MySqlParser.HandlerStatementContext context);
+	public virtual void EnterHandlerStatement([NotNull] MySqlParser.HandlerStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.handlerStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHandlerStatement([NotNull] MySqlParser.HandlerStatementContext context);
+	public virtual void ExitHandlerStatement([NotNull] MySqlParser.HandlerStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.insertStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterInsertStatement([NotNull] MySqlParser.InsertStatementContext context);
+	public virtual void EnterInsertStatement([NotNull] MySqlParser.InsertStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.insertStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitInsertStatement([NotNull] MySqlParser.InsertStatementContext context);
+	public virtual void ExitInsertStatement([NotNull] MySqlParser.InsertStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.loadDataStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLoadDataStatement([NotNull] MySqlParser.LoadDataStatementContext context);
+	public virtual void EnterLoadDataStatement([NotNull] MySqlParser.LoadDataStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.loadDataStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLoadDataStatement([NotNull] MySqlParser.LoadDataStatementContext context);
+	public virtual void ExitLoadDataStatement([NotNull] MySqlParser.LoadDataStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.loadXmlStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLoadXmlStatement([NotNull] MySqlParser.LoadXmlStatementContext context);
+	public virtual void EnterLoadXmlStatement([NotNull] MySqlParser.LoadXmlStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.loadXmlStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLoadXmlStatement([NotNull] MySqlParser.LoadXmlStatementContext context);
+	public virtual void ExitLoadXmlStatement([NotNull] MySqlParser.LoadXmlStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.replaceStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterReplaceStatement([NotNull] MySqlParser.ReplaceStatementContext context);
+	public virtual void EnterReplaceStatement([NotNull] MySqlParser.ReplaceStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.replaceStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitReplaceStatement([NotNull] MySqlParser.ReplaceStatementContext context);
+	public virtual void ExitReplaceStatement([NotNull] MySqlParser.ReplaceStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>simpleSelect</c>
 	/// labeled alternative in <see cref="MySqlParser.selectStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSimpleSelect([NotNull] MySqlParser.SimpleSelectContext context);
+	public virtual void EnterSimpleSelect([NotNull] MySqlParser.SimpleSelectContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>simpleSelect</c>
 	/// labeled alternative in <see cref="MySqlParser.selectStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSimpleSelect([NotNull] MySqlParser.SimpleSelectContext context);
+	public virtual void ExitSimpleSelect([NotNull] MySqlParser.SimpleSelectContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>parenthesisSelect</c>
 	/// labeled alternative in <see cref="MySqlParser.selectStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterParenthesisSelect([NotNull] MySqlParser.ParenthesisSelectContext context);
+	public virtual void EnterParenthesisSelect([NotNull] MySqlParser.ParenthesisSelectContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>parenthesisSelect</c>
 	/// labeled alternative in <see cref="MySqlParser.selectStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitParenthesisSelect([NotNull] MySqlParser.ParenthesisSelectContext context);
+	public virtual void ExitParenthesisSelect([NotNull] MySqlParser.ParenthesisSelectContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>unionSelect</c>
 	/// labeled alternative in <see cref="MySqlParser.selectStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUnionSelect([NotNull] MySqlParser.UnionSelectContext context);
+	public virtual void EnterUnionSelect([NotNull] MySqlParser.UnionSelectContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>unionSelect</c>
 	/// labeled alternative in <see cref="MySqlParser.selectStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUnionSelect([NotNull] MySqlParser.UnionSelectContext context);
+	public virtual void ExitUnionSelect([NotNull] MySqlParser.UnionSelectContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>unionParenthesisSelect</c>
 	/// labeled alternative in <see cref="MySqlParser.selectStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUnionParenthesisSelect([NotNull] MySqlParser.UnionParenthesisSelectContext context);
+	public virtual void EnterUnionParenthesisSelect([NotNull] MySqlParser.UnionParenthesisSelectContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>unionParenthesisSelect</c>
 	/// labeled alternative in <see cref="MySqlParser.selectStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUnionParenthesisSelect([NotNull] MySqlParser.UnionParenthesisSelectContext context);
+	public virtual void ExitUnionParenthesisSelect([NotNull] MySqlParser.UnionParenthesisSelectContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.updateStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUpdateStatement([NotNull] MySqlParser.UpdateStatementContext context);
+	public virtual void EnterUpdateStatement([NotNull] MySqlParser.UpdateStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.updateStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUpdateStatement([NotNull] MySqlParser.UpdateStatementContext context);
+	public virtual void ExitUpdateStatement([NotNull] MySqlParser.UpdateStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.insertStatementValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterInsertStatementValue([NotNull] MySqlParser.InsertStatementValueContext context);
+	public virtual void EnterInsertStatementValue([NotNull] MySqlParser.InsertStatementValueContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.insertStatementValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitInsertStatementValue([NotNull] MySqlParser.InsertStatementValueContext context);
+	public virtual void ExitInsertStatementValue([NotNull] MySqlParser.InsertStatementValueContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.updatedElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUpdatedElement([NotNull] MySqlParser.UpdatedElementContext context);
+	public virtual void EnterUpdatedElement([NotNull] MySqlParser.UpdatedElementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.updatedElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUpdatedElement([NotNull] MySqlParser.UpdatedElementContext context);
+	public virtual void ExitUpdatedElement([NotNull] MySqlParser.UpdatedElementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.assignmentField"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAssignmentField([NotNull] MySqlParser.AssignmentFieldContext context);
+	public virtual void EnterAssignmentField([NotNull] MySqlParser.AssignmentFieldContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.assignmentField"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAssignmentField([NotNull] MySqlParser.AssignmentFieldContext context);
+	public virtual void ExitAssignmentField([NotNull] MySqlParser.AssignmentFieldContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.lockClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLockClause([NotNull] MySqlParser.LockClauseContext context);
+	public virtual void EnterLockClause([NotNull] MySqlParser.LockClauseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.lockClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLockClause([NotNull] MySqlParser.LockClauseContext context);
+	public virtual void ExitLockClause([NotNull] MySqlParser.LockClauseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.singleDeleteStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSingleDeleteStatement([NotNull] MySqlParser.SingleDeleteStatementContext context);
+	public virtual void EnterSingleDeleteStatement([NotNull] MySqlParser.SingleDeleteStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.singleDeleteStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSingleDeleteStatement([NotNull] MySqlParser.SingleDeleteStatementContext context);
+	public virtual void ExitSingleDeleteStatement([NotNull] MySqlParser.SingleDeleteStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.multipleDeleteStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMultipleDeleteStatement([NotNull] MySqlParser.MultipleDeleteStatementContext context);
+	public virtual void EnterMultipleDeleteStatement([NotNull] MySqlParser.MultipleDeleteStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.multipleDeleteStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMultipleDeleteStatement([NotNull] MySqlParser.MultipleDeleteStatementContext context);
+	public virtual void ExitMultipleDeleteStatement([NotNull] MySqlParser.MultipleDeleteStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.handlerOpenStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHandlerOpenStatement([NotNull] MySqlParser.HandlerOpenStatementContext context);
+	public virtual void EnterHandlerOpenStatement([NotNull] MySqlParser.HandlerOpenStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.handlerOpenStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHandlerOpenStatement([NotNull] MySqlParser.HandlerOpenStatementContext context);
+	public virtual void ExitHandlerOpenStatement([NotNull] MySqlParser.HandlerOpenStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.handlerReadIndexStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHandlerReadIndexStatement([NotNull] MySqlParser.HandlerReadIndexStatementContext context);
+	public virtual void EnterHandlerReadIndexStatement([NotNull] MySqlParser.HandlerReadIndexStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.handlerReadIndexStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHandlerReadIndexStatement([NotNull] MySqlParser.HandlerReadIndexStatementContext context);
+	public virtual void ExitHandlerReadIndexStatement([NotNull] MySqlParser.HandlerReadIndexStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.handlerReadStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHandlerReadStatement([NotNull] MySqlParser.HandlerReadStatementContext context);
+	public virtual void EnterHandlerReadStatement([NotNull] MySqlParser.HandlerReadStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.handlerReadStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHandlerReadStatement([NotNull] MySqlParser.HandlerReadStatementContext context);
+	public virtual void ExitHandlerReadStatement([NotNull] MySqlParser.HandlerReadStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.handlerCloseStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHandlerCloseStatement([NotNull] MySqlParser.HandlerCloseStatementContext context);
+	public virtual void EnterHandlerCloseStatement([NotNull] MySqlParser.HandlerCloseStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.handlerCloseStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHandlerCloseStatement([NotNull] MySqlParser.HandlerCloseStatementContext context);
+	public virtual void ExitHandlerCloseStatement([NotNull] MySqlParser.HandlerCloseStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.singleUpdateStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSingleUpdateStatement([NotNull] MySqlParser.SingleUpdateStatementContext context);
+	public virtual void EnterSingleUpdateStatement([NotNull] MySqlParser.SingleUpdateStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.singleUpdateStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSingleUpdateStatement([NotNull] MySqlParser.SingleUpdateStatementContext context);
+	public virtual void ExitSingleUpdateStatement([NotNull] MySqlParser.SingleUpdateStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.multipleUpdateStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMultipleUpdateStatement([NotNull] MySqlParser.MultipleUpdateStatementContext context);
+	public virtual void EnterMultipleUpdateStatement([NotNull] MySqlParser.MultipleUpdateStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.multipleUpdateStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMultipleUpdateStatement([NotNull] MySqlParser.MultipleUpdateStatementContext context);
+	public virtual void ExitMultipleUpdateStatement([NotNull] MySqlParser.MultipleUpdateStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.orderByClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterOrderByClause([NotNull] MySqlParser.OrderByClauseContext context);
+	public virtual void EnterOrderByClause([NotNull] MySqlParser.OrderByClauseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.orderByClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitOrderByClause([NotNull] MySqlParser.OrderByClauseContext context);
+	public virtual void ExitOrderByClause([NotNull] MySqlParser.OrderByClauseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.orderByExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterOrderByExpression([NotNull] MySqlParser.OrderByExpressionContext context);
+	public virtual void EnterOrderByExpression([NotNull] MySqlParser.OrderByExpressionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.orderByExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitOrderByExpression([NotNull] MySqlParser.OrderByExpressionContext context);
+	public virtual void ExitOrderByExpression([NotNull] MySqlParser.OrderByExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.tableSources"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableSources([NotNull] MySqlParser.TableSourcesContext context);
+	public virtual void EnterTableSources([NotNull] MySqlParser.TableSourcesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.tableSources"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableSources([NotNull] MySqlParser.TableSourcesContext context);
+	public virtual void ExitTableSources([NotNull] MySqlParser.TableSourcesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableSourceBase</c>
 	/// labeled alternative in <see cref="MySqlParser.tableSource"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableSourceBase([NotNull] MySqlParser.TableSourceBaseContext context);
+	public virtual void EnterTableSourceBase([NotNull] MySqlParser.TableSourceBaseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableSourceBase</c>
 	/// labeled alternative in <see cref="MySqlParser.tableSource"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableSourceBase([NotNull] MySqlParser.TableSourceBaseContext context);
+	public virtual void ExitTableSourceBase([NotNull] MySqlParser.TableSourceBaseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableSourceNested</c>
 	/// labeled alternative in <see cref="MySqlParser.tableSource"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableSourceNested([NotNull] MySqlParser.TableSourceNestedContext context);
+	public virtual void EnterTableSourceNested([NotNull] MySqlParser.TableSourceNestedContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableSourceNested</c>
 	/// labeled alternative in <see cref="MySqlParser.tableSource"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableSourceNested([NotNull] MySqlParser.TableSourceNestedContext context);
+	public virtual void ExitTableSourceNested([NotNull] MySqlParser.TableSourceNestedContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>atomTableItem</c>
 	/// labeled alternative in <see cref="MySqlParser.tableSourceItem"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAtomTableItem([NotNull] MySqlParser.AtomTableItemContext context);
+	public virtual void EnterAtomTableItem([NotNull] MySqlParser.AtomTableItemContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>atomTableItem</c>
 	/// labeled alternative in <see cref="MySqlParser.tableSourceItem"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAtomTableItem([NotNull] MySqlParser.AtomTableItemContext context);
+	public virtual void ExitAtomTableItem([NotNull] MySqlParser.AtomTableItemContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>subqueryTableItem</c>
 	/// labeled alternative in <see cref="MySqlParser.tableSourceItem"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSubqueryTableItem([NotNull] MySqlParser.SubqueryTableItemContext context);
+	public virtual void EnterSubqueryTableItem([NotNull] MySqlParser.SubqueryTableItemContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>subqueryTableItem</c>
 	/// labeled alternative in <see cref="MySqlParser.tableSourceItem"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSubqueryTableItem([NotNull] MySqlParser.SubqueryTableItemContext context);
+	public virtual void ExitSubqueryTableItem([NotNull] MySqlParser.SubqueryTableItemContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableSourcesItem</c>
 	/// labeled alternative in <see cref="MySqlParser.tableSourceItem"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableSourcesItem([NotNull] MySqlParser.TableSourcesItemContext context);
+	public virtual void EnterTableSourcesItem([NotNull] MySqlParser.TableSourcesItemContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableSourcesItem</c>
 	/// labeled alternative in <see cref="MySqlParser.tableSourceItem"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableSourcesItem([NotNull] MySqlParser.TableSourcesItemContext context);
+	public virtual void ExitTableSourcesItem([NotNull] MySqlParser.TableSourcesItemContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.indexHint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIndexHint([NotNull] MySqlParser.IndexHintContext context);
+	public virtual void EnterIndexHint([NotNull] MySqlParser.IndexHintContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.indexHint"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIndexHint([NotNull] MySqlParser.IndexHintContext context);
+	public virtual void ExitIndexHint([NotNull] MySqlParser.IndexHintContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.indexHintType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIndexHintType([NotNull] MySqlParser.IndexHintTypeContext context);
+	public virtual void EnterIndexHintType([NotNull] MySqlParser.IndexHintTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.indexHintType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIndexHintType([NotNull] MySqlParser.IndexHintTypeContext context);
+	public virtual void ExitIndexHintType([NotNull] MySqlParser.IndexHintTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>innerJoin</c>
 	/// labeled alternative in <see cref="MySqlParser.joinPart"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterInnerJoin([NotNull] MySqlParser.InnerJoinContext context);
+	public virtual void EnterInnerJoin([NotNull] MySqlParser.InnerJoinContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>innerJoin</c>
 	/// labeled alternative in <see cref="MySqlParser.joinPart"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitInnerJoin([NotNull] MySqlParser.InnerJoinContext context);
+	public virtual void ExitInnerJoin([NotNull] MySqlParser.InnerJoinContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>straightJoin</c>
 	/// labeled alternative in <see cref="MySqlParser.joinPart"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStraightJoin([NotNull] MySqlParser.StraightJoinContext context);
+	public virtual void EnterStraightJoin([NotNull] MySqlParser.StraightJoinContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>straightJoin</c>
 	/// labeled alternative in <see cref="MySqlParser.joinPart"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStraightJoin([NotNull] MySqlParser.StraightJoinContext context);
+	public virtual void ExitStraightJoin([NotNull] MySqlParser.StraightJoinContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>outerJoin</c>
 	/// labeled alternative in <see cref="MySqlParser.joinPart"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterOuterJoin([NotNull] MySqlParser.OuterJoinContext context);
+	public virtual void EnterOuterJoin([NotNull] MySqlParser.OuterJoinContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>outerJoin</c>
 	/// labeled alternative in <see cref="MySqlParser.joinPart"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitOuterJoin([NotNull] MySqlParser.OuterJoinContext context);
+	public virtual void ExitOuterJoin([NotNull] MySqlParser.OuterJoinContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>naturalJoin</c>
 	/// labeled alternative in <see cref="MySqlParser.joinPart"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNaturalJoin([NotNull] MySqlParser.NaturalJoinContext context);
+	public virtual void EnterNaturalJoin([NotNull] MySqlParser.NaturalJoinContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>naturalJoin</c>
 	/// labeled alternative in <see cref="MySqlParser.joinPart"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNaturalJoin([NotNull] MySqlParser.NaturalJoinContext context);
+	public virtual void ExitNaturalJoin([NotNull] MySqlParser.NaturalJoinContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.queryExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterQueryExpression([NotNull] MySqlParser.QueryExpressionContext context);
+	public virtual void EnterQueryExpression([NotNull] MySqlParser.QueryExpressionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.queryExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitQueryExpression([NotNull] MySqlParser.QueryExpressionContext context);
+	public virtual void ExitQueryExpression([NotNull] MySqlParser.QueryExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.queryExpressionNointo"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterQueryExpressionNointo([NotNull] MySqlParser.QueryExpressionNointoContext context);
+	public virtual void EnterQueryExpressionNointo([NotNull] MySqlParser.QueryExpressionNointoContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.queryExpressionNointo"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitQueryExpressionNointo([NotNull] MySqlParser.QueryExpressionNointoContext context);
+	public virtual void ExitQueryExpressionNointo([NotNull] MySqlParser.QueryExpressionNointoContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.querySpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterQuerySpecification([NotNull] MySqlParser.QuerySpecificationContext context);
+	public virtual void EnterQuerySpecification([NotNull] MySqlParser.QuerySpecificationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.querySpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitQuerySpecification([NotNull] MySqlParser.QuerySpecificationContext context);
+	public virtual void ExitQuerySpecification([NotNull] MySqlParser.QuerySpecificationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.querySpecificationNointo"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterQuerySpecificationNointo([NotNull] MySqlParser.QuerySpecificationNointoContext context);
+	public virtual void EnterQuerySpecificationNointo([NotNull] MySqlParser.QuerySpecificationNointoContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.querySpecificationNointo"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitQuerySpecificationNointo([NotNull] MySqlParser.QuerySpecificationNointoContext context);
+	public virtual void ExitQuerySpecificationNointo([NotNull] MySqlParser.QuerySpecificationNointoContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.unionParenthesis"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUnionParenthesis([NotNull] MySqlParser.UnionParenthesisContext context);
+	public virtual void EnterUnionParenthesis([NotNull] MySqlParser.UnionParenthesisContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.unionParenthesis"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUnionParenthesis([NotNull] MySqlParser.UnionParenthesisContext context);
+	public virtual void ExitUnionParenthesis([NotNull] MySqlParser.UnionParenthesisContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.unionStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUnionStatement([NotNull] MySqlParser.UnionStatementContext context);
+	public virtual void EnterUnionStatement([NotNull] MySqlParser.UnionStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.unionStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUnionStatement([NotNull] MySqlParser.UnionStatementContext context);
+	public virtual void ExitUnionStatement([NotNull] MySqlParser.UnionStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.selectSpec"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectSpec([NotNull] MySqlParser.SelectSpecContext context);
+	public virtual void EnterSelectSpec([NotNull] MySqlParser.SelectSpecContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.selectSpec"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectSpec([NotNull] MySqlParser.SelectSpecContext context);
+	public virtual void ExitSelectSpec([NotNull] MySqlParser.SelectSpecContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.selectElements"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectElements([NotNull] MySqlParser.SelectElementsContext context);
+	public virtual void EnterSelectElements([NotNull] MySqlParser.SelectElementsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.selectElements"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectElements([NotNull] MySqlParser.SelectElementsContext context);
+	public virtual void ExitSelectElements([NotNull] MySqlParser.SelectElementsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>selectStarElement</c>
 	/// labeled alternative in <see cref="MySqlParser.selectElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectStarElement([NotNull] MySqlParser.SelectStarElementContext context);
+	public virtual void EnterSelectStarElement([NotNull] MySqlParser.SelectStarElementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>selectStarElement</c>
 	/// labeled alternative in <see cref="MySqlParser.selectElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectStarElement([NotNull] MySqlParser.SelectStarElementContext context);
+	public virtual void ExitSelectStarElement([NotNull] MySqlParser.SelectStarElementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>selectColumnElement</c>
 	/// labeled alternative in <see cref="MySqlParser.selectElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectColumnElement([NotNull] MySqlParser.SelectColumnElementContext context);
+	public virtual void EnterSelectColumnElement([NotNull] MySqlParser.SelectColumnElementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>selectColumnElement</c>
 	/// labeled alternative in <see cref="MySqlParser.selectElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectColumnElement([NotNull] MySqlParser.SelectColumnElementContext context);
+	public virtual void ExitSelectColumnElement([NotNull] MySqlParser.SelectColumnElementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>selectFunctionElement</c>
 	/// labeled alternative in <see cref="MySqlParser.selectElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectFunctionElement([NotNull] MySqlParser.SelectFunctionElementContext context);
+	public virtual void EnterSelectFunctionElement([NotNull] MySqlParser.SelectFunctionElementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>selectFunctionElement</c>
 	/// labeled alternative in <see cref="MySqlParser.selectElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectFunctionElement([NotNull] MySqlParser.SelectFunctionElementContext context);
+	public virtual void ExitSelectFunctionElement([NotNull] MySqlParser.SelectFunctionElementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>selectExpressionElement</c>
 	/// labeled alternative in <see cref="MySqlParser.selectElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectExpressionElement([NotNull] MySqlParser.SelectExpressionElementContext context);
+	public virtual void EnterSelectExpressionElement([NotNull] MySqlParser.SelectExpressionElementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>selectExpressionElement</c>
 	/// labeled alternative in <see cref="MySqlParser.selectElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectExpressionElement([NotNull] MySqlParser.SelectExpressionElementContext context);
+	public virtual void ExitSelectExpressionElement([NotNull] MySqlParser.SelectExpressionElementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>selectIntoVariables</c>
 	/// labeled alternative in <see cref="MySqlParser.selectIntoExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectIntoVariables([NotNull] MySqlParser.SelectIntoVariablesContext context);
+	public virtual void EnterSelectIntoVariables([NotNull] MySqlParser.SelectIntoVariablesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>selectIntoVariables</c>
 	/// labeled alternative in <see cref="MySqlParser.selectIntoExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectIntoVariables([NotNull] MySqlParser.SelectIntoVariablesContext context);
+	public virtual void ExitSelectIntoVariables([NotNull] MySqlParser.SelectIntoVariablesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>selectIntoDumpFile</c>
 	/// labeled alternative in <see cref="MySqlParser.selectIntoExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectIntoDumpFile([NotNull] MySqlParser.SelectIntoDumpFileContext context);
+	public virtual void EnterSelectIntoDumpFile([NotNull] MySqlParser.SelectIntoDumpFileContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>selectIntoDumpFile</c>
 	/// labeled alternative in <see cref="MySqlParser.selectIntoExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectIntoDumpFile([NotNull] MySqlParser.SelectIntoDumpFileContext context);
+	public virtual void ExitSelectIntoDumpFile([NotNull] MySqlParser.SelectIntoDumpFileContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>selectIntoTextFile</c>
 	/// labeled alternative in <see cref="MySqlParser.selectIntoExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectIntoTextFile([NotNull] MySqlParser.SelectIntoTextFileContext context);
+	public virtual void EnterSelectIntoTextFile([NotNull] MySqlParser.SelectIntoTextFileContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>selectIntoTextFile</c>
 	/// labeled alternative in <see cref="MySqlParser.selectIntoExpression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectIntoTextFile([NotNull] MySqlParser.SelectIntoTextFileContext context);
+	public virtual void ExitSelectIntoTextFile([NotNull] MySqlParser.SelectIntoTextFileContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.selectFieldsInto"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectFieldsInto([NotNull] MySqlParser.SelectFieldsIntoContext context);
+	public virtual void EnterSelectFieldsInto([NotNull] MySqlParser.SelectFieldsIntoContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.selectFieldsInto"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectFieldsInto([NotNull] MySqlParser.SelectFieldsIntoContext context);
+	public virtual void ExitSelectFieldsInto([NotNull] MySqlParser.SelectFieldsIntoContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.selectLinesInto"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectLinesInto([NotNull] MySqlParser.SelectLinesIntoContext context);
+	public virtual void EnterSelectLinesInto([NotNull] MySqlParser.SelectLinesIntoContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.selectLinesInto"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectLinesInto([NotNull] MySqlParser.SelectLinesIntoContext context);
+	public virtual void ExitSelectLinesInto([NotNull] MySqlParser.SelectLinesIntoContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.fromClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFromClause([NotNull] MySqlParser.FromClauseContext context);
+	public virtual void EnterFromClause([NotNull] MySqlParser.FromClauseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.fromClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFromClause([NotNull] MySqlParser.FromClauseContext context);
+	public virtual void ExitFromClause([NotNull] MySqlParser.FromClauseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.groupByItem"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterGroupByItem([NotNull] MySqlParser.GroupByItemContext context);
+	public virtual void EnterGroupByItem([NotNull] MySqlParser.GroupByItemContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.groupByItem"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitGroupByItem([NotNull] MySqlParser.GroupByItemContext context);
+	public virtual void ExitGroupByItem([NotNull] MySqlParser.GroupByItemContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.limitClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLimitClause([NotNull] MySqlParser.LimitClauseContext context);
+	public virtual void EnterLimitClause([NotNull] MySqlParser.LimitClauseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.limitClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLimitClause([NotNull] MySqlParser.LimitClauseContext context);
+	public virtual void ExitLimitClause([NotNull] MySqlParser.LimitClauseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.limitClauseAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLimitClauseAtom([NotNull] MySqlParser.LimitClauseAtomContext context);
+	public virtual void EnterLimitClauseAtom([NotNull] MySqlParser.LimitClauseAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.limitClauseAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLimitClauseAtom([NotNull] MySqlParser.LimitClauseAtomContext context);
+	public virtual void ExitLimitClauseAtom([NotNull] MySqlParser.LimitClauseAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.startTransaction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStartTransaction([NotNull] MySqlParser.StartTransactionContext context);
+	public virtual void EnterStartTransaction([NotNull] MySqlParser.StartTransactionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.startTransaction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStartTransaction([NotNull] MySqlParser.StartTransactionContext context);
+	public virtual void ExitStartTransaction([NotNull] MySqlParser.StartTransactionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.beginWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBeginWork([NotNull] MySqlParser.BeginWorkContext context);
+	public virtual void EnterBeginWork([NotNull] MySqlParser.BeginWorkContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.beginWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBeginWork([NotNull] MySqlParser.BeginWorkContext context);
+	public virtual void ExitBeginWork([NotNull] MySqlParser.BeginWorkContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.commitWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCommitWork([NotNull] MySqlParser.CommitWorkContext context);
+	public virtual void EnterCommitWork([NotNull] MySqlParser.CommitWorkContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.commitWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCommitWork([NotNull] MySqlParser.CommitWorkContext context);
+	public virtual void ExitCommitWork([NotNull] MySqlParser.CommitWorkContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.rollbackWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRollbackWork([NotNull] MySqlParser.RollbackWorkContext context);
+	public virtual void EnterRollbackWork([NotNull] MySqlParser.RollbackWorkContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.rollbackWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRollbackWork([NotNull] MySqlParser.RollbackWorkContext context);
+	public virtual void ExitRollbackWork([NotNull] MySqlParser.RollbackWorkContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.savepointStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSavepointStatement([NotNull] MySqlParser.SavepointStatementContext context);
+	public virtual void EnterSavepointStatement([NotNull] MySqlParser.SavepointStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.savepointStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSavepointStatement([NotNull] MySqlParser.SavepointStatementContext context);
+	public virtual void ExitSavepointStatement([NotNull] MySqlParser.SavepointStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.rollbackStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRollbackStatement([NotNull] MySqlParser.RollbackStatementContext context);
+	public virtual void EnterRollbackStatement([NotNull] MySqlParser.RollbackStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.rollbackStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRollbackStatement([NotNull] MySqlParser.RollbackStatementContext context);
+	public virtual void ExitRollbackStatement([NotNull] MySqlParser.RollbackStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.releaseStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterReleaseStatement([NotNull] MySqlParser.ReleaseStatementContext context);
+	public virtual void EnterReleaseStatement([NotNull] MySqlParser.ReleaseStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.releaseStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitReleaseStatement([NotNull] MySqlParser.ReleaseStatementContext context);
+	public virtual void ExitReleaseStatement([NotNull] MySqlParser.ReleaseStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.lockTables"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLockTables([NotNull] MySqlParser.LockTablesContext context);
+	public virtual void EnterLockTables([NotNull] MySqlParser.LockTablesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.lockTables"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLockTables([NotNull] MySqlParser.LockTablesContext context);
+	public virtual void ExitLockTables([NotNull] MySqlParser.LockTablesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.unlockTables"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUnlockTables([NotNull] MySqlParser.UnlockTablesContext context);
+	public virtual void EnterUnlockTables([NotNull] MySqlParser.UnlockTablesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.unlockTables"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUnlockTables([NotNull] MySqlParser.UnlockTablesContext context);
+	public virtual void ExitUnlockTables([NotNull] MySqlParser.UnlockTablesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.setAutocommitStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSetAutocommitStatement([NotNull] MySqlParser.SetAutocommitStatementContext context);
+	public virtual void EnterSetAutocommitStatement([NotNull] MySqlParser.SetAutocommitStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.setAutocommitStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSetAutocommitStatement([NotNull] MySqlParser.SetAutocommitStatementContext context);
+	public virtual void ExitSetAutocommitStatement([NotNull] MySqlParser.SetAutocommitStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.setTransactionStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSetTransactionStatement([NotNull] MySqlParser.SetTransactionStatementContext context);
+	public virtual void EnterSetTransactionStatement([NotNull] MySqlParser.SetTransactionStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.setTransactionStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSetTransactionStatement([NotNull] MySqlParser.SetTransactionStatementContext context);
+	public virtual void ExitSetTransactionStatement([NotNull] MySqlParser.SetTransactionStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.transactionMode"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTransactionMode([NotNull] MySqlParser.TransactionModeContext context);
+	public virtual void EnterTransactionMode([NotNull] MySqlParser.TransactionModeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.transactionMode"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTransactionMode([NotNull] MySqlParser.TransactionModeContext context);
+	public virtual void ExitTransactionMode([NotNull] MySqlParser.TransactionModeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.lockTableElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLockTableElement([NotNull] MySqlParser.LockTableElementContext context);
+	public virtual void EnterLockTableElement([NotNull] MySqlParser.LockTableElementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.lockTableElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLockTableElement([NotNull] MySqlParser.LockTableElementContext context);
+	public virtual void ExitLockTableElement([NotNull] MySqlParser.LockTableElementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.lockAction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLockAction([NotNull] MySqlParser.LockActionContext context);
+	public virtual void EnterLockAction([NotNull] MySqlParser.LockActionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.lockAction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLockAction([NotNull] MySqlParser.LockActionContext context);
+	public virtual void ExitLockAction([NotNull] MySqlParser.LockActionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.transactionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTransactionOption([NotNull] MySqlParser.TransactionOptionContext context);
+	public virtual void EnterTransactionOption([NotNull] MySqlParser.TransactionOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.transactionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTransactionOption([NotNull] MySqlParser.TransactionOptionContext context);
+	public virtual void ExitTransactionOption([NotNull] MySqlParser.TransactionOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.transactionLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTransactionLevel([NotNull] MySqlParser.TransactionLevelContext context);
+	public virtual void EnterTransactionLevel([NotNull] MySqlParser.TransactionLevelContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.transactionLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTransactionLevel([NotNull] MySqlParser.TransactionLevelContext context);
+	public virtual void ExitTransactionLevel([NotNull] MySqlParser.TransactionLevelContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.changeMaster"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterChangeMaster([NotNull] MySqlParser.ChangeMasterContext context);
+	public virtual void EnterChangeMaster([NotNull] MySqlParser.ChangeMasterContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.changeMaster"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitChangeMaster([NotNull] MySqlParser.ChangeMasterContext context);
+	public virtual void ExitChangeMaster([NotNull] MySqlParser.ChangeMasterContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.changeReplicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterChangeReplicationFilter([NotNull] MySqlParser.ChangeReplicationFilterContext context);
+	public virtual void EnterChangeReplicationFilter([NotNull] MySqlParser.ChangeReplicationFilterContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.changeReplicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitChangeReplicationFilter([NotNull] MySqlParser.ChangeReplicationFilterContext context);
+	public virtual void ExitChangeReplicationFilter([NotNull] MySqlParser.ChangeReplicationFilterContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.purgeBinaryLogs"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPurgeBinaryLogs([NotNull] MySqlParser.PurgeBinaryLogsContext context);
+	public virtual void EnterPurgeBinaryLogs([NotNull] MySqlParser.PurgeBinaryLogsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.purgeBinaryLogs"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPurgeBinaryLogs([NotNull] MySqlParser.PurgeBinaryLogsContext context);
+	public virtual void ExitPurgeBinaryLogs([NotNull] MySqlParser.PurgeBinaryLogsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.resetMaster"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterResetMaster([NotNull] MySqlParser.ResetMasterContext context);
+	public virtual void EnterResetMaster([NotNull] MySqlParser.ResetMasterContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.resetMaster"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitResetMaster([NotNull] MySqlParser.ResetMasterContext context);
+	public virtual void ExitResetMaster([NotNull] MySqlParser.ResetMasterContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.resetSlave"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterResetSlave([NotNull] MySqlParser.ResetSlaveContext context);
+	public virtual void EnterResetSlave([NotNull] MySqlParser.ResetSlaveContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.resetSlave"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitResetSlave([NotNull] MySqlParser.ResetSlaveContext context);
+	public virtual void ExitResetSlave([NotNull] MySqlParser.ResetSlaveContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.startSlave"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStartSlave([NotNull] MySqlParser.StartSlaveContext context);
+	public virtual void EnterStartSlave([NotNull] MySqlParser.StartSlaveContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.startSlave"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStartSlave([NotNull] MySqlParser.StartSlaveContext context);
+	public virtual void ExitStartSlave([NotNull] MySqlParser.StartSlaveContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.stopSlave"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStopSlave([NotNull] MySqlParser.StopSlaveContext context);
+	public virtual void EnterStopSlave([NotNull] MySqlParser.StopSlaveContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.stopSlave"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStopSlave([NotNull] MySqlParser.StopSlaveContext context);
+	public virtual void ExitStopSlave([NotNull] MySqlParser.StopSlaveContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.startGroupReplication"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStartGroupReplication([NotNull] MySqlParser.StartGroupReplicationContext context);
+	public virtual void EnterStartGroupReplication([NotNull] MySqlParser.StartGroupReplicationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.startGroupReplication"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStartGroupReplication([NotNull] MySqlParser.StartGroupReplicationContext context);
+	public virtual void ExitStartGroupReplication([NotNull] MySqlParser.StartGroupReplicationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.stopGroupReplication"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStopGroupReplication([NotNull] MySqlParser.StopGroupReplicationContext context);
+	public virtual void EnterStopGroupReplication([NotNull] MySqlParser.StopGroupReplicationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.stopGroupReplication"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStopGroupReplication([NotNull] MySqlParser.StopGroupReplicationContext context);
+	public virtual void ExitStopGroupReplication([NotNull] MySqlParser.StopGroupReplicationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>masterStringOption</c>
 	/// labeled alternative in <see cref="MySqlParser.masterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMasterStringOption([NotNull] MySqlParser.MasterStringOptionContext context);
+	public virtual void EnterMasterStringOption([NotNull] MySqlParser.MasterStringOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>masterStringOption</c>
 	/// labeled alternative in <see cref="MySqlParser.masterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMasterStringOption([NotNull] MySqlParser.MasterStringOptionContext context);
+	public virtual void ExitMasterStringOption([NotNull] MySqlParser.MasterStringOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>masterDecimalOption</c>
 	/// labeled alternative in <see cref="MySqlParser.masterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMasterDecimalOption([NotNull] MySqlParser.MasterDecimalOptionContext context);
+	public virtual void EnterMasterDecimalOption([NotNull] MySqlParser.MasterDecimalOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>masterDecimalOption</c>
 	/// labeled alternative in <see cref="MySqlParser.masterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMasterDecimalOption([NotNull] MySqlParser.MasterDecimalOptionContext context);
+	public virtual void ExitMasterDecimalOption([NotNull] MySqlParser.MasterDecimalOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>masterBoolOption</c>
 	/// labeled alternative in <see cref="MySqlParser.masterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMasterBoolOption([NotNull] MySqlParser.MasterBoolOptionContext context);
+	public virtual void EnterMasterBoolOption([NotNull] MySqlParser.MasterBoolOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>masterBoolOption</c>
 	/// labeled alternative in <see cref="MySqlParser.masterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMasterBoolOption([NotNull] MySqlParser.MasterBoolOptionContext context);
+	public virtual void ExitMasterBoolOption([NotNull] MySqlParser.MasterBoolOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>masterRealOption</c>
 	/// labeled alternative in <see cref="MySqlParser.masterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMasterRealOption([NotNull] MySqlParser.MasterRealOptionContext context);
+	public virtual void EnterMasterRealOption([NotNull] MySqlParser.MasterRealOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>masterRealOption</c>
 	/// labeled alternative in <see cref="MySqlParser.masterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMasterRealOption([NotNull] MySqlParser.MasterRealOptionContext context);
+	public virtual void ExitMasterRealOption([NotNull] MySqlParser.MasterRealOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>masterUidListOption</c>
 	/// labeled alternative in <see cref="MySqlParser.masterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMasterUidListOption([NotNull] MySqlParser.MasterUidListOptionContext context);
+	public virtual void EnterMasterUidListOption([NotNull] MySqlParser.MasterUidListOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>masterUidListOption</c>
 	/// labeled alternative in <see cref="MySqlParser.masterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMasterUidListOption([NotNull] MySqlParser.MasterUidListOptionContext context);
+	public virtual void ExitMasterUidListOption([NotNull] MySqlParser.MasterUidListOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.stringMasterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStringMasterOption([NotNull] MySqlParser.StringMasterOptionContext context);
+	public virtual void EnterStringMasterOption([NotNull] MySqlParser.StringMasterOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.stringMasterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStringMasterOption([NotNull] MySqlParser.StringMasterOptionContext context);
+	public virtual void ExitStringMasterOption([NotNull] MySqlParser.StringMasterOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.decimalMasterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDecimalMasterOption([NotNull] MySqlParser.DecimalMasterOptionContext context);
+	public virtual void EnterDecimalMasterOption([NotNull] MySqlParser.DecimalMasterOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.decimalMasterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDecimalMasterOption([NotNull] MySqlParser.DecimalMasterOptionContext context);
+	public virtual void ExitDecimalMasterOption([NotNull] MySqlParser.DecimalMasterOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.boolMasterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBoolMasterOption([NotNull] MySqlParser.BoolMasterOptionContext context);
+	public virtual void EnterBoolMasterOption([NotNull] MySqlParser.BoolMasterOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.boolMasterOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBoolMasterOption([NotNull] MySqlParser.BoolMasterOptionContext context);
+	public virtual void ExitBoolMasterOption([NotNull] MySqlParser.BoolMasterOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.channelOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterChannelOption([NotNull] MySqlParser.ChannelOptionContext context);
+	public virtual void EnterChannelOption([NotNull] MySqlParser.ChannelOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.channelOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitChannelOption([NotNull] MySqlParser.ChannelOptionContext context);
+	public virtual void ExitChannelOption([NotNull] MySqlParser.ChannelOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>doDbReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDoDbReplication([NotNull] MySqlParser.DoDbReplicationContext context);
+	public virtual void EnterDoDbReplication([NotNull] MySqlParser.DoDbReplicationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>doDbReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDoDbReplication([NotNull] MySqlParser.DoDbReplicationContext context);
+	public virtual void ExitDoDbReplication([NotNull] MySqlParser.DoDbReplicationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>ignoreDbReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIgnoreDbReplication([NotNull] MySqlParser.IgnoreDbReplicationContext context);
+	public virtual void EnterIgnoreDbReplication([NotNull] MySqlParser.IgnoreDbReplicationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>ignoreDbReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIgnoreDbReplication([NotNull] MySqlParser.IgnoreDbReplicationContext context);
+	public virtual void ExitIgnoreDbReplication([NotNull] MySqlParser.IgnoreDbReplicationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>doTableReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDoTableReplication([NotNull] MySqlParser.DoTableReplicationContext context);
+	public virtual void EnterDoTableReplication([NotNull] MySqlParser.DoTableReplicationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>doTableReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDoTableReplication([NotNull] MySqlParser.DoTableReplicationContext context);
+	public virtual void ExitDoTableReplication([NotNull] MySqlParser.DoTableReplicationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>ignoreTableReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIgnoreTableReplication([NotNull] MySqlParser.IgnoreTableReplicationContext context);
+	public virtual void EnterIgnoreTableReplication([NotNull] MySqlParser.IgnoreTableReplicationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>ignoreTableReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIgnoreTableReplication([NotNull] MySqlParser.IgnoreTableReplicationContext context);
+	public virtual void ExitIgnoreTableReplication([NotNull] MySqlParser.IgnoreTableReplicationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>wildDoTableReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterWildDoTableReplication([NotNull] MySqlParser.WildDoTableReplicationContext context);
+	public virtual void EnterWildDoTableReplication([NotNull] MySqlParser.WildDoTableReplicationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>wildDoTableReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitWildDoTableReplication([NotNull] MySqlParser.WildDoTableReplicationContext context);
+	public virtual void ExitWildDoTableReplication([NotNull] MySqlParser.WildDoTableReplicationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>wildIgnoreTableReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterWildIgnoreTableReplication([NotNull] MySqlParser.WildIgnoreTableReplicationContext context);
+	public virtual void EnterWildIgnoreTableReplication([NotNull] MySqlParser.WildIgnoreTableReplicationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>wildIgnoreTableReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitWildIgnoreTableReplication([NotNull] MySqlParser.WildIgnoreTableReplicationContext context);
+	public virtual void ExitWildIgnoreTableReplication([NotNull] MySqlParser.WildIgnoreTableReplicationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>rewriteDbReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRewriteDbReplication([NotNull] MySqlParser.RewriteDbReplicationContext context);
+	public virtual void EnterRewriteDbReplication([NotNull] MySqlParser.RewriteDbReplicationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>rewriteDbReplication</c>
 	/// labeled alternative in <see cref="MySqlParser.replicationFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRewriteDbReplication([NotNull] MySqlParser.RewriteDbReplicationContext context);
+	public virtual void ExitRewriteDbReplication([NotNull] MySqlParser.RewriteDbReplicationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.tablePair"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTablePair([NotNull] MySqlParser.TablePairContext context);
+	public virtual void EnterTablePair([NotNull] MySqlParser.TablePairContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.tablePair"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTablePair([NotNull] MySqlParser.TablePairContext context);
+	public virtual void ExitTablePair([NotNull] MySqlParser.TablePairContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.threadType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterThreadType([NotNull] MySqlParser.ThreadTypeContext context);
+	public virtual void EnterThreadType([NotNull] MySqlParser.ThreadTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.threadType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitThreadType([NotNull] MySqlParser.ThreadTypeContext context);
+	public virtual void ExitThreadType([NotNull] MySqlParser.ThreadTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>gtidsUntilOption</c>
 	/// labeled alternative in <see cref="MySqlParser.untilOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterGtidsUntilOption([NotNull] MySqlParser.GtidsUntilOptionContext context);
+	public virtual void EnterGtidsUntilOption([NotNull] MySqlParser.GtidsUntilOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>gtidsUntilOption</c>
 	/// labeled alternative in <see cref="MySqlParser.untilOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitGtidsUntilOption([NotNull] MySqlParser.GtidsUntilOptionContext context);
+	public virtual void ExitGtidsUntilOption([NotNull] MySqlParser.GtidsUntilOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>masterLogUntilOption</c>
 	/// labeled alternative in <see cref="MySqlParser.untilOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMasterLogUntilOption([NotNull] MySqlParser.MasterLogUntilOptionContext context);
+	public virtual void EnterMasterLogUntilOption([NotNull] MySqlParser.MasterLogUntilOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>masterLogUntilOption</c>
 	/// labeled alternative in <see cref="MySqlParser.untilOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMasterLogUntilOption([NotNull] MySqlParser.MasterLogUntilOptionContext context);
+	public virtual void ExitMasterLogUntilOption([NotNull] MySqlParser.MasterLogUntilOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>relayLogUntilOption</c>
 	/// labeled alternative in <see cref="MySqlParser.untilOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRelayLogUntilOption([NotNull] MySqlParser.RelayLogUntilOptionContext context);
+	public virtual void EnterRelayLogUntilOption([NotNull] MySqlParser.RelayLogUntilOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>relayLogUntilOption</c>
 	/// labeled alternative in <see cref="MySqlParser.untilOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRelayLogUntilOption([NotNull] MySqlParser.RelayLogUntilOptionContext context);
+	public virtual void ExitRelayLogUntilOption([NotNull] MySqlParser.RelayLogUntilOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>sqlGapsUntilOption</c>
 	/// labeled alternative in <see cref="MySqlParser.untilOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSqlGapsUntilOption([NotNull] MySqlParser.SqlGapsUntilOptionContext context);
+	public virtual void EnterSqlGapsUntilOption([NotNull] MySqlParser.SqlGapsUntilOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>sqlGapsUntilOption</c>
 	/// labeled alternative in <see cref="MySqlParser.untilOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSqlGapsUntilOption([NotNull] MySqlParser.SqlGapsUntilOptionContext context);
+	public virtual void ExitSqlGapsUntilOption([NotNull] MySqlParser.SqlGapsUntilOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>userConnectionOption</c>
 	/// labeled alternative in <see cref="MySqlParser.connectionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUserConnectionOption([NotNull] MySqlParser.UserConnectionOptionContext context);
+	public virtual void EnterUserConnectionOption([NotNull] MySqlParser.UserConnectionOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>userConnectionOption</c>
 	/// labeled alternative in <see cref="MySqlParser.connectionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUserConnectionOption([NotNull] MySqlParser.UserConnectionOptionContext context);
+	public virtual void ExitUserConnectionOption([NotNull] MySqlParser.UserConnectionOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>passwordConnectionOption</c>
 	/// labeled alternative in <see cref="MySqlParser.connectionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPasswordConnectionOption([NotNull] MySqlParser.PasswordConnectionOptionContext context);
+	public virtual void EnterPasswordConnectionOption([NotNull] MySqlParser.PasswordConnectionOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>passwordConnectionOption</c>
 	/// labeled alternative in <see cref="MySqlParser.connectionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPasswordConnectionOption([NotNull] MySqlParser.PasswordConnectionOptionContext context);
+	public virtual void ExitPasswordConnectionOption([NotNull] MySqlParser.PasswordConnectionOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>defaultAuthConnectionOption</c>
 	/// labeled alternative in <see cref="MySqlParser.connectionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDefaultAuthConnectionOption([NotNull] MySqlParser.DefaultAuthConnectionOptionContext context);
+	public virtual void EnterDefaultAuthConnectionOption([NotNull] MySqlParser.DefaultAuthConnectionOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>defaultAuthConnectionOption</c>
 	/// labeled alternative in <see cref="MySqlParser.connectionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDefaultAuthConnectionOption([NotNull] MySqlParser.DefaultAuthConnectionOptionContext context);
+	public virtual void ExitDefaultAuthConnectionOption([NotNull] MySqlParser.DefaultAuthConnectionOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>pluginDirConnectionOption</c>
 	/// labeled alternative in <see cref="MySqlParser.connectionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPluginDirConnectionOption([NotNull] MySqlParser.PluginDirConnectionOptionContext context);
+	public virtual void EnterPluginDirConnectionOption([NotNull] MySqlParser.PluginDirConnectionOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>pluginDirConnectionOption</c>
 	/// labeled alternative in <see cref="MySqlParser.connectionOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPluginDirConnectionOption([NotNull] MySqlParser.PluginDirConnectionOptionContext context);
+	public virtual void ExitPluginDirConnectionOption([NotNull] MySqlParser.PluginDirConnectionOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.gtuidSet"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterGtuidSet([NotNull] MySqlParser.GtuidSetContext context);
+	public virtual void EnterGtuidSet([NotNull] MySqlParser.GtuidSetContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.gtuidSet"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitGtuidSet([NotNull] MySqlParser.GtuidSetContext context);
+	public virtual void ExitGtuidSet([NotNull] MySqlParser.GtuidSetContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.xaStartTransaction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterXaStartTransaction([NotNull] MySqlParser.XaStartTransactionContext context);
+	public virtual void EnterXaStartTransaction([NotNull] MySqlParser.XaStartTransactionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.xaStartTransaction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitXaStartTransaction([NotNull] MySqlParser.XaStartTransactionContext context);
+	public virtual void ExitXaStartTransaction([NotNull] MySqlParser.XaStartTransactionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.xaEndTransaction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterXaEndTransaction([NotNull] MySqlParser.XaEndTransactionContext context);
+	public virtual void EnterXaEndTransaction([NotNull] MySqlParser.XaEndTransactionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.xaEndTransaction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitXaEndTransaction([NotNull] MySqlParser.XaEndTransactionContext context);
+	public virtual void ExitXaEndTransaction([NotNull] MySqlParser.XaEndTransactionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.xaPrepareStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterXaPrepareStatement([NotNull] MySqlParser.XaPrepareStatementContext context);
+	public virtual void EnterXaPrepareStatement([NotNull] MySqlParser.XaPrepareStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.xaPrepareStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitXaPrepareStatement([NotNull] MySqlParser.XaPrepareStatementContext context);
+	public virtual void ExitXaPrepareStatement([NotNull] MySqlParser.XaPrepareStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.xaCommitWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterXaCommitWork([NotNull] MySqlParser.XaCommitWorkContext context);
+	public virtual void EnterXaCommitWork([NotNull] MySqlParser.XaCommitWorkContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.xaCommitWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitXaCommitWork([NotNull] MySqlParser.XaCommitWorkContext context);
+	public virtual void ExitXaCommitWork([NotNull] MySqlParser.XaCommitWorkContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.xaRollbackWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterXaRollbackWork([NotNull] MySqlParser.XaRollbackWorkContext context);
+	public virtual void EnterXaRollbackWork([NotNull] MySqlParser.XaRollbackWorkContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.xaRollbackWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitXaRollbackWork([NotNull] MySqlParser.XaRollbackWorkContext context);
+	public virtual void ExitXaRollbackWork([NotNull] MySqlParser.XaRollbackWorkContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.xaRecoverWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterXaRecoverWork([NotNull] MySqlParser.XaRecoverWorkContext context);
+	public virtual void EnterXaRecoverWork([NotNull] MySqlParser.XaRecoverWorkContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.xaRecoverWork"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitXaRecoverWork([NotNull] MySqlParser.XaRecoverWorkContext context);
+	public virtual void ExitXaRecoverWork([NotNull] MySqlParser.XaRecoverWorkContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.prepareStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPrepareStatement([NotNull] MySqlParser.PrepareStatementContext context);
+	public virtual void EnterPrepareStatement([NotNull] MySqlParser.PrepareStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.prepareStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPrepareStatement([NotNull] MySqlParser.PrepareStatementContext context);
+	public virtual void ExitPrepareStatement([NotNull] MySqlParser.PrepareStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.executeStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterExecuteStatement([NotNull] MySqlParser.ExecuteStatementContext context);
+	public virtual void EnterExecuteStatement([NotNull] MySqlParser.ExecuteStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.executeStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitExecuteStatement([NotNull] MySqlParser.ExecuteStatementContext context);
+	public virtual void ExitExecuteStatement([NotNull] MySqlParser.ExecuteStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.deallocatePrepare"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDeallocatePrepare([NotNull] MySqlParser.DeallocatePrepareContext context);
+	public virtual void EnterDeallocatePrepare([NotNull] MySqlParser.DeallocatePrepareContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.deallocatePrepare"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDeallocatePrepare([NotNull] MySqlParser.DeallocatePrepareContext context);
+	public virtual void ExitDeallocatePrepare([NotNull] MySqlParser.DeallocatePrepareContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.routineBody"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRoutineBody([NotNull] MySqlParser.RoutineBodyContext context);
+	public virtual void EnterRoutineBody([NotNull] MySqlParser.RoutineBodyContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.routineBody"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRoutineBody([NotNull] MySqlParser.RoutineBodyContext context);
+	public virtual void ExitRoutineBody([NotNull] MySqlParser.RoutineBodyContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.blockStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBlockStatement([NotNull] MySqlParser.BlockStatementContext context);
+	public virtual void EnterBlockStatement([NotNull] MySqlParser.BlockStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.blockStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBlockStatement([NotNull] MySqlParser.BlockStatementContext context);
+	public virtual void ExitBlockStatement([NotNull] MySqlParser.BlockStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.caseStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCaseStatement([NotNull] MySqlParser.CaseStatementContext context);
+	public virtual void EnterCaseStatement([NotNull] MySqlParser.CaseStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.caseStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCaseStatement([NotNull] MySqlParser.CaseStatementContext context);
+	public virtual void ExitCaseStatement([NotNull] MySqlParser.CaseStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.ifStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIfStatement([NotNull] MySqlParser.IfStatementContext context);
+	public virtual void EnterIfStatement([NotNull] MySqlParser.IfStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.ifStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIfStatement([NotNull] MySqlParser.IfStatementContext context);
+	public virtual void ExitIfStatement([NotNull] MySqlParser.IfStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.iterateStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIterateStatement([NotNull] MySqlParser.IterateStatementContext context);
+	public virtual void EnterIterateStatement([NotNull] MySqlParser.IterateStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.iterateStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIterateStatement([NotNull] MySqlParser.IterateStatementContext context);
+	public virtual void ExitIterateStatement([NotNull] MySqlParser.IterateStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.leaveStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLeaveStatement([NotNull] MySqlParser.LeaveStatementContext context);
+	public virtual void EnterLeaveStatement([NotNull] MySqlParser.LeaveStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.leaveStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLeaveStatement([NotNull] MySqlParser.LeaveStatementContext context);
+	public virtual void ExitLeaveStatement([NotNull] MySqlParser.LeaveStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.loopStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLoopStatement([NotNull] MySqlParser.LoopStatementContext context);
+	public virtual void EnterLoopStatement([NotNull] MySqlParser.LoopStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.loopStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLoopStatement([NotNull] MySqlParser.LoopStatementContext context);
+	public virtual void ExitLoopStatement([NotNull] MySqlParser.LoopStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.repeatStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRepeatStatement([NotNull] MySqlParser.RepeatStatementContext context);
+	public virtual void EnterRepeatStatement([NotNull] MySqlParser.RepeatStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.repeatStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRepeatStatement([NotNull] MySqlParser.RepeatStatementContext context);
+	public virtual void ExitRepeatStatement([NotNull] MySqlParser.RepeatStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.returnStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterReturnStatement([NotNull] MySqlParser.ReturnStatementContext context);
+	public virtual void EnterReturnStatement([NotNull] MySqlParser.ReturnStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.returnStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitReturnStatement([NotNull] MySqlParser.ReturnStatementContext context);
+	public virtual void ExitReturnStatement([NotNull] MySqlParser.ReturnStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.whileStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterWhileStatement([NotNull] MySqlParser.WhileStatementContext context);
+	public virtual void EnterWhileStatement([NotNull] MySqlParser.WhileStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.whileStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitWhileStatement([NotNull] MySqlParser.WhileStatementContext context);
+	public virtual void ExitWhileStatement([NotNull] MySqlParser.WhileStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>CloseCursor</c>
 	/// labeled alternative in <see cref="MySqlParser.cursorStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCloseCursor([NotNull] MySqlParser.CloseCursorContext context);
+	public virtual void EnterCloseCursor([NotNull] MySqlParser.CloseCursorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>CloseCursor</c>
 	/// labeled alternative in <see cref="MySqlParser.cursorStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCloseCursor([NotNull] MySqlParser.CloseCursorContext context);
+	public virtual void ExitCloseCursor([NotNull] MySqlParser.CloseCursorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>FetchCursor</c>
 	/// labeled alternative in <see cref="MySqlParser.cursorStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFetchCursor([NotNull] MySqlParser.FetchCursorContext context);
+	public virtual void EnterFetchCursor([NotNull] MySqlParser.FetchCursorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>FetchCursor</c>
 	/// labeled alternative in <see cref="MySqlParser.cursorStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFetchCursor([NotNull] MySqlParser.FetchCursorContext context);
+	public virtual void ExitFetchCursor([NotNull] MySqlParser.FetchCursorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>OpenCursor</c>
 	/// labeled alternative in <see cref="MySqlParser.cursorStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterOpenCursor([NotNull] MySqlParser.OpenCursorContext context);
+	public virtual void EnterOpenCursor([NotNull] MySqlParser.OpenCursorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>OpenCursor</c>
 	/// labeled alternative in <see cref="MySqlParser.cursorStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitOpenCursor([NotNull] MySqlParser.OpenCursorContext context);
+	public virtual void ExitOpenCursor([NotNull] MySqlParser.OpenCursorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.declareVariable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDeclareVariable([NotNull] MySqlParser.DeclareVariableContext context);
+	public virtual void EnterDeclareVariable([NotNull] MySqlParser.DeclareVariableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.declareVariable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDeclareVariable([NotNull] MySqlParser.DeclareVariableContext context);
+	public virtual void ExitDeclareVariable([NotNull] MySqlParser.DeclareVariableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.declareCondition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDeclareCondition([NotNull] MySqlParser.DeclareConditionContext context);
+	public virtual void EnterDeclareCondition([NotNull] MySqlParser.DeclareConditionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.declareCondition"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDeclareCondition([NotNull] MySqlParser.DeclareConditionContext context);
+	public virtual void ExitDeclareCondition([NotNull] MySqlParser.DeclareConditionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.declareCursor"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDeclareCursor([NotNull] MySqlParser.DeclareCursorContext context);
+	public virtual void EnterDeclareCursor([NotNull] MySqlParser.DeclareCursorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.declareCursor"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDeclareCursor([NotNull] MySqlParser.DeclareCursorContext context);
+	public virtual void ExitDeclareCursor([NotNull] MySqlParser.DeclareCursorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.declareHandler"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDeclareHandler([NotNull] MySqlParser.DeclareHandlerContext context);
+	public virtual void EnterDeclareHandler([NotNull] MySqlParser.DeclareHandlerContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.declareHandler"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDeclareHandler([NotNull] MySqlParser.DeclareHandlerContext context);
+	public virtual void ExitDeclareHandler([NotNull] MySqlParser.DeclareHandlerContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>handlerConditionCode</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHandlerConditionCode([NotNull] MySqlParser.HandlerConditionCodeContext context);
+	public virtual void EnterHandlerConditionCode([NotNull] MySqlParser.HandlerConditionCodeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>handlerConditionCode</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHandlerConditionCode([NotNull] MySqlParser.HandlerConditionCodeContext context);
+	public virtual void ExitHandlerConditionCode([NotNull] MySqlParser.HandlerConditionCodeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>handlerConditionState</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHandlerConditionState([NotNull] MySqlParser.HandlerConditionStateContext context);
+	public virtual void EnterHandlerConditionState([NotNull] MySqlParser.HandlerConditionStateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>handlerConditionState</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHandlerConditionState([NotNull] MySqlParser.HandlerConditionStateContext context);
+	public virtual void ExitHandlerConditionState([NotNull] MySqlParser.HandlerConditionStateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>handlerConditionName</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHandlerConditionName([NotNull] MySqlParser.HandlerConditionNameContext context);
+	public virtual void EnterHandlerConditionName([NotNull] MySqlParser.HandlerConditionNameContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>handlerConditionName</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHandlerConditionName([NotNull] MySqlParser.HandlerConditionNameContext context);
+	public virtual void ExitHandlerConditionName([NotNull] MySqlParser.HandlerConditionNameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>handlerConditionWarning</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHandlerConditionWarning([NotNull] MySqlParser.HandlerConditionWarningContext context);
+	public virtual void EnterHandlerConditionWarning([NotNull] MySqlParser.HandlerConditionWarningContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>handlerConditionWarning</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHandlerConditionWarning([NotNull] MySqlParser.HandlerConditionWarningContext context);
+	public virtual void ExitHandlerConditionWarning([NotNull] MySqlParser.HandlerConditionWarningContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>handlerConditionNotfound</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHandlerConditionNotfound([NotNull] MySqlParser.HandlerConditionNotfoundContext context);
+	public virtual void EnterHandlerConditionNotfound([NotNull] MySqlParser.HandlerConditionNotfoundContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>handlerConditionNotfound</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHandlerConditionNotfound([NotNull] MySqlParser.HandlerConditionNotfoundContext context);
+	public virtual void ExitHandlerConditionNotfound([NotNull] MySqlParser.HandlerConditionNotfoundContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>handlerConditionException</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHandlerConditionException([NotNull] MySqlParser.HandlerConditionExceptionContext context);
+	public virtual void EnterHandlerConditionException([NotNull] MySqlParser.HandlerConditionExceptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>handlerConditionException</c>
 	/// labeled alternative in <see cref="MySqlParser.handlerConditionValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHandlerConditionException([NotNull] MySqlParser.HandlerConditionExceptionContext context);
+	public virtual void ExitHandlerConditionException([NotNull] MySqlParser.HandlerConditionExceptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.procedureSqlStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterProcedureSqlStatement([NotNull] MySqlParser.ProcedureSqlStatementContext context);
+	public virtual void EnterProcedureSqlStatement([NotNull] MySqlParser.ProcedureSqlStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.procedureSqlStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitProcedureSqlStatement([NotNull] MySqlParser.ProcedureSqlStatementContext context);
+	public virtual void ExitProcedureSqlStatement([NotNull] MySqlParser.ProcedureSqlStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.caseAlternative"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCaseAlternative([NotNull] MySqlParser.CaseAlternativeContext context);
+	public virtual void EnterCaseAlternative([NotNull] MySqlParser.CaseAlternativeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.caseAlternative"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCaseAlternative([NotNull] MySqlParser.CaseAlternativeContext context);
+	public virtual void ExitCaseAlternative([NotNull] MySqlParser.CaseAlternativeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.elifAlternative"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterElifAlternative([NotNull] MySqlParser.ElifAlternativeContext context);
+	public virtual void EnterElifAlternative([NotNull] MySqlParser.ElifAlternativeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.elifAlternative"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitElifAlternative([NotNull] MySqlParser.ElifAlternativeContext context);
+	public virtual void ExitElifAlternative([NotNull] MySqlParser.ElifAlternativeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterUserMysqlV56</c>
 	/// labeled alternative in <see cref="MySqlParser.alterUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterUserMysqlV56([NotNull] MySqlParser.AlterUserMysqlV56Context context);
+	public virtual void EnterAlterUserMysqlV56([NotNull] MySqlParser.AlterUserMysqlV56Context context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterUserMysqlV56</c>
 	/// labeled alternative in <see cref="MySqlParser.alterUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterUserMysqlV56([NotNull] MySqlParser.AlterUserMysqlV56Context context);
+	public virtual void ExitAlterUserMysqlV56([NotNull] MySqlParser.AlterUserMysqlV56Context context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>alterUserMysqlV57</c>
 	/// labeled alternative in <see cref="MySqlParser.alterUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAlterUserMysqlV57([NotNull] MySqlParser.AlterUserMysqlV57Context context);
+	public virtual void EnterAlterUserMysqlV57([NotNull] MySqlParser.AlterUserMysqlV57Context context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>alterUserMysqlV57</c>
 	/// labeled alternative in <see cref="MySqlParser.alterUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAlterUserMysqlV57([NotNull] MySqlParser.AlterUserMysqlV57Context context);
+	public virtual void ExitAlterUserMysqlV57([NotNull] MySqlParser.AlterUserMysqlV57Context context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>createUserMysqlV56</c>
 	/// labeled alternative in <see cref="MySqlParser.createUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateUserMysqlV56([NotNull] MySqlParser.CreateUserMysqlV56Context context);
+	public virtual void EnterCreateUserMysqlV56([NotNull] MySqlParser.CreateUserMysqlV56Context context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>createUserMysqlV56</c>
 	/// labeled alternative in <see cref="MySqlParser.createUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateUserMysqlV56([NotNull] MySqlParser.CreateUserMysqlV56Context context);
+	public virtual void ExitCreateUserMysqlV56([NotNull] MySqlParser.CreateUserMysqlV56Context context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>createUserMysqlV57</c>
 	/// labeled alternative in <see cref="MySqlParser.createUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateUserMysqlV57([NotNull] MySqlParser.CreateUserMysqlV57Context context);
+	public virtual void EnterCreateUserMysqlV57([NotNull] MySqlParser.CreateUserMysqlV57Context context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>createUserMysqlV57</c>
 	/// labeled alternative in <see cref="MySqlParser.createUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateUserMysqlV57([NotNull] MySqlParser.CreateUserMysqlV57Context context);
+	public virtual void ExitCreateUserMysqlV57([NotNull] MySqlParser.CreateUserMysqlV57Context context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dropUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDropUser([NotNull] MySqlParser.DropUserContext context);
+	public virtual void EnterDropUser([NotNull] MySqlParser.DropUserContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dropUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDropUser([NotNull] MySqlParser.DropUserContext context);
+	public virtual void ExitDropUser([NotNull] MySqlParser.DropUserContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.grantStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterGrantStatement([NotNull] MySqlParser.GrantStatementContext context);
+	public virtual void EnterGrantStatement([NotNull] MySqlParser.GrantStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.grantStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitGrantStatement([NotNull] MySqlParser.GrantStatementContext context);
+	public virtual void ExitGrantStatement([NotNull] MySqlParser.GrantStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.grantProxy"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterGrantProxy([NotNull] MySqlParser.GrantProxyContext context);
+	public virtual void EnterGrantProxy([NotNull] MySqlParser.GrantProxyContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.grantProxy"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitGrantProxy([NotNull] MySqlParser.GrantProxyContext context);
+	public virtual void ExitGrantProxy([NotNull] MySqlParser.GrantProxyContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.renameUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRenameUser([NotNull] MySqlParser.RenameUserContext context);
+	public virtual void EnterRenameUser([NotNull] MySqlParser.RenameUserContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.renameUser"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRenameUser([NotNull] MySqlParser.RenameUserContext context);
+	public virtual void ExitRenameUser([NotNull] MySqlParser.RenameUserContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>detailRevoke</c>
 	/// labeled alternative in <see cref="MySqlParser.revokeStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDetailRevoke([NotNull] MySqlParser.DetailRevokeContext context);
+	public virtual void EnterDetailRevoke([NotNull] MySqlParser.DetailRevokeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>detailRevoke</c>
 	/// labeled alternative in <see cref="MySqlParser.revokeStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDetailRevoke([NotNull] MySqlParser.DetailRevokeContext context);
+	public virtual void ExitDetailRevoke([NotNull] MySqlParser.DetailRevokeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>shortRevoke</c>
 	/// labeled alternative in <see cref="MySqlParser.revokeStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShortRevoke([NotNull] MySqlParser.ShortRevokeContext context);
+	public virtual void EnterShortRevoke([NotNull] MySqlParser.ShortRevokeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>shortRevoke</c>
 	/// labeled alternative in <see cref="MySqlParser.revokeStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShortRevoke([NotNull] MySqlParser.ShortRevokeContext context);
+	public virtual void ExitShortRevoke([NotNull] MySqlParser.ShortRevokeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.revokeProxy"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRevokeProxy([NotNull] MySqlParser.RevokeProxyContext context);
+	public virtual void EnterRevokeProxy([NotNull] MySqlParser.RevokeProxyContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.revokeProxy"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRevokeProxy([NotNull] MySqlParser.RevokeProxyContext context);
+	public virtual void ExitRevokeProxy([NotNull] MySqlParser.RevokeProxyContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.setPasswordStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSetPasswordStatement([NotNull] MySqlParser.SetPasswordStatementContext context);
+	public virtual void EnterSetPasswordStatement([NotNull] MySqlParser.SetPasswordStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.setPasswordStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSetPasswordStatement([NotNull] MySqlParser.SetPasswordStatementContext context);
+	public virtual void ExitSetPasswordStatement([NotNull] MySqlParser.SetPasswordStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.userSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUserSpecification([NotNull] MySqlParser.UserSpecificationContext context);
+	public virtual void EnterUserSpecification([NotNull] MySqlParser.UserSpecificationContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.userSpecification"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUserSpecification([NotNull] MySqlParser.UserSpecificationContext context);
+	public virtual void ExitUserSpecification([NotNull] MySqlParser.UserSpecificationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>passwordAuthOption</c>
 	/// labeled alternative in <see cref="MySqlParser.userAuthOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPasswordAuthOption([NotNull] MySqlParser.PasswordAuthOptionContext context);
+	public virtual void EnterPasswordAuthOption([NotNull] MySqlParser.PasswordAuthOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>passwordAuthOption</c>
 	/// labeled alternative in <see cref="MySqlParser.userAuthOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPasswordAuthOption([NotNull] MySqlParser.PasswordAuthOptionContext context);
+	public virtual void ExitPasswordAuthOption([NotNull] MySqlParser.PasswordAuthOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>stringAuthOption</c>
 	/// labeled alternative in <see cref="MySqlParser.userAuthOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStringAuthOption([NotNull] MySqlParser.StringAuthOptionContext context);
+	public virtual void EnterStringAuthOption([NotNull] MySqlParser.StringAuthOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>stringAuthOption</c>
 	/// labeled alternative in <see cref="MySqlParser.userAuthOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStringAuthOption([NotNull] MySqlParser.StringAuthOptionContext context);
+	public virtual void ExitStringAuthOption([NotNull] MySqlParser.StringAuthOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>hashAuthOption</c>
 	/// labeled alternative in <see cref="MySqlParser.userAuthOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHashAuthOption([NotNull] MySqlParser.HashAuthOptionContext context);
+	public virtual void EnterHashAuthOption([NotNull] MySqlParser.HashAuthOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>hashAuthOption</c>
 	/// labeled alternative in <see cref="MySqlParser.userAuthOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHashAuthOption([NotNull] MySqlParser.HashAuthOptionContext context);
+	public virtual void ExitHashAuthOption([NotNull] MySqlParser.HashAuthOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>simpleAuthOption</c>
 	/// labeled alternative in <see cref="MySqlParser.userAuthOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSimpleAuthOption([NotNull] MySqlParser.SimpleAuthOptionContext context);
+	public virtual void EnterSimpleAuthOption([NotNull] MySqlParser.SimpleAuthOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>simpleAuthOption</c>
 	/// labeled alternative in <see cref="MySqlParser.userAuthOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSimpleAuthOption([NotNull] MySqlParser.SimpleAuthOptionContext context);
+	public virtual void ExitSimpleAuthOption([NotNull] MySqlParser.SimpleAuthOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.tlsOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTlsOption([NotNull] MySqlParser.TlsOptionContext context);
+	public virtual void EnterTlsOption([NotNull] MySqlParser.TlsOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.tlsOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTlsOption([NotNull] MySqlParser.TlsOptionContext context);
+	public virtual void ExitTlsOption([NotNull] MySqlParser.TlsOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.userResourceOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUserResourceOption([NotNull] MySqlParser.UserResourceOptionContext context);
+	public virtual void EnterUserResourceOption([NotNull] MySqlParser.UserResourceOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.userResourceOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUserResourceOption([NotNull] MySqlParser.UserResourceOptionContext context);
+	public virtual void ExitUserResourceOption([NotNull] MySqlParser.UserResourceOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.userPasswordOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUserPasswordOption([NotNull] MySqlParser.UserPasswordOptionContext context);
+	public virtual void EnterUserPasswordOption([NotNull] MySqlParser.UserPasswordOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.userPasswordOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUserPasswordOption([NotNull] MySqlParser.UserPasswordOptionContext context);
+	public virtual void ExitUserPasswordOption([NotNull] MySqlParser.UserPasswordOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.userLockOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUserLockOption([NotNull] MySqlParser.UserLockOptionContext context);
+	public virtual void EnterUserLockOption([NotNull] MySqlParser.UserLockOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.userLockOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUserLockOption([NotNull] MySqlParser.UserLockOptionContext context);
+	public virtual void ExitUserLockOption([NotNull] MySqlParser.UserLockOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.privelegeClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPrivelegeClause([NotNull] MySqlParser.PrivelegeClauseContext context);
+	public virtual void EnterPrivelegeClause([NotNull] MySqlParser.PrivelegeClauseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.privelegeClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPrivelegeClause([NotNull] MySqlParser.PrivelegeClauseContext context);
+	public virtual void ExitPrivelegeClause([NotNull] MySqlParser.PrivelegeClauseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.privilege"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPrivilege([NotNull] MySqlParser.PrivilegeContext context);
+	public virtual void EnterPrivilege([NotNull] MySqlParser.PrivilegeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.privilege"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPrivilege([NotNull] MySqlParser.PrivilegeContext context);
+	public virtual void ExitPrivilege([NotNull] MySqlParser.PrivilegeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>currentSchemaPriviLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCurrentSchemaPriviLevel([NotNull] MySqlParser.CurrentSchemaPriviLevelContext context);
+	public virtual void EnterCurrentSchemaPriviLevel([NotNull] MySqlParser.CurrentSchemaPriviLevelContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>currentSchemaPriviLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCurrentSchemaPriviLevel([NotNull] MySqlParser.CurrentSchemaPriviLevelContext context);
+	public virtual void ExitCurrentSchemaPriviLevel([NotNull] MySqlParser.CurrentSchemaPriviLevelContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>globalPrivLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterGlobalPrivLevel([NotNull] MySqlParser.GlobalPrivLevelContext context);
+	public virtual void EnterGlobalPrivLevel([NotNull] MySqlParser.GlobalPrivLevelContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>globalPrivLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitGlobalPrivLevel([NotNull] MySqlParser.GlobalPrivLevelContext context);
+	public virtual void ExitGlobalPrivLevel([NotNull] MySqlParser.GlobalPrivLevelContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>definiteSchemaPrivLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDefiniteSchemaPrivLevel([NotNull] MySqlParser.DefiniteSchemaPrivLevelContext context);
+	public virtual void EnterDefiniteSchemaPrivLevel([NotNull] MySqlParser.DefiniteSchemaPrivLevelContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>definiteSchemaPrivLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDefiniteSchemaPrivLevel([NotNull] MySqlParser.DefiniteSchemaPrivLevelContext context);
+	public virtual void ExitDefiniteSchemaPrivLevel([NotNull] MySqlParser.DefiniteSchemaPrivLevelContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>definiteFullTablePrivLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDefiniteFullTablePrivLevel([NotNull] MySqlParser.DefiniteFullTablePrivLevelContext context);
+	public virtual void EnterDefiniteFullTablePrivLevel([NotNull] MySqlParser.DefiniteFullTablePrivLevelContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>definiteFullTablePrivLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDefiniteFullTablePrivLevel([NotNull] MySqlParser.DefiniteFullTablePrivLevelContext context);
+	public virtual void ExitDefiniteFullTablePrivLevel([NotNull] MySqlParser.DefiniteFullTablePrivLevelContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>definiteTablePrivLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDefiniteTablePrivLevel([NotNull] MySqlParser.DefiniteTablePrivLevelContext context);
+	public virtual void EnterDefiniteTablePrivLevel([NotNull] MySqlParser.DefiniteTablePrivLevelContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>definiteTablePrivLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDefiniteTablePrivLevel([NotNull] MySqlParser.DefiniteTablePrivLevelContext context);
+	public virtual void ExitDefiniteTablePrivLevel([NotNull] MySqlParser.DefiniteTablePrivLevelContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.renameUserClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRenameUserClause([NotNull] MySqlParser.RenameUserClauseContext context);
+	public virtual void EnterRenameUserClause([NotNull] MySqlParser.RenameUserClauseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.renameUserClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRenameUserClause([NotNull] MySqlParser.RenameUserClauseContext context);
+	public virtual void ExitRenameUserClause([NotNull] MySqlParser.RenameUserClauseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.analyzeTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAnalyzeTable([NotNull] MySqlParser.AnalyzeTableContext context);
+	public virtual void EnterAnalyzeTable([NotNull] MySqlParser.AnalyzeTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.analyzeTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAnalyzeTable([NotNull] MySqlParser.AnalyzeTableContext context);
+	public virtual void ExitAnalyzeTable([NotNull] MySqlParser.AnalyzeTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.checkTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCheckTable([NotNull] MySqlParser.CheckTableContext context);
+	public virtual void EnterCheckTable([NotNull] MySqlParser.CheckTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.checkTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCheckTable([NotNull] MySqlParser.CheckTableContext context);
+	public virtual void ExitCheckTable([NotNull] MySqlParser.CheckTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.checksumTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterChecksumTable([NotNull] MySqlParser.ChecksumTableContext context);
+	public virtual void EnterChecksumTable([NotNull] MySqlParser.ChecksumTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.checksumTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitChecksumTable([NotNull] MySqlParser.ChecksumTableContext context);
+	public virtual void ExitChecksumTable([NotNull] MySqlParser.ChecksumTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.optimizeTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterOptimizeTable([NotNull] MySqlParser.OptimizeTableContext context);
+	public virtual void EnterOptimizeTable([NotNull] MySqlParser.OptimizeTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.optimizeTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitOptimizeTable([NotNull] MySqlParser.OptimizeTableContext context);
+	public virtual void ExitOptimizeTable([NotNull] MySqlParser.OptimizeTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.repairTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRepairTable([NotNull] MySqlParser.RepairTableContext context);
+	public virtual void EnterRepairTable([NotNull] MySqlParser.RepairTableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.repairTable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRepairTable([NotNull] MySqlParser.RepairTableContext context);
+	public virtual void ExitRepairTable([NotNull] MySqlParser.RepairTableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.checkTableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCheckTableOption([NotNull] MySqlParser.CheckTableOptionContext context);
+	public virtual void EnterCheckTableOption([NotNull] MySqlParser.CheckTableOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.checkTableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCheckTableOption([NotNull] MySqlParser.CheckTableOptionContext context);
+	public virtual void ExitCheckTableOption([NotNull] MySqlParser.CheckTableOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.createUdfunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCreateUdfunction([NotNull] MySqlParser.CreateUdfunctionContext context);
+	public virtual void EnterCreateUdfunction([NotNull] MySqlParser.CreateUdfunctionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.createUdfunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCreateUdfunction([NotNull] MySqlParser.CreateUdfunctionContext context);
+	public virtual void ExitCreateUdfunction([NotNull] MySqlParser.CreateUdfunctionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.installPlugin"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterInstallPlugin([NotNull] MySqlParser.InstallPluginContext context);
+	public virtual void EnterInstallPlugin([NotNull] MySqlParser.InstallPluginContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.installPlugin"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitInstallPlugin([NotNull] MySqlParser.InstallPluginContext context);
+	public virtual void ExitInstallPlugin([NotNull] MySqlParser.InstallPluginContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.uninstallPlugin"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUninstallPlugin([NotNull] MySqlParser.UninstallPluginContext context);
+	public virtual void EnterUninstallPlugin([NotNull] MySqlParser.UninstallPluginContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.uninstallPlugin"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUninstallPlugin([NotNull] MySqlParser.UninstallPluginContext context);
+	public virtual void ExitUninstallPlugin([NotNull] MySqlParser.UninstallPluginContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>setVariable</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSetVariable([NotNull] MySqlParser.SetVariableContext context);
+	public virtual void EnterSetVariable([NotNull] MySqlParser.SetVariableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>setVariable</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSetVariable([NotNull] MySqlParser.SetVariableContext context);
+	public virtual void ExitSetVariable([NotNull] MySqlParser.SetVariableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>setCharset</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSetCharset([NotNull] MySqlParser.SetCharsetContext context);
+	public virtual void EnterSetCharset([NotNull] MySqlParser.SetCharsetContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>setCharset</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSetCharset([NotNull] MySqlParser.SetCharsetContext context);
+	public virtual void ExitSetCharset([NotNull] MySqlParser.SetCharsetContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>setNames</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSetNames([NotNull] MySqlParser.SetNamesContext context);
+	public virtual void EnterSetNames([NotNull] MySqlParser.SetNamesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>setNames</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSetNames([NotNull] MySqlParser.SetNamesContext context);
+	public virtual void ExitSetNames([NotNull] MySqlParser.SetNamesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>setPassword</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSetPassword([NotNull] MySqlParser.SetPasswordContext context);
+	public virtual void EnterSetPassword([NotNull] MySqlParser.SetPasswordContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>setPassword</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSetPassword([NotNull] MySqlParser.SetPasswordContext context);
+	public virtual void ExitSetPassword([NotNull] MySqlParser.SetPasswordContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>setTransaction</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSetTransaction([NotNull] MySqlParser.SetTransactionContext context);
+	public virtual void EnterSetTransaction([NotNull] MySqlParser.SetTransactionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>setTransaction</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSetTransaction([NotNull] MySqlParser.SetTransactionContext context);
+	public virtual void ExitSetTransaction([NotNull] MySqlParser.SetTransactionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>setAutocommit</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSetAutocommit([NotNull] MySqlParser.SetAutocommitContext context);
+	public virtual void EnterSetAutocommit([NotNull] MySqlParser.SetAutocommitContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>setAutocommit</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSetAutocommit([NotNull] MySqlParser.SetAutocommitContext context);
+	public virtual void ExitSetAutocommit([NotNull] MySqlParser.SetAutocommitContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>setNewValueInsideTrigger</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSetNewValueInsideTrigger([NotNull] MySqlParser.SetNewValueInsideTriggerContext context);
+	public virtual void EnterSetNewValueInsideTrigger([NotNull] MySqlParser.SetNewValueInsideTriggerContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>setNewValueInsideTrigger</c>
 	/// labeled alternative in <see cref="MySqlParser.setStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSetNewValueInsideTrigger([NotNull] MySqlParser.SetNewValueInsideTriggerContext context);
+	public virtual void ExitSetNewValueInsideTrigger([NotNull] MySqlParser.SetNewValueInsideTriggerContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showMasterLogs</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowMasterLogs([NotNull] MySqlParser.ShowMasterLogsContext context);
+	public virtual void EnterShowMasterLogs([NotNull] MySqlParser.ShowMasterLogsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showMasterLogs</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowMasterLogs([NotNull] MySqlParser.ShowMasterLogsContext context);
+	public virtual void ExitShowMasterLogs([NotNull] MySqlParser.ShowMasterLogsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showLogEvents</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowLogEvents([NotNull] MySqlParser.ShowLogEventsContext context);
+	public virtual void EnterShowLogEvents([NotNull] MySqlParser.ShowLogEventsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showLogEvents</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowLogEvents([NotNull] MySqlParser.ShowLogEventsContext context);
+	public virtual void ExitShowLogEvents([NotNull] MySqlParser.ShowLogEventsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showObjectFilter</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowObjectFilter([NotNull] MySqlParser.ShowObjectFilterContext context);
+	public virtual void EnterShowObjectFilter([NotNull] MySqlParser.ShowObjectFilterContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showObjectFilter</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowObjectFilter([NotNull] MySqlParser.ShowObjectFilterContext context);
+	public virtual void ExitShowObjectFilter([NotNull] MySqlParser.ShowObjectFilterContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showColumns</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowColumns([NotNull] MySqlParser.ShowColumnsContext context);
+	public virtual void EnterShowColumns([NotNull] MySqlParser.ShowColumnsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showColumns</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowColumns([NotNull] MySqlParser.ShowColumnsContext context);
+	public virtual void ExitShowColumns([NotNull] MySqlParser.ShowColumnsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showCreateDb</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowCreateDb([NotNull] MySqlParser.ShowCreateDbContext context);
+	public virtual void EnterShowCreateDb([NotNull] MySqlParser.ShowCreateDbContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showCreateDb</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowCreateDb([NotNull] MySqlParser.ShowCreateDbContext context);
+	public virtual void ExitShowCreateDb([NotNull] MySqlParser.ShowCreateDbContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showCreateFullIdObject</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowCreateFullIdObject([NotNull] MySqlParser.ShowCreateFullIdObjectContext context);
+	public virtual void EnterShowCreateFullIdObject([NotNull] MySqlParser.ShowCreateFullIdObjectContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showCreateFullIdObject</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowCreateFullIdObject([NotNull] MySqlParser.ShowCreateFullIdObjectContext context);
+	public virtual void ExitShowCreateFullIdObject([NotNull] MySqlParser.ShowCreateFullIdObjectContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showCreateUser</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowCreateUser([NotNull] MySqlParser.ShowCreateUserContext context);
+	public virtual void EnterShowCreateUser([NotNull] MySqlParser.ShowCreateUserContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showCreateUser</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowCreateUser([NotNull] MySqlParser.ShowCreateUserContext context);
+	public virtual void ExitShowCreateUser([NotNull] MySqlParser.ShowCreateUserContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showEngine</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowEngine([NotNull] MySqlParser.ShowEngineContext context);
+	public virtual void EnterShowEngine([NotNull] MySqlParser.ShowEngineContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showEngine</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowEngine([NotNull] MySqlParser.ShowEngineContext context);
+	public virtual void ExitShowEngine([NotNull] MySqlParser.ShowEngineContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showGlobalInfo</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowGlobalInfo([NotNull] MySqlParser.ShowGlobalInfoContext context);
+	public virtual void EnterShowGlobalInfo([NotNull] MySqlParser.ShowGlobalInfoContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showGlobalInfo</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowGlobalInfo([NotNull] MySqlParser.ShowGlobalInfoContext context);
+	public virtual void ExitShowGlobalInfo([NotNull] MySqlParser.ShowGlobalInfoContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showErrors</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowErrors([NotNull] MySqlParser.ShowErrorsContext context);
+	public virtual void EnterShowErrors([NotNull] MySqlParser.ShowErrorsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showErrors</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowErrors([NotNull] MySqlParser.ShowErrorsContext context);
+	public virtual void ExitShowErrors([NotNull] MySqlParser.ShowErrorsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showCountErrors</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowCountErrors([NotNull] MySqlParser.ShowCountErrorsContext context);
+	public virtual void EnterShowCountErrors([NotNull] MySqlParser.ShowCountErrorsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showCountErrors</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowCountErrors([NotNull] MySqlParser.ShowCountErrorsContext context);
+	public virtual void ExitShowCountErrors([NotNull] MySqlParser.ShowCountErrorsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showSchemaFilter</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowSchemaFilter([NotNull] MySqlParser.ShowSchemaFilterContext context);
+	public virtual void EnterShowSchemaFilter([NotNull] MySqlParser.ShowSchemaFilterContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showSchemaFilter</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowSchemaFilter([NotNull] MySqlParser.ShowSchemaFilterContext context);
+	public virtual void ExitShowSchemaFilter([NotNull] MySqlParser.ShowSchemaFilterContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showRoutine</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowRoutine([NotNull] MySqlParser.ShowRoutineContext context);
+	public virtual void EnterShowRoutine([NotNull] MySqlParser.ShowRoutineContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showRoutine</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowRoutine([NotNull] MySqlParser.ShowRoutineContext context);
+	public virtual void ExitShowRoutine([NotNull] MySqlParser.ShowRoutineContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showGrants</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowGrants([NotNull] MySqlParser.ShowGrantsContext context);
+	public virtual void EnterShowGrants([NotNull] MySqlParser.ShowGrantsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showGrants</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowGrants([NotNull] MySqlParser.ShowGrantsContext context);
+	public virtual void ExitShowGrants([NotNull] MySqlParser.ShowGrantsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showIndexes</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowIndexes([NotNull] MySqlParser.ShowIndexesContext context);
+	public virtual void EnterShowIndexes([NotNull] MySqlParser.ShowIndexesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showIndexes</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowIndexes([NotNull] MySqlParser.ShowIndexesContext context);
+	public virtual void ExitShowIndexes([NotNull] MySqlParser.ShowIndexesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showOpenTables</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowOpenTables([NotNull] MySqlParser.ShowOpenTablesContext context);
+	public virtual void EnterShowOpenTables([NotNull] MySqlParser.ShowOpenTablesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showOpenTables</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowOpenTables([NotNull] MySqlParser.ShowOpenTablesContext context);
+	public virtual void ExitShowOpenTables([NotNull] MySqlParser.ShowOpenTablesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showProfile</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowProfile([NotNull] MySqlParser.ShowProfileContext context);
+	public virtual void EnterShowProfile([NotNull] MySqlParser.ShowProfileContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showProfile</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowProfile([NotNull] MySqlParser.ShowProfileContext context);
+	public virtual void ExitShowProfile([NotNull] MySqlParser.ShowProfileContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>showSlaveStatus</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowSlaveStatus([NotNull] MySqlParser.ShowSlaveStatusContext context);
+	public virtual void EnterShowSlaveStatus([NotNull] MySqlParser.ShowSlaveStatusContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>showSlaveStatus</c>
 	/// labeled alternative in <see cref="MySqlParser.showStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowSlaveStatus([NotNull] MySqlParser.ShowSlaveStatusContext context);
+	public virtual void ExitShowSlaveStatus([NotNull] MySqlParser.ShowSlaveStatusContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.variableClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterVariableClause([NotNull] MySqlParser.VariableClauseContext context);
+	public virtual void EnterVariableClause([NotNull] MySqlParser.VariableClauseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.variableClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitVariableClause([NotNull] MySqlParser.VariableClauseContext context);
+	public virtual void ExitVariableClause([NotNull] MySqlParser.VariableClauseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.showCommonEntity"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowCommonEntity([NotNull] MySqlParser.ShowCommonEntityContext context);
+	public virtual void EnterShowCommonEntity([NotNull] MySqlParser.ShowCommonEntityContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.showCommonEntity"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowCommonEntity([NotNull] MySqlParser.ShowCommonEntityContext context);
+	public virtual void ExitShowCommonEntity([NotNull] MySqlParser.ShowCommonEntityContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.showFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowFilter([NotNull] MySqlParser.ShowFilterContext context);
+	public virtual void EnterShowFilter([NotNull] MySqlParser.ShowFilterContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.showFilter"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowFilter([NotNull] MySqlParser.ShowFilterContext context);
+	public virtual void ExitShowFilter([NotNull] MySqlParser.ShowFilterContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.showGlobalInfoClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowGlobalInfoClause([NotNull] MySqlParser.ShowGlobalInfoClauseContext context);
+	public virtual void EnterShowGlobalInfoClause([NotNull] MySqlParser.ShowGlobalInfoClauseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.showGlobalInfoClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowGlobalInfoClause([NotNull] MySqlParser.ShowGlobalInfoClauseContext context);
+	public virtual void ExitShowGlobalInfoClause([NotNull] MySqlParser.ShowGlobalInfoClauseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.showSchemaEntity"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowSchemaEntity([NotNull] MySqlParser.ShowSchemaEntityContext context);
+	public virtual void EnterShowSchemaEntity([NotNull] MySqlParser.ShowSchemaEntityContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.showSchemaEntity"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowSchemaEntity([NotNull] MySqlParser.ShowSchemaEntityContext context);
+	public virtual void ExitShowSchemaEntity([NotNull] MySqlParser.ShowSchemaEntityContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.showProfileType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShowProfileType([NotNull] MySqlParser.ShowProfileTypeContext context);
+	public virtual void EnterShowProfileType([NotNull] MySqlParser.ShowProfileTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.showProfileType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShowProfileType([NotNull] MySqlParser.ShowProfileTypeContext context);
+	public virtual void ExitShowProfileType([NotNull] MySqlParser.ShowProfileTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.binlogStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBinlogStatement([NotNull] MySqlParser.BinlogStatementContext context);
+	public virtual void EnterBinlogStatement([NotNull] MySqlParser.BinlogStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.binlogStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBinlogStatement([NotNull] MySqlParser.BinlogStatementContext context);
+	public virtual void ExitBinlogStatement([NotNull] MySqlParser.BinlogStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.cacheIndexStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCacheIndexStatement([NotNull] MySqlParser.CacheIndexStatementContext context);
+	public virtual void EnterCacheIndexStatement([NotNull] MySqlParser.CacheIndexStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.cacheIndexStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCacheIndexStatement([NotNull] MySqlParser.CacheIndexStatementContext context);
+	public virtual void ExitCacheIndexStatement([NotNull] MySqlParser.CacheIndexStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.flushStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFlushStatement([NotNull] MySqlParser.FlushStatementContext context);
+	public virtual void EnterFlushStatement([NotNull] MySqlParser.FlushStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.flushStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFlushStatement([NotNull] MySqlParser.FlushStatementContext context);
+	public virtual void ExitFlushStatement([NotNull] MySqlParser.FlushStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.killStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterKillStatement([NotNull] MySqlParser.KillStatementContext context);
+	public virtual void EnterKillStatement([NotNull] MySqlParser.KillStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.killStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitKillStatement([NotNull] MySqlParser.KillStatementContext context);
+	public virtual void ExitKillStatement([NotNull] MySqlParser.KillStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.loadIndexIntoCache"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLoadIndexIntoCache([NotNull] MySqlParser.LoadIndexIntoCacheContext context);
+	public virtual void EnterLoadIndexIntoCache([NotNull] MySqlParser.LoadIndexIntoCacheContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.loadIndexIntoCache"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLoadIndexIntoCache([NotNull] MySqlParser.LoadIndexIntoCacheContext context);
+	public virtual void ExitLoadIndexIntoCache([NotNull] MySqlParser.LoadIndexIntoCacheContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.resetStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterResetStatement([NotNull] MySqlParser.ResetStatementContext context);
+	public virtual void EnterResetStatement([NotNull] MySqlParser.ResetStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.resetStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitResetStatement([NotNull] MySqlParser.ResetStatementContext context);
+	public virtual void ExitResetStatement([NotNull] MySqlParser.ResetStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.shutdownStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterShutdownStatement([NotNull] MySqlParser.ShutdownStatementContext context);
+	public virtual void EnterShutdownStatement([NotNull] MySqlParser.ShutdownStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.shutdownStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitShutdownStatement([NotNull] MySqlParser.ShutdownStatementContext context);
+	public virtual void ExitShutdownStatement([NotNull] MySqlParser.ShutdownStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.tableIndexes"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableIndexes([NotNull] MySqlParser.TableIndexesContext context);
+	public virtual void EnterTableIndexes([NotNull] MySqlParser.TableIndexesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.tableIndexes"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableIndexes([NotNull] MySqlParser.TableIndexesContext context);
+	public virtual void ExitTableIndexes([NotNull] MySqlParser.TableIndexesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>simpleFlushOption</c>
 	/// labeled alternative in <see cref="MySqlParser.flushOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSimpleFlushOption([NotNull] MySqlParser.SimpleFlushOptionContext context);
+	public virtual void EnterSimpleFlushOption([NotNull] MySqlParser.SimpleFlushOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>simpleFlushOption</c>
 	/// labeled alternative in <see cref="MySqlParser.flushOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSimpleFlushOption([NotNull] MySqlParser.SimpleFlushOptionContext context);
+	public virtual void ExitSimpleFlushOption([NotNull] MySqlParser.SimpleFlushOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>channelFlushOption</c>
 	/// labeled alternative in <see cref="MySqlParser.flushOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterChannelFlushOption([NotNull] MySqlParser.ChannelFlushOptionContext context);
+	public virtual void EnterChannelFlushOption([NotNull] MySqlParser.ChannelFlushOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>channelFlushOption</c>
 	/// labeled alternative in <see cref="MySqlParser.flushOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitChannelFlushOption([NotNull] MySqlParser.ChannelFlushOptionContext context);
+	public virtual void ExitChannelFlushOption([NotNull] MySqlParser.ChannelFlushOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>tableFlushOption</c>
 	/// labeled alternative in <see cref="MySqlParser.flushOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableFlushOption([NotNull] MySqlParser.TableFlushOptionContext context);
+	public virtual void EnterTableFlushOption([NotNull] MySqlParser.TableFlushOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>tableFlushOption</c>
 	/// labeled alternative in <see cref="MySqlParser.flushOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableFlushOption([NotNull] MySqlParser.TableFlushOptionContext context);
+	public virtual void ExitTableFlushOption([NotNull] MySqlParser.TableFlushOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.flushTableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFlushTableOption([NotNull] MySqlParser.FlushTableOptionContext context);
+	public virtual void EnterFlushTableOption([NotNull] MySqlParser.FlushTableOptionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.flushTableOption"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFlushTableOption([NotNull] MySqlParser.FlushTableOptionContext context);
+	public virtual void ExitFlushTableOption([NotNull] MySqlParser.FlushTableOptionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.loadedTableIndexes"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLoadedTableIndexes([NotNull] MySqlParser.LoadedTableIndexesContext context);
+	public virtual void EnterLoadedTableIndexes([NotNull] MySqlParser.LoadedTableIndexesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.loadedTableIndexes"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLoadedTableIndexes([NotNull] MySqlParser.LoadedTableIndexesContext context);
+	public virtual void ExitLoadedTableIndexes([NotNull] MySqlParser.LoadedTableIndexesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.simpleDescribeStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSimpleDescribeStatement([NotNull] MySqlParser.SimpleDescribeStatementContext context);
+	public virtual void EnterSimpleDescribeStatement([NotNull] MySqlParser.SimpleDescribeStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.simpleDescribeStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSimpleDescribeStatement([NotNull] MySqlParser.SimpleDescribeStatementContext context);
+	public virtual void ExitSimpleDescribeStatement([NotNull] MySqlParser.SimpleDescribeStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.fullDescribeStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFullDescribeStatement([NotNull] MySqlParser.FullDescribeStatementContext context);
+	public virtual void EnterFullDescribeStatement([NotNull] MySqlParser.FullDescribeStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.fullDescribeStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFullDescribeStatement([NotNull] MySqlParser.FullDescribeStatementContext context);
+	public virtual void ExitFullDescribeStatement([NotNull] MySqlParser.FullDescribeStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.helpStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHelpStatement([NotNull] MySqlParser.HelpStatementContext context);
+	public virtual void EnterHelpStatement([NotNull] MySqlParser.HelpStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.helpStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHelpStatement([NotNull] MySqlParser.HelpStatementContext context);
+	public virtual void ExitHelpStatement([NotNull] MySqlParser.HelpStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.useStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUseStatement([NotNull] MySqlParser.UseStatementContext context);
+	public virtual void EnterUseStatement([NotNull] MySqlParser.UseStatementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.useStatement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUseStatement([NotNull] MySqlParser.UseStatementContext context);
+	public virtual void ExitUseStatement([NotNull] MySqlParser.UseStatementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>describeStatements</c>
 	/// labeled alternative in <see cref="MySqlParser.describeObjectClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDescribeStatements([NotNull] MySqlParser.DescribeStatementsContext context);
+	public virtual void EnterDescribeStatements([NotNull] MySqlParser.DescribeStatementsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>describeStatements</c>
 	/// labeled alternative in <see cref="MySqlParser.describeObjectClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDescribeStatements([NotNull] MySqlParser.DescribeStatementsContext context);
+	public virtual void ExitDescribeStatements([NotNull] MySqlParser.DescribeStatementsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>describeConnection</c>
 	/// labeled alternative in <see cref="MySqlParser.describeObjectClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDescribeConnection([NotNull] MySqlParser.DescribeConnectionContext context);
+	public virtual void EnterDescribeConnection([NotNull] MySqlParser.DescribeConnectionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>describeConnection</c>
 	/// labeled alternative in <see cref="MySqlParser.describeObjectClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDescribeConnection([NotNull] MySqlParser.DescribeConnectionContext context);
+	public virtual void ExitDescribeConnection([NotNull] MySqlParser.DescribeConnectionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.fullId"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFullId([NotNull] MySqlParser.FullIdContext context);
+	public virtual void EnterFullId([NotNull] MySqlParser.FullIdContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.fullId"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFullId([NotNull] MySqlParser.FullIdContext context);
+	public virtual void ExitFullId([NotNull] MySqlParser.FullIdContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.tableName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTableName([NotNull] MySqlParser.TableNameContext context);
+	public virtual void EnterTableName([NotNull] MySqlParser.TableNameContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.tableName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTableName([NotNull] MySqlParser.TableNameContext context);
+	public virtual void ExitTableName([NotNull] MySqlParser.TableNameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.fullColumnName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFullColumnName([NotNull] MySqlParser.FullColumnNameContext context);
+	public virtual void EnterFullColumnName([NotNull] MySqlParser.FullColumnNameContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.fullColumnName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFullColumnName([NotNull] MySqlParser.FullColumnNameContext context);
+	public virtual void ExitFullColumnName([NotNull] MySqlParser.FullColumnNameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.indexColumnName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIndexColumnName([NotNull] MySqlParser.IndexColumnNameContext context);
+	public virtual void EnterIndexColumnName([NotNull] MySqlParser.IndexColumnNameContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.indexColumnName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIndexColumnName([NotNull] MySqlParser.IndexColumnNameContext context);
+	public virtual void ExitIndexColumnName([NotNull] MySqlParser.IndexColumnNameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.userName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUserName([NotNull] MySqlParser.UserNameContext context);
+	public virtual void EnterUserName([NotNull] MySqlParser.UserNameContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.userName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUserName([NotNull] MySqlParser.UserNameContext context);
+	public virtual void ExitUserName([NotNull] MySqlParser.UserNameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.mysqlVariable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMysqlVariable([NotNull] MySqlParser.MysqlVariableContext context);
+	public virtual void EnterMysqlVariable([NotNull] MySqlParser.MysqlVariableContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.mysqlVariable"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMysqlVariable([NotNull] MySqlParser.MysqlVariableContext context);
+	public virtual void ExitMysqlVariable([NotNull] MySqlParser.MysqlVariableContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.charsetName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCharsetName([NotNull] MySqlParser.CharsetNameContext context);
+	public virtual void EnterCharsetName([NotNull] MySqlParser.CharsetNameContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.charsetName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCharsetName([NotNull] MySqlParser.CharsetNameContext context);
+	public virtual void ExitCharsetName([NotNull] MySqlParser.CharsetNameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.collationName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCollationName([NotNull] MySqlParser.CollationNameContext context);
+	public virtual void EnterCollationName([NotNull] MySqlParser.CollationNameContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.collationName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCollationName([NotNull] MySqlParser.CollationNameContext context);
+	public virtual void ExitCollationName([NotNull] MySqlParser.CollationNameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.engineName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterEngineName([NotNull] MySqlParser.EngineNameContext context);
+	public virtual void EnterEngineName([NotNull] MySqlParser.EngineNameContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.engineName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitEngineName([NotNull] MySqlParser.EngineNameContext context);
+	public virtual void ExitEngineName([NotNull] MySqlParser.EngineNameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.uuidSet"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUuidSet([NotNull] MySqlParser.UuidSetContext context);
+	public virtual void EnterUuidSet([NotNull] MySqlParser.UuidSetContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.uuidSet"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUuidSet([NotNull] MySqlParser.UuidSetContext context);
+	public virtual void ExitUuidSet([NotNull] MySqlParser.UuidSetContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.xid"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterXid([NotNull] MySqlParser.XidContext context);
+	public virtual void EnterXid([NotNull] MySqlParser.XidContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.xid"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitXid([NotNull] MySqlParser.XidContext context);
+	public virtual void ExitXid([NotNull] MySqlParser.XidContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.xuidStringId"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterXuidStringId([NotNull] MySqlParser.XuidStringIdContext context);
+	public virtual void EnterXuidStringId([NotNull] MySqlParser.XuidStringIdContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.xuidStringId"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitXuidStringId([NotNull] MySqlParser.XuidStringIdContext context);
+	public virtual void ExitXuidStringId([NotNull] MySqlParser.XuidStringIdContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.authPlugin"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAuthPlugin([NotNull] MySqlParser.AuthPluginContext context);
+	public virtual void EnterAuthPlugin([NotNull] MySqlParser.AuthPluginContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.authPlugin"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAuthPlugin([NotNull] MySqlParser.AuthPluginContext context);
+	public virtual void ExitAuthPlugin([NotNull] MySqlParser.AuthPluginContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.uid"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUid([NotNull] MySqlParser.UidContext context);
+	public virtual void EnterUid([NotNull] MySqlParser.UidContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.uid"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUid([NotNull] MySqlParser.UidContext context);
+	public virtual void ExitUid([NotNull] MySqlParser.UidContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.simpleId"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSimpleId([NotNull] MySqlParser.SimpleIdContext context);
+	public virtual void EnterSimpleId([NotNull] MySqlParser.SimpleIdContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.simpleId"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSimpleId([NotNull] MySqlParser.SimpleIdContext context);
+	public virtual void ExitSimpleId([NotNull] MySqlParser.SimpleIdContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dottedId"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDottedId([NotNull] MySqlParser.DottedIdContext context);
+	public virtual void EnterDottedId([NotNull] MySqlParser.DottedIdContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dottedId"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDottedId([NotNull] MySqlParser.DottedIdContext context);
+	public virtual void ExitDottedId([NotNull] MySqlParser.DottedIdContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.decimalLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDecimalLiteral([NotNull] MySqlParser.DecimalLiteralContext context);
+	public virtual void EnterDecimalLiteral([NotNull] MySqlParser.DecimalLiteralContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.decimalLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDecimalLiteral([NotNull] MySqlParser.DecimalLiteralContext context);
+	public virtual void ExitDecimalLiteral([NotNull] MySqlParser.DecimalLiteralContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.fileSizeLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFileSizeLiteral([NotNull] MySqlParser.FileSizeLiteralContext context);
+	public virtual void EnterFileSizeLiteral([NotNull] MySqlParser.FileSizeLiteralContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.fileSizeLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFileSizeLiteral([NotNull] MySqlParser.FileSizeLiteralContext context);
+	public virtual void ExitFileSizeLiteral([NotNull] MySqlParser.FileSizeLiteralContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.stringLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStringLiteral([NotNull] MySqlParser.StringLiteralContext context);
+	public virtual void EnterStringLiteral([NotNull] MySqlParser.StringLiteralContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.stringLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStringLiteral([NotNull] MySqlParser.StringLiteralContext context);
+	public virtual void ExitStringLiteral([NotNull] MySqlParser.StringLiteralContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.booleanLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBooleanLiteral([NotNull] MySqlParser.BooleanLiteralContext context);
+	public virtual void EnterBooleanLiteral([NotNull] MySqlParser.BooleanLiteralContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.booleanLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBooleanLiteral([NotNull] MySqlParser.BooleanLiteralContext context);
+	public virtual void ExitBooleanLiteral([NotNull] MySqlParser.BooleanLiteralContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.hexadecimalLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterHexadecimalLiteral([NotNull] MySqlParser.HexadecimalLiteralContext context);
+	public virtual void EnterHexadecimalLiteral([NotNull] MySqlParser.HexadecimalLiteralContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.hexadecimalLiteral"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitHexadecimalLiteral([NotNull] MySqlParser.HexadecimalLiteralContext context);
+	public virtual void ExitHexadecimalLiteral([NotNull] MySqlParser.HexadecimalLiteralContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.nullNotnull"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNullNotnull([NotNull] MySqlParser.NullNotnullContext context);
+	public virtual void EnterNullNotnull([NotNull] MySqlParser.NullNotnullContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.nullNotnull"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNullNotnull([NotNull] MySqlParser.NullNotnullContext context);
+	public virtual void ExitNullNotnull([NotNull] MySqlParser.NullNotnullContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.constant"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterConstant([NotNull] MySqlParser.ConstantContext context);
+	public virtual void EnterConstant([NotNull] MySqlParser.ConstantContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.constant"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitConstant([NotNull] MySqlParser.ConstantContext context);
+	public virtual void ExitConstant([NotNull] MySqlParser.ConstantContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>stringDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStringDataType([NotNull] MySqlParser.StringDataTypeContext context);
+	public virtual void EnterStringDataType([NotNull] MySqlParser.StringDataTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>stringDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStringDataType([NotNull] MySqlParser.StringDataTypeContext context);
+	public virtual void ExitStringDataType([NotNull] MySqlParser.StringDataTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>nationalStringDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNationalStringDataType([NotNull] MySqlParser.NationalStringDataTypeContext context);
+	public virtual void EnterNationalStringDataType([NotNull] MySqlParser.NationalStringDataTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>nationalStringDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNationalStringDataType([NotNull] MySqlParser.NationalStringDataTypeContext context);
+	public virtual void ExitNationalStringDataType([NotNull] MySqlParser.NationalStringDataTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>nationalVaryingStringDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNationalVaryingStringDataType([NotNull] MySqlParser.NationalVaryingStringDataTypeContext context);
+	public virtual void EnterNationalVaryingStringDataType([NotNull] MySqlParser.NationalVaryingStringDataTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>nationalVaryingStringDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNationalVaryingStringDataType([NotNull] MySqlParser.NationalVaryingStringDataTypeContext context);
+	public virtual void ExitNationalVaryingStringDataType([NotNull] MySqlParser.NationalVaryingStringDataTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>dimensionDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDimensionDataType([NotNull] MySqlParser.DimensionDataTypeContext context);
+	public virtual void EnterDimensionDataType([NotNull] MySqlParser.DimensionDataTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>dimensionDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDimensionDataType([NotNull] MySqlParser.DimensionDataTypeContext context);
+	public virtual void ExitDimensionDataType([NotNull] MySqlParser.DimensionDataTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>simpleDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSimpleDataType([NotNull] MySqlParser.SimpleDataTypeContext context);
+	public virtual void EnterSimpleDataType([NotNull] MySqlParser.SimpleDataTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>simpleDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSimpleDataType([NotNull] MySqlParser.SimpleDataTypeContext context);
+	public virtual void ExitSimpleDataType([NotNull] MySqlParser.SimpleDataTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>collectionDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCollectionDataType([NotNull] MySqlParser.CollectionDataTypeContext context);
+	public virtual void EnterCollectionDataType([NotNull] MySqlParser.CollectionDataTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>collectionDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCollectionDataType([NotNull] MySqlParser.CollectionDataTypeContext context);
+	public virtual void ExitCollectionDataType([NotNull] MySqlParser.CollectionDataTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>spatialDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSpatialDataType([NotNull] MySqlParser.SpatialDataTypeContext context);
+	public virtual void EnterSpatialDataType([NotNull] MySqlParser.SpatialDataTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>spatialDataType</c>
 	/// labeled alternative in <see cref="MySqlParser.dataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSpatialDataType([NotNull] MySqlParser.SpatialDataTypeContext context);
+	public virtual void ExitSpatialDataType([NotNull] MySqlParser.SpatialDataTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.collectionOptions"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCollectionOptions([NotNull] MySqlParser.CollectionOptionsContext context);
+	public virtual void EnterCollectionOptions([NotNull] MySqlParser.CollectionOptionsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.collectionOptions"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCollectionOptions([NotNull] MySqlParser.CollectionOptionsContext context);
+	public virtual void ExitCollectionOptions([NotNull] MySqlParser.CollectionOptionsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.convertedDataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterConvertedDataType([NotNull] MySqlParser.ConvertedDataTypeContext context);
+	public virtual void EnterConvertedDataType([NotNull] MySqlParser.ConvertedDataTypeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.convertedDataType"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitConvertedDataType([NotNull] MySqlParser.ConvertedDataTypeContext context);
+	public virtual void ExitConvertedDataType([NotNull] MySqlParser.ConvertedDataTypeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.lengthOneDimension"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLengthOneDimension([NotNull] MySqlParser.LengthOneDimensionContext context);
+	public virtual void EnterLengthOneDimension([NotNull] MySqlParser.LengthOneDimensionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.lengthOneDimension"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLengthOneDimension([NotNull] MySqlParser.LengthOneDimensionContext context);
+	public virtual void ExitLengthOneDimension([NotNull] MySqlParser.LengthOneDimensionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.lengthTwoDimension"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLengthTwoDimension([NotNull] MySqlParser.LengthTwoDimensionContext context);
+	public virtual void EnterLengthTwoDimension([NotNull] MySqlParser.LengthTwoDimensionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.lengthTwoDimension"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLengthTwoDimension([NotNull] MySqlParser.LengthTwoDimensionContext context);
+	public virtual void ExitLengthTwoDimension([NotNull] MySqlParser.LengthTwoDimensionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.lengthTwoOptionalDimension"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLengthTwoOptionalDimension([NotNull] MySqlParser.LengthTwoOptionalDimensionContext context);
+	public virtual void EnterLengthTwoOptionalDimension([NotNull] MySqlParser.LengthTwoOptionalDimensionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.lengthTwoOptionalDimension"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLengthTwoOptionalDimension([NotNull] MySqlParser.LengthTwoOptionalDimensionContext context);
+	public virtual void ExitLengthTwoOptionalDimension([NotNull] MySqlParser.LengthTwoOptionalDimensionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.uidList"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUidList([NotNull] MySqlParser.UidListContext context);
+	public virtual void EnterUidList([NotNull] MySqlParser.UidListContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.uidList"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUidList([NotNull] MySqlParser.UidListContext context);
+	public virtual void ExitUidList([NotNull] MySqlParser.UidListContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.tables"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTables([NotNull] MySqlParser.TablesContext context);
+	public virtual void EnterTables([NotNull] MySqlParser.TablesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.tables"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTables([NotNull] MySqlParser.TablesContext context);
+	public virtual void ExitTables([NotNull] MySqlParser.TablesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.indexColumnNames"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIndexColumnNames([NotNull] MySqlParser.IndexColumnNamesContext context);
+	public virtual void EnterIndexColumnNames([NotNull] MySqlParser.IndexColumnNamesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.indexColumnNames"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIndexColumnNames([NotNull] MySqlParser.IndexColumnNamesContext context);
+	public virtual void ExitIndexColumnNames([NotNull] MySqlParser.IndexColumnNamesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.expressions"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterExpressions([NotNull] MySqlParser.ExpressionsContext context);
+	public virtual void EnterExpressions([NotNull] MySqlParser.ExpressionsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.expressions"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitExpressions([NotNull] MySqlParser.ExpressionsContext context);
+	public virtual void ExitExpressions([NotNull] MySqlParser.ExpressionsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.expressionsWithDefaults"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterExpressionsWithDefaults([NotNull] MySqlParser.ExpressionsWithDefaultsContext context);
+	public virtual void EnterExpressionsWithDefaults([NotNull] MySqlParser.ExpressionsWithDefaultsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.expressionsWithDefaults"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitExpressionsWithDefaults([NotNull] MySqlParser.ExpressionsWithDefaultsContext context);
+	public virtual void ExitExpressionsWithDefaults([NotNull] MySqlParser.ExpressionsWithDefaultsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.constants"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterConstants([NotNull] MySqlParser.ConstantsContext context);
+	public virtual void EnterConstants([NotNull] MySqlParser.ConstantsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.constants"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitConstants([NotNull] MySqlParser.ConstantsContext context);
+	public virtual void ExitConstants([NotNull] MySqlParser.ConstantsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.simpleStrings"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSimpleStrings([NotNull] MySqlParser.SimpleStringsContext context);
+	public virtual void EnterSimpleStrings([NotNull] MySqlParser.SimpleStringsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.simpleStrings"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSimpleStrings([NotNull] MySqlParser.SimpleStringsContext context);
+	public virtual void ExitSimpleStrings([NotNull] MySqlParser.SimpleStringsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.userVariables"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUserVariables([NotNull] MySqlParser.UserVariablesContext context);
+	public virtual void EnterUserVariables([NotNull] MySqlParser.UserVariablesContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.userVariables"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUserVariables([NotNull] MySqlParser.UserVariablesContext context);
+	public virtual void ExitUserVariables([NotNull] MySqlParser.UserVariablesContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.defaultValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDefaultValue([NotNull] MySqlParser.DefaultValueContext context);
+	public virtual void EnterDefaultValue([NotNull] MySqlParser.DefaultValueContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.defaultValue"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDefaultValue([NotNull] MySqlParser.DefaultValueContext context);
+	public virtual void ExitDefaultValue([NotNull] MySqlParser.DefaultValueContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.currentTimestamp"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCurrentTimestamp([NotNull] MySqlParser.CurrentTimestampContext context);
+	public virtual void EnterCurrentTimestamp([NotNull] MySqlParser.CurrentTimestampContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.currentTimestamp"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCurrentTimestamp([NotNull] MySqlParser.CurrentTimestampContext context);
+	public virtual void ExitCurrentTimestamp([NotNull] MySqlParser.CurrentTimestampContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.expressionOrDefault"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterExpressionOrDefault([NotNull] MySqlParser.ExpressionOrDefaultContext context);
+	public virtual void EnterExpressionOrDefault([NotNull] MySqlParser.ExpressionOrDefaultContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.expressionOrDefault"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitExpressionOrDefault([NotNull] MySqlParser.ExpressionOrDefaultContext context);
+	public virtual void ExitExpressionOrDefault([NotNull] MySqlParser.ExpressionOrDefaultContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.ifExists"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIfExists([NotNull] MySqlParser.IfExistsContext context);
+	public virtual void EnterIfExists([NotNull] MySqlParser.IfExistsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.ifExists"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIfExists([NotNull] MySqlParser.IfExistsContext context);
+	public virtual void ExitIfExists([NotNull] MySqlParser.IfExistsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.ifNotExists"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIfNotExists([NotNull] MySqlParser.IfNotExistsContext context);
+	public virtual void EnterIfNotExists([NotNull] MySqlParser.IfNotExistsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.ifNotExists"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIfNotExists([NotNull] MySqlParser.IfNotExistsContext context);
+	public virtual void ExitIfNotExists([NotNull] MySqlParser.IfNotExistsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>specificFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSpecificFunctionCall([NotNull] MySqlParser.SpecificFunctionCallContext context);
+	public virtual void EnterSpecificFunctionCall([NotNull] MySqlParser.SpecificFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>specificFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSpecificFunctionCall([NotNull] MySqlParser.SpecificFunctionCallContext context);
+	public virtual void ExitSpecificFunctionCall([NotNull] MySqlParser.SpecificFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>aggregateFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAggregateFunctionCall([NotNull] MySqlParser.AggregateFunctionCallContext context);
+	public virtual void EnterAggregateFunctionCall([NotNull] MySqlParser.AggregateFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>aggregateFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAggregateFunctionCall([NotNull] MySqlParser.AggregateFunctionCallContext context);
+	public virtual void ExitAggregateFunctionCall([NotNull] MySqlParser.AggregateFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>scalarFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterScalarFunctionCall([NotNull] MySqlParser.ScalarFunctionCallContext context);
+	public virtual void EnterScalarFunctionCall([NotNull] MySqlParser.ScalarFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>scalarFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitScalarFunctionCall([NotNull] MySqlParser.ScalarFunctionCallContext context);
+	public virtual void ExitScalarFunctionCall([NotNull] MySqlParser.ScalarFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>udfFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUdfFunctionCall([NotNull] MySqlParser.UdfFunctionCallContext context);
+	public virtual void EnterUdfFunctionCall([NotNull] MySqlParser.UdfFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>udfFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUdfFunctionCall([NotNull] MySqlParser.UdfFunctionCallContext context);
+	public virtual void ExitUdfFunctionCall([NotNull] MySqlParser.UdfFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>passwordFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPasswordFunctionCall([NotNull] MySqlParser.PasswordFunctionCallContext context);
+	public virtual void EnterPasswordFunctionCall([NotNull] MySqlParser.PasswordFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>passwordFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.functionCall"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPasswordFunctionCall([NotNull] MySqlParser.PasswordFunctionCallContext context);
+	public virtual void ExitPasswordFunctionCall([NotNull] MySqlParser.PasswordFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>simpleFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSimpleFunctionCall([NotNull] MySqlParser.SimpleFunctionCallContext context);
+	public virtual void EnterSimpleFunctionCall([NotNull] MySqlParser.SimpleFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>simpleFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSimpleFunctionCall([NotNull] MySqlParser.SimpleFunctionCallContext context);
+	public virtual void ExitSimpleFunctionCall([NotNull] MySqlParser.SimpleFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>dataTypeFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDataTypeFunctionCall([NotNull] MySqlParser.DataTypeFunctionCallContext context);
+	public virtual void EnterDataTypeFunctionCall([NotNull] MySqlParser.DataTypeFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>dataTypeFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDataTypeFunctionCall([NotNull] MySqlParser.DataTypeFunctionCallContext context);
+	public virtual void ExitDataTypeFunctionCall([NotNull] MySqlParser.DataTypeFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>valuesFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterValuesFunctionCall([NotNull] MySqlParser.ValuesFunctionCallContext context);
+	public virtual void EnterValuesFunctionCall([NotNull] MySqlParser.ValuesFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>valuesFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitValuesFunctionCall([NotNull] MySqlParser.ValuesFunctionCallContext context);
+	public virtual void ExitValuesFunctionCall([NotNull] MySqlParser.ValuesFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>caseFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCaseFunctionCall([NotNull] MySqlParser.CaseFunctionCallContext context);
+	public virtual void EnterCaseFunctionCall([NotNull] MySqlParser.CaseFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>caseFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCaseFunctionCall([NotNull] MySqlParser.CaseFunctionCallContext context);
+	public virtual void ExitCaseFunctionCall([NotNull] MySqlParser.CaseFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>charFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCharFunctionCall([NotNull] MySqlParser.CharFunctionCallContext context);
+	public virtual void EnterCharFunctionCall([NotNull] MySqlParser.CharFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>charFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCharFunctionCall([NotNull] MySqlParser.CharFunctionCallContext context);
+	public virtual void ExitCharFunctionCall([NotNull] MySqlParser.CharFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>positionFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPositionFunctionCall([NotNull] MySqlParser.PositionFunctionCallContext context);
+	public virtual void EnterPositionFunctionCall([NotNull] MySqlParser.PositionFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>positionFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPositionFunctionCall([NotNull] MySqlParser.PositionFunctionCallContext context);
+	public virtual void ExitPositionFunctionCall([NotNull] MySqlParser.PositionFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>substrFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSubstrFunctionCall([NotNull] MySqlParser.SubstrFunctionCallContext context);
+	public virtual void EnterSubstrFunctionCall([NotNull] MySqlParser.SubstrFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>substrFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSubstrFunctionCall([NotNull] MySqlParser.SubstrFunctionCallContext context);
+	public virtual void ExitSubstrFunctionCall([NotNull] MySqlParser.SubstrFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>trimFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTrimFunctionCall([NotNull] MySqlParser.TrimFunctionCallContext context);
+	public virtual void EnterTrimFunctionCall([NotNull] MySqlParser.TrimFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>trimFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTrimFunctionCall([NotNull] MySqlParser.TrimFunctionCallContext context);
+	public virtual void ExitTrimFunctionCall([NotNull] MySqlParser.TrimFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>weightFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterWeightFunctionCall([NotNull] MySqlParser.WeightFunctionCallContext context);
+	public virtual void EnterWeightFunctionCall([NotNull] MySqlParser.WeightFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>weightFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitWeightFunctionCall([NotNull] MySqlParser.WeightFunctionCallContext context);
+	public virtual void ExitWeightFunctionCall([NotNull] MySqlParser.WeightFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>extractFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterExtractFunctionCall([NotNull] MySqlParser.ExtractFunctionCallContext context);
+	public virtual void EnterExtractFunctionCall([NotNull] MySqlParser.ExtractFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>extractFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitExtractFunctionCall([NotNull] MySqlParser.ExtractFunctionCallContext context);
+	public virtual void ExitExtractFunctionCall([NotNull] MySqlParser.ExtractFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>getFormatFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterGetFormatFunctionCall([NotNull] MySqlParser.GetFormatFunctionCallContext context);
+	public virtual void EnterGetFormatFunctionCall([NotNull] MySqlParser.GetFormatFunctionCallContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>getFormatFunctionCall</c>
 	/// labeled alternative in <see cref="MySqlParser.specificFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitGetFormatFunctionCall([NotNull] MySqlParser.GetFormatFunctionCallContext context);
+	public virtual void ExitGetFormatFunctionCall([NotNull] MySqlParser.GetFormatFunctionCallContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.caseFuncAlternative"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCaseFuncAlternative([NotNull] MySqlParser.CaseFuncAlternativeContext context);
+	public virtual void EnterCaseFuncAlternative([NotNull] MySqlParser.CaseFuncAlternativeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.caseFuncAlternative"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCaseFuncAlternative([NotNull] MySqlParser.CaseFuncAlternativeContext context);
+	public virtual void ExitCaseFuncAlternative([NotNull] MySqlParser.CaseFuncAlternativeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>levelWeightList</c>
 	/// labeled alternative in <see cref="MySqlParser.levelsInWeightString"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLevelWeightList([NotNull] MySqlParser.LevelWeightListContext context);
+	public virtual void EnterLevelWeightList([NotNull] MySqlParser.LevelWeightListContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>levelWeightList</c>
 	/// labeled alternative in <see cref="MySqlParser.levelsInWeightString"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLevelWeightList([NotNull] MySqlParser.LevelWeightListContext context);
+	public virtual void ExitLevelWeightList([NotNull] MySqlParser.LevelWeightListContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>levelWeightRange</c>
 	/// labeled alternative in <see cref="MySqlParser.levelsInWeightString"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLevelWeightRange([NotNull] MySqlParser.LevelWeightRangeContext context);
+	public virtual void EnterLevelWeightRange([NotNull] MySqlParser.LevelWeightRangeContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>levelWeightRange</c>
 	/// labeled alternative in <see cref="MySqlParser.levelsInWeightString"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLevelWeightRange([NotNull] MySqlParser.LevelWeightRangeContext context);
+	public virtual void ExitLevelWeightRange([NotNull] MySqlParser.LevelWeightRangeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.levelInWeightListElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLevelInWeightListElement([NotNull] MySqlParser.LevelInWeightListElementContext context);
+	public virtual void EnterLevelInWeightListElement([NotNull] MySqlParser.LevelInWeightListElementContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.levelInWeightListElement"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLevelInWeightListElement([NotNull] MySqlParser.LevelInWeightListElementContext context);
+	public virtual void ExitLevelInWeightListElement([NotNull] MySqlParser.LevelInWeightListElementContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.aggregateWindowedFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAggregateWindowedFunction([NotNull] MySqlParser.AggregateWindowedFunctionContext context);
+	public virtual void EnterAggregateWindowedFunction([NotNull] MySqlParser.AggregateWindowedFunctionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.aggregateWindowedFunction"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAggregateWindowedFunction([NotNull] MySqlParser.AggregateWindowedFunctionContext context);
+	public virtual void ExitAggregateWindowedFunction([NotNull] MySqlParser.AggregateWindowedFunctionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.scalarFunctionName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterScalarFunctionName([NotNull] MySqlParser.ScalarFunctionNameContext context);
+	public virtual void EnterScalarFunctionName([NotNull] MySqlParser.ScalarFunctionNameContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.scalarFunctionName"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitScalarFunctionName([NotNull] MySqlParser.ScalarFunctionNameContext context);
+	public virtual void ExitScalarFunctionName([NotNull] MySqlParser.ScalarFunctionNameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.passwordFunctionClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPasswordFunctionClause([NotNull] MySqlParser.PasswordFunctionClauseContext context);
+	public virtual void EnterPasswordFunctionClause([NotNull] MySqlParser.PasswordFunctionClauseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.passwordFunctionClause"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPasswordFunctionClause([NotNull] MySqlParser.PasswordFunctionClauseContext context);
+	public virtual void ExitPasswordFunctionClause([NotNull] MySqlParser.PasswordFunctionClauseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.functionArgs"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFunctionArgs([NotNull] MySqlParser.FunctionArgsContext context);
+	public virtual void EnterFunctionArgs([NotNull] MySqlParser.FunctionArgsContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.functionArgs"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFunctionArgs([NotNull] MySqlParser.FunctionArgsContext context);
+	public virtual void ExitFunctionArgs([NotNull] MySqlParser.FunctionArgsContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.functionArg"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFunctionArg([NotNull] MySqlParser.FunctionArgContext context);
+	public virtual void EnterFunctionArg([NotNull] MySqlParser.FunctionArgContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.functionArg"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFunctionArg([NotNull] MySqlParser.FunctionArgContext context);
+	public virtual void ExitFunctionArg([NotNull] MySqlParser.FunctionArgContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>isExpression</c>
 	/// labeled alternative in <see cref="MySqlParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIsExpression([NotNull] MySqlParser.IsExpressionContext context);
+	public virtual void EnterIsExpression([NotNull] MySqlParser.IsExpressionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>isExpression</c>
 	/// labeled alternative in <see cref="MySqlParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIsExpression([NotNull] MySqlParser.IsExpressionContext context);
+	public virtual void ExitIsExpression([NotNull] MySqlParser.IsExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>notExpression</c>
 	/// labeled alternative in <see cref="MySqlParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNotExpression([NotNull] MySqlParser.NotExpressionContext context);
+	public virtual void EnterNotExpression([NotNull] MySqlParser.NotExpressionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>notExpression</c>
 	/// labeled alternative in <see cref="MySqlParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNotExpression([NotNull] MySqlParser.NotExpressionContext context);
+	public virtual void ExitNotExpression([NotNull] MySqlParser.NotExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>logicalExpression</c>
 	/// labeled alternative in <see cref="MySqlParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLogicalExpression([NotNull] MySqlParser.LogicalExpressionContext context);
+	public virtual void EnterLogicalExpression([NotNull] MySqlParser.LogicalExpressionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>logicalExpression</c>
 	/// labeled alternative in <see cref="MySqlParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLogicalExpression([NotNull] MySqlParser.LogicalExpressionContext context);
+	public virtual void ExitLogicalExpression([NotNull] MySqlParser.LogicalExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>predicateExpression</c>
 	/// labeled alternative in <see cref="MySqlParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPredicateExpression([NotNull] MySqlParser.PredicateExpressionContext context);
+	public virtual void EnterPredicateExpression([NotNull] MySqlParser.PredicateExpressionContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>predicateExpression</c>
 	/// labeled alternative in <see cref="MySqlParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPredicateExpression([NotNull] MySqlParser.PredicateExpressionContext context);
+	public virtual void ExitPredicateExpression([NotNull] MySqlParser.PredicateExpressionContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>soundsLikePredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSoundsLikePredicate([NotNull] MySqlParser.SoundsLikePredicateContext context);
+	public virtual void EnterSoundsLikePredicate([NotNull] MySqlParser.SoundsLikePredicateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>soundsLikePredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSoundsLikePredicate([NotNull] MySqlParser.SoundsLikePredicateContext context);
+	public virtual void ExitSoundsLikePredicate([NotNull] MySqlParser.SoundsLikePredicateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>expressionAtomPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterExpressionAtomPredicate([NotNull] MySqlParser.ExpressionAtomPredicateContext context);
+	public virtual void EnterExpressionAtomPredicate([NotNull] MySqlParser.ExpressionAtomPredicateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>expressionAtomPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitExpressionAtomPredicate([NotNull] MySqlParser.ExpressionAtomPredicateContext context);
+	public virtual void ExitExpressionAtomPredicate([NotNull] MySqlParser.ExpressionAtomPredicateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>inPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterInPredicate([NotNull] MySqlParser.InPredicateContext context);
+	public virtual void EnterInPredicate([NotNull] MySqlParser.InPredicateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>inPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitInPredicate([NotNull] MySqlParser.InPredicateContext context);
+	public virtual void ExitInPredicate([NotNull] MySqlParser.InPredicateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>subqueryComparasionPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSubqueryComparasionPredicate([NotNull] MySqlParser.SubqueryComparasionPredicateContext context);
+	public virtual void EnterSubqueryComparasionPredicate([NotNull] MySqlParser.SubqueryComparasionPredicateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>subqueryComparasionPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSubqueryComparasionPredicate([NotNull] MySqlParser.SubqueryComparasionPredicateContext context);
+	public virtual void ExitSubqueryComparasionPredicate([NotNull] MySqlParser.SubqueryComparasionPredicateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>betweenPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBetweenPredicate([NotNull] MySqlParser.BetweenPredicateContext context);
+	public virtual void EnterBetweenPredicate([NotNull] MySqlParser.BetweenPredicateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>betweenPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBetweenPredicate([NotNull] MySqlParser.BetweenPredicateContext context);
+	public virtual void ExitBetweenPredicate([NotNull] MySqlParser.BetweenPredicateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>binaryComparasionPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBinaryComparasionPredicate([NotNull] MySqlParser.BinaryComparasionPredicateContext context);
+	public virtual void EnterBinaryComparasionPredicate([NotNull] MySqlParser.BinaryComparasionPredicateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>binaryComparasionPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBinaryComparasionPredicate([NotNull] MySqlParser.BinaryComparasionPredicateContext context);
+	public virtual void ExitBinaryComparasionPredicate([NotNull] MySqlParser.BinaryComparasionPredicateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>isNullPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIsNullPredicate([NotNull] MySqlParser.IsNullPredicateContext context);
+	public virtual void EnterIsNullPredicate([NotNull] MySqlParser.IsNullPredicateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>isNullPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIsNullPredicate([NotNull] MySqlParser.IsNullPredicateContext context);
+	public virtual void ExitIsNullPredicate([NotNull] MySqlParser.IsNullPredicateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>likePredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLikePredicate([NotNull] MySqlParser.LikePredicateContext context);
+	public virtual void EnterLikePredicate([NotNull] MySqlParser.LikePredicateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>likePredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLikePredicate([NotNull] MySqlParser.LikePredicateContext context);
+	public virtual void ExitLikePredicate([NotNull] MySqlParser.LikePredicateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>regexpPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRegexpPredicate([NotNull] MySqlParser.RegexpPredicateContext context);
+	public virtual void EnterRegexpPredicate([NotNull] MySqlParser.RegexpPredicateContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>regexpPredicate</c>
 	/// labeled alternative in <see cref="MySqlParser.predicate"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRegexpPredicate([NotNull] MySqlParser.RegexpPredicateContext context);
+	public virtual void ExitRegexpPredicate([NotNull] MySqlParser.RegexpPredicateContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>unaryExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUnaryExpressionAtom([NotNull] MySqlParser.UnaryExpressionAtomContext context);
+	public virtual void EnterUnaryExpressionAtom([NotNull] MySqlParser.UnaryExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>unaryExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUnaryExpressionAtom([NotNull] MySqlParser.UnaryExpressionAtomContext context);
+	public virtual void ExitUnaryExpressionAtom([NotNull] MySqlParser.UnaryExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>collateExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCollateExpressionAtom([NotNull] MySqlParser.CollateExpressionAtomContext context);
+	public virtual void EnterCollateExpressionAtom([NotNull] MySqlParser.CollateExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>collateExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCollateExpressionAtom([NotNull] MySqlParser.CollateExpressionAtomContext context);
+	public virtual void ExitCollateExpressionAtom([NotNull] MySqlParser.CollateExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>subqueryExpessionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSubqueryExpessionAtom([NotNull] MySqlParser.SubqueryExpessionAtomContext context);
+	public virtual void EnterSubqueryExpessionAtom([NotNull] MySqlParser.SubqueryExpessionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>subqueryExpessionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSubqueryExpessionAtom([NotNull] MySqlParser.SubqueryExpessionAtomContext context);
+	public virtual void ExitSubqueryExpessionAtom([NotNull] MySqlParser.SubqueryExpessionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>mysqlVariableExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMysqlVariableExpressionAtom([NotNull] MySqlParser.MysqlVariableExpressionAtomContext context);
+	public virtual void EnterMysqlVariableExpressionAtom([NotNull] MySqlParser.MysqlVariableExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>mysqlVariableExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMysqlVariableExpressionAtom([NotNull] MySqlParser.MysqlVariableExpressionAtomContext context);
+	public virtual void ExitMysqlVariableExpressionAtom([NotNull] MySqlParser.MysqlVariableExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>nestedExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNestedExpressionAtom([NotNull] MySqlParser.NestedExpressionAtomContext context);
+	public virtual void EnterNestedExpressionAtom([NotNull] MySqlParser.NestedExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>nestedExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNestedExpressionAtom([NotNull] MySqlParser.NestedExpressionAtomContext context);
+	public virtual void ExitNestedExpressionAtom([NotNull] MySqlParser.NestedExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>nestedRowExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNestedRowExpressionAtom([NotNull] MySqlParser.NestedRowExpressionAtomContext context);
+	public virtual void EnterNestedRowExpressionAtom([NotNull] MySqlParser.NestedRowExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>nestedRowExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNestedRowExpressionAtom([NotNull] MySqlParser.NestedRowExpressionAtomContext context);
+	public virtual void ExitNestedRowExpressionAtom([NotNull] MySqlParser.NestedRowExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>mathExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMathExpressionAtom([NotNull] MySqlParser.MathExpressionAtomContext context);
+	public virtual void EnterMathExpressionAtom([NotNull] MySqlParser.MathExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>mathExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMathExpressionAtom([NotNull] MySqlParser.MathExpressionAtomContext context);
+	public virtual void ExitMathExpressionAtom([NotNull] MySqlParser.MathExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>intervalExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIntervalExpressionAtom([NotNull] MySqlParser.IntervalExpressionAtomContext context);
+	public virtual void EnterIntervalExpressionAtom([NotNull] MySqlParser.IntervalExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>intervalExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIntervalExpressionAtom([NotNull] MySqlParser.IntervalExpressionAtomContext context);
+	public virtual void ExitIntervalExpressionAtom([NotNull] MySqlParser.IntervalExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>existsExpessionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterExistsExpessionAtom([NotNull] MySqlParser.ExistsExpessionAtomContext context);
+	public virtual void EnterExistsExpessionAtom([NotNull] MySqlParser.ExistsExpessionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>existsExpessionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitExistsExpessionAtom([NotNull] MySqlParser.ExistsExpessionAtomContext context);
+	public virtual void ExitExistsExpessionAtom([NotNull] MySqlParser.ExistsExpessionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>constantExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterConstantExpressionAtom([NotNull] MySqlParser.ConstantExpressionAtomContext context);
+	public virtual void EnterConstantExpressionAtom([NotNull] MySqlParser.ConstantExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>constantExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitConstantExpressionAtom([NotNull] MySqlParser.ConstantExpressionAtomContext context);
+	public virtual void ExitConstantExpressionAtom([NotNull] MySqlParser.ConstantExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>functionCallExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFunctionCallExpressionAtom([NotNull] MySqlParser.FunctionCallExpressionAtomContext context);
+	public virtual void EnterFunctionCallExpressionAtom([NotNull] MySqlParser.FunctionCallExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>functionCallExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFunctionCallExpressionAtom([NotNull] MySqlParser.FunctionCallExpressionAtomContext context);
+	public virtual void ExitFunctionCallExpressionAtom([NotNull] MySqlParser.FunctionCallExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>binaryExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBinaryExpressionAtom([NotNull] MySqlParser.BinaryExpressionAtomContext context);
+	public virtual void EnterBinaryExpressionAtom([NotNull] MySqlParser.BinaryExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>binaryExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBinaryExpressionAtom([NotNull] MySqlParser.BinaryExpressionAtomContext context);
+	public virtual void ExitBinaryExpressionAtom([NotNull] MySqlParser.BinaryExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>fullColumnNameExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFullColumnNameExpressionAtom([NotNull] MySqlParser.FullColumnNameExpressionAtomContext context);
+	public virtual void EnterFullColumnNameExpressionAtom([NotNull] MySqlParser.FullColumnNameExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>fullColumnNameExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFullColumnNameExpressionAtom([NotNull] MySqlParser.FullColumnNameExpressionAtomContext context);
+	public virtual void ExitFullColumnNameExpressionAtom([NotNull] MySqlParser.FullColumnNameExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>bitExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBitExpressionAtom([NotNull] MySqlParser.BitExpressionAtomContext context);
+	public virtual void EnterBitExpressionAtom([NotNull] MySqlParser.BitExpressionAtomContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by the <c>bitExpressionAtom</c>
 	/// labeled alternative in <see cref="MySqlParser.expressionAtom"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBitExpressionAtom([NotNull] MySqlParser.BitExpressionAtomContext context);
+	public virtual void ExitBitExpressionAtom([NotNull] MySqlParser.BitExpressionAtomContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.unaryOperator"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterUnaryOperator([NotNull] MySqlParser.UnaryOperatorContext context);
+	public virtual void EnterUnaryOperator([NotNull] MySqlParser.UnaryOperatorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.unaryOperator"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitUnaryOperator([NotNull] MySqlParser.UnaryOperatorContext context);
+	public virtual void ExitUnaryOperator([NotNull] MySqlParser.UnaryOperatorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.comparisonOperator"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterComparisonOperator([NotNull] MySqlParser.ComparisonOperatorContext context);
+	public virtual void EnterComparisonOperator([NotNull] MySqlParser.ComparisonOperatorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.comparisonOperator"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitComparisonOperator([NotNull] MySqlParser.ComparisonOperatorContext context);
+	public virtual void ExitComparisonOperator([NotNull] MySqlParser.ComparisonOperatorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.logicalOperator"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLogicalOperator([NotNull] MySqlParser.LogicalOperatorContext context);
+	public virtual void EnterLogicalOperator([NotNull] MySqlParser.LogicalOperatorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.logicalOperator"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLogicalOperator([NotNull] MySqlParser.LogicalOperatorContext context);
+	public virtual void ExitLogicalOperator([NotNull] MySqlParser.LogicalOperatorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.bitOperator"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBitOperator([NotNull] MySqlParser.BitOperatorContext context);
+	public virtual void EnterBitOperator([NotNull] MySqlParser.BitOperatorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.bitOperator"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBitOperator([NotNull] MySqlParser.BitOperatorContext context);
+	public virtual void ExitBitOperator([NotNull] MySqlParser.BitOperatorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.mathOperator"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMathOperator([NotNull] MySqlParser.MathOperatorContext context);
+	public virtual void EnterMathOperator([NotNull] MySqlParser.MathOperatorContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.mathOperator"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMathOperator([NotNull] MySqlParser.MathOperatorContext context);
+	public virtual void ExitMathOperator([NotNull] MySqlParser.MathOperatorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.charsetNameBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterCharsetNameBase([NotNull] MySqlParser.CharsetNameBaseContext context);
+	public virtual void EnterCharsetNameBase([NotNull] MySqlParser.CharsetNameBaseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.charsetNameBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitCharsetNameBase([NotNull] MySqlParser.CharsetNameBaseContext context);
+	public virtual void ExitCharsetNameBase([NotNull] MySqlParser.CharsetNameBaseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.transactionLevelBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterTransactionLevelBase([NotNull] MySqlParser.TransactionLevelBaseContext context);
+	public virtual void EnterTransactionLevelBase([NotNull] MySqlParser.TransactionLevelBaseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.transactionLevelBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitTransactionLevelBase([NotNull] MySqlParser.TransactionLevelBaseContext context);
+	public virtual void ExitTransactionLevelBase([NotNull] MySqlParser.TransactionLevelBaseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.privilegesBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPrivilegesBase([NotNull] MySqlParser.PrivilegesBaseContext context);
+	public virtual void EnterPrivilegesBase([NotNull] MySqlParser.PrivilegesBaseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.privilegesBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPrivilegesBase([NotNull] MySqlParser.PrivilegesBaseContext context);
+	public virtual void ExitPrivilegesBase([NotNull] MySqlParser.PrivilegesBaseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.intervalTypeBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIntervalTypeBase([NotNull] MySqlParser.IntervalTypeBaseContext context);
+	public virtual void EnterIntervalTypeBase([NotNull] MySqlParser.IntervalTypeBaseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.intervalTypeBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIntervalTypeBase([NotNull] MySqlParser.IntervalTypeBaseContext context);
+	public virtual void ExitIntervalTypeBase([NotNull] MySqlParser.IntervalTypeBaseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.dataTypeBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterDataTypeBase([NotNull] MySqlParser.DataTypeBaseContext context);
+	public virtual void EnterDataTypeBase([NotNull] MySqlParser.DataTypeBaseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.dataTypeBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitDataTypeBase([NotNull] MySqlParser.DataTypeBaseContext context);
+	public virtual void ExitDataTypeBase([NotNull] MySqlParser.DataTypeBaseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.keywordsCanBeId"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterKeywordsCanBeId([NotNull] MySqlParser.KeywordsCanBeIdContext context);
+	public virtual void EnterKeywordsCanBeId([NotNull] MySqlParser.KeywordsCanBeIdContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.keywordsCanBeId"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitKeywordsCanBeId([NotNull] MySqlParser.KeywordsCanBeIdContext context);
+	public virtual void ExitKeywordsCanBeId([NotNull] MySqlParser.KeywordsCanBeIdContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MySqlParser.functionNameBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterFunctionNameBase([NotNull] MySqlParser.FunctionNameBaseContext context);
+	public virtual void EnterFunctionNameBase([NotNull] MySqlParser.FunctionNameBaseContext context) { }
 	/// <summary>
 	/// Exit a parse tree produced by <see cref="MySqlParser.functionNameBase"/>.
+	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitFunctionNameBase([NotNull] MySqlParser.FunctionNameBaseContext context);
+	public virtual void ExitFunctionNameBase([NotNull] MySqlParser.FunctionNameBaseContext context) { }
+
+	/// <inheritdoc/>
+	/// <remarks>The default implementation does nothing.</remarks>
+	public virtual void EnterEveryRule([NotNull] ParserRuleContext context) { }
+	/// <inheritdoc/>
+	/// <remarks>The default implementation does nothing.</remarks>
+	public virtual void ExitEveryRule([NotNull] ParserRuleContext context) { }
+	/// <inheritdoc/>
+	/// <remarks>The default implementation does nothing.</remarks>
+	public virtual void VisitTerminal([NotNull] ITerminalNode node) { }
+	/// <inheritdoc/>
+	/// <remarks>The default implementation does nothing.</remarks>
+	public virtual void VisitErrorNode([NotNull] IErrorNode node) { }
 }
+} // namespace MySQLToCSharp.Parsers.MySql
