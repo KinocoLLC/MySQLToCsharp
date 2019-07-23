@@ -13,6 +13,6 @@ services:
     volumes:
       - ./antlr/:/app/
       - ./MySQLToCSharp/Parsers/MySql/:/out/
-    command: -Dlanguage=CSharp /app/MySqlParser.g4 -o /out/ -package MySQLToCSharp.Parsers.MySql
+    command: -Dlanguage=CSharp /app/MySqlParser.g4 -o /out/ -package MySQLToCSharp.Parsers.MySql -visitor
     depends_on:
       - lexer

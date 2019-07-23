@@ -9,7 +9,7 @@ namespace MySQLToCSharp
         static void Main(string[] args)
         {
             var listener = new MySqlParserBaseListener();
-            Parser.Parse("select * from hoge;".ToUpper(), listener);
+            Parser.Parse("select * from hoge;", listener);
         }
     }
 }
