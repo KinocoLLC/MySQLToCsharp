@@ -35,13 +35,12 @@ namespace MySQLToCSharp
 
             // listener pattern
             // TODO: implement listener
-            var _listener = new MySqlParserBaseListener();
-            walker.Walk(_listener, root);
-            
-            // visitor pattern
-            // TODO: implement visitor
-            var visitor = new MySqlParserBaseVisitor<string>();
-            Console.WriteLine(visitor.Visit(root));
+            walker.Walk(listener, root);
+
+            //// visitor pattern
+            //// TODO: implement visitor
+            //var visitor = new MySqlParserBaseVisitor<string>();
+            //Console.WriteLine(visitor.Visit(root));
         }
     }
 }
