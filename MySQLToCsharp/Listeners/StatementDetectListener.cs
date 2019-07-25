@@ -1,7 +1,7 @@
 ﻿using Antlr4.Runtime.Misc;
 using MySQLToCSharp.Parsers.MySql;
 
-namespace MySQLToCSharp
+namespace MySQLToCSharp.Listeners
 {
     partial class Program
     {
