@@ -1,4 +1,5 @@
 ﻿using Antlr4.Runtime.Tree;
+using MySQLToCsharp.Listeners;
 using System;
 
 namespace MySQLToCSharp
@@ -12,7 +13,7 @@ namespace MySQLToCSharp
             parser.Parse("select * from hoge where a = 'b';", listener);
             var hoge = listener.IsSelectStatementFound;
 
-            var listener2 = new StatementDetectListener();
+            var createTableListener = new CreateTableStatementDetectListener();
             var parser2 = new Parser();
             parser2.Parse(@"CREATE TABLE `Achievements` (
 	`Id` BIGINT(20) NOT NULL AUTO_INCREMENT,
@@ -28,8 +29,8 @@ namespace MySQLToCSharp
 COLLATE = 'utf8mb4_general_ci'
 ENGINE = InnoDB
 AUTO_INCREMENT = 9
-;", listener2);
-            var fuga = listener.IsCreateTableStatement;
+;", createTableListener);
+            var _ = createTableListener.TableDefinition;
         }
     }
 }

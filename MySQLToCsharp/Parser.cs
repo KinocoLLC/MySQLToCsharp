@@ -14,14 +14,6 @@ namespace MySQLToCSharp
         void PrintTokens();
     }
 
-    // https://saumitra.me/blog/antlr4-visitor-vs-listener-pattern/
-    // https://github.com/JaCraig/SQLParser/blob/master/SQLParser/Parser.cs
-    // https://github.com/antlr/antlr4/blob/master/doc/csharp-target.md
-    // https://github.com/antlr/antlr4/tree/master/runtime/CSharp
-    // https://github.com/sharwell/antlr4cs/blob/master/Readme.md
-    // https://github.com/unosviluppatore/antlr-mega-tutorial/blob/master/antlr-csharp/README.md
-    // https://github.com/unosviluppatore/antlr-mega-tutorial/tree/master/antlr-csharp/antlr-csharp
-    // https://stackoverflow.com/questions/49769147/parsing-mysql-using-antlr4-simple-example
     public class Parser : IParser
     {
         public IParseTreeListener[] Listeners { get; private set; }
