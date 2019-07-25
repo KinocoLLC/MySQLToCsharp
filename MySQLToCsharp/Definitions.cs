@@ -12,7 +12,7 @@ namespace MySQLToCsharp
     public class MySqlTableDefinition
     {
         public string TableName { get; set; }
-        public MySqlColumnDefinition[] ColumnDefinition { get; set; }
+        public MySqlColumnDefinition[] ColumnDefinitions { get; set; }
         public MySqlIndexDefinition PrimaryKey { get; set; }
         public IList<MySqlIndexDefinition> IndexKeys { get; set; }
         public string CollationName { get; set; }
@@ -31,12 +31,18 @@ namespace MySQLToCsharp
 
     public class MySqlColumnDefinition
     {
+        public int Order { get; set; }
         public string Name { get; set; }
         public MySqlColumnDataDefinition Data { get; set; }
         public bool NotNull { get; set; }
         public bool AutoIncrement { get; set; }
         public bool HasDefault { get; set; }
         public string DefaultValue { get; set; }
+        public bool IsPrimaryKey { get; set; }
+        public MySqlIndexDefinition PrimaryKeyReference { get; set; }
+
+
+        //TODO: UniqueKey
 
         public static (bool success, MySqlColumnDefinition definition) Extract(ColumnDeclarationContext context)
         {

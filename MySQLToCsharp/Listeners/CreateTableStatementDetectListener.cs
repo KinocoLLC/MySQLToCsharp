@@ -37,11 +37,15 @@ namespace MySQLToCsharp.Listeners
             var createDefinitions = context.GetChild<CreateDefinitionsContext>(0);
 
             // column
-            TableDefinition.ColumnDefinition = Enumerable.Range(0, createDefinitions.ChildCount)
+            TableDefinition.ColumnDefinitions = Enumerable.Range(0, createDefinitions.ChildCount)
                 .Select(x => createDefinitions.GetChild<ColumnDeclarationContext>(x))
                 .Select(x => MySqlColumnDefinition.Extract(x))
                 .Where(x => x.success)
-                .Select(x => x.definition)
+                .Select((x, i) =>
+                {
+                    var def = x.definition.Order = i;
+                    return x.definition;
+                })
                 .ToArray();
 
             // debug
@@ -64,6 +68,17 @@ namespace MySQLToCsharp.Listeners
             if (extract.success)
             {
                 TableDefinition.PrimaryKey = extract.definition;
+
+                // map PK info to PK Column
+                var indexKeyNames = TableDefinition.PrimaryKey.Index.Select(x => x.IndexKey).ToArray();
+                foreach (var column in TableDefinition.ColumnDefinitions)
+                {
+                    if (indexKeyNames.Contains(column.Name))
+                    {
+                        column.IsPrimaryKey = true;
+                        column.PrimaryKeyReference = TableDefinition.PrimaryKey;
+                    }
+                }
             }
         }
 
