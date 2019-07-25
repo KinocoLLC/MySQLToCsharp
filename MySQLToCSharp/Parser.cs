@@ -1,14 +1,19 @@
 ﻿using Antlr4.Runtime;
-using Antlr4.Runtime.Atn;
 using Antlr4.Runtime.Tree;
 using MySQLToCSharp.Parsers.MySql;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace MySQLToCSharp
 {
+    public interface IParser
+    {
+        IParseTreeListener[] Listeners { get; }
+
+        void Parse(string query, IParseTreeListener listener);
+        void Parse(string query, IParseTreeListener[] listeners);
+        void PrintTokens();
+    }
+
     // https://saumitra.me/blog/antlr4-visitor-vs-listener-pattern/
     // https://github.com/JaCraig/SQLParser/blob/master/SQLParser/Parser.cs
     // https://github.com/antlr/antlr4/blob/master/doc/csharp-target.md
@@ -17,11 +22,18 @@ namespace MySQLToCSharp
     // https://github.com/unosviluppatore/antlr-mega-tutorial/blob/master/antlr-csharp/README.md
     // https://github.com/unosviluppatore/antlr-mega-tutorial/tree/master/antlr-csharp/antlr-csharp
     // https://stackoverflow.com/questions/49769147/parsing-mysql-using-antlr4-simple-example
-    public static class Parser
+    public class Parser : IParser
     {
-        public static void Parse(string input, IParseTreeListener listener)
+        public IParseTreeListener[] Listeners { get; private set; }
+
+        private MySqlParser.SqlStatementContext context;
+
+        public void Parse(string query, IParseTreeListener listener)
+            => Parse(query, new[] { listener });
+
+        public void Parse(string query, IParseTreeListener[] listeners)
         {
-            ICharStream stream = CharStreams.fromstring(input);
+            ICharStream stream = CharStreams.fromstring(query);
             stream = new ToUpperStream(stream);
             ITokenSource lexer = new MySqlLexer(stream);
             ITokenStream tokens = new CommonTokenStream(lexer);
@@ -29,18 +41,80 @@ namespace MySQLToCSharp
             {
                 BuildParseTree = true,
             };
-            var root = parser.dmlStatement();
-            Console.WriteLine(root.ToStringTree());
-            var walker = new ParseTreeWalker();
+
+            // both is possible
+            this.context = parser.sqlStatement();
+            //var statement = parser.dmlStatement();
+            //var statement = parser.selectStatement();
+
+            // lisp like tree result
+            // ([] ([699] ([2948 699] select ([3401 2948 699] *) ([3405 2948 699] from ([3580 3405 2948 699] ([3242 3580 3405 2948 699] ([3250 3242 3580 3405 2948 699] ([3269 3250 3242 3580 3405 2948 699] ([5234 3269 3250 3242 3580 3405 2948 699] ([5228 5234 3269 3250 3242 3580 3405 2948 699] ([5312 5228 5234 3269 3250 3242 3580 3405 2948 699] hoge))))))) where ([3582 3405 2948 699] ([5986 3582 3405 2948 699] ([592 5986 3582 3405 2948 699] ([6003 592 5986 3582 3405 2948 699] ([6067 6003 592 5986 3582 3405 2948 699] ([5236 6067 6003 592 5986 3582 3405 2948 699] ([5312 5236 6067 6003 592 5986 3582 3405 2948 699] a))))) ([6006 5986 3582 3405 2948 699] =) ([6007 5986 3582 3405 2948 699] ([6003 6007 5986 3582 3405 2948 699] ([6066 6003 6007 5986 3582 3405 2948 699] ([5376 6066 6003 6007 5986 3582 3405 2948 699] 'b'))))))))))
+            // Console.WriteLine(statement.ToStringTree());
+
+            // just an text result
+            // select*fromhogewherea='b'
+            //Console.WriteLine(statement.GetChild(0).GetText());
 
             // listener pattern
-            // TODO: implement listener
-            walker.Walk(listener, root);
+            RegisterListener(listeners);
 
             //// visitor pattern
             //// TODO: implement visitor
             //var visitor = new MySqlParserBaseVisitor<string>();
             //Console.WriteLine(visitor.Visit(root));
+        }
+
+        public void PrintTokens()
+        {
+            if (context == null) throw new ArgumentNullException($"missing {nameof(context)}. Please run Parse(qeury) before register listener.");
+            DrilldownToken(this.context, this.context.Stop, s => Console.WriteLine(s));
+        }
+
+        private void RegisterListener(IParseTreeListener[] listeners)
+        {
+            if (context == null) throw new ArgumentNullException($"missing {nameof(context)}. Please run Parse(qeury) before register listener.");
+            Listeners = listeners;
+
+            // listener pattern
+            var walker = new ParseTreeWalker();
+            foreach (var item in Listeners)
+            {
+                walker.Walk(item, context);
+            }
+        }
+
+        /// <summary>
+        /// Handle each token
+        /// </summary>
+        /// <param name="parserRule"></param>
+        /// <param name="stop"></param>
+        /// <param name="action"></param>
+        private static void DrilldownToken(IParseTree parserRule, IToken stop, Action<string> action)
+        {
+            HandleToken(parserRule, stop, action);
+            action(stop.Text);
+        }
+
+        /// <summary>
+        /// Recursively drill down child and act to current token
+        /// </summary>
+        /// <param name="parserRule"></param>
+        /// <param name="stop"></param>
+        private static void HandleToken(IParseTree parserRule, IToken stop, Action<string> action)
+        {
+            for (var i = 0; i < parserRule.ChildCount; i++)
+            {
+                var child = parserRule.GetChild(i);
+                if (child == null) continue;
+                if (i + 1 == parserRule.ChildCount)
+                {
+                    HandleToken(child, stop, action);
+                }
+                else
+                {
+                    action(child.GetText());
+                }
+            }
         }
     }
 }
