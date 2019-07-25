@@ -11,7 +11,7 @@ namespace MySQLToCSharp
 
         void Parse(string query, IParseTreeListener listener);
         void Parse(string query, IParseTreeListener[] listeners);
-        void PrintTokens();
+        void PrintTokens(bool showTypeHint);
     }
 
     public class Parser : IParser
@@ -34,12 +34,12 @@ namespace MySQLToCSharp
                 BuildParseTree = true,
             };
 
-            // both is possible
+            // both is possible, let's detect every type of sql
             this.context = parser.sqlStatement();
             //var statement = parser.dmlStatement();
             //var statement = parser.selectStatement();
 
-            // lisp like tree result
+            // lisp like tree result will shown with `ToStringTree()`
             // ([] ([699] ([2948 699] select ([3401 2948 699] *) ([3405 2948 699] from ([3580 3405 2948 699] ([3242 3580 3405 2948 699] ([3250 3242 3580 3405 2948 699] ([3269 3250 3242 3580 3405 2948 699] ([5234 3269 3250 3242 3580 3405 2948 699] ([5228 5234 3269 3250 3242 3580 3405 2948 699] ([5312 5228 5234 3269 3250 3242 3580 3405 2948 699] hoge))))))) where ([3582 3405 2948 699] ([5986 3582 3405 2948 699] ([592 5986 3582 3405 2948 699] ([6003 592 5986 3582 3405 2948 699] ([6067 6003 592 5986 3582 3405 2948 699] ([5236 6067 6003 592 5986 3582 3405 2948 699] ([5312 5236 6067 6003 592 5986 3582 3405 2948 699] a))))) ([6006 5986 3582 3405 2948 699] =) ([6007 5986 3582 3405 2948 699] ([6003 6007 5986 3582 3405 2948 699] ([6066 6003 6007 5986 3582 3405 2948 699] ([5376 6066 6003 6007 5986 3582 3405 2948 699] 'b'))))))))))
             // Console.WriteLine(statement.ToStringTree());
 
@@ -50,17 +50,29 @@ namespace MySQLToCSharp
             // listener pattern
             RegisterListener(listeners);
 
-            //// visitor pattern
-            //// TODO: implement visitor
+            // visitor pattern (not using but if needed)
+            // TODO: implement visitor
             //var visitor = new MySqlParserBaseVisitor<string>();
             //Console.WriteLine(visitor.Visit(root));
         }
 
-        public void PrintTokens()
+        public void PrintTokens(bool showTypeHint = false)
         {
             if (context == null) throw new ArgumentNullException($"missing {nameof(context)}. Please run Parse(qeury) before register listener.");
-            DrilldownToken(this.context, this.context.Stop, s => Console.WriteLine(s));
+            Action<Type, string> action = null;
+            if (showTypeHint)
+            {
+                action = (t, s) => Console.WriteLine($"{t.Name}: {s}");
+            }
+            else
+            {
+                action = (t, s) => Console.WriteLine(s);
+            }
+
+            DrilldownToken(this.context, this.context.Stop, (t, s) => action(t, s));
         }
+
+        #region Debug
 
         private void RegisterListener(IParseTreeListener[] listeners)
         {
@@ -81,10 +93,10 @@ namespace MySQLToCSharp
         /// <param name="parserRule"></param>
         /// <param name="stop"></param>
         /// <param name="action"></param>
-        private static void DrilldownToken(IParseTree parserRule, IToken stop, Action<string> action)
+        private static void DrilldownToken(IParseTree parserRule, IToken stop, Action<Type, string> action)
         {
             HandleToken(parserRule, stop, action);
-            action(stop.Text);
+            action(stop.GetType(), stop.Text);
         }
 
         /// <summary>
@@ -92,7 +104,7 @@ namespace MySQLToCSharp
         /// </summary>
         /// <param name="parserRule"></param>
         /// <param name="stop"></param>
-        private static void HandleToken(IParseTree parserRule, IToken stop, Action<string> action)
+        private static void HandleToken(IParseTree parserRule, IToken stop, Action<Type, string> action)
         {
             for (var i = 0; i < parserRule.ChildCount; i++)
             {
@@ -104,9 +116,10 @@ namespace MySQLToCSharp
                 }
                 else
                 {
-                    action(child.GetText());
+                    action(child.GetType(), child.GetText());
                 }
             }
         }
+        #endregion
     }
 }

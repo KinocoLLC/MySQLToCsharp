@@ -10,6 +10,9 @@ using static MySQLToCSharp.Parsers.MySql.MySqlParser;
 
 namespace MySQLToCsharp.Listeners
 {
+    /// <summary>
+    /// Listener to parse CreateTable sql into <see cref="MySqlTableDefinition"/>
+    /// </summary>
     class CreateTableStatementDetectListener : MySqlParserBaseListener
     {
         public bool IsTargetStatement { get; private set; }
@@ -33,29 +36,19 @@ namespace MySQLToCsharp.Listeners
             // table definitions
             var createDefinitions = context.GetChild<CreateDefinitionsContext>(0);
 
-            // debug
-            // GetChildlen(createDefinitions);
-            // var column = definition.GetChild<ColumnDeclarationContext>(0);
-            // var count = GetChildCount<CreateDefinitionsContext, ColumnDeclarationContext>(definition);
-            // GetChildlen(column);
-
             // column
             TableDefinition.ColumnDefinition = Enumerable.Range(0, createDefinitions.ChildCount)
                 .Select(x => createDefinitions.GetChild<ColumnDeclarationContext>(x))
                 .Select(x => MySqlColumnDefinition.Extract(x))
                 .Where(x => x.success)
-                .Select(x => x.columnDefinition)
+                .Select(x => x.definition)
                 .ToArray();
 
-            //GetChildlen(createDefinitions);
-
-            // index
-            // IndexDeclarationContext
-
-
-            // collation
-
-            // engine
+            // debug
+            // GetChildlen(createDefinitions);
+            // var column = definition.GetChild<ColumnDeclarationContext>(0);
+            // var count = GetChildCount<CreateDefinitionsContext, ColumnDeclarationContext>(definition);
+            // GetChildlen(column);
         }
 
         /// <summary>
@@ -67,10 +60,11 @@ namespace MySQLToCsharp.Listeners
             base.EnterPrimaryKeyTableConstraint(context);
 
             // primary key (pk)
-            //GetChildlen(context);
-            var pk = context.GetIndexNames();
-            var pkNames = pk.Select(x => x.RemoveBackQuote().RemoveParenthesis()).ToArray();
-            TableDefinition.PrimaryKeyColumns = pkNames;
+            var extract = MySqlIndexDefinition.ExtractPrimaryKey(context);
+            if (extract.success)
+            {
+                TableDefinition.PrimaryKey = extract.definition;
+            }
         }
 
         /// <summary>
@@ -83,7 +77,37 @@ namespace MySQLToCsharp.Listeners
         public override void EnterIndexDeclaration([NotNull] IndexDeclarationContext context)
         {
             base.EnterIndexDeclaration(context);
-            GetChildlen(context, "indexDeclaration: ");
+
+            // index
+            var extract = MySqlIndexDefinition.ExtractSecondaryIndex(context);
+            if (extract.success)
+            {
+                MySqlIndexDefinition index = extract.definition;
+                TableDefinition.IndexKeys.Add(index);
+            }
+        }
+
+        /// <summary>
+        /// Listener for Collation detection
+        /// </summary>
+        /// <param name="context"></param>
+        public override void EnterCollationName([NotNull] CollationNameContext context)
+        {
+            base.EnterCollationName(context);
+            var name = context.GetText();
+            TableDefinition.CollationName = name?.RemoveSingleQuote();
+        }
+
+        /// <summary>
+        /// Listener for Engine detection
+        /// </summary>
+        /// <param name="context"></param>
+        public override void EnterTableOptionEngine([NotNull] TableOptionEngineContext context)
+        {
+            base.EnterTableOptionEngine(context);
+            var engine = context.GetChild<EngineNameContext>();
+            var name = engine.GetText();
+            TableDefinition.Engine = name;
         }
 
         #region debug method

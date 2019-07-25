@@ -1,14 +1,33 @@
-﻿using Antlr4.Runtime.Tree;
+﻿using Antlr4.Runtime;
+using Antlr4.Runtime.Tree;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using static MySQLToCSharp.Parsers.MySql.MySqlParser;
 
 namespace MySQLToCsharp
 {
+    public static class ParseRuleContextExtensions
+    {
+        /// <summary>
+        /// proxy to GetChild<T>(0)
+        /// </summary>
+        /// <remarks>
+        /// I don't want specify GetChild<T>(0) everytime.
+        /// </remarks>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static T GetChild<T>(this ParserRuleContext context) where T : IParseTree
+            => context.GetChild<T>(0);
+    }
+
     public static class PrimaryKeyTableConstraintContextExtensions
     {
+        /// <summary>
+        /// Get PrimaryKey names from context.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public static string[] GetIndexNames(this PrimaryKeyTableConstraintContext context)
         {
             if (context == null) throw new ArgumentOutOfRangeException($"{nameof(context)} is null");
@@ -29,6 +48,11 @@ namespace MySQLToCsharp
     }
     public static class ColumnDefinitionContextExtensions
     {
+        /// <summary>
+        /// Get Column detail from context
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public static (string dataTypeName, int? dataLength, bool unsigned) GetColumnDataDefinition(this ColumnDefinitionContext context)
         {
             if (context == null) throw new ArgumentOutOfRangeException($"{nameof(context)} is null");
@@ -41,7 +65,7 @@ namespace MySQLToCsharp
             {
                 // signed / unsigned
                 var signed = dataType.GetChild<TerminalNodeImpl>(1);
-                unsigned = signed.GetText() == "UNSIGNED";
+                unsigned = signed.GetText() == "UNSIGNED"; // MUST BE
             }
 
             int? dataLength = null;
