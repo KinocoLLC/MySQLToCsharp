@@ -39,14 +39,6 @@ namespace MySQLToCsharp
         }
     }
 
-    public class MySqlColumnDataDefinition
-    {
-        //TODO: 型コンバーターかませる
-        public string DataType { get; set; }
-        public int? DataLength { get; set; }
-        public bool IsUnsigned { get; set; }
-    }
-
     public class MySqlColumnDefinition
     {
         public int Order { get; set; }
@@ -56,8 +48,10 @@ namespace MySQLToCsharp
         public bool AutoIncrement { get; set; }
         public bool HasDefault { get; set; }
         public string DefaultValue { get; set; }
+        public GeneratedColumnDefinition GeneratedColumn { get; set; }
+
         // key reference
-        public MySqlKeyDefinition PrimaryKeyReference { get; private set; }
+        public MySqlKeyDefinition PrimaryKeyReference { get; set; }
         public ISet<MySqlKeyDefinition> UniqueKeysReference { get; private set; }
         public ISet<MySqlKeyDefinition> IndexKeysReference { get; private set; }
 
@@ -77,7 +71,7 @@ namespace MySQLToCsharp
 
             // BITINT(20): DimensionDataTypeContext
             columnDefinition.Data = new MySqlColumnDataDefinition();
-            (columnDefinition.Data.DataType, columnDefinition.Data.DataLength, columnDefinition.Data.IsUnsigned) = definitionContext.GetColumnDataDefinition();
+            (columnDefinition.Data.DataType, columnDefinition.Data.DataLength, columnDefinition.Data.IsUnsigned) = definitionContext.ExtractColumnDataDefinition();
 
             // NOTNULL: NullColumnConstraintContext
             var notnull = definitionContext.GetChild<NullColumnConstraintContext>();
@@ -91,6 +85,12 @@ namespace MySQLToCsharp
             var defaultValue = definitionContext.GetChild<DefaultColumnConstraintContext>();
             columnDefinition.HasDefault = defaultValue != null;
             columnDefinition.DefaultValue = defaultValue?.GetText()?.RemoveDefaultString();
+
+            // GeneratedColumnContext
+            var generatedColumnConstraintContext = definitionContext.GetChild<GeneratedColumnConstraintContext>();
+            columnDefinition.GeneratedColumn = GeneratedColumnDefinition.ExtractGeneratedColumnDefinition(generatedColumnConstraintContext);
+
+            //TODO: Foreign Key 対応
 
             return (true, columnDefinition);
         }
@@ -111,6 +111,55 @@ namespace MySQLToCsharp
                 IndexKeysReference = new HashSet<MySqlKeyDefinition>();
             }
             IndexKeysReference.Add(index);
+        }
+    }
+
+    public class MySqlColumnDataDefinition
+    {
+        //TODO: 型コンバーターかませる
+        public string DataType { get; set; }
+        public int? DataLength { get; set; }
+        public bool IsUnsigned { get; set; }
+    }
+
+    /// <summary>
+    /// Generated Column info https://dev.mysql.com/doc/refman/5.7/en/create-table.html#create-table-generated-columns
+    /// </summary>
+    public class GeneratedColumnDefinition
+    {
+        public bool Always { get; set; }
+        public string Statement { get; set; }
+        /// <summary>
+        /// STORED or VIRTUAL
+        /// </summary>
+        public bool IsStored { get; set; }
+
+        /// <summary>
+        /// Get Generated Column detail
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static GeneratedColumnDefinition ExtractGeneratedColumnDefinition(GeneratedColumnConstraintContext context)
+        {
+            // Get Generated Column detail: "GENERATEDALWAYSAS(hex(id))STORED"
+            if (context == null) return null;
+
+            var predicateExpressionContext = context.GetChild<PredicateExpressionContext>();
+            var generatedElements = Enumerable.Range(0, context.ChildCount)
+                .Select(x => context.GetChild(x))
+                .Select(x => x.GetText())
+                .ToArray();
+            var isAlways = generatedElements.Contains("ALWAYS");
+            var isStored = generatedElements.Contains("STORED");
+
+            var statement = predicateExpressionContext.GetText();
+            var generatedColumn = new GeneratedColumnDefinition()
+            {
+                Always = isAlways,
+                IsStored = isStored,
+                Statement = statement,
+            };
+            return generatedColumn;
         }
     }
 

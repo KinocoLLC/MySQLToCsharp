@@ -53,11 +53,29 @@ namespace MySQLToCsharp
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static (string dataTypeName, int? dataLength, bool unsigned) GetColumnDataDefinition(this ColumnDefinitionContext context)
+        public static (string dataTypeName, int? dataLength, bool unsigned) ExtractColumnDataDefinition(this ColumnDefinitionContext context)
         {
             if (context == null) throw new ArgumentOutOfRangeException($"{nameof(context)} is null");
 
-            var dataType = context.GetChild<DimensionDataTypeContext>(0);
+            // Normal route: id binary(16) NOT NULL
+            var dimensionDataContext = context.GetChild<DimensionDataTypeContext>(0);
+            if (dimensionDataContext != null)
+            {
+                return ExtractColumnData(dimensionDataContext);
+            }
+
+            // get dimension data from string: char(32)
+            var stringDataContext = context.GetChild<StringDataTypeContext>(0);
+            if (stringDataContext != null)
+            {
+                return ExtractColumnData(stringDataContext);
+            }
+
+            throw new ArgumentOutOfRangeException($"Could not retrieve column detail from {nameof(context)}");
+        }
+
+        private static (string dataTypeName, int? dataLength, bool unsigned) ExtractColumnData(ParserRuleContext dataType)
+        {
             var dataName = dataType.GetChild<TerminalNodeImpl>(0);
             var dataTypeName = dataName.GetText();
             var unsigned = false;
