@@ -43,7 +43,7 @@ namespace MySQLToCsharp.Listeners
                 .Where(x => x.success)
                 .Select((x, i) =>
                 {
-                    var def = x.definition.Order = i;
+                    x.definition.Order = i;
                     return x.definition;
                 })
                 .ToArray();
