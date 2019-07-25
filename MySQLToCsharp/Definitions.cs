@@ -9,19 +9,25 @@ namespace MySQLToCsharp
     {
         public string TableName { get; set; }
         public MySqlColumnDefinition[] ColumnDefinition { get; set; }
-        // primary key definition
+        public string[] PrimaryKeyColumns { get; set; }
         // index definitions
         // collate definition
         // engine definition
         // auto increment value definition
     }
 
-    public class MySqlColumnDefinition
+    public class MySqlColumnDataDefinition
     {
-        public string Name { get; set; }
         //TODO: 数値コンバーターかませる
         public string DataType { get; set; }
         public int? DataLength { get; set; }
+        public bool IsUnsigned { get; set; }
+    }
+
+    public class MySqlColumnDefinition
+    {
+        public string Name { get; set; }
+        public MySqlColumnDataDefinition Data { get; set; }
         public bool NotNull { get; set; }
         public bool AutoIncrement { get; set; }
         public bool HasDefault { get; set; }
@@ -34,26 +40,26 @@ namespace MySQLToCsharp
 
             // column name
             var name = context.GetChild<UidContext>(0);
-            Console.WriteLine(name.GetText());
             columnDefinition.Name = name.GetText().RemoveBackQuote();
 
             // check column definitions
-            var declares = context.GetChild<ColumnDefinitionContext>(0);
-            if (declares == null) return (false, null);
+            var definitionContext = context.GetChild<ColumnDefinitionContext>(0);
+            if (definitionContext == null) return (false, null);
 
             // BITINT(20): DimensionDataTypeContext
-            (columnDefinition.DataType, columnDefinition.DataLength) = declares.GetColumnDataDefinition();
+            columnDefinition.Data = new MySqlColumnDataDefinition();
+            (columnDefinition.Data.DataType, columnDefinition.Data.DataLength, columnDefinition.Data.IsUnsigned) = definitionContext.GetColumnDataDefinition();
 
             // NOTNULL: NullColumnConstraintContext
-            var notnull = declares.GetChild<NullColumnConstraintContext>(0);
+            var notnull = definitionContext.GetChild<NullColumnConstraintContext>(0);
             columnDefinition.NotNull = notnull != null;
 
             // AUTOINCREMENT: AutoIncrementColumnConstraintContext
-            var autoincrement = declares.GetChild<AutoIncrementColumnConstraintContext>(0);
+            var autoincrement = definitionContext.GetChild<AutoIncrementColumnConstraintContext>(0);
             columnDefinition.AutoIncrement = autoincrement != null;
 
             // DEFAULt'0': DefaultColumnConstraintContext
-            var defaultValue = declares.GetChild<DefaultColumnConstraintContext>(0);
+            var defaultValue = definitionContext.GetChild<DefaultColumnConstraintContext>(0);
             columnDefinition.HasDefault = defaultValue != null;
             columnDefinition.DefaultValue = defaultValue?.GetText();
 

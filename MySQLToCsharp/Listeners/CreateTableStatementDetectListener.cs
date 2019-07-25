@@ -20,15 +20,15 @@ namespace MySQLToCsharp.Listeners
         {
             base.EnterColumnCreateTable(context);
             IsTargetStatement = true;
-            var tableDefinition = new MySqlTableDefinition();
+            TableDefinition = new MySqlTableDefinition();
 
             if (context.IsEmpty)
             {
                 Console.WriteLine("Empty query detected");
             }
 
-            // TableName
-            tableDefinition.TableName = context.tableName().GetText()?.RemoveBackQuote();
+            // tableName
+            TableDefinition.TableName = context.tableName().GetText()?.RemoveBackQuote();
 
             // table definitions
             var createDefinitions = context.GetChild<CreateDefinitionsContext>(0);
@@ -39,34 +39,51 @@ namespace MySQLToCsharp.Listeners
             // var count = GetChildCount<CreateDefinitionsContext, ColumnDeclarationContext>(definition);
             // GetChildlen(column);
 
-            // Column
-            var columns = createDefinitions.ChildCount;
-            tableDefinition.ColumnDefinition = Enumerable.Range(0, createDefinitions.ChildCount)
+            // column
+            TableDefinition.ColumnDefinition = Enumerable.Range(0, createDefinitions.ChildCount)
                 .Select(x => createDefinitions.GetChild<ColumnDeclarationContext>(x))
                 .Select(x => MySqlColumnDefinition.Extract(x))
                 .Where(x => x.success)
                 .Select(x => x.columnDefinition)
                 .ToArray();
 
-            TableDefinition = tableDefinition;
+            //GetChildlen(createDefinitions);
+
+            // index
+            // IndexDeclarationContext
+
+
+            // collation
+
+            // engine
         }
 
-        public override void EnterCopyCreateTable([NotNull] MySqlParser.CopyCreateTableContext context)
+        /// <summary>
+        /// Listener for Primary Key detection
+        /// </summary>
+        /// <param name="context"></param>
+        public override void EnterPrimaryKeyTableConstraint([NotNull] PrimaryKeyTableConstraintContext context)
         {
-            base.EnterCopyCreateTable(context);
+            base.EnterPrimaryKeyTableConstraint(context);
 
-            IsTargetStatement = true;
-            foreach (var item in context.tableName())
-            {
-            }
+            // primary key (pk)
+            //GetChildlen(context);
+            var pk = context.GetIndexNames();
+            var pkNames = pk.Select(x => x.RemoveBackQuote().RemoveParenthesis()).ToArray();
+            TableDefinition.PrimaryKeyColumns = pkNames;
         }
 
-        public override void EnterQueryCreateTable([NotNull] MySqlParser.QueryCreateTableContext context)
+        /// <summary>
+        /// Listener for Secondary Index detection
+        /// </summary>
+        /// <remarks>
+        /// override method <see cref="EnterIndexColumnNames"/> includes PK and secondary key and it not contains index name. Therefore let's drill down declaration.
+        /// </remarks>
+        /// <param name="context"></param>
+        public override void EnterIndexDeclaration([NotNull] IndexDeclarationContext context)
         {
-            base.EnterQueryCreateTable(context);
-
-            IsTargetStatement = true;
-            var table = context.TABLE().GetText();
+            base.EnterIndexDeclaration(context);
+            GetChildlen(context, "indexDeclaration: ");
         }
 
         #region debug method
@@ -107,12 +124,13 @@ namespace MySQLToCsharp.Listeners
         /// Output child items
         /// </summary>
         /// <param name="context"></param>
-        private void GetChildlen(IParseTree context)
+        private void GetChildlen(IParseTree context, string indent = "")
         {
             for (var i = 0; i < context.ChildCount; i++)
             {
                 var child = context.GetChild(i);
-                Console.WriteLine(child.GetText());
+                var name = child.GetText();
+                Console.WriteLine(indent + name);
             }
         }
         #endregion
