@@ -64,7 +64,7 @@ namespace MySQLToCsharp.Listeners
             base.EnterPrimaryKeyTableConstraint(context);
 
             // primary key (pk)
-            var extract = MySqlIndexDefinition.ExtractPrimaryKey(context);
+            var extract = MySqlKeyDefinition.ExtractPrimaryKey(context);
             if (extract.success)
             {
                 var pk = extract.definition;
@@ -76,7 +76,27 @@ namespace MySQLToCsharp.Listeners
         }
 
         /// <summary>
-        /// Listener for Secondary Index detection
+        /// Listener for Unique Key detection
+        /// </summary>
+        /// <param name="context"></param>
+        public override void EnterUniqueKeyTableConstraint([NotNull] UniqueKeyTableConstraintContext context)
+        {
+            base.EnterUniqueKeyTableConstraint(context);
+
+            // unique key
+            var extract = MySqlKeyDefinition.ExtractUniqueKey(context);
+            if (extract.success)
+            {
+                var index = extract.definition;
+                TableDefinition.AddUniqueKey(index);
+
+                // map UniqueKey and existing Column reference
+                index.AddUniqueKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
+            }
+        }
+
+        /// <summary>
+        /// Listener for Index Index detection
         /// </summary>
         /// <remarks>
         /// override method <see cref="EnterIndexColumnNames"/> includes PK and secondary key and it not contains index name. Therefore let's drill down declaration.
@@ -87,7 +107,7 @@ namespace MySQLToCsharp.Listeners
             base.EnterIndexDeclaration(context);
 
             // index (secondary key)
-            var extract = MySqlIndexDefinition.ExtractSecondaryIndex(context);
+            var extract = MySqlKeyDefinition.ExtractIndexKey(context);
             if (extract.success)
             {
                 var index = extract.definition;

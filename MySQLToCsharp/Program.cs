@@ -15,8 +15,9 @@ namespace MySQLToCSharp
 	`Status` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
 	`Created` DATETIME(6) NOT NULL,
     PRIMARY KEY(`Id`),
-    INDEX `IDX_Sample_Status` (`SampleId`, `Status`),
-	INDEX `IDX_MasterId_Status` (`MasterId`, `Status`)
+    UNIQUE INDEX `UQ_SampleId_MasterId` (`SampleId`, `MasterId`),
+    INDEX `SampleId_Status` (`SampleId`, `Status`),
+	INDEX `MasterId_Status` (`MasterId`, `Status`)
 )
 COLLATE = 'utf8mb4_general_ci'
 ENGINE = InnoDB
