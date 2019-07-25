@@ -23,11 +23,10 @@ COLLATE = 'utf8mb4_general_ci'
 ENGINE = InnoDB
 AUTO_INCREMENT = 9
 ;";
-
             var createTableListener = new CreateTableStatementDetectListener();
-            var parser = new Parser();
+            IParser parser = new Parser();
             parser.Parse(query, createTableListener);
-            parser.PrintTokens();
+            //parser.PrintTokens(false);
             var definition = createTableListener.TableDefinition;
         }
     }

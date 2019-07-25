@@ -3,9 +3,7 @@ using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using MySQLToCSharp.Parsers.MySql;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using static MySQLToCSharp.Parsers.MySql.MySqlParser;
 
 namespace MySQLToCsharp.Listeners
@@ -13,11 +11,24 @@ namespace MySQLToCsharp.Listeners
     /// <summary>
     /// Listener to parse CreateTable sql into <see cref="MySqlTableDefinition"/>
     /// </summary>
-    class CreateTableStatementDetectListener : MySqlParserBaseListener
+    public class CreateTableStatementDetectListener : MySqlParserBaseListener
     {
         public bool IsTargetStatement { get; private set; }
-        public bool IsParsed { get; private set; }
+        public bool IsParseBegin { get; set; }
+        public bool IsParseCompleted { get; set; }
         public MySqlTableDefinition TableDefinition { get; private set; }
+
+        public override void EnterSqlStatement([NotNull] SqlStatementContext context)
+        {
+            base.EnterSqlStatement(context);
+            IsParseBegin = true;
+            IsParseCompleted = false;
+        }
+        public override void ExitSqlStatement([NotNull] SqlStatementContext context)
+        {
+            base.ExitSqlStatement(context);
+            IsParseCompleted = true;
+        }
 
         public override void EnterColumnCreateTable([NotNull] MySqlParser.ColumnCreateTableContext context)
         {
