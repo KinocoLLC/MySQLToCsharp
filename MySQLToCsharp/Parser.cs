@@ -58,7 +58,7 @@ namespace MySQLToCSharp
 
         public void PrintTokens(bool showTypeHint = false)
         {
-            if (context == null) throw new ArgumentNullException($"missing {nameof(context)}. Please run Parse(qeury) before register listener.");
+            if (context == null) throw new ArgumentNullException($"missing {nameof(context)}. Please run Parse(qeury) beforehand.");
             Action<Type, string> action = null;
             if (showTypeHint)
             {
