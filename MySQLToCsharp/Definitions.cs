@@ -15,8 +15,8 @@ namespace MySQLToCsharp
         public string TableName { get; set; }
         public MySqlColumnDefinition[] ColumnDefinitions { get; set; }
         public MySqlKeyDefinition PrimaryKey { get; set; }
-        public IList<MySqlKeyDefinition> UniqueKeys { get; private set; }
-        public IList<MySqlKeyDefinition> IndexKeys { get; private set; }
+        public ISet<MySqlKeyDefinition> UniqueKeys { get; private set; }
+        public ISet<MySqlKeyDefinition> IndexKeys { get; private set; }
         public string CollationName { get; set; }
         public string Engine { get; set; }
 
@@ -24,7 +24,7 @@ namespace MySQLToCsharp
         {
             if (IndexKeys == null)
             {
-                IndexKeys = new List<MySqlKeyDefinition>();
+                IndexKeys = new HashSet<MySqlKeyDefinition>();
             }
             IndexKeys.Add(index);
         }
@@ -33,7 +33,7 @@ namespace MySQLToCsharp
         {
             if (IndexKeys == null)
             {
-                UniqueKeys = new List<MySqlKeyDefinition>();
+                UniqueKeys = new HashSet<MySqlKeyDefinition>();
             }
             UniqueKeys.Add(index);
         }
@@ -56,30 +56,10 @@ namespace MySQLToCsharp
         public bool AutoIncrement { get; set; }
         public bool HasDefault { get; set; }
         public string DefaultValue { get; set; }
-        public bool HasPrimaryKey { get; set; }
-        public MySqlKeyDefinition PrimaryKeyReference { get; set; }
-        public bool HasUniqueKey { get; set; }
-        public ISet<MySqlKeyDefinition> UniqueKeysReference { get; set; }
-        public bool HasIndexKey { get; set; }
-        public ISet<MySqlKeyDefinition> IndexKeysReference { get; set; }
-
-        public void AddUniqueKeysReference(MySqlKeyDefinition index)
-        {
-            if (UniqueKeysReference == null)
-            {
-                UniqueKeysReference = new HashSet<MySqlKeyDefinition>();
-            }
-            UniqueKeysReference.Add(index);
-        }
-
-        public void AddIndexKeysReference(MySqlKeyDefinition index)
-        {
-            if (IndexKeysReference == null)
-            {
-                IndexKeysReference = new HashSet<MySqlKeyDefinition>();
-            }
-            IndexKeysReference.Add(index);
-        }
+        // key reference
+        public MySqlKeyDefinition PrimaryKeyReference { get; private set; }
+        public ISet<MySqlKeyDefinition> UniqueKeysReference { get; private set; }
+        public ISet<MySqlKeyDefinition> IndexKeysReference { get; private set; }
 
         public static (bool success, MySqlColumnDefinition definition) Extract(ColumnDeclarationContext context)
         {
@@ -114,6 +94,24 @@ namespace MySQLToCsharp
 
             return (true, columnDefinition);
         }
+
+        public void AddUniqueKeysReference(MySqlKeyDefinition index)
+        {
+            if (UniqueKeysReference == null)
+            {
+                UniqueKeysReference = new HashSet<MySqlKeyDefinition>();
+            }
+            UniqueKeysReference.Add(index);
+        }
+
+        public void AddIndexKeysReference(MySqlKeyDefinition index)
+        {
+            if (IndexKeysReference == null)
+            {
+                IndexKeysReference = new HashSet<MySqlKeyDefinition>();
+            }
+            IndexKeysReference.Add(index);
+        }
     }
 
     public class MySqlKeyDefinition
@@ -121,6 +119,11 @@ namespace MySQLToCsharp
         public string KeyName { get; set; }
         public MySqlKeyDetailDefinition[] Indexes { get; set; }
 
+        /// <summary>
+        /// Extract PrimaryKey Definition from context
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public static (bool success, MySqlKeyDefinition definition) ExtractPrimaryKey(PrimaryKeyTableConstraintContext context)
         {
             if (context == null) return (false, null);
@@ -140,12 +143,22 @@ namespace MySQLToCsharp
             return (true, primaryKey);
         }
 
+        /// <summary>
+        /// Extract UniqueKey Definition from context
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public static (bool success, MySqlKeyDefinition definition) ExtractUniqueKey(UniqueKeyTableConstraintContext context)
         {
             if (context == null) return (false, null);
             return ExtractKeyDefinition(context);
         }
 
+        /// <summary>
+        /// Extract IndexKey Definition from context
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public static (bool success, MySqlKeyDefinition definition) ExtractIndexKey(IndexDeclarationContext context)
         {
             if (context == null) return (false, null);
@@ -153,6 +166,11 @@ namespace MySQLToCsharp
             return ExtractKeyDefinition(simpleIndexDeclarationContext);
         }
 
+        /// <summary>
+        /// Extract Key Definition from context
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         private static (bool success, MySqlKeyDefinition definition) ExtractKeyDefinition(ParserRuleContext context)
         {
             var indexName = context.GetChild<UidContext>().GetText();
@@ -184,12 +202,7 @@ namespace MySQLToCsharp
         public void AddPrimaryKeyReferenceOnColumn(MySqlColumnDefinition[] columnDefinitions)
         {
             // column -> primarykey reference mapper
-            Action<MySqlColumnDefinition> mapper = column =>
-            {
-                column.HasPrimaryKey = true;
-                column.PrimaryKeyReference = this;
-            };
-            AddKeyReferenceOnColumnCore(columnDefinitions, mapper);
+            AddKeyReferenceOnColumnCore(columnDefinitions, column => column.PrimaryKeyReference = this);
         }
 
         /// <summary>
@@ -199,12 +212,7 @@ namespace MySQLToCsharp
         public void AddUniqueKeyReferenceOnColumn(MySqlColumnDefinition[] columnDefinitions)
         {
             // column -> uniquekey reference mapper
-            Action<MySqlColumnDefinition> mapper = column =>
-            {
-                column.HasUniqueKey = true;
-                column.AddUniqueKeysReference(this);
-            };
-            AddKeyReferenceOnColumnCore(columnDefinitions, mapper);
+            AddKeyReferenceOnColumnCore(columnDefinitions, column => column.AddUniqueKeysReference(this));
         }
 
         /// <summary>
@@ -214,15 +222,15 @@ namespace MySQLToCsharp
         public void AddIndexKeyReferenceOnColumn(MySqlColumnDefinition[] columnDefinitions)
         {
             // column -> indexkey reference mapper
-            Action<MySqlColumnDefinition> mapper = column =>
-            {
-                column.HasIndexKey = true;
-                column.AddIndexKeysReference(this);
-            };
-            AddKeyReferenceOnColumnCore(columnDefinitions, mapper);
+            AddKeyReferenceOnColumnCore(columnDefinitions, column => column.AddIndexKeysReference(this));
         }
 
-        public void AddKeyReferenceOnColumnCore(MySqlColumnDefinition[] columnDefinitions, Action<MySqlColumnDefinition> mapper)
+        /// <summary>
+        /// Add Reference between Key -> Column.
+        /// </summary>
+        /// <param name="columnDefinitions"></param>
+        /// <param name="mapper"></param>
+        private void AddKeyReferenceOnColumnCore(MySqlColumnDefinition[] columnDefinitions, Action<MySqlColumnDefinition> mapper)
         {
             var indexKeyNames = this.Indexes.Select(x => x.IndexKey).ToArray();
             foreach (var column in columnDefinitions)
@@ -245,8 +253,13 @@ namespace MySQLToCsharp
     {
         public int Order { get; set; }
         public string IndexKey { get; set; }
-        public ISet<MySqlColumnDefinition> ColumnReference { get; set; }
+        // column reference
+        public ISet<MySqlColumnDefinition> ColumnReference { get; private set; }
 
+        /// <summary>
+        /// Add Reference between Column -> Key.
+        /// </summary>
+        /// <param name="column"></param>
         public void AddColumnReference(MySqlColumnDefinition column)
         {
             if (ColumnReference == null)
