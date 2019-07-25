@@ -15,7 +15,7 @@ namespace MySQLToCSharp
 	`Status` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
 	`Created` DATETIME(6) NOT NULL,
     PRIMARY KEY(`Id`),
-    INDEX `IDX_User_Status` (`SampleId`, `Status`),
+    INDEX `IDX_Sample_Status` (`SampleId`, `Status`),
 	INDEX `IDX_MasterId_Status` (`MasterId`, `Status`)
 )
 COLLATE = 'utf8mb4_general_ci'

@@ -36,7 +36,7 @@ namespace MySQLToCsharp.Listeners
             // table definitions
             var createDefinitions = context.GetChild<CreateDefinitionsContext>(0);
 
-            // column
+            // column definitions
             TableDefinition.ColumnDefinitions = Enumerable.Range(0, createDefinitions.ChildCount)
                 .Select(x => createDefinitions.GetChild<ColumnDeclarationContext>(x))
                 .Select(x => MySqlColumnDefinition.Extract(x))
@@ -67,18 +67,11 @@ namespace MySQLToCsharp.Listeners
             var extract = MySqlIndexDefinition.ExtractPrimaryKey(context);
             if (extract.success)
             {
-                TableDefinition.PrimaryKey = extract.definition;
+                var pk = extract.definition;
+                TableDefinition.PrimaryKey = pk;
 
-                // map PK info to PK Column
-                var indexKeyNames = TableDefinition.PrimaryKey.Index.Select(x => x.IndexKey).ToArray();
-                foreach (var column in TableDefinition.ColumnDefinitions)
-                {
-                    if (indexKeyNames.Contains(column.Name))
-                    {
-                        column.IsPrimaryKey = true;
-                        column.PrimaryKeyReference = TableDefinition.PrimaryKey;
-                    }
-                }
+                // map PrimaryKey and existing Column reference
+                pk.AddPrimaryKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
             }
         }
 
@@ -93,12 +86,15 @@ namespace MySQLToCsharp.Listeners
         {
             base.EnterIndexDeclaration(context);
 
-            // index
+            // index (secondary key)
             var extract = MySqlIndexDefinition.ExtractSecondaryIndex(context);
             if (extract.success)
             {
-                MySqlIndexDefinition index = extract.definition;
-                TableDefinition.IndexKeys.Add(index);
+                var index = extract.definition;
+                TableDefinition.AddIndexKey(index);
+
+                // map IndexKey and existing Column reference
+                index.AddIndexKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
             }
         }
 

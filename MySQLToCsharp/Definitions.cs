@@ -18,7 +18,14 @@ namespace MySQLToCsharp
         public string CollationName { get; set; }
         public string Engine { get; set; }
 
-        public MySqlTableDefinition() => IndexKeys = new List<MySqlIndexDefinition>();
+        public void AddIndexKey(MySqlIndexDefinition index)
+        {
+            if (IndexKeys == null)
+            {
+                IndexKeys = new List<MySqlIndexDefinition>();
+            }
+            IndexKeys.Add(index);
+        }
     }
 
     public class MySqlColumnDataDefinition
@@ -40,7 +47,17 @@ namespace MySQLToCsharp
         public string DefaultValue { get; set; }
         public bool IsPrimaryKey { get; set; }
         public MySqlIndexDefinition PrimaryKeyReference { get; set; }
+        public bool HasIndexKey { get; set; }
+        public ISet<MySqlIndexDefinition> IndexKeysReference { get; set; }
 
+        public void AddIndexKeysReference(MySqlIndexDefinition index)
+        {
+            if (IndexKeysReference == null)
+            {
+                IndexKeysReference = new HashSet<MySqlIndexDefinition>();
+            }
+            IndexKeysReference.Add(index);
+        }
 
         //TODO: UniqueKey
 
@@ -73,7 +90,7 @@ namespace MySQLToCsharp
             // DEFAULt'0': DefaultColumnConstraintContext
             var defaultValue = definitionContext.GetChild<DefaultColumnConstraintContext>();
             columnDefinition.HasDefault = defaultValue != null;
-            columnDefinition.DefaultValue = defaultValue?.GetText();
+            columnDefinition.DefaultValue = defaultValue?.GetText()?.RemoveDefaultString();
 
             return (true, columnDefinition);
         }
@@ -82,7 +99,7 @@ namespace MySQLToCsharp
     public class MySqlIndexDefinition
     {
         public string IndexDeclarationName { get; set; }
-        public MySqlIndexDataDefinition[] Index { get; set; }
+        public MySqlIndexDataDefinition[] Indexes { get; set; }
 
         public static (bool success, MySqlIndexDefinition definition) ExtractPrimaryKey(PrimaryKeyTableConstraintContext context)
         {
@@ -93,7 +110,7 @@ namespace MySQLToCsharp
             var primaryKey = new MySqlIndexDefinition
             {
                 IndexDeclarationName = "PRIMARY KEY",
-                Index = pkNames.Select((x, i) => new MySqlIndexDataDefinition
+                Indexes = pkNames.Select((x, i) => new MySqlIndexDataDefinition
                 {
                     Order = i,
                     IndexKey = x,
@@ -125,9 +142,55 @@ namespace MySQLToCsharp
             var secondaryKey = new MySqlIndexDefinition()
             {
                 IndexDeclarationName = indexName.RemoveBackQuote(),
-                Index = indexData,
+                Indexes = indexData,
             };
             return (true, secondaryKey);
+        }
+
+        /// <summary>
+        /// map PrimaryKey and existing Column reference
+        /// </summary>
+        /// <param name="columnDefinitions"></param>
+        public void AddPrimaryKeyReferenceOnColumn(MySqlColumnDefinition[] columnDefinitions)
+        {
+            var indexKeyNames = this.Indexes.Select(x => x.IndexKey).ToArray();
+            foreach (var column in columnDefinitions)
+            {
+                if (!indexKeyNames.Contains(column.Name)) continue;
+
+                // column -> pk reference
+                column.IsPrimaryKey = true;
+                column.PrimaryKeyReference = this;
+
+                // pk -> column reference
+                foreach (var item in this.Indexes)
+                {
+                    item.AddColumnReference(column);
+                }
+            }
+        }
+
+        /// <summary>
+        /// map IndexKey and existing Column reference
+        /// </summary>
+        /// <param name="columnDefinitions"></param>
+        public void AddIndexKeyReferenceOnColumn(MySqlColumnDefinition[] columnDefinitions)
+        {
+            var indexKeyNames = this.Indexes.Select(x => x.IndexKey).ToArray();
+            foreach (var column in columnDefinitions)
+            {
+                if (!indexKeyNames.Contains(column.Name)) continue;
+
+                // column -> indexkey reference
+                column.HasIndexKey = true;
+                column.AddIndexKeysReference(this);
+
+                // indexkey -> column reference
+                foreach (var item in this.Indexes.Where(x => x.IndexKey == column.Name))
+                {
+                    item.AddColumnReference(column);
+                }
+            }
         }
 
     }
@@ -135,5 +198,15 @@ namespace MySQLToCsharp
     {
         public int Order { get; set; }
         public string IndexKey { get; set; }
+        public ISet<MySqlColumnDefinition> ColumnReference { get; set; }
+
+        public void AddColumnReference(MySqlColumnDefinition column)
+        {
+            if (ColumnReference == null)
+            {
+                ColumnReference = new HashSet<MySqlColumnDefinition>();
+            }
+            ColumnReference.Add(column);
+        }
     }
 }
