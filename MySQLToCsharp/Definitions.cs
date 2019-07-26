@@ -1,4 +1,4 @@
-﻿using Antlr4.Runtime;
+using Antlr4.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +37,14 @@ namespace MySQLToCsharp
             }
             UniqueKeys.Add(index);
         }
+
+        public MySqlColumnDefinition LookupColumnDefinition(ParserRuleContext context)
+        {
+            var columnDeclaretionContext = context.Ascendant<ColumnDeclarationContext>();
+            var columnName = columnDeclaretionContext.GetColumnName();
+            var column = this.ColumnDefinitions.Where(x => x.Name == columnName).FirstOrDefault();
+            return column;
+        }
     }
 
     public class MySqlColumnDefinition
@@ -49,6 +57,7 @@ namespace MySQLToCsharp
         public bool HasDefault { get; set; }
         public string DefaultValue { get; set; }
         public GeneratedColumnDefinition GeneratedColumn { get; set; }
+        public ReferenceColumnDefinition ReferenceColumn { get; set; }
 
         // key reference
         public MySqlKeyDefinition PrimaryKeyReference { get; set; }
@@ -62,8 +71,7 @@ namespace MySQLToCsharp
             var columnDefinition = new MySqlColumnDefinition();
 
             // column name
-            var name = context.GetChild<UidContext>();
-            columnDefinition.Name = name.GetText().RemoveBackQuote();
+            columnDefinition.Name = context.GetColumnName();
 
             // check column definitions
             var definitionContext = context.GetChild<ColumnDefinitionContext>();
@@ -86,11 +94,11 @@ namespace MySQLToCsharp
             columnDefinition.HasDefault = defaultValue != null;
             columnDefinition.DefaultValue = defaultValue?.GetText()?.RemoveDefaultString();
 
-            // GeneratedColumnContext
-            var generatedColumnConstraintContext = definitionContext.GetChild<GeneratedColumnConstraintContext>();
-            columnDefinition.GeneratedColumn = GeneratedColumnDefinition.ExtractGeneratedColumnDefinition(generatedColumnConstraintContext);
-
-            //TODO: Foreign Key 対応
+            //MEMO: GeneratedColumnContext will done via Listener
+            //var generatedColumnConstraintContext = definitionContext.GetChild<GeneratedColumnConstraintContext>();
+            //columnDefinition.GeneratedColumn = GeneratedColumnDefinition.ExtractGeneratedColumnDefinition(generatedColumnConstraintContext);
+            
+            //MEMO: ReferenceColumnContext will done via Listener
 
             return (true, columnDefinition);
         }
@@ -135,14 +143,14 @@ namespace MySQLToCsharp
         public bool IsStored { get; set; }
 
         /// <summary>
-        /// Get Generated Column detail
+        /// Extract Generated Column from context
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static GeneratedColumnDefinition ExtractGeneratedColumnDefinition(GeneratedColumnConstraintContext context)
+        public static GeneratedColumnDefinition Extract(GeneratedColumnConstraintContext context)
         {
             // Get Generated Column detail: "GENERATEDALWAYSAS(hex(id))STORED"
-            if (context == null) return null;
+            if (context == null) throw new ArgumentOutOfRangeException($"{nameof(context)} is null");
 
             var predicateExpressionContext = context.GetChild<PredicateExpressionContext>();
             var generatedElements = Enumerable.Range(0, context.ChildCount)
@@ -160,6 +168,40 @@ namespace MySQLToCsharp
                 Statement = statement,
             };
             return generatedColumn;
+        }
+    }
+
+    /// <summary>
+    /// Extract Reference Column from context
+    /// </summary>
+    public class ReferenceColumnDefinition
+    {
+        public string TableName { get; set; }
+        public string ColumnName { get; set; }
+
+        public static ReferenceColumnDefinition Extract(ReferenceDefinitionContext context)
+        {
+            // Get Generated Column detail: "GENERATEDALWAYSAS(hex(id))STORED"
+            if (context == null) throw new ArgumentOutOfRangeException($"{nameof(context)} is null");
+
+            // tableName: hoge_table (TableNameContext)
+            var table = context.GetChild<TableNameContext>();
+            var tableName = table.GetText();
+
+            // columnName:  (IndexColumnNamesContext -> IndexColumnNameContext -> UidContext)
+            var indexColumnNamesContext = context.GetChild<IndexColumnNamesContext>();
+            var columnName = Enumerable.Range(0, indexColumnNamesContext.ChildCount)
+                .Select(x => indexColumnNamesContext.GetChild<IndexColumnNameContext>(x))
+                .Where(x => x != null)
+                .First()
+                .GetChild<UidContext>()
+                .GetText();
+            var definition = new ReferenceColumnDefinition()
+            {
+                TableName = tableName,
+                ColumnName = columnName,
+            };
+            return definition;
         }
     }
 

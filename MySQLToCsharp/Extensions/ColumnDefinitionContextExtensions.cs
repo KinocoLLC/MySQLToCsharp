@@ -19,6 +19,85 @@ namespace MySQLToCsharp
         /// <returns></returns>
         public static T GetChild<T>(this ParserRuleContext context) where T : IParseTree
             => context.GetChild<T>(0);
+
+        /// <summary>
+        /// Search <see cref="T"/> for Parent direction and return first match.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static T Ascendant<T>(this RuleContext context) where T : ParserRuleContext
+        {
+            if (context == null) throw new ArgumentNullException($"{nameof(context)} is null");
+            if (context.Parent == null) return null;
+            if (context.Parent is T type) return type;
+            return Ascendant<T>(context.Parent);
+        }
+
+        /// <summary>
+        /// Search <see cref="T"/> for Child direction and return first match.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static T Descendant<T>(this ParserRuleContext context) where T : ParserRuleContext
+        {
+            if (context == null) throw new ArgumentNullException($"{nameof(context)} is null");
+            if (context is T type) return type;
+            if (context.ChildCount != 0) return null;
+            // first child's depth priority search. (not same depth search first.)
+            for (var i = 0; i < context.ChildCount; i++)
+            {
+                var result = Descendant<T>(context.GetChild<T>(i));
+                if (result != null) return result;
+            }
+            return null;
+        }
+
+        #region debug method
+        /// <summary>
+        /// output child items recusively, Generics
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="U"></typeparam>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static void GetChildlen<T, U>(this T context)
+            where T : ParserRuleContext
+            where U : ParserRuleContext
+        {
+            for (var i = 0; i < context.ChildCount; i++)
+            {
+                var target = context.GetChild<U>(i);
+                if (target == null) continue;
+
+                Console.WriteLine(target.GetText());
+
+                for (var j = 0; j < target.ChildCount; j++)
+                {
+                    var c = target.GetChild(j);
+                    Console.WriteLine(c.GetText());
+                    target.GetChildlen<U, ColumnDefinitionContext>();
+
+                    // continue with column definition detail (autoincre, notnull....)
+                }
+            }
+        }
+
+        /// <summary>
+        /// Output child items
+        /// </summary>
+        /// <param name="context"></param>
+        public static void GetChildlen(this ParserRuleContext context, string indent = "")
+        {
+            for (var i = 0; i < context.ChildCount; i++)
+            {
+                var child = context.GetChild(i);
+                var name = child.GetText();
+                Console.WriteLine(indent + name);
+            }
+        }
+        #endregion
     }
 
     public static class PrimaryKeyTableConstraintContextExtensions
@@ -46,6 +125,17 @@ namespace MySQLToCsharp
             return result;
         }
     }
+
+    public static class ColumnDeclarationContextExtensions
+    {
+        public static string GetColumnName(this ColumnDeclarationContext context)
+        {
+            var uidContext = context.GetChild<UidContext>();
+            var name = uidContext.GetText().RemoveBackQuote();
+            return name;
+        }
+    }
+
     public static class ColumnDefinitionContextExtensions
     {
         /// <summary>

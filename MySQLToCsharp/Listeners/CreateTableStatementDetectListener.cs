@@ -1,4 +1,4 @@
-﻿using Antlr4.Runtime;
+using Antlr4.Runtime;
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using MySQLToCSharp.Parsers.MySql;
@@ -127,6 +127,21 @@ namespace MySQLToCsharp.Listeners
                 // map IndexKey and existing Column reference
                 index.AddIndexKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
             }
+        public override void EnterGeneratedColumnConstraint([NotNull] GeneratedColumnConstraintContext context)
+        {
+            base.EnterGeneratedColumnConstraint(context);
+            var column = TableDefinition.LookupColumnDefinition(context);
+            var generatedColumn = GeneratedColumnDefinition.Extract(context);
+            column.GeneratedColumn = generatedColumn;
+        }
+
+        public override void EnterReferenceColumnConstraint([NotNull] ReferenceColumnConstraintContext context)
+        {
+            base.EnterReferenceColumnConstraint(context);
+            var column = TableDefinition.LookupColumnDefinition(context);
+            var referenceDefinitionContext = context.GetChild<ReferenceDefinitionContext>();
+            var referenceColumn = ReferenceColumnDefinition.Extract(referenceDefinitionContext);
+            column.ReferenceColumn = referenceColumn;
         }
 
         /// <summary>
@@ -151,54 +166,5 @@ namespace MySQLToCsharp.Listeners
             var name = engine.GetText();
             TableDefinition.Engine = name;
         }
-
-        #region debug method
-        /// <summary>
-        /// output child items recusively, Generics
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <typeparam name="U"></typeparam>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        private int GetChildCount<T, U>(T context)
-            where T : ParserRuleContext
-            where U : ParserRuleContext
-        {
-            var count = 0;
-
-            for (var i = 0; i < context.ChildCount; i++)
-            {
-                var target = context.GetChild<U>(i);
-                if (target == null) continue;
-
-                Console.WriteLine(target.GetText());
-                count = target.ChildCount;
-
-                for (var j = 0; j < count; j++)
-                {
-                    var c = target.GetChild(j);
-                    Console.WriteLine(c.GetText());
-                    GetChildCount<U, ColumnDefinitionContext>(target);
-
-                    // continue with column definition detail (autoincre, notnull....)
-                }
-            }
-            return count;
-        }
-
-        /// <summary>
-        /// Output child items
-        /// </summary>
-        /// <param name="context"></param>
-        private void GetChildlen(IParseTree context, string indent = "")
-        {
-            for (var i = 0; i < context.ChildCount; i++)
-            {
-                var child = context.GetChild(i);
-                var name = child.GetText();
-                Console.WriteLine(indent + name);
-            }
-        }
-        #endregion
     }
 }
