@@ -51,11 +51,11 @@ namespace MySQLToCsharp.Listeners
             TableDefinition.ColumnDefinitions = Enumerable.Range(0, createDefinitions.ChildCount)
                 .Select(x => createDefinitions.GetChild<ColumnDeclarationContext>(x))
                 .Select(x => MySqlColumnDefinition.Extract(x))
-                .Where(x => x.success)
+                .Where(x => x != null)
                 .Select((x, i) =>
                 {
-                    x.definition.Order = i;
-                    return x.definition;
+                    x.Order = i;
+                    return x;
                 })
                 .ToArray();
 

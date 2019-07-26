@@ -64,43 +64,53 @@ namespace MySQLToCsharp
         public ISet<MySqlKeyDefinition> UniqueKeysReference { get; private set; }
         public ISet<MySqlKeyDefinition> IndexKeysReference { get; private set; }
 
-        public static (bool success, MySqlColumnDefinition definition) Extract(ColumnDeclarationContext context)
+        public static MySqlColumnDefinition Extract(ColumnDeclarationContext context)
         {
-            if (context == null) return (false, null);
+            if (context == null) return null;
 
-            var columnDefinition = new MySqlColumnDefinition();
+            var column = new MySqlColumnDefinition();
 
             // column name
-            columnDefinition.Name = context.GetColumnName();
+            column.Name = context.GetColumnName();
 
             // check column definitions
             var definitionContext = context.GetChild<ColumnDefinitionContext>();
-            if (definitionContext == null) return (false, null);
+            if (definitionContext == null) return null;
 
             // BITINT(20): DimensionDataTypeContext
-            columnDefinition.Data = new MySqlColumnDataDefinition();
-            (columnDefinition.Data.DataType, columnDefinition.Data.DataLength, columnDefinition.Data.IsUnsigned) = definitionContext.ExtractColumnDataDefinition();
+            column.Data = new MySqlColumnDataDefinition();
+            (column.Data.DataType, column.Data.DataLength, column.Data.IsUnsigned) = definitionContext.ExtractColumnDataDefinition();
 
             // NOTNULL: NullColumnConstraintContext
             var notnull = definitionContext.GetChild<NullColumnConstraintContext>();
-            columnDefinition.NotNull = notnull != null;
+            column.NotNull = notnull != null;
 
             // AUTOINCREMENT: AutoIncrementColumnConstraintContext
             var autoincrement = definitionContext.GetChild<AutoIncrementColumnConstraintContext>();
-            columnDefinition.AutoIncrement = autoincrement != null;
+            column.AutoIncrement = autoincrement != null;
 
             // DEFAULt'0': DefaultColumnConstraintContext
             var defaultValue = definitionContext.GetChild<DefaultColumnConstraintContext>();
-            columnDefinition.HasDefault = defaultValue != null;
-            columnDefinition.DefaultValue = defaultValue?.GetText()?.RemoveDefaultString();
+            column.HasDefault = defaultValue != null;
+            column.DefaultValue = defaultValue?.GetText()?.RemoveDefaultString();
 
             //MEMO: GeneratedColumnContext will done via Listener
             //var generatedColumnConstraintContext = definitionContext.GetChild<GeneratedColumnConstraintContext>();
             //columnDefinition.GeneratedColumn = GeneratedColumnDefinition.ExtractGeneratedColumnDefinition(generatedColumnConstraintContext);
-            
+
             //MEMO: ReferenceColumnContext will done via Listener
 
-            return (true, columnDefinition);
+            // Special overwrite for SERIAL DataType.
+            // SERIAL is an alias for BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE.
+            if (column.Data.DataType == "SERIAL")
+            {
+                column.Data.IsUnsigned = true;
+                column.NotNull = true;
+                column.AutoIncrement = true;
+                //MEMO: No action for UniqueKey. It's too much special. (should add unique key clause on sql)
+            }
+
+            return column;
         }
 
         public void AddUniqueKeysReference(MySqlKeyDefinition index)

@@ -161,23 +161,30 @@ namespace MySQLToCsharp
                 return ExtractColumnData(stringDataContext);
             }
 
+            // get special Datatype `SERIAL`.
+            var simpleDataTypeContext = context.GetChild<SimpleDataTypeContext>();
+            if (simpleDataTypeContext != null)
+            {
+                return ExtractColumnData(simpleDataTypeContext);
+            }
+
             throw new ArgumentOutOfRangeException($"Could not retrieve column detail from {nameof(context)}");
         }
 
-        private static (string dataTypeName, int? dataLength, bool unsigned) ExtractColumnData(ParserRuleContext dataType)
+        private static (string dataTypeName, int? dataLength, bool unsigned) ExtractColumnData(ParserRuleContext context)
         {
-            var dataName = dataType.GetChild<TerminalNodeImpl>(0);
+            var dataName = context.GetChild<TerminalNodeImpl>(0);
             var dataTypeName = dataName.GetText();
             var unsigned = false;
-            if (dataType.ChildCount >= 3)
+            if (context.ChildCount >= 3)
             {
                 // signed / unsigned
-                var signed = dataType.GetChild<TerminalNodeImpl>(1);
+                var signed = context.GetChild<TerminalNodeImpl>(1);
                 unsigned = signed.GetText() == "UNSIGNED"; // MUST BE
             }
 
             int? dataLength = null;
-            var lengthOne = dataType.GetChild<LengthOneDimensionContext>(0);
+            var lengthOne = context.GetChild<LengthOneDimensionContext>(0);
             if (lengthOne != null)
             {
                 dataLength = int.Parse(lengthOne.GetText().RemoveParenthesis());
