@@ -19,7 +19,7 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
-namespace MySQLToCSharp.Parsers.MySql {
+namespace MySQLToCsharp.Parsers.MySql {
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using IToken = Antlr4.Runtime.IToken;
@@ -5652,4 +5652,4 @@ public partial class MySqlParserBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// <return>The visitor result.</return>
 	public virtual Result VisitFunctionNameBase([NotNull] MySqlParser.FunctionNameBaseContext context) { return VisitChildren(context); }
 }
-} // namespace MySQLToCSharp.Parsers.MySql
+} // namespace MySQLToCsharp.Parsers.MySql

@@ -2,7 +2,7 @@
 using Antlr4.Runtime.Tree;
 using System;
 using System.Linq;
-using static MySQLToCSharp.Parsers.MySql.MySqlParser;
+using static MySQLToCsharp.Parsers.MySql.MySqlParser;
 
 namespace MySQLToCsharp
 {

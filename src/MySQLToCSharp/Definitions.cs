@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using static MySQLToCSharp.Parsers.MySql.MySqlParser;
+using static MySQLToCsharp.Parsers.MySql.MySqlParser;
 
 namespace MySQLToCsharp
 {
@@ -12,12 +12,12 @@ namespace MySQLToCsharp
     /// </summary>
     public class MySqlTableDefinition
     {
-        public string TableName { get; set; }
-        public MySqlColumnDefinition[] ColumnDefinitions { get; set; }
+        public string Name { get; set; }
+        public MySqlColumnDefinition[] Columns { get; set; }
         public MySqlKeyDefinition PrimaryKey { get; set; }
         public ISet<MySqlKeyDefinition> UniqueKeys { get; private set; }
         public ISet<MySqlKeyDefinition> IndexKeys { get; private set; }
-        public string CollationName { get; set; }
+        public string Collation { get; set; }
         public string Engine { get; set; }
 
         public void AddIndexKey(MySqlKeyDefinition index)
@@ -42,7 +42,7 @@ namespace MySQLToCsharp
         {
             var columnDeclaretionContext = context.Ascendant<ColumnDeclarationContext>();
             var columnName = columnDeclaretionContext.GetColumnName();
-            var column = this.ColumnDefinitions.Where(x => x.Name == columnName).FirstOrDefault();
+            var column = this.Columns.Where(x => x.Name == columnName).FirstOrDefault();
             return column;
         }
     }
@@ -61,8 +61,8 @@ namespace MySQLToCsharp
 
         // key reference
         public MySqlKeyDefinition PrimaryKeyReference { get; set; }
-        public ISet<MySqlKeyDefinition> UniqueKeysReference { get; private set; }
-        public ISet<MySqlKeyDefinition> IndexKeysReference { get; private set; }
+        public ISet<MySqlKeyDefinition> UniqueKeysReferences { get; private set; }
+        public ISet<MySqlKeyDefinition> IndexKeysReferences { get; private set; }
 
         public static MySqlColumnDefinition Extract(ColumnDeclarationContext context)
         {
@@ -115,20 +115,20 @@ namespace MySQLToCsharp
 
         public void AddUniqueKeysReference(MySqlKeyDefinition index)
         {
-            if (UniqueKeysReference == null)
+            if (UniqueKeysReferences == null)
             {
-                UniqueKeysReference = new HashSet<MySqlKeyDefinition>();
+                UniqueKeysReferences = new HashSet<MySqlKeyDefinition>();
             }
-            UniqueKeysReference.Add(index);
+            UniqueKeysReferences.Add(index);
         }
 
         public void AddIndexKeysReference(MySqlKeyDefinition index)
         {
-            if (IndexKeysReference == null)
+            if (IndexKeysReferences == null)
             {
-                IndexKeysReference = new HashSet<MySqlKeyDefinition>();
+                IndexKeysReferences = new HashSet<MySqlKeyDefinition>();
             }
-            IndexKeysReference.Add(index);
+            IndexKeysReferences.Add(index);
         }
     }
 

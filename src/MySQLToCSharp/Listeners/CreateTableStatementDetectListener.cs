@@ -1,10 +1,10 @@
 ﻿using Antlr4.Runtime;
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
-using MySQLToCSharp.Parsers.MySql;
+using MySQLToCsharp.Parsers.MySql;
 using System;
 using System.Linq;
-using static MySQLToCSharp.Parsers.MySql.MySqlParser;
+using static MySQLToCsharp.Parsers.MySql.MySqlParser;
 
 namespace MySQLToCsharp.Listeners
 {
@@ -43,13 +43,13 @@ namespace MySQLToCsharp.Listeners
             }
 
             // tableName
-            TableDefinition.TableName = context.tableName().GetText()?.RemoveBackQuote();
+            TableDefinition.Name = context.tableName().GetText()?.RemoveBackQuote();
 
             // table definitions
             var createDefinitions = context.GetChild<CreateDefinitionsContext>(0);
 
             // column definitions
-            TableDefinition.ColumnDefinitions = Enumerable.Range(0, createDefinitions.ChildCount)
+            TableDefinition.Columns = Enumerable.Range(0, createDefinitions.ChildCount)
                 .Select(x => createDefinitions.GetChild<ColumnDeclarationContext>(x))
                 .Select(x => MySqlColumnDefinition.Extract(x))
                 .Where(x => x != null)
@@ -80,7 +80,7 @@ namespace MySQLToCsharp.Listeners
             TableDefinition.PrimaryKey = definition;
 
             // map PrimaryKey and existing Column reference
-            definition.AddPrimaryKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
+            definition.AddPrimaryKeyReferenceOnColumn(TableDefinition.Columns);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace MySQLToCsharp.Listeners
             TableDefinition.AddUniqueKey(definition);
 
             // map UniqueKey and existing Column reference
-            definition.AddUniqueKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
+            definition.AddUniqueKeyReferenceOnColumn(TableDefinition.Columns);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace MySQLToCsharp.Listeners
             TableDefinition.AddIndexKey(definition);
 
             // map IndexKey and existing Column reference
-            definition.AddIndexKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
+            definition.AddIndexKeyReferenceOnColumn(TableDefinition.Columns);
         }
 
         public override void EnterGeneratedColumnConstraint([NotNull] GeneratedColumnConstraintContext context)
@@ -143,7 +143,7 @@ namespace MySQLToCsharp.Listeners
         {
             base.EnterCollationName(context);
             var name = context.GetText();
-            TableDefinition.CollationName = name?.RemoveSingleQuote();
+            TableDefinition.Collation = name?.RemoveSingleQuote();
         }
 
         /// <summary>

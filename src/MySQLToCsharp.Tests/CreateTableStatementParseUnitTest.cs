@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using MySQLToCsharp.Listeners;
-using MySQLToCSharp;
+using MySQLToCsharp;
 using System;
 using System.Collections.Generic;
 using System.IO;

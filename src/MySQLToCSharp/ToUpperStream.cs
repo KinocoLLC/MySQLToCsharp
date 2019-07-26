@@ -1,7 +1,7 @@
 ﻿using Antlr4.Runtime;
 using Antlr4.Runtime.Misc;
 
-namespace MySQLToCSharp
+namespace MySQLToCsharp
 {
     class ToUpperStream : ICharStream
     {

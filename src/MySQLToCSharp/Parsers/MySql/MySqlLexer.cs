@@ -19,7 +19,7 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
-namespace MySQLToCSharp.Parsers.MySql {
+namespace MySQLToCsharp.Parsers.MySql {
 using System;
 using System.Text;
 using Antlr4.Runtime;
@@ -6302,4 +6302,4 @@ public partial class MySqlLexer : Lexer {
 
 
 }
-} // namespace MySQLToCSharp.Parsers.MySql
+} // namespace MySQLToCsharp.Parsers.MySql

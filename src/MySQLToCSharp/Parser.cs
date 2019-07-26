@@ -2,13 +2,13 @@
 using Antlr4.Runtime.Tree;
 using MySQLToCsharp;
 using MySQLToCsharp.Listeners;
-using MySQLToCSharp.Parsers.MySql;
+using MySQLToCsharp.Parsers.MySql;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace MySQLToCSharp
+namespace MySQLToCsharp
 {
     public interface IParser
     {

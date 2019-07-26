@@ -1,5 +1,5 @@
 ﻿using Antlr4.Runtime.Misc;
-using MySQLToCSharp.Parsers.MySql;
+using MySQLToCsharp.Parsers.MySql;
 
 namespace MySQLToCsharp.Listeners
 {
