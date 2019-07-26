@@ -1,4 +1,4 @@
-using Antlr4.Runtime;
+﻿using Antlr4.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -215,13 +215,13 @@ namespace MySQLToCsharp
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static (bool success, MySqlKeyDefinition definition) ExtractPrimaryKey(PrimaryKeyTableConstraintContext context)
+        public static MySqlKeyDefinition ExtractPrimaryKey(PrimaryKeyTableConstraintContext context)
         {
-            if (context == null) return (false, null);
+            if (context == null) throw new ArgumentOutOfRangeException($"{nameof(context)} is null");
 
             var pk = context.GetIndexNames();
             var pkNames = pk.Select(x => x.RemoveBackQuote().RemoveParenthesis()).ToArray();
-            var primaryKey = new MySqlKeyDefinition
+            var definition = new MySqlKeyDefinition
             {
                 KeyName = "PRIMARY KEY",
                 Indexes = pkNames.Select((x, i) => new MySqlKeyDetailDefinition
@@ -231,7 +231,7 @@ namespace MySQLToCsharp
                 })
                 .ToArray(),
             };
-            return (true, primaryKey);
+            return definition;
         }
 
         /// <summary>
@@ -239,9 +239,9 @@ namespace MySQLToCsharp
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static (bool success, MySqlKeyDefinition definition) ExtractUniqueKey(UniqueKeyTableConstraintContext context)
+        public static MySqlKeyDefinition ExtractUniqueKey(UniqueKeyTableConstraintContext context)
         {
-            if (context == null) return (false, null);
+            if (context == null) throw new ArgumentOutOfRangeException($"{nameof(context)} is null");
             return ExtractKeyDefinition(context);
         }
 
@@ -250,9 +250,9 @@ namespace MySQLToCsharp
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static (bool success, MySqlKeyDefinition definition) ExtractIndexKey(IndexDeclarationContext context)
+        public static MySqlKeyDefinition ExtractIndexKey(IndexDeclarationContext context)
         {
-            if (context == null) return (false, null);
+            if (context == null) throw new ArgumentOutOfRangeException($"{nameof(context)} is null");
             var simpleIndexDeclarationContext = context.GetChild<SimpleIndexDeclarationContext>();
             return ExtractKeyDefinition(simpleIndexDeclarationContext);
         }
@@ -262,7 +262,7 @@ namespace MySQLToCsharp
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        private static (bool success, MySqlKeyDefinition definition) ExtractKeyDefinition(ParserRuleContext context)
+        private static MySqlKeyDefinition ExtractKeyDefinition(ParserRuleContext context)
         {
             var indexName = context.GetChild<UidContext>().GetText();
             var indexes = context.GetChild<IndexColumnNamesContext>();
@@ -278,12 +278,12 @@ namespace MySQLToCsharp
                 })
                 .ToArray();
 
-            var secondaryKey = new MySqlKeyDefinition()
+            var definition = new MySqlKeyDefinition()
             {
                 KeyName = indexName.RemoveBackQuote(),
                 Indexes = indexData,
             };
-            return (true, secondaryKey);
+            return definition;
         }
 
         /// <summary>

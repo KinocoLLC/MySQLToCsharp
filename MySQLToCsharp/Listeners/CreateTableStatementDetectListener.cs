@@ -1,4 +1,4 @@
-using Antlr4.Runtime;
+﻿using Antlr4.Runtime;
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using MySQLToCSharp.Parsers.MySql;
@@ -60,10 +60,10 @@ namespace MySQLToCsharp.Listeners
                 .ToArray();
 
             // debug
-            // GetChildlen(createDefinitions);
+            // createDefinitions.GetChildlen();
             // var column = definition.GetChild<ColumnDeclarationContext>(0);
-            // var count = GetChildCount<CreateDefinitionsContext, ColumnDeclarationContext>(definition);
-            // GetChildlen(column);
+            // definition.GetChildlen<CreateDefinitionsContext, ColumnDeclarationContext>();
+            // column.GetChildlen();
         }
 
         /// <summary>
@@ -75,15 +75,11 @@ namespace MySQLToCsharp.Listeners
             base.EnterPrimaryKeyTableConstraint(context);
 
             // primary key (pk)
-            var extract = MySqlKeyDefinition.ExtractPrimaryKey(context);
-            if (extract.success)
-            {
-                var pk = extract.definition;
-                TableDefinition.PrimaryKey = pk;
+            var definition = MySqlKeyDefinition.ExtractPrimaryKey(context);
+            TableDefinition.PrimaryKey = definition;
 
-                // map PrimaryKey and existing Column reference
-                pk.AddPrimaryKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
-            }
+            // map PrimaryKey and existing Column reference
+            definition.AddPrimaryKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
         }
 
         /// <summary>
@@ -95,15 +91,11 @@ namespace MySQLToCsharp.Listeners
             base.EnterUniqueKeyTableConstraint(context);
 
             // unique key
-            var extract = MySqlKeyDefinition.ExtractUniqueKey(context);
-            if (extract.success)
-            {
-                var index = extract.definition;
-                TableDefinition.AddUniqueKey(index);
+            var definition = MySqlKeyDefinition.ExtractUniqueKey(context);
+            TableDefinition.AddUniqueKey(definition);
 
-                // map UniqueKey and existing Column reference
-                index.AddUniqueKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
-            }
+            // map UniqueKey and existing Column reference
+            definition.AddUniqueKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
         }
 
         /// <summary>
@@ -118,15 +110,13 @@ namespace MySQLToCsharp.Listeners
             base.EnterIndexDeclaration(context);
 
             // index (secondary key)
-            var extract = MySqlKeyDefinition.ExtractIndexKey(context);
-            if (extract.success)
-            {
-                var index = extract.definition;
-                TableDefinition.AddIndexKey(index);
+            var definition = MySqlKeyDefinition.ExtractIndexKey(context);
+            TableDefinition.AddIndexKey(definition);
 
-                // map IndexKey and existing Column reference
-                index.AddIndexKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
-            }
+            // map IndexKey and existing Column reference
+            definition.AddIndexKeyReferenceOnColumn(TableDefinition.ColumnDefinitions);
+        }
+
         public override void EnterGeneratedColumnConstraint([NotNull] GeneratedColumnConstraintContext context)
         {
             base.EnterGeneratedColumnConstraint(context);
