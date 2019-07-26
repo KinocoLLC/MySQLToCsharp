@@ -19,18 +19,25 @@ namespace MySQLToCsharp
         }
         public static void Save(string nameSpace, MySqlTableDefinition table, string outputFolderPath)
         {
-            var outputFile = Path.Combine(outputFolderPath, table.Name + extension);
+            var fileName = table.Name + extension;
+            var outputFile = Path.Combine(outputFolderPath, fileName);
             var generated = Generate(nameSpace, table);
+
+            if (!Directory.Exists(outputFolderPath))
+            {
+                Directory.CreateDirectory(outputFolderPath);
+            }
 
             if (File.Exists(outputFile))
             {
                 var current = File.ReadAllText(outputFile, encoding);
                 if (generated == current)
                 {
-                    Console.WriteLine($"{outputFile} already exists, but nothing changed. skip.");
+                    Console.WriteLine($"[-] skipped: {fileName} (no change)");
                     return;
                 }
             }
+            Console.WriteLine($"[o] generate: {fileName}");
             File.WriteAllText(outputFile, generated, encoding);
         }
 

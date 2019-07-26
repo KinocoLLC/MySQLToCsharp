@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySQLToCsharp", "src\MySQLToCsharp\MySQLToCsharp.csproj", "{1C44CF36-934B-498A-898B-BE93509A921E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySQLToCsharp", "MySQLToCsharp\MySQLToCsharp.csproj", "{1C44CF36-934B-498A-898B-BE93509A921E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySQLToCsharp.Tests", "src\MySQLToCsharp.Tests\MySQLToCsharp.Tests.csproj", "{84B527D0-564B-4D80-A7FE-E9AD2C44B8FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySQLToCsharp.Tests", "MySQLToCsharp.Tests\MySQLToCsharp.Tests.csproj", "{84B527D0-564B-4D80-A7FE-E9AD2C44B8FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

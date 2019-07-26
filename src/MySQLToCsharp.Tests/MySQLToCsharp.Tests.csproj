@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="test_data\create_table.sql">
+    <None Update="test_data\*.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

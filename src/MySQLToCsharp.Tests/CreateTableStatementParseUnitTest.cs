@@ -1,12 +1,9 @@
 ﻿using FluentAssertions;
 using MySQLToCsharp.Listeners;
-using MySQLToCsharp;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Xml;
 using Xunit;
 
 namespace MySQLToCsharp.Tests
@@ -21,7 +18,10 @@ namespace MySQLToCsharp.Tests
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
             var definition = listener.TableDefinition;
+            listener.IsTargetStatement.Should().BeTrue();
             listener.IsParseBegin.Should().BeTrue();
+            listener.IsParseCompleted.Should().BeTrue();
+            listener.TableDefinition.Should().NotBeNull();
         }
 
         public static IEnumerable<object[]> GenerateTestData()

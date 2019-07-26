@@ -1,4 +1,4 @@
-﻿using MicroBatchFramework;
+using MicroBatchFramework;
 using MySQLToCsharp.Listeners;
 using System;
 using System.Linq;
@@ -51,7 +51,8 @@ namespace MySQLToCsharp
             [Option("-o", "directory path to output C# class file")]string output,
             [Option("-n", "namespace to write")]string nameSpace)
         {
-            var definitions = Parser.FromFolder(input, false);
+            var definitions = Parser.FromFolder(input, false).ToArray();
+            Context.Logger.LogInformation($"Output Directory: {output}");
             foreach (var definition in definitions)
             {
                 Generator.Save(nameSpace, definition, output);

@@ -12,6 +12,7 @@ namespace MySQLToCsharp
     /// </summary>
     public class MySqlTableDefinition
     {
+        public string SchemaName { get; set; }
         public string Name { get; set; }
         public MySqlColumnDefinition[] Columns { get; set; }
         public MySqlKeyDefinition PrimaryKey { get; set; }
@@ -44,6 +45,27 @@ namespace MySQLToCsharp
             var columnName = columnDeclaretionContext.GetColumnName();
             var column = this.Columns.Where(x => x.Name == columnName).FirstOrDefault();
             return column;
+        }
+
+        public static (string schemaName, string tableName) ExtractTableName(TableNameContext context)
+        {
+            var fullIdContext = context.GetChild<FullIdContext>();
+            var schemaName = "";
+            var tableName = "";
+
+            //MEMO: TableNameContext.tablename() contains schema name if query style is `schema`.`table`.
+            // 3     = schema.table (expr + . + expr)
+            // other = table
+            if (fullIdContext.ChildCount == 3)
+            {
+                schemaName = fullIdContext.GetChild<UidContext>().GetText()?.RemoveBackQuote();
+                tableName = fullIdContext.GetChild<UidContext>(1).GetText()?.RemoveBackQuote();
+            }
+            else
+            { 
+                tableName = fullIdContext.GetChild<UidContext>().GetText()?.RemoveBackQuote();
+            }
+            return (schemaName, tableName);
         }
     }
 
