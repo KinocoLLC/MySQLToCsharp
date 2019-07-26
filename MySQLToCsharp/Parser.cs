@@ -1,7 +1,12 @@
 ﻿using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
+using MySQLToCsharp;
+using MySQLToCsharp.Listeners;
 using MySQLToCSharp.Parsers.MySql;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace MySQLToCSharp
 {
@@ -19,6 +24,12 @@ namespace MySQLToCSharp
         public IParseTreeListener[] Listeners { get; private set; }
 
         private MySqlParser.SqlStatementContext context;
+
+        public void Parse(TextReader reader, IParseTreeListener listener)
+        {
+            var query = reader.ReadToEnd();
+            Parse(query, new[] { listener });
+        }
 
         public void Parse(string query, IParseTreeListener listener)
             => Parse(query, new[] { listener });
@@ -39,21 +50,8 @@ namespace MySQLToCSharp
             //var statement = parser.dmlStatement();
             //var statement = parser.selectStatement();
 
-            // lisp like tree result will shown with `ToStringTree()`
-            // ([] ([699] ([2948 699] select ([3401 2948 699] *) ([3405 2948 699] from ([3580 3405 2948 699] ([3242 3580 3405 2948 699] ([3250 3242 3580 3405 2948 699] ([3269 3250 3242 3580 3405 2948 699] ([5234 3269 3250 3242 3580 3405 2948 699] ([5228 5234 3269 3250 3242 3580 3405 2948 699] ([5312 5228 5234 3269 3250 3242 3580 3405 2948 699] hoge))))))) where ([3582 3405 2948 699] ([5986 3582 3405 2948 699] ([592 5986 3582 3405 2948 699] ([6003 592 5986 3582 3405 2948 699] ([6067 6003 592 5986 3582 3405 2948 699] ([5236 6067 6003 592 5986 3582 3405 2948 699] ([5312 5236 6067 6003 592 5986 3582 3405 2948 699] a))))) ([6006 5986 3582 3405 2948 699] =) ([6007 5986 3582 3405 2948 699] ([6003 6007 5986 3582 3405 2948 699] ([6066 6003 6007 5986 3582 3405 2948 699] ([5376 6066 6003 6007 5986 3582 3405 2948 699] 'b'))))))))))
-            // Console.WriteLine(statement.ToStringTree());
-
-            // just an text result
-            // select*fromhogewherea='b'
-            //Console.WriteLine(statement.GetChild(0).GetText());
-
             // listener pattern
             RegisterListener(listeners);
-
-            // visitor pattern (not using but if needed)
-            // TODO: implement visitor
-            //var visitor = new MySqlParserBaseVisitor<string>();
-            //Console.WriteLine(visitor.Visit(root));
         }
 
         public void PrintTokens(bool showTypeHint = false)
@@ -71,6 +69,58 @@ namespace MySQLToCSharp
 
             DrilldownToken(this.context, this.context.Stop, (t, s) => action(t, s));
         }
+
+        #region loader
+
+        /// <summary>
+        /// load query from folder. specify sql file is utf8(bom) or utf8(bomless).
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="bom"></param>
+        /// <returns></returns>
+        public static IEnumerable<MySqlTableDefinition> FromFolder(string path, bool bom = false)
+            => FromFolder(path, new CreateTableStatementDetectListener(), new UTF8Encoding(bom));
+
+        /// <summary>
+        /// load query from folder. specify sql file encoding.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="listener"></param>
+        /// <param name="encoding"></param>
+        /// <returns></returns>
+        public static IEnumerable<MySqlTableDefinition> FromFolder(string path, ICreateTableListener listener, Encoding encoding)
+        {
+            foreach (var file in Directory.EnumerateFiles(path, "*.sql", SearchOption.AllDirectories))
+            {
+                yield return FromFile(file, listener, encoding);
+            }
+        }
+
+        /// <summary>
+        /// load query from file. specify sql file is utf8(bom) or utf8(bomless).
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="bom"></param>
+        /// <returns></returns>
+        public static MySqlTableDefinition FromFile(string path, bool bom = false)
+            => FromFile(path, new CreateTableStatementDetectListener(), new UTF8Encoding(bom));
+
+        /// <summary>
+        /// load query from file. specify sql file encoding.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="listener"></param>
+        /// <param name="encoding"></param>
+        public static MySqlTableDefinition FromFile(string path, ICreateTableListener listener, Encoding encoding)
+        {
+            using (var reader = new StreamReader(path, encoding))
+            {
+                var parser = new Parser();
+                parser.Parse(reader, listener);
+                return listener.TableDefinition;
+            }
+        }
+        #endregion
 
         #region Debug
 

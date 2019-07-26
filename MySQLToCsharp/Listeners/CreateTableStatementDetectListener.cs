@@ -11,7 +11,7 @@ namespace MySQLToCsharp.Listeners
     /// <summary>
     /// Listener to parse CreateTable sql into <see cref="MySqlTableDefinition"/>
     /// </summary>
-    public class CreateTableStatementDetectListener : MySqlParserBaseListener
+    public class CreateTableStatementDetectListener : MySqlParserBaseListener, ICreateTableListener
     {
         public bool IsTargetStatement { get; private set; }
         public bool IsParseBegin { get; set; }
@@ -21,6 +21,7 @@ namespace MySQLToCsharp.Listeners
         public override void EnterSqlStatement([NotNull] SqlStatementContext context)
         {
             base.EnterSqlStatement(context);
+            TableDefinition = null;
             IsParseBegin = true;
             IsParseCompleted = false;
         }

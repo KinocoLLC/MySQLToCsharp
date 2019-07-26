@@ -26,7 +26,7 @@ namespace MySQLToCsharp.Tests
 
         public static IEnumerable<object[]> GenerateTestData()
         {
-            var statements = LoadSql("test_data/create_table.sql");
+            var statements = LoadSql("test_data/create_tables.sql");
             foreach (var statement in statements)
             {
                 yield return new object[]

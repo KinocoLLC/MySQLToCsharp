@@ -1,36 +1,56 @@
-﻿using MySQLToCsharp.Listeners;
+﻿using MicroBatchFramework;
+using MySQLToCsharp.Listeners;
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MySQLToCSharp
 {
     partial class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            //var query = @"CREATE TABLE `Samples` (
-            //	`Id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-            //	`SampleId` INT(11) NOT NULL,
-            //	`MasterId` INT(11) NOT NULL,
-            //	`Value` INT(11) NOT NULL DEFAULT '0',
-            //	`Status` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
-            //	`Created` DATETIME(6) NOT NULL,
-            //    PRIMARY KEY(`Id`),
-            //    UNIQUE INDEX `UQ_SampleId_MasterId` (`SampleId`, `MasterId`),
-            //    INDEX `SampleId_Status` (`SampleId`, `Status`),
-            //	INDEX `MasterId_Status` (`MasterId`, `Status`)
-            //)
-            //COLLATE = 'utf8mb4_general_ci'
-            //ENGINE = InnoDB
-            //AUTO_INCREMENT = 9
-            //;";
-            //var query = "create table child_table(id int unsigned auto_increment primary key, id_parent int references parent_table(id) match full on update cascade on delete set null) engine=InnoDB;";
-            //var query = "CREATE TABLE genvalue1 (id binary(16) NOT NULL, val char(32) GENERATED ALWAYS AS (hex(id)) STORED, PRIMARY KEY (id));";
             var query = "CREATE TABLE sercol1 (id SERIAL, val INT);";
-            var createTableListener = new CreateTableStatementDetectListener();
+            args = new[] { "from_query", "-i", query, "-o", "bin/out" };
+            var file = @"C:\git\kinocollc\MySQLToCsharp\MySQLToCsharp.Tests\test_data\sql\create_table.sql";
+            args = new[] { "from_file", "-i", file, "-o", "bin/out" };
+            var folder = @"C:\git\kinocollc\MySQLToCsharp\MySQLToCsharp.Tests\test_data\sql";
+            args = new[] { "from_folder", "-i", folder, "-o", "bin/out" };
+
+            await BatchHost.CreateDefaultBuilder().RunBatchEngineAsync<QueryToCSharp>(args);
+        }
+    }
+    public class QueryToCSharp : BatchBase
+    {
+        [Command("from_query", "parse from mysql query string.")]
+        public void ParseString(
+            [Option("-i", "mysql query to parse")]string input,
+            [Option("-o", "directory path to output C# class file")]string output)
+        {
+            var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
-            parser.Parse(query, createTableListener);
-            //parser.PrintTokens(false);
-            var definition = createTableListener.TableDefinition;
+            parser.Parse(input, listener);
+            var definition = listener.TableDefinition;
+        }
+
+        [Command("from_file", "parse from mysql query file.")]
+        public void ParseFromFile(
+            [Option("-i", "file path to parse mysql query")]string input,
+            [Option("-o", "directory path to output C# class file")]string output)
+        {
+            var definition = Parser.FromFile(input, false);
+        }
+
+        [Command("from_folder", "parse from mysql query files in specified folder.")]
+        public void ParseFromFolder(
+            [Option("-i", "folder path to parse mysql query")]string input,
+            [Option("-o", "directory path to output C# class file")]string output)
+        {
+            var definitions = Parser.FromFolder(input, false);
+            foreach (var def in definitions)
+            {
+
+            }
         }
     }
 }
