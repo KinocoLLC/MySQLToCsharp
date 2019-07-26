@@ -74,7 +74,6 @@ namespace MySQLToCsharp
         public int Order { get; set; }
         public string Name { get; set; }
         public MySqlColumnDataDefinition Data { get; set; }
-        public bool NotNull { get; set; }
         public bool AutoIncrement { get; set; }
         public bool HasDefault { get; set; }
         public string DefaultValue { get; set; }
@@ -101,11 +100,11 @@ namespace MySQLToCsharp
 
             // BITINT(20): DimensionDataTypeContext
             column.Data = new MySqlColumnDataDefinition();
-            (column.Data.DataType, column.Data.DataLength, column.Data.IsUnsigned) = definitionContext.ExtractColumnDataDefinition();
+            (column.Data.DataType, column.Data.Length, column.Data.IsUnsigned) = definitionContext.ExtractColumnDataDefinition();
 
             // NOTNULL: NullColumnConstraintContext
             var notnull = definitionContext.GetChild<NullColumnConstraintContext>();
-            column.NotNull = notnull != null;
+            column.Data.IsNullable = notnull == null;
 
             // AUTOINCREMENT: AutoIncrementColumnConstraintContext
             var autoincrement = definitionContext.GetChild<AutoIncrementColumnConstraintContext>();
@@ -127,7 +126,7 @@ namespace MySQLToCsharp
             if (column.Data.DataType == "SERIAL")
             {
                 column.Data.IsUnsigned = true;
-                column.NotNull = true;
+                column.Data.IsNullable = false;
                 column.AutoIncrement = true;
                 //MEMO: No action for UniqueKey. It's too much special. (should add unique key clause on sql)
             }
@@ -156,10 +155,10 @@ namespace MySQLToCsharp
 
     public class MySqlColumnDataDefinition
     {
-        //TODO: 型コンバーターかませる
         public string DataType { get; set; }
-        public int? DataLength { get; set; }
+        public int? Length { get; set; }
         public bool IsUnsigned { get; set; }
+        public bool IsNullable { get; set; }
     }
 
     /// <summary>

@@ -1,5 +1,33 @@
-## MySQLToCsharp
+# MySQLToCsharp
 
+## How to run
+
+There are 3 options to generate C# code from MySQL Create Table query.
+
+1. input sql string and generate a class.
+1. read sql file and generate a class.
+1. read directory path and generate class for each *.sql file.
+
+generate from query.
+
+```shell
+# query 
+mysql2csharp --query -i "CREATE TABLE sercol1 (id INT, val INT);" -o bin/out -n MyNameSpace.Data
+```
+
+generate from file.
+
+```shell
+# file
+dotnet mysql2csharp --file -i "./MySQLToCsharp.Tests/test_data/sql/create_table.sql" -o bin/out -n MyNameSpace.Data
+```
+
+read directory and generate for all *.sql
+
+```shell
+# dirctory
+dotnet mysql2csharp --dir -i "./MySQLToCsharp.Tests/test_data/sql/" -o bin/out -n MyNameSpace.Data
+```
 
 ## Generate MySQL Lexer/Parser/Listener/Visitor from ANTLR4 grammer
 
