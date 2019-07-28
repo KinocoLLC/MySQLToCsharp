@@ -50,12 +50,10 @@ namespace MySQLToCsharp.Tests
                 .Where(x => !x.StartsWith("SET FOREIGN_KEY_CHECKS"))
                 .Where(x => !x.StartsWith("DROP SCHEMA"))
                 .Where(x => !x.StartsWith("CREATE SCHEMA"))
-                .Select((x, i) => (index: i, content: x))
-                .ToArray();
+                .Select((x, i) => (index: i, content: x));
             var queryRanges = numLines
                 .Where(x => x.content.StartsWith(tableBeginKeyword))
-                .Zip(numLines.Where(x => x.content.EndsWith(";")), (title, end) => (title, end))
-                .ToArray();
+                .Zip(numLines.Where(x => x.content.EndsWith(";")), (title, end) => (title, end));
             var queries = queryRanges
                 .Select(x => x.title.content)
                 .ToArray();

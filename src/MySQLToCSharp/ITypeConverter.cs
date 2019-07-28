@@ -46,10 +46,12 @@ namespace MySQLToCsharp
     {
         private static readonly string[] none = Array.Empty<string>();
 
+        // TODO: ROWVERSION handling is missing
+        // TOOD: Required handling is not correct
         private const string Required = "Required";
         private const string Timestamp = "Timestamp";
         private static string StringLength(MySqlColumnDataDefinition data)
-            => data.Length != 0
+            => data.Length.HasValue && data.Length != 0
                 ? $"StringLength({data.Length})"
                 : null;
         private static string ArrayLength(MySqlColumnDataDefinition data)
