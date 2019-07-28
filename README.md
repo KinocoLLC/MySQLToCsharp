@@ -1,5 +1,7 @@
 # MySQLToCsharp
 
+MySQL version of [SqlToCsharp](https://github.com/ufcpp/SqlToCsharp)
+
 ## How to run
 
 There are 3 options to generate C# code from MySQL Create Table query.
@@ -63,3 +65,4 @@ good
 ANTLR4 repos
 
 * [JaCraig/SQLParser: An SQL Parser/Lexer for C\#](https://github.com/JaCraig/SQLParser)
+
