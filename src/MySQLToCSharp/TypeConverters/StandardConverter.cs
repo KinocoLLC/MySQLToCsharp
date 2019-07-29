@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -22,12 +22,19 @@ namespace MySQLToCsharp.TypeConverters
     /// DECIMAL(18,2)    | decimal        | DECIMAL(18,2)       | O        | NUMERIC is DECIMAL base
     /// TINYINT(1)       | bool           | BIT                 | X        | [Column(TypeName = "BIT(1)")]
     /// INT(11)          | char           | <throw>             | X        | not handle on DB
-    /// TEXT             | string         | TEXT                | O        | should not use TEXT, try use VARCHAR
     /// TEXT             | string         | VARCHAR(N)          | X        | [Column[TypeName = "VARCHAR(255)"]
+    /// TINYTEXT         | string         | TINYTEXT            | O        | 2^8 should not use TEXT, try use VARCHAR
+    /// TEXT             | string         | TEXT                | O        | 2^8 should not use TEXT, try use VARCHAR
+    /// MEDIUMTEXT       | string         | MEDIUMTEXT          | O        | 2^24 should not use TEXT, try use VARCHAR
+    /// LONGTEXT         | string         | LONGTEXT            | O        | 2^32 should not use TEXT, try use VARCHAR
     /// VARBINARY(3000)  | byte[]         | VARBINARY(3000)     | O        |
+    /// VARBINARY(65535) | byte[]         | TINYBLOB            | O        | 2^8
+    /// VARBINARY(65535) | byte[]         | BLOB                | O        | 2^16
+    /// VARBINARY(65535) | byte[]         | MEDIUMBLOB          | O        | 2^24
+    /// VARBINARY(65535) | byte[]         | LONGBLOB            | O        | 2^32
     /// DATETIME         | DateTime       | n/a                 | X        | should not use TIMESTAMP. try use DATETIME + TIMEZONE + OFFSET column
     /// DATETIME         | DateTimeOffset | DATETIME            | X        | Converter on C#
-    /// TIMESTAMP        | DateTimeOffset | <throw>             | O        | not handle on DB
+    /// TIMESTAMP        | DateTimeOffset | byte[]              | O        | Converter on C#
     /// </summary>
     /// <remarks>
     /// mysql type length:
@@ -97,6 +104,10 @@ namespace MySQLToCsharp.TypeConverters
                 case "LONGTEXT": // fallthrough
                 case "VARCHAR": return ("string", StringLength(data) is string sl ? new[] { Required, sl } : new[] { Required });
                 // byte[]
+                case "TINYBLOB": // fallthrough
+                case "BLOB": // fallthrough
+                case "MEDIUMBLOB": // fallthrough
+                case "LONGBLOB": // fallthrough
                 case "BINARY": // fallthrough
                 case "VARBINARY": return ("byte[]", ArrayLength(data) is string al ? new[] { Required, al } : new[] { Required });
                 // DateTimeOffset
@@ -139,6 +150,10 @@ namespace MySQLToCsharp.TypeConverters
                 case "LONGTEXT": // fallthrough
                 case "VARCHAR": return ("string", StringLength(data) is string sl ? new[] { sl } : none);
                 // byte[]
+                case "TINYBLOB": // fallthrough
+                case "BLOB": // fallthrough
+                case "MEDIUMBLOB": // fallthrough
+                case "LONGBLOB": // fallthrough
                 case "BINARY": // fallthrough
                 case "VARBINARY": return ("byte[]", ArrayLength(data) is string al ? new[] { al } : none);
                 // DateTimeOffset

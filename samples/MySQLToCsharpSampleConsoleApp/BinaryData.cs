@@ -19,5 +19,17 @@ namespace MySQLToCsharpSampleConsoleApp
         public byte[] VarData { get; set; }
         [MaxLength(512)]
         public byte[] NullableVarData { get; set; }
+        [Required]
+        public byte[] Tiny { get; set; }
+        public byte[] NullableTiny { get; set; }
+        [Required]
+        public byte[] Blob { get; set; }
+        public byte[] NullableBlob { get; set; }
+        [Required]
+        public byte[] Medium { get; set; }
+        public byte[] NullableMedium { get; set; }
+        [Required]
+        public byte[] Long { get; set; }
+        public byte[] NullableLong { get; set; }
     }
 }
