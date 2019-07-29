@@ -25,7 +25,7 @@ namespace MySQLToCsharp.Listeners
         public override void EnterSqlStatement([NotNull] SqlStatementContext context)
         {
             base.EnterSqlStatement(context);
-            TableDefinition = null;
+            TableDefinition = new MySqlTableDefinition();
             IsParseBegin = true;
             IsParseCompleted = false;
         }
@@ -58,7 +58,6 @@ namespace MySQLToCsharp.Listeners
         {
             base.EnterColumnCreateTable(context);
             IsTargetStatement = true;
-            TableDefinition = new MySqlTableDefinition();
 
             if (context.IsEmpty)
             {
