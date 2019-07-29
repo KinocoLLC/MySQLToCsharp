@@ -47,8 +47,6 @@ namespace MySQLToCsharp.TypeConverters
     {
         private static readonly string[] none = Array.Empty<string>();
 
-        // TODO: ROWVERSION handling is missing
-        // TOOD: Required handling is not correct
         private const string Required = "Required";
         private const string Timestamp = "Timestamp";
         private static string StringLength(MySqlColumnDataDefinition data)
@@ -60,17 +58,10 @@ namespace MySQLToCsharp.TypeConverters
                 ? $"MaxLength({data.Length})"
                 : null;
 
-        public (string typeName, string[] attributes) Convert(MySqlColumnDataDefinition data)
-        {
-            if (data.IsNullable)
-            {
-                return NullableConverter(data);
-            }
-            else
-            {
-                return NonNullableConverter(data);
-            }
-        }
+        public (string typeName, string[] attributes) Convert(MySqlColumnDataDefinition data) 
+            => data.IsNullable
+                ? NullableConverter(data)
+                : NonNullableConverter(data);
 
         private (string typeName, string[] attributes) NonNullableConverter(MySqlColumnDataDefinition data)
         {
