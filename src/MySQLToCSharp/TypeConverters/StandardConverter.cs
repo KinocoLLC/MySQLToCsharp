@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -48,7 +48,7 @@ namespace MySQLToCsharp.TypeConverters
                 ? $"StringLength({data.Length})"
                 : null;
         private static string ArrayLength(MySqlColumnDataDefinition data)
-            => data.Length != 0
+            => data.Length.HasValue && data.Length != 0
                 ? $"MaxLength({data.Length})"
                 : null;
 
