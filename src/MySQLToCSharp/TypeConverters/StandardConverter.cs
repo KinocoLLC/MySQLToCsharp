@@ -133,11 +133,14 @@ namespace MySQLToCsharp.TypeConverters
                 case "BIT": return ("bool?", none);
                 // clr char: no hanlding
                 // string
+                case "TINYTEXT": // fallthrough
                 case "TEXT": // fallthrough
-                case "VARCHAR": return ("string", StringLength(data) is string sl ? new[] { Required, sl } : new[] { Required });
+                case "MEDIUMTEXT": // fallthrough
+                case "LONGTEXT": // fallthrough
+                case "VARCHAR": return ("string", StringLength(data) is string sl ? new[] { sl } : none);
                 // byte[]
                 case "BINARY": // fallthrough
-                case "VARBINARY": return ("byte[]", ArrayLength(data) is string al ? new[] { Required, al } : new[] { Required });
+                case "VARBINARY": return ("byte[]", ArrayLength(data) is string al ? new[] { al } : none);
                 // DateTimeOffset
                 case "DATETIME": return ("DateTimeOffset?", none);
                 // byte[]
