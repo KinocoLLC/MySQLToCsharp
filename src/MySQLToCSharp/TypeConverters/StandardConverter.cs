@@ -101,7 +101,9 @@ namespace MySQLToCsharp.TypeConverters
                 case "VARBINARY": return ("byte[]", ArrayLength(data) is string al ? new[] { Required, al } : new[] { Required });
                 // DateTimeOffset
                 case "DATETIME": return ("DateTimeOffset", none);
-                // mysql TIMESTAMP should not handle -> should throw
+                // byte[]
+                // mysql TIMESTAMP should handle as RowVersion in MSSQL, means CLR byte[] and [Timestamp] attribute
+                case "TIMESTAMP": return ("byte[]", new[] { Timestamp });
                 default: throw new NotSupportedException(data.DataType);
             }
         }
@@ -138,7 +140,9 @@ namespace MySQLToCsharp.TypeConverters
                 case "VARBINARY": return ("byte[]", ArrayLength(data) is string al ? new[] { Required, al } : new[] { Required });
                 // DateTimeOffset
                 case "DATETIME": return ("DateTimeOffset?", none);
-                // mysql TIMESTAMP should not handle -> should throw
+                // byte[]
+                // mysql TIMESTAMP should handle as RowVersion in MSSQL, means CLR byte[] and [Timestamp] attribute
+                case "TIMESTAMP": return ("byte[]", new[] { Timestamp });
                 default: throw new NotSupportedException(data.DataType);
             }
         }

@@ -9,6 +9,7 @@ namespace MySQLToCsharpSampleConsoleApp
         [Key]
         [Column(Order = 0)]
         public int Id { get; set; }
-        public int RowVersion { get; set; }
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
     }
 }
