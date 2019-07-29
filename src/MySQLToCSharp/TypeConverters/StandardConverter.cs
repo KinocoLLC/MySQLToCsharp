@@ -34,7 +34,8 @@ namespace MySQLToCsharp.TypeConverters
     /// VARBINARY(65535) | byte[]         | LONGBLOB            | O        | 2^32
     /// DATETIME         | DateTime       | n/a                 | X        | should not use TIMESTAMP. try use DATETIME + TIMEZONE + OFFSET column
     /// DATETIME         | DateTimeOffset | DATETIME            | X        | Converter on C#
-    /// TIMESTAMP        | DateTimeOffset | byte[]              | O        | Converter on C#
+    /// TIMESTAMP        | DATETIME       | n/a                 | O        | DB TIMESTAMP should not use for DATETIME.
+    /// TIMESTAMP        | byte[]         | TIMESTAMP           | X        | Converter on C# (Equivalant to MSSQL RowVersion)
     /// </summary>
     /// <remarks>
     /// mysql type length:
