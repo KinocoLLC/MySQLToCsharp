@@ -2,21 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MySQLToCsharp
+namespace MySQLToCsharp.TypeConverters
 {
-    public interface ITypeConverter
-    {
-        /// <summary>
-        /// mysql type length:
-        /// number: https://dev.mysql.com/doc/refman/5.6/ja/integer-types.html
-        /// numeric: https://dev.mysql.com/doc/refman/5.6/ja/fixed-point-types.html
-        /// float: https://dev.mysql.com/doc/refman/5.6/ja/floating-point-types.html
-        /// </summary>
-        /// <param name="mysqlType"></param>
-        /// <returns></returns>
-        (string typeName, string[] attributes) Convert(MySqlColumnDataDefinition data);
-    }
-
     /// <summary>
     /// Convert MySQL Type to CLR Type.
     /// * Follow to the Fized MySQL Type.
@@ -42,6 +29,12 @@ namespace MySQLToCsharp
     /// DATETIME         | DateTimeOffset | DATETIME            | X        | Converter on C#
     /// TIMESTAMP        | DateTimeOffset | <throw>             | O        | not handle on DB
     /// </summary>
+    /// <remarks>
+    /// mysql type length:
+    /// number: https://dev.mysql.com/doc/refman/5.6/ja/integer-types.html
+    /// numeric: https://dev.mysql.com/doc/refman/5.6/ja/fixed-point-types.html
+    /// float: https://dev.mysql.com/doc/refman/5.6/ja/floating-point-types.html
+    /// </remarks>
     public class StandardConverter : ITypeConverter
     {
         private static readonly string[] none = Array.Empty<string>();
@@ -76,7 +69,7 @@ namespace MySQLToCsharp
             switch (data.DataType)
             {
                 // sbyte/byte
-                case "TINYINT" when data.IsUnsigned && data.Length == 4 : return ("byte", none);
+                case "TINYINT" when data.IsUnsigned && data.Length == 4: return ("byte", none);
                 case "TINYINT" when data.Length == 4: return ("sbyte", none);
                 case "TINYINT": return ("byte", none);
                 // short/ushort
