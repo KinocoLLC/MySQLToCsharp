@@ -104,7 +104,7 @@ namespace MySQLToCsharp
 
             // NOTNULL: NullColumnConstraintContext
             var notnull = definitionContext.GetChild<NullColumnConstraintContext>();
-            column.Data.IsNullable = notnull == null;
+            column.Data.IsNullable = notnull != null && notnull.GetText() == "NULL"; // ChildCount = 1 not proove null. string compare is guaranteed.
 
             // AUTOINCREMENT: AutoIncrementColumnConstraintContext
             var autoincrement = definitionContext.GetChild<AutoIncrementColumnConstraintContext>();
