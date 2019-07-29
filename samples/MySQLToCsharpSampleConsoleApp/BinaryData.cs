@@ -12,13 +12,11 @@ namespace MySQLToCsharpSampleConsoleApp
         [Required]
         [MaxLength(32)]
         public byte[] Data { get; set; }
-        [Required]
         [MaxLength(8)]
         public byte[] NullableData { get; set; }
         [Required]
         [MaxLength(128)]
         public byte[] VarData { get; set; }
-        [Required]
         [MaxLength(512)]
         public byte[] NullableVarData { get; set; }
     }

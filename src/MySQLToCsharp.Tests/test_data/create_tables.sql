@@ -1,5 +1,5 @@
 ﻿-- ref: https://github.com/antlr/grammars-v4/blob/master/mysql/examples/ddl_create.sql
-create table new_t  (like t1);
+-- create table new_t  (like t1);
 create table log_table(row varchar(512));
 create table ships(name varchar(255), class_id int, id int);
 create table ships_guns(guns_id int, ship_id int);
@@ -10,10 +10,10 @@ create table quengine(id int auto_increment key, class varchar(10), data binary)
 create table quengine(id int auto_increment key, class varchar(10), data binary) engine="Memory";
 create table quengine(id int auto_increment key, class varchar(10), data binary) engine=`CSV`;
 create table quengine(id int auto_increment key, class varchar(10), data binary COMMENT 'CSV') engine=MyISAM;
-create table quengine(id int auto_increment key, class varchar(10), data binary) engine=Aria;
+-- create table quengine(id int auto_increment key, class varchar(10), data binary) engine=Aria;
 create table `parent_table`(id int primary key, column1 varchar(30), index parent_table_i1(column1(20)), check(char_length(column1)>10)) engine InnoDB;
 create table child_table(id int unsigned auto_increment primary key, id_parent int references parent_table(id) match full on update cascade on delete set null) engine=InnoDB;
-create table `another some table $$` like `some table $$`;
+-- create table `another some table $$` like `some table $$`;
 create table `actor` (`last_update` timestamp default CURRENT_TIMESTAMP, `birthday` datetime default CURRENT_TIMESTAMP ON UPDATE LOCALTIMESTAMP);
 create table boolean_table(c1 bool, c2 boolean default true);
 create table default_table(c1 int default 42, c2 int default -42, c3 varchar(256) DEFAULT _utf8mb3'xxx');
