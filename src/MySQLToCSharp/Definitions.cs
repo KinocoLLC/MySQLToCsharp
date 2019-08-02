@@ -82,8 +82,8 @@ namespace MySQLToCsharp
 
         // key reference
         public MySqlKeyDefinition PrimaryKeyReference { get; set; }
-        public ISet<MySqlKeyDefinition> UniqueKeysReferences { get; private set; }
-        public ISet<MySqlKeyDefinition> IndexKeysReferences { get; private set; }
+        public ISet<MySqlKeyDefinition> UniqueKeysReferences { get; set; }
+        public ISet<MySqlKeyDefinition> IndexKeysReferences { get; set; }
 
         public static MySqlColumnDefinition Extract(ColumnDeclarationContext context)
         {
@@ -250,12 +250,15 @@ namespace MySQLToCsharp
         {
             if (context == null) throw new ArgumentOutOfRangeException($"{nameof(context)} is null");
 
-            var pk = context.GetIndexNames();
-            var pkNames = pk.Select(x => x.RemoveBackQuote().RemoveParenthesis()).ToArray();
+            var keys = context.GetIndexNames();
+            var pkName = context.GetChildlen<IndexColumnNamesContext>()
+                .Single()
+                .GetText().RemoveBackQuote().RemoveParenthesis();
+            var pkIndexes = keys.Select(x => x.RemoveBackQuote().RemoveParenthesis()).ToArray();
             var definition = new MySqlKeyDefinition
             {
-                KeyName = "PRIMARY KEY",
-                Indexes = pkNames.Select((x, i) => new MySqlKeyDetailDefinition
+                KeyName = pkName,
+                Indexes = pkIndexes.Select((x, i) => new MySqlKeyDetailDefinition
                 {
                     Order = i,
                     IndexKey = x,

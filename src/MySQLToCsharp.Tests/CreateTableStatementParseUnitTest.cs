@@ -25,6 +25,54 @@ namespace MySQLToCsharp.Tests
             listener.TableDefinition.Should().NotBeNull();
         }
         [Theory]
+        [MemberData(nameof(GenerateMultiplePkData))]
+        public void ParseMultiplePkTest(TestData data)
+        {
+            var listener = new CreateTableStatementDetectListener();
+            IParser parser = new Parser();
+            parser.Parse(data.Statement, listener);
+            var definition = listener.TableDefinition;
+            listener.IsTargetStatement.Should().BeTrue();
+            listener.IsParseBegin.Should().BeTrue();
+            listener.IsParseCompleted.Should().BeTrue();
+            listener.TableDefinition.Should().NotBeNull();
+
+            for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
+            {
+                definition.Columns[i].Name.Should().Be(data.Expected[i].Name);
+                definition.Columns[i].Order.Should().Be(data.Expected[i].Order);
+                definition.Columns[i].AutoIncrement.Should().Be(data.Expected[i].AutoIncrement);
+                definition.Columns[i].Data.IsNullable.Should().Be(data.Expected[i].Data.IsNullable);
+                definition.Columns[i].Data.IsUnsigned.Should().Be(data.Expected[i].Data.IsUnsigned);
+                definition.Columns[i].Data.Length.Should().Be(data.Expected[i].Data.Length);
+                definition.Columns[i].Data.DataType.Should().Be(data.Expected[i].Data.DataType);
+                definition.Columns[i].HasDefault.Should().Be(data.Expected[i].HasDefault);
+                definition.Columns[i].DefaultValue.Should().Be(data.Expected[i].DefaultValue);
+                if (data.Expected[i].PrimaryKeyReference != null)
+                {
+                    definition.Columns[i].PrimaryKeyReference.KeyName.Should().Be(data.Expected[i].PrimaryKeyReference.KeyName);
+                }
+                if (data.Expected[i].IndexKeysReferences != null)
+                {
+                    var index = 0;
+                    foreach (var key in definition.Columns[i].IndexKeysReferences)
+                    {
+                        key.KeyName.Should().Be(data.Expected[i].IndexKeysReferences.Skip(index).First().KeyName);
+                        index++;
+                    }
+                }
+                if (data.Expected[i].UniqueKeysReferences != null)
+                {
+                    var index = 0;
+                    foreach (var key in definition.Columns[i].UniqueKeysReferences)
+                    {
+                        key.KeyName.Should().Be(data.Expected[i].UniqueKeysReferences.Skip(index).First().KeyName);
+                        index++;
+                    }
+                }
+            }
+        }
+        [Theory]
         [MemberData(nameof(GenerateTypeConverterTestData))]
         public void TypeConverterTest(TestData data)
         {
@@ -39,13 +87,13 @@ namespace MySQLToCsharp.Tests
 
             for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
             {
-                listener.TableDefinition.Columns[i].Name.Should().Be(data.Expected[i].Name);
-                listener.TableDefinition.Columns[i].Order.Should().Be(data.Expected[i].Order);
-                listener.TableDefinition.Columns[i].AutoIncrement.Should().Be(data.Expected[i].AutoIncrement);
-                listener.TableDefinition.Columns[i].Data.IsNullable.Should().Be(data.Expected[i].Data.IsNullable);
-                listener.TableDefinition.Columns[i].Data.IsUnsigned.Should().Be(data.Expected[i].Data.IsUnsigned);
-                listener.TableDefinition.Columns[i].Data.Length.Should().Be(data.Expected[i].Data.Length);
-                listener.TableDefinition.Columns[i].Data.DataType.Should().Be(data.Expected[i].Data.DataType);
+                definition.Columns[i].Name.Should().Be(data.Expected[i].Name);
+                definition.Columns[i].Order.Should().Be(data.Expected[i].Order);
+                definition.Columns[i].AutoIncrement.Should().Be(data.Expected[i].AutoIncrement);
+                definition.Columns[i].Data.IsNullable.Should().Be(data.Expected[i].Data.IsNullable);
+                definition.Columns[i].Data.IsUnsigned.Should().Be(data.Expected[i].Data.IsUnsigned);
+                definition.Columns[i].Data.Length.Should().Be(data.Expected[i].Data.Length);
+                definition.Columns[i].Data.DataType.Should().Be(data.Expected[i].Data.DataType);
             }
         }
 
@@ -198,6 +246,156 @@ namespace MySQLToCsharp.Tests
             }
         }
 
+        public static IEnumerable<object[]> GenerateMultiplePkData()
+        {
+            var statements = LoadSql("test_data/create_table_multiplepk.sql");
+            foreach (var statement in statements)
+            {
+                yield return new object[]
+                {
+                    new TestData
+                    {
+                        Statement = statement,
+                        Expected = new [] {
+                            new MySqlColumnDefinition
+                            {
+                                Name = "Id",
+                                AutoIncrement = true,
+                                Data = new MySqlColumnDataDefinition
+                                {
+                                    DataType = "BIGINT",
+                                    Length = 20,
+                                    IsNullable = false,
+                                    IsUnsigned = false,
+                                },
+                                HasDefault = false,
+                                DefaultValue = null,
+                                Order = 0,
+                                PrimaryKeyReference = new MySqlKeyDefinition
+                                {
+                                    KeyName = "Id,SampleId"
+                                },
+                            },
+                            new MySqlColumnDefinition
+                            {
+                                Name = "SampleId",
+                                AutoIncrement = false,
+                                Data = new MySqlColumnDataDefinition
+                                {
+                                    DataType = "INT",
+                                    Length = 11,
+                                    IsNullable = false,
+                                    IsUnsigned = false,
+                                },
+                                HasDefault = false,
+                                DefaultValue = null,
+                                Order = 1,
+                                IndexKeysReferences = new HashSet<MySqlKeyDefinition>
+                                {
+                                    new MySqlKeyDefinition
+                                    {
+                                        KeyName = "SampleId_Status"
+                                    },
+                                },
+                                UniqueKeysReferences = new HashSet<MySqlKeyDefinition>
+                                {
+                                    new MySqlKeyDefinition
+                                    {
+                                        KeyName = "UQ_SampleId_MasterId"
+                                    },
+                                }
+                            },
+                            new MySqlColumnDefinition
+                            {
+                                Name = "MasterId",
+                                AutoIncrement = false,
+                                Data = new MySqlColumnDataDefinition
+                                {
+                                    DataType = "INT",
+                                    Length = 11,
+                                    IsNullable = false,
+                                    IsUnsigned = false,
+                                },
+                                HasDefault = false,
+                                DefaultValue = null,
+                                Order = 2,
+                                IndexKeysReferences = new HashSet<MySqlKeyDefinition>
+                                {
+                                    new MySqlKeyDefinition
+                                    {
+                                        KeyName = "MasterId_Status"
+                                    },
+                                },
+                                UniqueKeysReferences = new HashSet<MySqlKeyDefinition>
+                                {
+                                    new MySqlKeyDefinition
+                                    {
+                                        KeyName = "UQ_SampleId_MasterId"
+                                    },
+                                }
+                            },
+                            new MySqlColumnDefinition
+                            {
+                                Name = "Value",
+                                AutoIncrement = false,
+                                Data = new MySqlColumnDataDefinition
+                                {
+                                    DataType = "INT",
+                                    Length = 11,
+                                    IsNullable = false,
+                                    IsUnsigned = false,
+                                },
+                                HasDefault = true,
+                                DefaultValue = "0",
+                                Order = 3,
+                            },
+                            new MySqlColumnDefinition
+                            {
+                                Name = "Status",
+                                AutoIncrement = false,
+                                Data = new MySqlColumnDataDefinition
+                                {
+                                    DataType = "TINYINT",
+                                    Length = 3,
+                                    IsNullable = false,
+                                    IsUnsigned = true,
+                                },
+                                HasDefault = true,
+                                DefaultValue = "1",
+                                Order = 4,
+                                IndexKeysReferences = new HashSet<MySqlKeyDefinition>
+                                {
+                                    new MySqlKeyDefinition
+                                    {
+                                        KeyName = "SampleId_Status"
+                                    },
+                                    new MySqlKeyDefinition
+                                    {
+                                        KeyName = "MasterId_Status"
+                                    },
+                                },
+                            },
+                            new MySqlColumnDefinition
+                            {
+                                Name = "Created",
+                                AutoIncrement = false,
+                                Data = new MySqlColumnDataDefinition
+                                {
+                                    DataType = "DATETIME",
+                                    Length = 6,
+                                    IsNullable = false,
+                                    IsUnsigned = false,
+                                },
+                                HasDefault = false,
+                                DefaultValue = null,
+                                Order = 5,
+                            },
+                        }
+                    },
+                };
+            }
+        }
+
         private static string[] LoadSql(string path)
         {
             var lines = File.ReadAllLines(path, new UTF8Encoding(false));
@@ -230,7 +428,7 @@ namespace MySQLToCsharp.Tests
             // pick up range
             if (begins.Length == 1)
             {
-                return new[] {numLines.Select(x => x.content).ToJoinedString("\n")};
+                return new[] { numLines.Select(x => x.content).ToJoinedString("\n") };
             }
             else if (begins.Zip(ends, (b, e) => (begin: b.index, end: e.index)).All(x => x.begin == x.end))
             {
@@ -250,7 +448,7 @@ namespace MySQLToCsharp.Tests
         public class TestData
         {
             public string Statement { get; set; }
-            public MySqlColumnDefinition[] Expected { get; set; } 
+            public MySqlColumnDefinition[] Expected { get; set; }
         }
     }
 

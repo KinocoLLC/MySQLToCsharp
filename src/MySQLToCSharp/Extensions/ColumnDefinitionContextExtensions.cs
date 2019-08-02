@@ -1,6 +1,7 @@
 ﻿using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using static MySQLToCsharp.Parsers.MySql.MySqlParser;
 
@@ -44,7 +45,7 @@ namespace MySQLToCsharp
         {
             if (context == null) throw new ArgumentNullException($"{nameof(context)} is null");
             if (context is T type) return type;
-            if (context.ChildCount != 0) return null;
+            if (context.ChildCount == 0) return null;
             // first child's depth priority search. (not same depth search first.)
             for (var i = 0; i < context.ChildCount; i++)
             {
@@ -52,6 +53,28 @@ namespace MySQLToCsharp
                 if (result != null) return result;
             }
             return null;
+        }
+
+        /// <summary>
+        /// Search <see cref="T"/> for Child direction and return first match.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public static T[] GetChildlen<T>(this ParserRuleContext context) where T : ParserRuleContext
+        {
+            if (context == null) throw new ArgumentNullException($"{nameof(context)} is null");
+            if (context.ChildCount == 0)
+                return Array.Empty<T>();
+
+            List<T> list = new List<T>();
+            for (var i = 0; i < context.ChildCount; i++)
+            {
+                var result = context.GetChild<T>(i);
+                if (result != null)
+                    list.Add(result);
+            }
+            return list.ToArray();
         }
 
         #region debug method
@@ -62,7 +85,7 @@ namespace MySQLToCsharp
         /// <typeparam name="U"></typeparam>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static void GetChildlen<T, U>(this T context)
+        public static void DebugGetChildlen<T, U>(this T context)
             where T : ParserRuleContext
             where U : ParserRuleContext
         {
@@ -77,7 +100,7 @@ namespace MySQLToCsharp
                 {
                     var c = target.GetChild(j);
                     Console.WriteLine(c.GetText());
-                    target.GetChildlen<U, ColumnDefinitionContext>();
+                    target.DebugGetChildlen<U, ColumnDefinitionContext>();
 
                     // continue with column definition detail (autoincre, notnull....)
                 }
@@ -88,7 +111,7 @@ namespace MySQLToCsharp
         /// Output child items
         /// </summary>
         /// <param name="context"></param>
-        public static void GetChildlen(this ParserRuleContext context, string indent = "")
+        public static void DebugGetChildlen(this ParserRuleContext context, string indent = "")
         {
             for (var i = 0; i < context.ChildCount; i++)
             {
@@ -110,17 +133,9 @@ namespace MySQLToCsharp
         public static string[] GetIndexNames(this PrimaryKeyTableConstraintContext context)
         {
             if (context == null) throw new ArgumentOutOfRangeException($"{nameof(context)} is null");
-            var result = Enumerable.Range(0, context.ChildCount)
-                .Select(x =>
-                {
-                    var child = context.GetChild(x);
-                    if (child is IndexColumnNamesContext name)
-                    {
-                        return name.GetText();
-                    }
-                    return "";
-                })
-                .Where(x => !string.IsNullOrEmpty(x))
+            var result = context.GetChildlen<IndexColumnNamesContext>()
+                .SelectMany(x => x.GetChildlen<IndexColumnNameContext>())
+                .Select(x => x.GetText())
                 .ToArray();
             return result;
         }
