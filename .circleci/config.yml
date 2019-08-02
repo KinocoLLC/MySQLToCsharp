@@ -4,14 +4,14 @@ executors:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:2.1
     environment:
-      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
       NUGET_XMLDOC_MODE: skip
       BUILD_CONFIG: Release
   dotnet3:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.0
     environment:
-      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
       NUGET_XMLDOC_MODE: skip
   go:
     docker:

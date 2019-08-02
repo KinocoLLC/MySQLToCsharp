@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySQLToCsharp", "src\MySQLT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySQLToCsharp.Tests", "src\MySQLToCsharp.Tests\MySQLToCsharp.Tests.csproj", "{84B527D0-564B-4D80-A7FE-E9AD2C44B8FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySQLToCsharpSampleConsoleApp", "samples\MySQLToCsharpSAmpleConsoleApp\MySQLToCsharpSampleConsoleApp.csproj", "{1F16F5DB-1F37-4835-9B89-9557746CCBE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySQLToCsharpSampleConsoleApp", "samples\MySQLToCsharpSampleConsoleApp\MySQLToCsharpSampleConsoleApp.csproj", "{1F16F5DB-1F37-4835-9B89-9557746CCBE6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{40C3FEDE-C5C1-4358-B51D-6287ADD9EBC9}"
 EndProject
