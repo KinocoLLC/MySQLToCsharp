@@ -1,8 +1,18 @@
 # MySQLToCsharp
 
-[![CircleCI](https://circleci.com/gh/KinocoLLC/MySQLToCsharp.svg?style=svg)](https://circleci.com/gh/KinocoLLC/MySQLToCsharp) [![codecov](https://codecov.io/gh/KinocoLLC/MySQLToCsharp/branch/master/graph/badge.svg)](https://codecov.io/gh/KinocoLLC/MySQLToCsharp)
+[![CircleCI](https://circleci.com/gh/KinocoLLC/MySQLToCsharp.svg?style=svg)](https://circleci.com/gh/KinocoLLC/MySQLToCsharp) [![codecov](https://codecov.io/gh/KinocoLLC/MySQLToCsharp/branch/master/graph/badge.svg)](https://codecov.io/gh/KinocoLLC/MySQLToCsharp) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) 
 
-MySQL version of [SqlToCsharp](https://github.com/ufcpp/SqlToCsharp)
+[![NuGet](https://img.shields.io/nuget/v/MySQLToCsharp.svg?label=MySQLToCsharp%20nuget)](https://www.nuget.org/packages/MySQLToCsharp)
+
+MySQL version of [SqlToCsharp](https://github.com/ufcpp/SqlToCsharp).
+
+A C# class generator from SQL CREATE TABLE Statements (MySQLs)
+
+## Install
+
+```shell
+dotnet tool install --global MySQLToCsharp
+```
 
 ## How to run
 
@@ -45,7 +55,6 @@ gen.bat
 # macos/linux
 gen.sh
 ```
-
 
 ## Ref
 
