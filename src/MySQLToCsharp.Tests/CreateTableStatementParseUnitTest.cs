@@ -26,7 +26,7 @@ namespace MySQLToCsharp.Tests
         }
         [Theory]
         [MemberData(nameof(GenerateMultiplePkData))]
-        public void ParseMultiplePkTest(TestData data)
+        public void MultiplePrimaryKeyColumnTests(TestData data)
         {
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
@@ -48,6 +48,23 @@ namespace MySQLToCsharp.Tests
                 definition.Columns[i].Data.DataType.Should().Be(data.Expected[i].Data.DataType);
                 definition.Columns[i].HasDefault.Should().Be(data.Expected[i].HasDefault);
                 definition.Columns[i].DefaultValue.Should().Be(data.Expected[i].DefaultValue);
+            }
+        }
+        [Theory]
+        [MemberData(nameof(GenerateMultiplePkData))]
+        public void MultiplePrimaryKeyReferenceTest(TestData data)
+        {
+            var listener = new CreateTableStatementDetectListener();
+            IParser parser = new Parser();
+            parser.Parse(data.Statement, listener);
+            var definition = listener.TableDefinition;
+            listener.IsTargetStatement.Should().BeTrue();
+            listener.IsParseBegin.Should().BeTrue();
+            listener.IsParseCompleted.Should().BeTrue();
+            listener.TableDefinition.Should().NotBeNull();
+
+            for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
+            {
                 if (data.Expected[i].PrimaryKeyReference != null)
                 {
                     definition.Columns[i].PrimaryKeyReference.KeyName.Should().Be(data.Expected[i].PrimaryKeyReference.KeyName);
@@ -66,6 +83,23 @@ namespace MySQLToCsharp.Tests
                         }
                     }
                 }
+            }
+        }
+        [Theory]
+        [MemberData(nameof(GenerateMultiplePkData))]
+        public void MultipleIndexKeyReferenceTest(TestData data)
+        {
+            var listener = new CreateTableStatementDetectListener();
+            IParser parser = new Parser();
+            parser.Parse(data.Statement, listener);
+            var definition = listener.TableDefinition;
+            listener.IsTargetStatement.Should().BeTrue();
+            listener.IsParseBegin.Should().BeTrue();
+            listener.IsParseCompleted.Should().BeTrue();
+            listener.TableDefinition.Should().NotBeNull();
+
+            for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
+            {
                 if (data.Expected[i].IndexKeysReferences != null)
                 {
                     var j = 0;
@@ -91,6 +125,23 @@ namespace MySQLToCsharp.Tests
                         }
                     }
                 }
+            }
+        }
+        [Theory]
+        [MemberData(nameof(GenerateMultiplePkData))]
+        public void MultipleUniqueKeyReferenceTest(TestData data)
+        {
+            var listener = new CreateTableStatementDetectListener();
+            IParser parser = new Parser();
+            parser.Parse(data.Statement, listener);
+            var definition = listener.TableDefinition;
+            listener.IsTargetStatement.Should().BeTrue();
+            listener.IsParseBegin.Should().BeTrue();
+            listener.IsParseCompleted.Should().BeTrue();
+            listener.TableDefinition.Should().NotBeNull();
+
+            for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
+            {
                 if (data.Expected[i].UniqueKeysReferences != null)
                 {
                     var j = 0;
