@@ -51,23 +51,68 @@ namespace MySQLToCsharp.Tests
                 if (data.Expected[i].PrimaryKeyReference != null)
                 {
                     definition.Columns[i].PrimaryKeyReference.KeyName.Should().Be(data.Expected[i].PrimaryKeyReference.KeyName);
+                    definition.Columns[i].PrimaryKeyReference.Should().NotBeNull();
+                    definition.PrimaryKey.Should().NotBeNull();
+                    definition.PrimaryKey.KeyName.Should().Be(definition.Columns[i].PrimaryKeyReference.KeyName);
+                    definition.PrimaryKey.Indexes.Should().NotBeNull();
+                    definition.PrimaryKey.Indexes.Length.Should().Be(definition.Columns[i].PrimaryKeyReference.Indexes.Length);
+
+                    // index name must match to referenced column name
+                    foreach (var index in definition.PrimaryKey.Indexes)
+                    {
+                        foreach (var reference in index.ColumnReference)
+                        {
+                            index.IndexKey.Should().Be(reference.Name);
+                        }
+                    }
                 }
                 if (data.Expected[i].IndexKeysReferences != null)
                 {
-                    var index = 0;
+                    var j = 0;
                     foreach (var key in definition.Columns[i].IndexKeysReferences)
                     {
-                        key.KeyName.Should().Be(data.Expected[i].IndexKeysReferences.Skip(index).First().KeyName);
-                        index++;
+                        key.KeyName.Should().Be(data.Expected[i].IndexKeysReferences.Skip(j).First().KeyName);
+                        key.Indexes.Should().NotBeNull();
+                        j++;
+                    }
+                    definition.IndexKeys.Should().NotBeNull();
+                    foreach (var key in definition.IndexKeys)
+                    {
+                        key.Indexes.Should().NotBeNull();
+                        key.Indexes.Where(x => x.IndexKey == definition.Columns[i].Name).Should().NotBeNull();
+
+                        // index name must match to referenced column name
+                        foreach (var index in key.Indexes)
+                        {
+                            foreach (var reference in index.ColumnReference)
+                            {
+                                index.IndexKey.Should().Be(reference.Name);
+                            }
+                        }
                     }
                 }
                 if (data.Expected[i].UniqueKeysReferences != null)
                 {
-                    var index = 0;
+                    var j = 0;
                     foreach (var key in definition.Columns[i].UniqueKeysReferences)
                     {
-                        key.KeyName.Should().Be(data.Expected[i].UniqueKeysReferences.Skip(index).First().KeyName);
-                        index++;
+                        key.KeyName.Should().Be(data.Expected[i].UniqueKeysReferences.Skip(j).First().KeyName);
+                        key.Indexes.Should().NotBeNull();
+                        j++;
+                    }
+                    definition.UniqueKeys.Should().NotBeNull();
+                    foreach (var key in definition.UniqueKeys)
+                    {
+                        key.Indexes.Should().NotBeNull();
+                        key.Indexes.Where(x => x.IndexKey == definition.Columns[i].Name).Should().NotBeNull();
+                        // index name must match to referenced column name
+                        foreach (var index in key.Indexes)
+                        {
+                            foreach (var reference in index.ColumnReference)
+                            {
+                                index.IndexKey.Should().Be(reference.Name);
+                            }
+                        }
                     }
                 }
             }
