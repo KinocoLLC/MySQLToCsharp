@@ -23,15 +23,6 @@
     <Company>KinocoLLC</Company>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(singlepackage)' == 'true'">
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <PublishSingleFile>true</PublishSingleFile>
-    <PublishTrimmed>true</PublishTrimmed>
-    <IncludeSymbolsInSingleFile>true</IncludeSymbolsInSingleFile>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702;3021</NoWarn>
   </PropertyGroup>

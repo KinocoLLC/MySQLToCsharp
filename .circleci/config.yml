@@ -68,23 +68,23 @@ workflows:
           filters:
             tags:
               only: /.*/
-    #   - build-push:
+      - build-push:
+          filters:
+            tags:
+              only: /^\d\.\d\.\d.*/
+            branches:
+              ignore: /.*/
+    #   - build-singlepackage:
     #       filters:
     #         tags:
     #           only: /^\d\.\d\.\d.*/
     #         branches:
     #           ignore: /.*/
-      - build-singlepackage:
-          filters:
-            tags:
-              only: /^\d\.\d\.\d.*/
-            branches:
-              ignore: /.*/
-      - upload-github:
-          requires:
-            - build-singlepackage
-          filters:
-            tags:
-              only: /^\d\.\d\.\d.*/
-            branches:
-              ignore: /.*/
+    #   - upload-github:
+    #       requires:
+    #         - build-singlepackage
+    #       filters:
+    #         tags:
+    #           only: /^\d\.\d\.\d.*/
+    #         branches:
+    #           ignore: /.*/
