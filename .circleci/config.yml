@@ -1,0 +1,90 @@
+version: 2.1
+executors:
+  dotnet:
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:2.1
+    environment:
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      NUGET_XMLDOC_MODE: skip
+      BUILD_CONFIG: Release
+  dotnet3:
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.0
+    environment:
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      NUGET_XMLDOC_MODE: skip
+  go:
+    docker:
+      - image: circleci/golang
+jobs:
+  build-test:
+    executor: dotnet
+    steps:
+      - checkout
+      - run: dotnet tool install -g dotnet-reportgenerator-globaltool
+      - run: dotnet build -c Debug
+      - run: x=$(dotnet test -c Debug --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover); echo $x;
+      - run: curl -s https://codecov.io/bash > codecov
+      - run: chmod +x codecov
+      - run: ./codecov -f ./src/MySQLToCSharp.Tests/coverage.opencover.xml
+  build-push:
+    executor: dotnet
+    steps:
+      - checkout
+      - run: dotnet build -c Release -p:Version=${CIRCLE_TAG}
+      - run: dotnet test -c Release --no-build);
+      - run: dotnet pack ./src/MySQLToCSharp/MySQLToCSharp.csproj -c Release --no-build -p:Version=${CIRCLE_TAG}
+      - run: dotnet nuget push ./src/MySQLToCSharp/bin/Release/MySQLToCSharp.${CIRCLE_TAG}.nupkg -s https://www.nuget.org/api/v2/package -k ${NUGET_KEY}
+      - store_artifacts:
+          path: ./src/MySQLToCSharp/bin/Release
+          destination: ./MySQLToCSharp/
+  build-singlepackage:
+    executor: dotnet3
+    steps:
+      - run: apt update && apt install zip -y
+      - checkout
+      - run: dotnet publish ./src/MySQLToCSharp/ -c Release -o ./MySQLToCSharp/win-x64 -r win-x64 -p:singlepackage=true
+      - run: dotnet publish ./src/MySQLToCSharp/ -c Release -o ./MySQLToCSharp/linux-x64 -r linux-x64 -p:singlepackage=true
+      - run: dotnet publish ./src/MySQLToCSharp/ -c Release -o ./MySQLToCSharp/osx-x64 -r osx-x64 -p:singlepackage=true
+      - run: zip -r MySQLToCSharp.zip ./MySQLToCSharp
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./MySQLToCSharp.zip
+  upload-github:
+    executor: go
+    steps:
+      - attach_workspace:
+          at: .
+      - run: go get github.com/tcnksm/ghr
+      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_TAG} .
+      - store_artifacts:
+          path: MySQLToCSharp.zip
+          destination: MySQLToCSharp.zip
+workflows:
+  build-and-push:
+    jobs:
+      - build-test:
+          filters:
+            tags:
+              only: /.*/
+    #   - build-push:
+    #       filters:
+    #         tags:
+    #           only: /^\d\.\d\.\d.*/
+    #         branches:
+    #           ignore: /.*/
+      - build-singlepackage:
+          filters:
+            tags:
+              only: /^\d\.\d\.\d.*/
+            branches:
+              ignore: /.*/
+      - upload-github:
+          requires:
+            - build-singlepackage
+          filters:
+            tags:
+              only: /^\d\.\d\.\d.*/
+            branches:
+              ignore: /.*/

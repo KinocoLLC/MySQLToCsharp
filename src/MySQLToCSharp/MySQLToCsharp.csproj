@@ -2,7 +2,34 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>dotnet-mysqltocsharp</ToolCommandName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>0.1.0</Version>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <PackageId>MySQLToCsharp</PackageId>
+    <Authors>guitarrapc</Authors>
+    <Description>A C# class generator from SQL CREATE TABLE Statements (MySQL)</Description>
+    <PackageProjectUrl>https://github.com/KinocoLLC/MySQLToCsharp</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>mysql,parser,generator</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Company>KinocoLLC</Company>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(singlepackage)' == 'true'">
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+    <IncludeSymbolsInSingleFile>true</IncludeSymbolsInSingleFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,5 +44,12 @@
     <PackageReference Include="Antlr4.Runtime.Standard" Version="4.7.2" />
     <PackageReference Include="MicroBatchFramework" Version="1.2.0" />
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
 </Project>
