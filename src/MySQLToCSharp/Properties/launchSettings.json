@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "MySQLToCsharp": {
-      "commandName": "Project",
-      "commandLineArgs": "--file -i C:\\git\\oc\\Banana\\Game\\Servers\\UserServer\\BananaDatabase\\mysql\\Tables\\ClubMembers.sql -o C:\\Users\\guitarrapc\\Downloads\\mysqltocsharp\\csharp/ -namespace OrangeCube.Banana.UserServer.DbModels.Data --addbom true"
-    }
-  }
-}
