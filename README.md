@@ -1,6 +1,6 @@
 # MySQLToCsharp
 
-[![CircleCI](https://circleci.com/gh/KinocoLLC/MySQLToCsharp.svg?style=svg)](https://circleci.com/gh/KinocoLLC/MySQLToCsharp)
+[![CircleCI](https://circleci.com/gh/KinocoLLC/MySQLToCsharp.svg?style=svg)](https://circleci.com/gh/KinocoLLC/MySQLToCsharp) [![codecov](https://codecov.io/gh/KinocoLLC/MySQLToCsharp/branch/master/graph/badge.svg)](https://codecov.io/gh/KinocoLLC/MySQLToCsharp)
 
 MySQL version of [SqlToCsharp](https://github.com/ufcpp/SqlToCsharp)
 
