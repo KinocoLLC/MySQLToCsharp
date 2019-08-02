@@ -1,5 +1,7 @@
 # MySQLToCsharp
 
+[![CircleCI](https://circleci.com/gh/KinocoLLC/MySQLToCsharp.svg?style=svg)](https://circleci.com/gh/KinocoLLC/MySQLToCsharp)
+
 MySQL version of [SqlToCsharp](https://github.com/ufcpp/SqlToCsharp)
 
 ## How to run

@@ -23,7 +23,7 @@ jobs:
       - checkout
       - run: dotnet tool install -g dotnet-reportgenerator-globaltool
       - run: dotnet build -c Debug
-      - run: x=$(dotnet test -c Debug --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover); echo $x;
+      - run: dotnet test -c Debug --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
       - run: curl -s https://codecov.io/bash > codecov
       - run: chmod +x codecov
       - run: ./codecov -f ./src/MySQLToCSharp.Tests/coverage.opencover.xml
