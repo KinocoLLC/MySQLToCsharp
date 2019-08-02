@@ -32,7 +32,7 @@ jobs:
     steps:
       - checkout
       - run: dotnet build -c Release -p:Version=${CIRCLE_TAG}
-      - run: dotnet test -c Release --no-build);
+      - run: dotnet test -c Release --no-build
       - run: dotnet pack ./src/MySQLToCsharp/MySQLToCsharp.csproj -c Release --no-build -p:Version=${CIRCLE_TAG}
       - run: dotnet nuget push ./src/MySQLToCsharp/bin/Release/MySQLToCsharp.${CIRCLE_TAG}.nupkg -s https://www.nuget.org/api/v2/package -k ${NUGET_KEY}
       - store_artifacts:
