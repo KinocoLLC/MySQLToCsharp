@@ -22,10 +22,5 @@ namespace MySQLToCsharp.TypeConverters
 
             throw new ArgumentOutOfRangeException($"Could not resolve converter '{key}'.");
         }
-
-        public static ITypeConverter Resolve(Type type)
-        {
-            return Resolve(type.Name);
-        }
     }
 }

@@ -12,6 +12,7 @@ namespace MySQLToCsharp.Tests
 {
     public class StandardTypeConvertTest
     {
+        const string converter = "StandardConverter";
         [Theory]
         [MemberData(nameof(GenerateParseTestData))]
         public void QueryParseAndTypeConvertTest(TestItem data)
@@ -24,7 +25,7 @@ namespace MySQLToCsharp.Tests
             listener.IsParseCompleted.Should().BeTrue();
             listener.TableDefinition.Should().NotBeNull();
 
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
             {
                 var (clrType, _) = typeConverter.Convert(listener.TableDefinition.Columns[i].Data);
@@ -37,7 +38,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(TinyInt_NonNullableTestData))]
         public void TINYINT_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -45,7 +46,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(SmallInt_NonNullableTestData))]
         public void SMALLINT_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -53,7 +54,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(Int_NonNullableTestData))]
         public void INT_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -61,7 +62,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(BigInt_NonNullableTestData))]
         public void BIGINT_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -69,7 +70,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(Float_NonNullableTestData))]
         public void FLOAT_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -77,7 +78,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(Double_NonNullableTestData))]
         public void DOUBLE_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -85,7 +86,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(Decimal_NonNullableTestData))]
         public void DECIMAL_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -93,7 +94,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(Bit_NonNullableTestData))]
         public void BIT_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -101,7 +102,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(TinyText_NonNullableTestData))]
         public void TINYTEXT_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -109,7 +110,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(Text_NonNullableTestData))]
         public void TEXT_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -117,7 +118,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(MediumText_NonNullableTestData))]
         public void MEDIUMTEXT_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -125,7 +126,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(LongText_NonNullableTestData))]
         public void LONGTEXT_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -133,7 +134,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(VarChar_NonNullableTestData))]
         public void VARCHAR_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -141,7 +142,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(TinyBlob_NonNullableTestData))]
         public void TINYBLOB_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -149,7 +150,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(Blob_NonNullableTestData))]
         public void BLOB_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -157,7 +158,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(MediumBlob_NonNullableTestData))]
         public void MEDIUMBLOB_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -165,7 +166,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(LONGBlob_NonNullableTestData))]
         public void LONGBLOB_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -173,7 +174,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(Binary_NonNullableTestData))]
         public void BINARY_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -181,7 +182,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(VarBinary_NonNullableTestData))]
         public void VARBINARY_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -189,7 +190,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(DateTime_NonNullableTestData))]
         public void DATETIME_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
@@ -197,7 +198,7 @@ namespace MySQLToCsharp.Tests
         [MemberData(nameof(TimeStamp_NonNullableTestData))]
         public void TIMESTAMP_NonNullable_ConvertTest(ColumnDataTestItem data)
         {
-            var typeConverter = TypeConverterResolver.Resolve(typeof(StandardConverter));
+            var typeConverter = TypeConverterResolver.Resolve(converter);
             var (t, _) = typeConverter.Convert(data.MySqlColumnData);
             t.Should().Be(data.Expected);
         }
