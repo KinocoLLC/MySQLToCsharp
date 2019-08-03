@@ -34,173 +34,1597 @@ namespace MySQLToCsharp.Tests
 
         }
 
-        [Theory]
-        [MemberData(nameof(TinyInt_NonNullableTestData))]
-        public void TINYINT_NonNullable_ConvertTest(ColumnDataTestItem data)
+        public class NonNullable
         {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
+            const bool nullable = false;
+            // non nullable
+            [Theory]
+            [MemberData(nameof(TinyInt_TestData))]
+            public void TINYINT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(SmallInt_TestData))]
+            public void SMALLINT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Int_TestData))]
+            public void INT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(BigInt_TestData))]
+            public void BIGINT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Float_TestData))]
+            public void FLOAT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Double_TestData))]
+            public void DOUBLE_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Decimal_TestData))]
+            public void DECIMAL_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Bit_TestData))]
+            public void BIT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(TinyText_TestData))]
+            public void TINYTEXT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Text_TestData))]
+            public void TEXT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(MediumText_TestData))]
+            public void MEDIUMTEXT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(LongText_TestData))]
+            public void LONGTEXT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(VarChar_TestData))]
+            public void VARCHAR_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(TinyBlob_TestData))]
+            public void TINYBLOB_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Blob_TestData))]
+            public void BLOB_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(MediumBlob_TestData))]
+            public void MEDIUMBLOB_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(LONGBlob_TestData))]
+            public void LONGBLOB_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Binary_TestData))]
+            public void BINARY_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(VarBinary_TestData))]
+            public void VARBINARY_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(DateTime_TestData))]
+            public void DATETIME_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(TimeStamp_TestData))]
+            public void TIMESTAMP_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Date_TestData))]
+            [MemberData(nameof(Time_TestData))]
+            [MemberData(nameof(Year_TestData))]
+            [MemberData(nameof(Json_TestData))]
+            public void Throw_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                Assert.Throws<NotSupportedException>(() => typeConverter.Convert(data.MySqlColumnData));
+            }
+
+            // sbyte/byte
+            public static IEnumerable<object[]> TinyInt_TestData()
+            {
+                const string DataType = "TINYINT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        Length = 4,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        Length = 4,
+                        IsNullable = nullable,
+                    },
+                    Expected = "sbyte",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte",
+                },
+                };
+            }
+            // short/ushort
+            public static IEnumerable<object[]> SmallInt_TestData()
+            {
+                const string DataType = "SMALLINT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        Length = 6,
+                        IsNullable = nullable,
+                    },
+                    Expected = "ushort",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        Length = 4,
+                        IsNullable = nullable,
+                    },
+                    Expected = "short",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "short",
+                },
+                };
+            }
+            // int/uint
+            public static IEnumerable<object[]> Int_TestData()
+            {
+                const string DataType = "INT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "uint",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "int",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        Length = 11,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "int",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        Length = 6,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "int",
+                },
+                };
+            }
+            // long/ulong
+            public static IEnumerable<object[]> BigInt_TestData()
+            {
+                const string DataType = "BIGINT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "ulong",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "long",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        Length = 20,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "long",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        Length = 11,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "long",
+                },
+                };
+            }
+            // flot
+            public static IEnumerable<object[]> Float_TestData()
+            {
+                const string DataType = "FLOAT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "float",
+                },
+                };
+            }
+            // double
+            public static IEnumerable<object[]> Double_TestData()
+            {
+                const string DataType = "DOUBLE";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "double",
+                },
+                };
+            }
+            // decimal
+            public static IEnumerable<object[]> Decimal_TestData()
+            {
+                const string DataType = "DECIMAL";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "decimal",
+                },
+                };
+            }
+            // bool
+            public static IEnumerable<object[]> Bit_TestData()
+            {
+                const string DataType = "BIT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "bool",
+                },
+                };
+            }
+            // string
+            public static IEnumerable<object[]> TinyText_TestData()
+            {
+                const string DataType = "TINYTEXT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "string",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Text_TestData()
+            {
+                const string DataType = "TEXT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "string",
+                },
+                };
+            }
+            public static IEnumerable<object[]> MediumText_TestData()
+            {
+                const string DataType = "MEDIUMTEXT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "string",
+                },
+                };
+            }
+            public static IEnumerable<object[]> LongText_TestData()
+            {
+                const string DataType = "LONGTEXT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "string",
+                },
+                };
+            }
+            public static IEnumerable<object[]> VarChar_TestData()
+            {
+                const string DataType = "VARCHAR";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "string",
+                },
+                };
+            }
+            // byte[]
+            public static IEnumerable<object[]> TinyBlob_TestData()
+            {
+                const string DataType = "TINYBLOB";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Blob_TestData()
+            {
+                const string DataType = "BLOB";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            public static IEnumerable<object[]> MediumBlob_TestData()
+            {
+                const string DataType = "MEDIUMBLOB";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            public static IEnumerable<object[]> LONGBlob_TestData()
+            {
+                const string DataType = "LONGBLOB";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Binary_TestData()
+            {
+                const string DataType = "BINARY";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            public static IEnumerable<object[]> VarBinary_TestData()
+            {
+                const string DataType = "VARBINARY";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            // DateTimeOffset
+            public static IEnumerable<object[]> DateTime_TestData()
+            {
+                const string DataType = "DATETIME";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "DateTimeOffset",
+                },
+                };
+            }
+            // byte[]
+            public static IEnumerable<object[]> TimeStamp_TestData()
+            {
+                const string DataType = "TIMESTAMP";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            // others
+            public static IEnumerable<object[]> Date_TestData()
+            {
+                const string DataType = "DATE";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "throw",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Time_TestData()
+            {
+                const string DataType = "TIME";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "throw",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Year_TestData()
+            {
+                const string DataType = "YEAR";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "throw",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Json_TestData()
+            {
+                const string DataType = "JSON";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "throw",
+                },
+                };
+            }
         }
-        [Theory]
-        [MemberData(nameof(SmallInt_NonNullableTestData))]
-        public void SMALLINT_NonNullable_ConvertTest(ColumnDataTestItem data)
+
+        public class Nullable
         {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(Int_NonNullableTestData))]
-        public void INT_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(BigInt_NonNullableTestData))]
-        public void BIGINT_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(Float_NonNullableTestData))]
-        public void FLOAT_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(Double_NonNullableTestData))]
-        public void DOUBLE_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(Decimal_NonNullableTestData))]
-        public void DECIMAL_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(Bit_NonNullableTestData))]
-        public void BIT_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(TinyText_NonNullableTestData))]
-        public void TINYTEXT_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(Text_NonNullableTestData))]
-        public void TEXT_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(MediumText_NonNullableTestData))]
-        public void MEDIUMTEXT_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(LongText_NonNullableTestData))]
-        public void LONGTEXT_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(VarChar_NonNullableTestData))]
-        public void VARCHAR_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(TinyBlob_NonNullableTestData))]
-        public void TINYBLOB_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(Blob_NonNullableTestData))]
-        public void BLOB_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(MediumBlob_NonNullableTestData))]
-        public void MEDIUMBLOB_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(LONGBlob_NonNullableTestData))]
-        public void LONGBLOB_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(Binary_NonNullableTestData))]
-        public void BINARY_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(VarBinary_NonNullableTestData))]
-        public void VARBINARY_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(DateTime_NonNullableTestData))]
-        public void DATETIME_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
-        }
-        [Theory]
-        [MemberData(nameof(TimeStamp_NonNullableTestData))]
-        public void TIMESTAMP_NonNullable_ConvertTest(ColumnDataTestItem data)
-        {
-            var typeConverter = TypeConverterResolver.Resolve(converter);
-            var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-            t.Should().Be(data.Expected);
+            const bool nullable = true;
+
+            // non nullable
+            [Theory]
+            [MemberData(nameof(TinyInt_TestData))]
+            public void TINYINT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(SmallInt_TestData))]
+            public void SMALLINT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Int_TestData))]
+            public void INT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(BigInt_TestData))]
+            public void BIGINT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Float_TestData))]
+            public void FLOAT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Double_TestData))]
+            public void DOUBLE_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Decimal_TestData))]
+            public void DECIMAL_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Bit_TestData))]
+            public void BIT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(TinyText_TestData))]
+            public void TINYTEXT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Text_TestData))]
+            public void TEXT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(MediumText_TestData))]
+            public void MEDIUMTEXT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(LongText_TestData))]
+            public void LONGTEXT_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(VarChar_TestData))]
+            public void VARCHAR_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(TinyBlob_TestData))]
+            public void TINYBLOB_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Blob_TestData))]
+            public void BLOB_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(MediumBlob_TestData))]
+            public void MEDIUMBLOB_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(LONGBlob_TestData))]
+            public void LONGBLOB_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Binary_TestData))]
+            public void BINARY_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(VarBinary_TestData))]
+            public void VARBINARY_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(DateTime_TestData))]
+            public void DATETIME_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(TimeStamp_TestData))]
+            public void TIMESTAMP_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
+            }
+            [Theory]
+            [MemberData(nameof(Date_TestData))]
+            [MemberData(nameof(Time_TestData))]
+            [MemberData(nameof(Year_TestData))]
+            [MemberData(nameof(Json_TestData))]
+            public void Throw_ConvertTest(ColumnDataTestItem data)
+            {
+                var typeConverter = TypeConverterResolver.Resolve(converter);
+                Assert.Throws<NotSupportedException>(() => typeConverter.Convert(data.MySqlColumnData));
+            }
+
+            // sbyte/byte
+            public static IEnumerable<object[]> TinyInt_TestData()
+            {
+                const string DataType = "TINYINT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        Length = 4,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte?",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        Length = 4,
+                        IsNullable = nullable,
+                    },
+                    Expected = "sbyte?",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte?",
+                },
+                };
+            }
+            // short/ushort
+            public static IEnumerable<object[]> SmallInt_TestData()
+            {
+                const string DataType = "SMALLINT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        Length = 6,
+                        IsNullable = nullable,
+                    },
+                    Expected = "ushort?",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        Length = 4,
+                        IsNullable = nullable,
+                    },
+                    Expected = "short?",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "short?",
+                },
+                };
+            }
+            // int/uint
+            public static IEnumerable<object[]> Int_TestData()
+            {
+                const string DataType = "INT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "uint?",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "int?",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        Length = 11,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "int?",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        Length = 6,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "int?",
+                },
+                };
+            }
+            // long/ulong
+            public static IEnumerable<object[]> BigInt_TestData()
+            {
+                const string DataType = "BIGINT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "ulong?",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "long?",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        Length = 20,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "long?",
+                },
+                };
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        Length = 11,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
+                    },
+                    Expected = "long?",
+                },
+                };
+            }
+            // flot
+            public static IEnumerable<object[]> Float_TestData()
+            {
+                const string DataType = "FLOAT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "float?",
+                },
+                };
+            }
+            // double
+            public static IEnumerable<object[]> Double_TestData()
+            {
+                const string DataType = "DOUBLE";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "double?",
+                },
+                };
+            }
+            // decimal
+            public static IEnumerable<object[]> Decimal_TestData()
+            {
+                const string DataType = "DECIMAL";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "decimal?",
+                },
+                };
+            }
+            // bool
+            public static IEnumerable<object[]> Bit_TestData()
+            {
+                const string DataType = "BIT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "bool?",
+                },
+                };
+            }
+            // string
+            public static IEnumerable<object[]> TinyText_TestData()
+            {
+                const string DataType = "TINYTEXT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "string",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Text_TestData()
+            {
+                const string DataType = "TEXT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "string",
+                },
+                };
+            }
+            public static IEnumerable<object[]> MediumText_TestData()
+            {
+                const string DataType = "MEDIUMTEXT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "string",
+                },
+                };
+            }
+            public static IEnumerable<object[]> LongText_TestData()
+            {
+                const string DataType = "LONGTEXT";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "string",
+                },
+                };
+            }
+            public static IEnumerable<object[]> VarChar_TestData()
+            {
+                const string DataType = "VARCHAR";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "string",
+                },
+                };
+            }
+            // byte[]
+            public static IEnumerable<object[]> TinyBlob_TestData()
+            {
+                const string DataType = "TINYBLOB";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Blob_TestData()
+            {
+                const string DataType = "BLOB";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            public static IEnumerable<object[]> MediumBlob_TestData()
+            {
+                const string DataType = "MEDIUMBLOB";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            public static IEnumerable<object[]> LONGBlob_TestData()
+            {
+                const string DataType = "LONGBLOB";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Binary_TestData()
+            {
+                const string DataType = "BINARY";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            public static IEnumerable<object[]> VarBinary_TestData()
+            {
+                const string DataType = "VARBINARY";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            // DateTimeOffset
+            public static IEnumerable<object[]> DateTime_TestData()
+            {
+                const string DataType = "DATETIME";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "DateTimeOffset?",
+                },
+                };
+            }
+            // byte[]
+            public static IEnumerable<object[]> TimeStamp_TestData()
+            {
+                const string DataType = "TIMESTAMP";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "byte[]",
+                },
+                };
+            }
+            // others
+            public static IEnumerable<object[]> Date_TestData()
+            {
+                const string DataType = "DATE";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "throw",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Time_TestData()
+            {
+                const string DataType = "TIME";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "throw",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Year_TestData()
+            {
+                const string DataType = "YEAR";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "throw",
+                },
+                };
+            }
+            public static IEnumerable<object[]> Json_TestData()
+            {
+                const string DataType = "JSON";
+                yield return new object[]
+                {
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
+                    {
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        IsNullable = nullable,
+                    },
+                    Expected = "throw",
+                },
+                };
+            }
         }
 
         public static IEnumerable<object[]> GenerateParseTestData()
@@ -226,547 +1650,6 @@ namespace MySQLToCsharp.Tests
                 };
             }
         }
-
-        // sbyte/byte
-        public static IEnumerable<object[]> TinyInt_NonNullableTestData()
-        {
-            const string DataType = "TINYINT";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        Length = 4,
-                        IsNullable = false,
-                    },
-                    Expected = "byte",
-                },
-            };
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        Length = 4,
-                        IsNullable = false,
-                    },
-                    Expected = "sbyte",
-                },
-            };
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        IsNullable = false,
-                    },
-                    Expected = "byte",
-                },
-            };
-        }
-        // short/ushort
-        public static IEnumerable<object[]> SmallInt_NonNullableTestData()
-        {
-            const string DataType = "SMALLINT";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        Length = 6,
-                        IsNullable = false,
-                    },
-                    Expected = "ushort",
-                },
-            };
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        Length = 4,
-                        IsNullable = false,
-                    },
-                    Expected = "short",
-                },
-            };
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        IsNullable = false,
-                    },
-                    Expected = "short",
-                },
-            };
-        }
-        // int/uint
-        public static IEnumerable<object[]> Int_NonNullableTestData()
-        {
-            const string DataType = "INT";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "uint",
-                },
-            };
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        IsNullable = false,
-                    },
-                    Expected = "int",
-                },
-            };
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        Length = 11,
-                        IsUnsigned = false,
-                        IsNullable = false,
-                    },
-                    Expected = "int",
-                },
-            };
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        Length = 6,
-                        IsUnsigned = false,
-                        IsNullable = false,
-                    },
-                    Expected = "int",
-                },
-            };
-        }
-        // long/ulong
-        public static IEnumerable<object[]> BigInt_NonNullableTestData()
-        {
-            const string DataType = "BIGINT";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "ulong",
-                },
-            };
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        IsNullable = false,
-                    },
-                    Expected = "long",
-                },
-            };
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        Length = 20,
-                        IsUnsigned = false,
-                        IsNullable = false,
-                    },
-                    Expected = "long",
-                },
-            };
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        Length = 11,
-                        IsUnsigned = false,
-                        IsNullable = false,
-                    },
-                    Expected = "long",
-                },
-            };
-        }
-        // flot
-        public static IEnumerable<object[]> Float_NonNullableTestData()
-        {
-            const string DataType = "FLOAT";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "float",
-                },
-            };
-        }
-        // double
-        public static IEnumerable<object[]> Double_NonNullableTestData()
-        {
-            const string DataType = "DOUBLE";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "double",
-                },
-            };
-        }
-        // decimal
-        public static IEnumerable<object[]> Decimal_NonNullableTestData()
-        {
-            const string DataType = "DECIMAL";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "decimal",
-                },
-            };
-        }
-        // bool
-        public static IEnumerable<object[]> Bit_NonNullableTestData()
-        {
-            const string DataType = "BIT";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "bool",
-                },
-            };
-        }
-        // string
-        public static IEnumerable<object[]> TinyText_NonNullableTestData()
-        {
-            const string DataType = "TINYTEXT";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "string",
-                },
-            };
-        }
-        public static IEnumerable<object[]> Text_NonNullableTestData()
-        {
-            const string DataType = "TEXT";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "string",
-                },
-            };
-        }
-        public static IEnumerable<object[]> MediumText_NonNullableTestData()
-        {
-            const string DataType = "MEDIUMTEXT";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "string",
-                },
-            };
-        }
-        public static IEnumerable<object[]> LongText_NonNullableTestData()
-        {
-            const string DataType = "LONGTEXT";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "string",
-                },
-            };
-        }
-        public static IEnumerable<object[]> VarChar_NonNullableTestData()
-        {
-            const string DataType = "VARCHAR";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "string",
-                },
-            };
-        }
-        // byte[]
-        public static IEnumerable<object[]> TinyBlob_NonNullableTestData()
-        {
-            const string DataType = "TINYBLOB";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "byte[]",
-                },
-            };
-        }
-        public static IEnumerable<object[]> Blob_NonNullableTestData()
-        {
-            const string DataType = "BLOB";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "byte[]",
-                },
-            };
-        }
-        public static IEnumerable<object[]> MediumBlob_NonNullableTestData()
-        {
-            const string DataType = "MEDIUMBLOB";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "byte[]",
-                },
-            };
-        }
-        public static IEnumerable<object[]> LONGBlob_NonNullableTestData()
-        {
-            const string DataType = "LONGBLOB";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "byte[]",
-                },
-            };
-        }
-        public static IEnumerable<object[]> Binary_NonNullableTestData()
-        {
-            const string DataType = "BINARY";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "byte[]",
-                },
-            };
-        }
-        public static IEnumerable<object[]> VarBinary_NonNullableTestData()
-        {
-            const string DataType = "VARBINARY";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "byte[]",
-                },
-            };
-        }
-        // DateTimeOffset
-        public static IEnumerable<object[]> DateTime_NonNullableTestData()
-        {
-            const string DataType = "DATETIME";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "DateTimeOffset",
-                },
-            };
-        }
-        // byte[]
-        public static IEnumerable<object[]> TimeStamp_NonNullableTestData()
-        {
-            const string DataType = "TIMESTAMP";
-            yield return new object[]
-            {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
-                    {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = false,
-                    },
-                    Expected = "byte[]",
-                },
-            };
-        }
-        // others
-
 
         public class TestItem
         {
