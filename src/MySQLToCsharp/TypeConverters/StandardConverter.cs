@@ -118,7 +118,7 @@ namespace MySQLToCsharp.TypeConverters
                 // sbyte/byte
                 case "TINYINT" when data.IsUnsigned && data.Length == 4: return ("byte?", none);
                 case "TINYINT" when data.Length == 4: return ("sbyte?", none);
-                case "TINYINT": return ("sbyte?", none);
+                case "TINYINT": return ("byte?", none);
                 // short/ushort
                 case "SMALLINT" when data.IsUnsigned && data.Length == 6: return ("ushort?", none);
                 case "SMALLINT" when data.Length == 6: return ("short?", none);
