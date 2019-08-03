@@ -13,7 +13,7 @@ namespace MySQLToCsharp.Tests
     {
         [Theory]
         [MemberData(nameof(GenerateParseTestData))]
-        public void ParseTest(TestData data)
+        public void ParsableTest(TestItem data)
         {
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
@@ -26,7 +26,7 @@ namespace MySQLToCsharp.Tests
         }
         [Theory]
         [MemberData(nameof(GenerateMultiplePkData))]
-        public void MultiplePrimaryKeyColumnTests(TestData data)
+        public void MultiplePrimaryKeyColumnTests(TestItem data)
         {
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
@@ -52,7 +52,7 @@ namespace MySQLToCsharp.Tests
         }
         [Theory]
         [MemberData(nameof(GenerateMultiplePkData))]
-        public void MultiplePrimaryKeyReferenceTest(TestData data)
+        public void MultiplePrimaryKeyReferenceTest(TestItem data)
         {
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
@@ -87,7 +87,7 @@ namespace MySQLToCsharp.Tests
         }
         [Theory]
         [MemberData(nameof(GenerateMultiplePkData))]
-        public void MultipleIndexKeyReferenceTest(TestData data)
+        public void MultipleIndexKeyReferenceTest(TestItem data)
         {
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
@@ -129,7 +129,7 @@ namespace MySQLToCsharp.Tests
         }
         [Theory]
         [MemberData(nameof(GenerateMultiplePkData))]
-        public void MultipleUniqueKeyReferenceTest(TestData data)
+        public void MultipleUniqueKeyReferenceTest(TestItem data)
         {
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
@@ -170,7 +170,7 @@ namespace MySQLToCsharp.Tests
         }
         [Theory]
         [MemberData(nameof(GenerateTypeConverterTestData))]
-        public void TypeConverterTest(TestData data)
+        public void ParseColumnTypeTest(TestItem data)
         {
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
@@ -195,12 +195,12 @@ namespace MySQLToCsharp.Tests
 
         public static IEnumerable<object[]> GenerateParseTestData()
         {
-            var statements = LoadSql("test_data/create_tables.sql");
+            var statements = TestHelper.LoadSql("test_data/create_tables.sql");
             foreach (var statement in statements)
             {
                 yield return new object[]
                 {
-                    new TestData
+                    new TestItem
                     {
                         Statement = statement,
                     },
@@ -210,12 +210,12 @@ namespace MySQLToCsharp.Tests
 
         public static IEnumerable<object[]> GenerateTypeConverterTestData()
         {
-            var statements = LoadSql("test_data/Strings.sql");
+            var statements = TestHelper.LoadSql("test_data/Strings.sql");
             foreach (var statement in statements)
             {
                 yield return new object[]
                 {
-                    new TestData
+                    new TestItem
                     {
                         Statement = statement,
                         Expected = new [] {
@@ -344,12 +344,12 @@ namespace MySQLToCsharp.Tests
 
         public static IEnumerable<object[]> GenerateMultiplePkData()
         {
-            var statements = LoadSql("test_data/create_table_multiplepk.sql");
+            var statements = TestHelper.LoadSql("test_data/create_table_multiplepk.sql");
             foreach (var statement in statements)
             {
                 yield return new object[]
                 {
-                    new TestData
+                    new TestItem
                     {
                         Statement = statement,
                         Expected = new [] {
@@ -492,14 +492,23 @@ namespace MySQLToCsharp.Tests
             }
         }
 
-        private static string[] LoadSql(string path)
+        public class TestItem
+        {
+            public string Statement { get; set; }
+            public MySqlColumnDefinition[] Expected { get; set; }
+        }
+    }
+
+    public static class TestHelper
+    {
+        public static string[] LoadSql(string path)
         {
             var lines = File.ReadAllLines(path, new UTF8Encoding(false));
-            var queries = Parse(lines, new[] { "--", "SET FOREIGN_KEY_CHECKS", "DROP SCHEMA", "CREATE SCHEMA" });
+            var queries = DivideQuery(lines, new[] { "--", "SET FOREIGN_KEY_CHECKS", "DROP SCHEMA", "CREATE SCHEMA" });
             return queries;
         }
 
-        public static string[] Parse(string[] lines, string[] escapeLines)
+        public static string[] DivideQuery(string[] lines, string[] escapeLines)
         {
             var numLines = escapeLines == null
                 ? lines.Select(x => x.RemoveNewLine())
@@ -541,11 +550,6 @@ namespace MySQLToCsharp.Tests
             }
         }
 
-        public class TestData
-        {
-            public string Statement { get; set; }
-            public MySqlColumnDefinition[] Expected { get; set; }
-        }
     }
 
     public static class StringExtensions
