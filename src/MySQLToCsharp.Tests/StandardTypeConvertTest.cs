@@ -272,47 +272,47 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "SMALLINT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        Length = 6,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            Length = 6,
+                            IsNullable = nullable,
+                        },
+                        Expected = "ushort",
                     },
-                    Expected = "ushort",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        Length = 4,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = false,
+                            Length = 4,
+                            IsNullable = nullable,
+                        },
+                        Expected = "short",
                     },
-                    Expected = "short",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "short",
                     },
-                    Expected = "short",
-                },
                 };
             }
             // int/uint
@@ -321,61 +321,61 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "INT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "uint",
                     },
-                    Expected = "uint",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "int",
                     },
-                    Expected = "int",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        Length = 11,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            Length = 11,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "int",
                     },
-                    Expected = "int",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        Length = 6,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            Length = 6,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "int",
                     },
-                    Expected = "int",
-                },
                 };
             }
             // long/ulong
@@ -384,61 +384,61 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "BIGINT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "ulong",
                     },
-                    Expected = "ulong",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "long",
                     },
-                    Expected = "long",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        Length = 20,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            Length = 20,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "long",
                     },
-                    Expected = "long",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        Length = 11,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            Length = 11,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "long",
                     },
-                    Expected = "long",
-                },
                 };
             }
             // flot
@@ -447,17 +447,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "FLOAT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "float",
                     },
-                    Expected = "float",
-                },
                 };
             }
             // double
@@ -466,17 +466,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "DOUBLE";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "double",
                     },
-                    Expected = "double",
-                },
                 };
             }
             // decimal
@@ -485,17 +485,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "DECIMAL";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "decimal",
                     },
-                    Expected = "decimal",
-                },
                 };
             }
             // bool
@@ -504,17 +504,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "BIT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "bool",
                     },
-                    Expected = "bool",
-                },
                 };
             }
             // string
@@ -523,17 +523,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "TINYTEXT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "string",
                     },
-                    Expected = "string",
-                },
                 };
             }
             public static IEnumerable<object[]> Text_TestData()
@@ -541,17 +541,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "TEXT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "string",
                     },
-                    Expected = "string",
-                },
                 };
             }
             public static IEnumerable<object[]> MediumText_TestData()
@@ -559,17 +559,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "MEDIUMTEXT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "string",
                     },
-                    Expected = "string",
-                },
                 };
             }
             public static IEnumerable<object[]> LongText_TestData()
@@ -577,17 +577,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "LONGTEXT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "string",
                     },
-                    Expected = "string",
-                },
                 };
             }
             public static IEnumerable<object[]> VarChar_TestData()
@@ -595,17 +595,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "VARCHAR";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "string",
                     },
-                    Expected = "string",
-                },
                 };
             }
             // byte[]
@@ -614,17 +614,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "TINYBLOB";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             public static IEnumerable<object[]> Blob_TestData()
@@ -632,17 +632,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "BLOB";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             public static IEnumerable<object[]> MediumBlob_TestData()
@@ -650,17 +650,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "MEDIUMBLOB";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             public static IEnumerable<object[]> LONGBlob_TestData()
@@ -668,17 +668,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "LONGBLOB";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             public static IEnumerable<object[]> Binary_TestData()
@@ -686,17 +686,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "BINARY";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             public static IEnumerable<object[]> VarBinary_TestData()
@@ -704,17 +704,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "VARBINARY";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             // DateTimeOffset
@@ -723,17 +723,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "DATETIME";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "DateTimeOffset",
                     },
-                    Expected = "DateTimeOffset",
-                },
                 };
             }
             // byte[]
@@ -742,17 +742,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "TIMESTAMP";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             // others
@@ -761,17 +761,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "DATE";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "throw",
                     },
-                    Expected = "throw",
-                },
                 };
             }
             public static IEnumerable<object[]> Time_TestData()
@@ -779,17 +779,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "TIME";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "throw",
                     },
-                    Expected = "throw",
-                },
                 };
             }
             public static IEnumerable<object[]> Year_TestData()
@@ -797,17 +797,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "YEAR";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "throw",
                     },
-                    Expected = "throw",
-                },
                 };
             }
             public static IEnumerable<object[]> Json_TestData()
@@ -815,17 +815,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "JSON";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "throw",
                     },
-                    Expected = "throw",
-                },
                 };
             }
         }
@@ -1020,47 +1020,47 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "TINYINT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        Length = 4,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            Length = 4,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte?",
                     },
-                    Expected = "byte?",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        Length = 4,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = false,
+                            Length = 4,
+                            IsNullable = nullable,
+                        },
+                        Expected = "sbyte?",
                     },
-                    Expected = "sbyte?",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte?",
                     },
-                    Expected = "byte?",
-                },
                 };
             }
             // short/ushort
@@ -1069,47 +1069,47 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "SMALLINT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        Length = 6,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            Length = 6,
+                            IsNullable = nullable,
+                        },
+                        Expected = "ushort?",
                     },
-                    Expected = "ushort?",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        Length = 4,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = false,
+                            Length = 4,
+                            IsNullable = nullable,
+                        },
+                        Expected = "short?",
                     },
-                    Expected = "short?",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "short?",
                     },
-                    Expected = "short?",
-                },
                 };
             }
             // int/uint
@@ -1118,61 +1118,61 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "INT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "uint?",
                     },
-                    Expected = "uint?",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "int?",
                     },
-                    Expected = "int?",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        Length = 11,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            Length = 11,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "int?",
                     },
-                    Expected = "int?",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        Length = 6,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            Length = 6,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "int?",
                     },
-                    Expected = "int?",
-                },
                 };
             }
             // long/ulong
@@ -1181,61 +1181,61 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "BIGINT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "ulong?",
                     },
-                    Expected = "ulong?",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "long?",
                     },
-                    Expected = "long?",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        Length = 20,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            Length = 20,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "long?",
                     },
-                    Expected = "long?",
-                },
                 };
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        Length = 11,
-                        IsUnsigned = false,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            Length = 11,
+                            IsUnsigned = false,
+                            IsNullable = nullable,
+                        },
+                        Expected = "long?",
                     },
-                    Expected = "long?",
-                },
                 };
             }
             // flot
@@ -1244,17 +1244,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "FLOAT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "float?",
                     },
-                    Expected = "float?",
-                },
                 };
             }
             // double
@@ -1263,17 +1263,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "DOUBLE";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "double?",
                     },
-                    Expected = "double?",
-                },
                 };
             }
             // decimal
@@ -1282,17 +1282,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "DECIMAL";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "decimal?",
                     },
-                    Expected = "decimal?",
-                },
                 };
             }
             // bool
@@ -1301,17 +1301,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "BIT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "bool?",
                     },
-                    Expected = "bool?",
-                },
                 };
             }
             // string
@@ -1320,17 +1320,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "TINYTEXT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "string",
                     },
-                    Expected = "string",
-                },
                 };
             }
             public static IEnumerable<object[]> Text_TestData()
@@ -1338,17 +1338,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "TEXT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "string",
                     },
-                    Expected = "string",
-                },
                 };
             }
             public static IEnumerable<object[]> MediumText_TestData()
@@ -1356,17 +1356,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "MEDIUMTEXT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "string",
                     },
-                    Expected = "string",
-                },
                 };
             }
             public static IEnumerable<object[]> LongText_TestData()
@@ -1374,17 +1374,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "LONGTEXT";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "string",
                     },
-                    Expected = "string",
-                },
                 };
             }
             public static IEnumerable<object[]> VarChar_TestData()
@@ -1392,17 +1392,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "VARCHAR";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "string",
                     },
-                    Expected = "string",
-                },
                 };
             }
             // byte[]
@@ -1411,17 +1411,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "TINYBLOB";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             public static IEnumerable<object[]> Blob_TestData()
@@ -1429,17 +1429,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "BLOB";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             public static IEnumerable<object[]> MediumBlob_TestData()
@@ -1447,17 +1447,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "MEDIUMBLOB";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             public static IEnumerable<object[]> LONGBlob_TestData()
@@ -1465,17 +1465,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "LONGBLOB";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             public static IEnumerable<object[]> Binary_TestData()
@@ -1483,17 +1483,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "BINARY";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             public static IEnumerable<object[]> VarBinary_TestData()
@@ -1501,17 +1501,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "VARBINARY";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             // DateTimeOffset
@@ -1520,17 +1520,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "DATETIME";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "DateTimeOffset?",
                     },
-                    Expected = "DateTimeOffset?",
-                },
                 };
             }
             // byte[]
@@ -1539,17 +1539,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "TIMESTAMP";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "byte[]",
                     },
-                    Expected = "byte[]",
-                },
                 };
             }
             // others
@@ -1558,17 +1558,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "DATE";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "throw",
                     },
-                    Expected = "throw",
-                },
                 };
             }
             public static IEnumerable<object[]> Time_TestData()
@@ -1576,17 +1576,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "TIME";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "throw",
                     },
-                    Expected = "throw",
-                },
                 };
             }
             public static IEnumerable<object[]> Year_TestData()
@@ -1612,17 +1612,17 @@ namespace MySQLToCsharp.Tests
                 const string DataType = "JSON";
                 yield return new object[]
                 {
-                new ColumnDataTestItem
-                {
-                    // sbyte
-                    MySqlColumnData =new MySqlColumnDataDefinition
+                    new ColumnDataTestItem
                     {
-                        DataType = DataType,
-                        IsUnsigned = true,
-                        IsNullable = nullable,
+                        // sbyte
+                        MySqlColumnData =new MySqlColumnDataDefinition
+                        {
+                            DataType = DataType,
+                            IsUnsigned = true,
+                            IsNullable = nullable,
+                        },
+                        Expected = "throw",
                     },
-                    Expected = "throw",
-                },
                 };
             }
         }
