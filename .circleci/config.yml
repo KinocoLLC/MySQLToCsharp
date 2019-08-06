@@ -42,9 +42,9 @@ jobs:
     executor: dotnet3
     steps:
       - checkout
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/win-x64 -r win-x64 -p:PublishSingleFile=true
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/linux-x64 -r linux-x64 -p:PublishSingleFile=true
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/osx-x64 -r osx-x64 -p:PublishSingleFile=true
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp -r win-x64 -p:PublishSingleFile=true
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp -r linux-x64 -p:PublishSingleFile=true
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp -r osx-x64 -p:PublishSingleFile=true
       - persist_to_workspace:
           root: .
           paths:
@@ -53,11 +53,9 @@ jobs:
     executor: go
     steps:
       - attach_workspace:
-          at: .
+          at: ./artifacts
       - run: go get github.com/tcnksm/ghr
-      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./MySQLToCsharp/win-x64/MySQLToCsharp.exe
-      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./MySQLToCsharp/linux-x64/MySQLToCsharp
-      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./MySQLToCsharp/osx-x64/MySQLToCsharp
+      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./artifacts/MySQLToCsharp/
       - store_artifacts:
           path: ./MySQLToCsharp
 workflows:
