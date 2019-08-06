@@ -55,22 +55,22 @@ jobs:
       - attach_workspace:
           at: ./artifacts
       - run: go get github.com/tcnksm/ghr
-      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./artifacts/MySQLToCsharp/
+      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -delete ${CIRCLE_TAG} ./artifacts/MySQLToCsharp/
       - store_artifacts:
           path: ./MySQLToCsharp
 workflows:
   build-and-push:
     jobs:
-      # - build-test:
-      #     filters:
-      #       tags:
-      #         only: /.*/
-      # - build-push:
-      #     filters:
-      #       tags:
-      #         only: /^\d+\.\d+\.\d+$/
-      #       branches:
-      #         ignore: /.*/
+      - build-test:
+          filters:
+            tags:
+              only: /.*/
+      - build-push:
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
       - build-singlepackage:
           filters:
             tags:
