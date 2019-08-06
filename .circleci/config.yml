@@ -41,26 +41,25 @@ jobs:
   build-singlepackage:
     executor: dotnet3
     steps:
-      - run: apt update && apt install zip -y
       - checkout
       - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/win-x64 -r win-x64 -p:PublishSingleFile=true
       - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/linux-x64 -r linux-x64 -p:PublishSingleFile=true
       - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/osx-x64 -r osx-x64 -p:PublishSingleFile=true
-      - run: zip -r MySQLToCsharp.zip ./MySQLToCsharp
       - persist_to_workspace:
           root: .
           paths:
-            - ./MySQLToCsharp.zip
+            - ./MySQLToCsharp
   upload-github:
     executor: go
     steps:
       - attach_workspace:
-          at: .
+          at: ./MySQLToCsharp
       - run: go get github.com/tcnksm/ghr
-      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_TAG} .
+      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./MySQLToCsharp/win-x64/MySQLToCsharp.exe
+      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./MySQLToCsharp/linux-x64/MySQLToCsharp
+      - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./MySQLToCsharp/osx-x64/MySQLToCsharp
       - store_artifacts:
-          path: MySQLToCsharp.zip
-          destination: MySQLToCsharp.zip
+          path: ./MySQLToCsharp
 workflows:
   build-and-push:
     jobs:
@@ -71,13 +70,13 @@ workflows:
       # - build-push:
       #     filters:
       #       tags:
-      #         only: /^\d\.\d\.\d.*/
+      #         only: /^\d+\.\d+\.\d+$/
       #       branches:
       #         ignore: /.*/
       - build-singlepackage:
           filters:
             tags:
-              only: /^\d\.\d\.\d.*/
+              only: /^\d+\.\d+\.\d+$/
             branches:
               ignore: /.*/
       - upload-github:
@@ -85,6 +84,6 @@ workflows:
             - build-singlepackage
           filters:
             tags:
-              only: /^\d\.\d\.\d.*/
+              only: /^\d+\.\d+\.\d+$/
             branches:
               ignore: /.*/
