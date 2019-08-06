@@ -43,9 +43,9 @@ jobs:
     steps:
       - run: apt update && apt install zip -y
       - checkout
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/win-x64 -r win-x64 -p:singlepackage=true
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/linux-x64 -r linux-x64 -p:singlepackage=true
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/osx-x64 -r osx-x64 -p:singlepackage=true
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/win-x64 -r win-x64 -p:PublishSingleFile=true
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/linux-x64 -r linux-x64 -p:PublishSingleFile=true
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp/osx-x64 -r osx-x64 -p:PublishSingleFile=true
       - run: zip -r MySQLToCsharp.zip ./MySQLToCsharp
       - persist_to_workspace:
           root: .
@@ -68,23 +68,23 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - build-push:
+      # - build-push:
+      #     filters:
+      #       tags:
+      #         only: /^\d\.\d\.\d.*/
+      #       branches:
+      #         ignore: /.*/
+      - build-singlepackage:
           filters:
             tags:
               only: /^\d\.\d\.\d.*/
             branches:
               ignore: /.*/
-    #   - build-singlepackage:
-    #       filters:
-    #         tags:
-    #           only: /^\d\.\d\.\d.*/
-    #         branches:
-    #           ignore: /.*/
-    #   - upload-github:
-    #       requires:
-    #         - build-singlepackage
-    #       filters:
-    #         tags:
-    #           only: /^\d\.\d\.\d.*/
-    #         branches:
-    #           ignore: /.*/
+      - upload-github:
+          requires:
+            - build-singlepackage
+          filters:
+            tags:
+              only: /^\d\.\d\.\d.*/
+            branches:
+              ignore: /.*/
