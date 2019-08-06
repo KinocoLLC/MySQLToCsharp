@@ -56,6 +56,7 @@ jobs:
           at: ./artifacts
       - run: ls
       - run: ls ./artifacts
+      - run: ls ./artifacts/MySQLToCsharp
       # - run: go get github.com/tcnksm/ghr
       # - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./MySQLToCsharp/win-x64/MySQLToCsharp.exe
       # - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./MySQLToCsharp/linux-x64/MySQLToCsharp
