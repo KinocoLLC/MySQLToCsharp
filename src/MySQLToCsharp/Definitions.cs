@@ -77,6 +77,7 @@ namespace MySQLToCsharp
         public bool AutoIncrement { get; set; }
         public bool HasDefault { get; set; }
         public string DefaultValue { get; set; }
+        public string Comment { get; set; }
         public GeneratedColumnDefinition GeneratedColumn { get; set; }
         public ReferenceColumnDefinition ReferenceColumn { get; set; }
 

@@ -85,6 +85,20 @@ namespace MySQLToCsharp.Listeners
         }
 
         /// <summary>
+        /// Listener for Column comment detection
+        /// </summary>
+        /// <param name="context"></param>
+        public override void EnterCommentColumnConstraint([NotNull] CommentColumnConstraintContext context)
+        {
+            base.EnterCommentColumnConstraint(context);
+
+            // column comment
+            var column = TableDefinition.LookupColumnDefinition(context);
+            var comment = context.GetChild<TerminalNodeImpl>(1).GetText().RemoveStartEndChar('\'');
+            column.Comment = comment;
+        }
+
+        /// <summary>
         /// Listener for Primary Key detection
         /// </summary>
         /// <param name="context"></param>

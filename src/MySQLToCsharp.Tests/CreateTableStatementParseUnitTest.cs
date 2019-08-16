@@ -25,6 +25,33 @@ namespace MySQLToCsharp.Tests
             listener.TableDefinition.Should().NotBeNull();
         }
         [Theory]
+        [MemberData(nameof(SqlCommentTestData))]
+        public void SqlCommentTest(TestItem data)
+        {
+            var listener = new CreateTableStatementDetectListener();
+            IParser parser = new Parser();
+            parser.Parse(data.Statement, listener);
+            var definition = listener.TableDefinition;
+            listener.IsTargetStatement.Should().BeTrue();
+            listener.IsParseBegin.Should().BeTrue();
+            listener.IsParseCompleted.Should().BeTrue();
+            listener.TableDefinition.Should().NotBeNull();
+
+            for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
+            {
+                definition.Columns[i].Name.Should().Be(data.Expected[i].Name);
+                definition.Columns[i].Order.Should().Be(data.Expected[i].Order);
+                definition.Columns[i].AutoIncrement.Should().Be(data.Expected[i].AutoIncrement);
+                definition.Columns[i].Data.IsNullable.Should().Be(data.Expected[i].Data.IsNullable);
+                definition.Columns[i].Data.IsUnsigned.Should().Be(data.Expected[i].Data.IsUnsigned);
+                definition.Columns[i].Data.Length.Should().Be(data.Expected[i].Data.Length);
+                definition.Columns[i].Data.DataType.Should().Be(data.Expected[i].Data.DataType);
+                definition.Columns[i].HasDefault.Should().Be(data.Expected[i].HasDefault);
+                definition.Columns[i].Comment.Should().Be(data.Expected[i].Comment);
+                definition.Columns[i].DefaultValue.Should().Be(data.Expected[i].DefaultValue);
+            }
+        }
+        [Theory]
         [MemberData(nameof(GenerateMultiplePkData))]
         public void MultiplePrimaryKeyColumnTests(TestItem data)
         {
@@ -203,6 +230,50 @@ namespace MySQLToCsharp.Tests
                     new TestItem
                     {
                         Statement = statement,
+                    },
+                };
+            }
+        }
+
+        public static IEnumerable<object[]> SqlCommentTestData()
+        {
+            var statements = TestHelper.LoadSql("test_data/create_table_comment.sql");
+            foreach (var statement in statements)
+            {
+                yield return new object[]
+                {
+                    new TestItem
+                    {
+                        Statement = statement,
+                        Expected = new [] {
+                            new MySqlColumnDefinition
+                            {
+                                AutoIncrement = true,
+                                Data = new MySqlColumnDataDefinition
+                                {
+                                    DataType = "BIGINT",
+                                    IsNullable = false,
+                                    IsUnsigned = false,
+                                    Length = 20,
+                                },
+                                Name = "Id",
+                                Order = 0,
+                            },
+                            new MySqlColumnDefinition
+                            {
+                                AutoIncrement = false,
+                                Data = new MySqlColumnDataDefinition
+                                {
+                                    DataType = "INT",
+                                    IsNullable = false,
+                                    IsUnsigned = false,
+                                    Length = 11,
+                                },
+                                Name = "SampleId",
+                                Order = 1,
+                                Comment = "this is comment",
+                            },
+                        }
                     },
                 };
             }

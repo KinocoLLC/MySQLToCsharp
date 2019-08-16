@@ -25,6 +25,23 @@ namespace MySQLToCsharp
         /// <returns></returns>
         public static string RemoveSingleQuote(this string text) => text?.Replace("'", "");
         /// <summary>
+        /// remove start and end char
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string RemoveStartEndChar(this string text, char removeChar)
+        {
+            if (text.Length == 0) throw new ArgumentOutOfRangeException($"{nameof(text)} detected empty.");
+            var replaced = text[text.Length - 1] == removeChar
+                ? text.Substring(0, text.Length - 1)
+                : text;
+            if (replaced[0] == removeChar)
+            {
+                replaced = replaced.Substring(1, replaced.Length -1);
+            }
+            return replaced;
+        }
+        /// <summary>
         /// remove DEFAULT'' from string. DEFAULT'xxx' -> xxx
         /// </summary>
         /// <param name="text"></param>
