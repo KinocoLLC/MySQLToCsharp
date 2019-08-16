@@ -33,7 +33,7 @@ jobs:
             mkdir -p $CIRCLE_TEST_REPORTS
             echo 'export PATH=$PATH:$HOME/.dotnet/tools' >> $BASH_ENV
             source $BASH_ENV && dotnet tool install -g dotnet-xunit-to-junit
-            dotnet-xunit-to-junit "results.xml" "${CIRCLE_TEST_REPORTS}/results.xml"
+            dotnet-xunit-to-junit ./src/MySQLToCsharp.Tests/results.xml "${CIRCLE_TEST_REPORTS}/results.xml"
       - store_test_results:
           path: ${CIRCLE_TEST_REPORTS}
   build-push:
