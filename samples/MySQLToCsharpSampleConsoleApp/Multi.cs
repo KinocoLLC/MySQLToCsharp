@@ -6,12 +6,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MySQLToCsharpSampleConsoleApp
 {
-    public partial class Room
+    public partial class Multi
     {
         [Key]
         [Column(Order = 0)]
         public int Id { get; set; }
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        public int UserId { get; set; }
+        public int MasterId { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Desc { get; set; }
     }
 }
