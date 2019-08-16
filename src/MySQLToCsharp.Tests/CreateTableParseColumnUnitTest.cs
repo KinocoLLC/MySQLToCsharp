@@ -9,7 +9,7 @@ using Xunit;
 
 namespace MySQLToCsharp.Tests
 {
-    public class CreateTableStatementParseUnitTest
+    public class CreateTableParseColumnUnitTest
     {
         [Theory]
         [MemberData(nameof(GenerateParseTestData))]
@@ -25,8 +25,8 @@ namespace MySQLToCsharp.Tests
             listener.TableDefinition.Should().NotBeNull();
         }
         [Theory]
-        [MemberData(nameof(SqlCommentTestData))]
-        public void SqlCommentTest(TestItem data)
+        [MemberData(nameof(SqlColumnCommentTestData))]
+        public void SqlColumnCommentTest(TestItem data)
         {
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
@@ -235,9 +235,9 @@ namespace MySQLToCsharp.Tests
             }
         }
 
-        public static IEnumerable<object[]> SqlCommentTestData()
+        public static IEnumerable<object[]> SqlColumnCommentTestData()
         {
-            var statements = TestHelper.LoadSql("test_data/create_table_comment.sql");
+            var statements = TestHelper.LoadSql("test_data/create_table_column_comment.sql");
             foreach (var statement in statements)
             {
                 yield return new object[]
