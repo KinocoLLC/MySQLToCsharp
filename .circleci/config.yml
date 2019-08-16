@@ -24,7 +24,7 @@ jobs:
       - checkout
       - run: dotnet tool install -g dotnet-reportgenerator-globaltool
       - run: dotnet build -c Debug
-      - run: dotnet test -c Debug --no-build -p:CollectCoverage=true -p:CoverletOutputFormat=opencover --test-adapter-path:. --logger:"xunit;LogFilePath=results.xml
+      - run: dotnet test -c Debug --no-build -p:CollectCoverage=true -p:CoverletOutputFormat=opencover --test-adapter-path:. --logger:"xunit;LogFilePath=results.xml"
       - run: curl -s https://codecov.io/bash > codecov
       - run: chmod +x codecov
       - run: ./codecov -f ./src/MySQLToCsharp.Tests/coverage.opencover.xml
