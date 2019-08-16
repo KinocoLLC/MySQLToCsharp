@@ -1,0 +1,6 @@
+CREATE TABLE `Player` (
+  `Id`  INT NOT NULL COMMENT 'Player Id',
+  `Exp` INT NOT NULL,
+  PRIMARY KEY (`Id`)
+)
+COMMENT='USER TABLE';
