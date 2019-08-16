@@ -42,6 +42,7 @@ namespace MySQLToCsharp.Tests
 
             definition.Collation.Should().Be(data.Expected.Collation);
             definition.Engine.Should().Be(data.Expected.Engine);
+            definition.Comment.Should().Be(data.Expected.Comment);
         }
 
         public static IEnumerable<object[]> GenerateParseTestData()
@@ -78,6 +79,7 @@ namespace MySQLToCsharp.Tests
                         {
                             Collation = "utf8mb4_general_ci",
                             Engine = "InnoDB",
+                            Comment = "this is comment",
                         }
                     }
                 };

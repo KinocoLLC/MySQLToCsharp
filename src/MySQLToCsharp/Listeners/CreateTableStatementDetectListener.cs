@@ -94,8 +94,24 @@ namespace MySQLToCsharp.Listeners
 
             // column comment
             var column = TableDefinition.LookupColumnDefinition(context);
+            // 0: COMMENT
+            // 1: 'Your comment'
             var comment = context.GetChild<TerminalNodeImpl>(1).GetText().RemoveStartEndChar('\'');
             column.Comment = comment;
+        }
+
+        /// <summary>
+        /// Listener for Table comment detection
+        /// </summary>
+        /// <param name="context"></param>
+        public override void EnterTableOptionComment([NotNull] TableOptionCommentContext context)
+        {
+            base.EnterTableOptionComment(context);
+            // 0: COMMENT
+            // 1: =
+            // 2: 'Your comment'
+            var comment = context.GetChild<TerminalNodeImpl>(2).GetText().RemoveStartEndChar('\'');
+            TableDefinition.Comment = comment;
         }
 
         /// <summary>

@@ -18,6 +18,7 @@ namespace MySQLToCsharp
         public MySqlKeyDefinition PrimaryKey { get; set; }
         public ISet<MySqlKeyDefinition> UniqueKeys { get; private set; }
         public ISet<MySqlKeyDefinition> IndexKeys { get; private set; }
+        public string Comment { get; set; }
         public string Collation { get; set; }
         public string Engine { get; set; }
 
