@@ -42,9 +42,9 @@ jobs:
     executor: dotnet3
     steps:
       - checkout
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp -r win-x64 -p:PublishSingleFile=true
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp -r linux-x64 -p:PublishSingleFile=true
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp -r osx-x64 -p:PublishSingleFile=true
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp -r win-x64 -p:PublishSingleFile=true -p:Version=${CIRCLE_TAG}
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp -r linux-x64 -p:PublishSingleFile=true -p:Version=${CIRCLE_TAG}
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp -r osx-x64 -p:PublishSingleFile=true -p:Version=${CIRCLE_TAG}
       - persist_to_workspace:
           root: .
           paths:
