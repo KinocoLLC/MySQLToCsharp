@@ -7,6 +7,7 @@ executors:
       DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
       NUGET_XMLDOC_MODE: skip
       BUILD_CONFIG: Release
+      CIRCLE_TEST_REPORTS: /workspace/circleci-test-results
   dotnet3:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.0
@@ -23,10 +24,18 @@ jobs:
       - checkout
       - run: dotnet tool install -g dotnet-reportgenerator-globaltool
       - run: dotnet build -c Debug
-      - run: dotnet test -c Debug --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+      - run: dotnet test -c Debug --no-build -p:CollectCoverage=true -p:CoverletOutputFormat=opencover --test-adapter-path:. --logger:"xunit;LogFilePath=results.xml"
       - run: curl -s https://codecov.io/bash > codecov
       - run: chmod +x codecov
       - run: ./codecov -f ./src/MySQLToCsharp.Tests/coverage.opencover.xml
+      - run:
+          command: |
+            mkdir -p $CIRCLE_TEST_REPORTS
+            echo 'export PATH=$PATH:$HOME/.dotnet/tools' >> $BASH_ENV
+            source $BASH_ENV && dotnet tool install -g dotnet-xunit-to-junit
+            dotnet-xunit-to-junit ./src/MySQLToCsharp.Tests/results.xml "${CIRCLE_TEST_REPORTS}/results.xml"
+      - store_test_results:
+          path: /workspace/circleci-test-results
   build-push:
     executor: dotnet
     steps:
