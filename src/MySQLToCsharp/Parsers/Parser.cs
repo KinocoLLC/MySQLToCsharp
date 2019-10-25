@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace MySQLToCsharp
+namespace MySQLToCsharp.Parsers
 {
     public interface IParser
     {
