@@ -11,9 +11,9 @@ using Xunit;
 
 namespace MySQLToCsharp.Tests
 {
-    public class StandardTypeConvertTest
+    public class StandardBitAsBoolConverterTest
     {
-        const string converter = "StandardConverter";
+        const string converter = "StandardBitAsBoolConverter";
         [Theory]
         [MemberData(nameof(GenerateParseTestData))]
         public void QueryParseAndTypeConvertTest(TestItem data)
@@ -100,8 +100,8 @@ namespace MySQLToCsharp.Tests
             public void BIT_ConvertTest(ColumnDataTestItem data)
             {
                 var typeConverter = TypeConverterResolver.Resolve(converter);
-                Assert.Throws<NotSupportedException>(() => typeConverter.Convert(data.MySqlColumnData));
-
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
             }
             [Theory]
             [MemberData(nameof(TinyText_TestData))]
@@ -218,83 +218,53 @@ namespace MySQLToCsharp.Tests
                 Assert.Throws<NotSupportedException>(() => typeConverter.Convert(data.MySqlColumnData));
             }
 
-            // bool/sbyte/byte
+            // sbyte/byte
             public static IEnumerable<object[]> TinyInt_TestData()
             {
                 const string DataType = "TINYINT";
                 yield return new object[]
                 {
-                    new ColumnDataTestItem
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
                     {
-                        // bool
-                        MySqlColumnData =new MySqlColumnDataDefinition
-                        {
-                            DataType = DataType,
-                            IsUnsigned = true,
-                            Length = 1,
-                            IsNullable = nullable,
-                        },
-                        Expected = "bool",
+                        DataType = DataType,
+                        IsUnsigned = true,
+                        Length = 4,
+                        IsNullable = nullable,
                     },
+                    Expected = "byte",
+                },
                 };
                 yield return new object[]
                 {
-                    new ColumnDataTestItem
+                new ColumnDataTestItem
+                {
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
                     {
-                        // bool
-                        MySqlColumnData =new MySqlColumnDataDefinition
-                        {
-                            DataType = DataType,
-                            IsUnsigned = false,
-                            Length = 1,
-                            IsNullable = nullable,
-                        },
-                        Expected = "bool",
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        Length = 4,
+                        IsNullable = nullable,
                     },
+                    Expected = "sbyte",
+                },
                 };
                 yield return new object[]
                 {
-                    new ColumnDataTestItem
-                    {
-                        // sbyte
-                        MySqlColumnData =new MySqlColumnDataDefinition
-                        {
-                            DataType = DataType,
-                            IsUnsigned = true,
-                            Length = 4,
-                            IsNullable = nullable,
-                        },
-                        Expected = "byte",
-                    },
-                };
-                yield return new object[]
+                new ColumnDataTestItem
                 {
-                    new ColumnDataTestItem
+                    // sbyte
+                    MySqlColumnData =new MySqlColumnDataDefinition
                     {
-                        // sbyte
-                        MySqlColumnData =new MySqlColumnDataDefinition
-                        {
-                            DataType = DataType,
-                            IsUnsigned = false,
-                            Length = 4,
-                            IsNullable = nullable,
-                        },
-                        Expected = "sbyte",
+                        DataType = DataType,
+                        IsUnsigned = false,
+                        IsNullable = nullable,
                     },
-                };
-                yield return new object[]
-                {
-                    new ColumnDataTestItem
-                    {
-                        // sbyte
-                        MySqlColumnData =new MySqlColumnDataDefinition
-                        {
-                            DataType = DataType,
-                            IsUnsigned = false,
-                            IsNullable = nullable,
-                        },
-                        Expected = "byte",
-                    },
+                    Expected = "byte",
+                },
                 };
             }
             // short/ushort
@@ -529,7 +499,7 @@ namespace MySQLToCsharp.Tests
                     },
                 };
             }
-            // not support
+            // bool
             public static IEnumerable<object[]> Bit_TestData()
             {
                 const string DataType = "BIT";
@@ -544,10 +514,11 @@ namespace MySQLToCsharp.Tests
                             IsUnsigned = true,
                             IsNullable = nullable,
                         },
-                        Expected = "System.NotSupportedException",
+                        Expected = "bool",
                     },
                 };
-            }            // string
+            }
+            // string
             public static IEnumerable<object[]> TinyText_TestData()
             {
                 const string DataType = "TINYTEXT";
@@ -926,7 +897,8 @@ namespace MySQLToCsharp.Tests
             public void BIT_ConvertTest(ColumnDataTestItem data)
             {
                 var typeConverter = TypeConverterResolver.Resolve(converter);
-                Assert.Throws<NotSupportedException>(() => typeConverter.Convert(data.MySqlColumnData));
+                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
+                t.Should().Be(data.Expected);
             }
             [Theory]
             [MemberData(nameof(TinyText_TestData))]
@@ -1047,36 +1019,6 @@ namespace MySQLToCsharp.Tests
             public static IEnumerable<object[]> TinyInt_TestData()
             {
                 const string DataType = "TINYINT";
-                yield return new object[]
-                {
-                    new ColumnDataTestItem
-                    {
-                        // bool
-                        MySqlColumnData =new MySqlColumnDataDefinition
-                        {
-                            DataType = DataType,
-                            IsUnsigned = true,
-                            Length = 1,
-                            IsNullable = nullable,
-                        },
-                        Expected = "bool?",
-                    },
-                };
-                yield return new object[]
-                {
-                    new ColumnDataTestItem
-                    {
-                        // bool
-                        MySqlColumnData =new MySqlColumnDataDefinition
-                        {
-                            DataType = DataType,
-                            IsUnsigned = false,
-                            Length = 1,
-                            IsNullable = nullable,
-                        },
-                        Expected = "bool?",
-                    },
-                };
                 yield return new object[]
                 {
                     new ColumnDataTestItem
@@ -1369,7 +1311,7 @@ namespace MySQLToCsharp.Tests
                             IsUnsigned = true,
                             IsNullable = nullable,
                         },
-                        Expected = "System.NotSupportedException",
+                        Expected = "bool?",
                     },
                 };
             }

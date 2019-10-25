@@ -12,6 +12,7 @@ namespace MySQLToCsharp.TypeConverters
         {
             converterDict = new Dictionary<string, ITypeConverter>();
             converterDict.Add(nameof(StandardConverter), new StandardConverter());
+            converterDict.Add(nameof(StandardBitAsBoolConverter), new StandardBitAsBoolConverter());
         }
         public static ITypeConverter Resolve(string key)
         {

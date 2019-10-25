@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using MySQLToCsharp.Listeners;
+using MySQLToCsharp.Parsers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,7 +19,6 @@ namespace MySQLToCsharp.Tests
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
-            var definition = listener.TableDefinition;
             listener.IsTargetStatement.Should().BeTrue();
             listener.IsParseBegin.Should().BeTrue();
             listener.IsParseCompleted.Should().BeTrue();
