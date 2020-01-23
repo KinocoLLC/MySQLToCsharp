@@ -14,33 +14,159 @@ A C# class generator from SQL CREATE TABLE Statements (MySQLs)
 dotnet tool install --global MySQLToCsharp
 ```
 
+## Sample
+
+Open MySQLToCsharp.sln and set following.
+
+> MySQLToCsharp project > Properties > Debug > Application arguments
+
+```
+dir -i ../../../../../samples/tables -o ../../../../../samples/MySQLToCsharpSampleConsoleApp -n MySQLToCsharpSampleConsoleApp
+```
+
+Debug Run MySQLToCsharp.
+
+```
+Output Directory: ../../../../../samples/MySQLToCsharpSampleConsoleApp
+[-] skipped: BinaryData.cs (no change)
+[-] skipped: Character.cs (no change)
+[-] skipped: CharacterSlot.cs (no change)
+[-] skipped: Multi.cs (no change)
+[-] skipped: Player.cs (no change)
+[-] skipped: Room.cs (no change)
+[-] skipped: String.cs (no change)
+[-] skipped: Weapon.cs (no change)
+```
+
+change Converter to `StandardDateTimeAsOffsetConverter` and Debug Run.
+
+```
+dir -i ../../../../../samples/tables -o ../../../../../samples/MySQLToCsharpSampleConsoleApp -n MySQLToCsharpSampleConsoleApp -c StandardDateTimeAsOffsetConverter
+```
+
+This change CharacterSlot.cs as MySQL `DATETIME` will convert to C# `DateTimeOffset`.
+
+```
+Output Directory: ../../../../../samples/MySQLToCsharpSampleConsoleApp
+[-] skipped: BinaryData.cs (no change)
+[-] skipped: Character.cs (no change)
+[o] generate: CharacterSlot.cs
+[-] skipped: Multi.cs (no change)
+[-] skipped: Player.cs (no change)
+[-] skipped: Room.cs (no change)
+[-] skipped: String.cs (no change)
+[-] skipped: Weapon.cs (no change)
+```
+
 ## How to run
 
 There are 3 options to generate C# code from MySQL Create Table query.
 
-1. input sql string and generate a class.
-1. read sql file and generate a class.
-1. read directory path and generate class for each *.sql file.
-
-generate from query.
+1. query: input sql string and generate a class.
+1. file: read sql file and generate a class.
+1. dir: read directory path and generate class for each *.sql file.
 
 ```shell
-# query 
-mysql2csharp --query -i "CREATE TABLE sercol1 (id INT, val INT);" -o bin/out -n MyNameSpace.Data
+$ MySQLToCsharp --help
+
+Usage: MySQLToCsharp <Command>
+
+Commands:
+  query    Convert DDL sql query and generate C# class.
+  file     Convert DDL sql file and generate C# class.
+  dir      Convert DDL sql files in the folder and generate C# class.
 ```
 
-generate from file.
+### query
+
+help.
 
 ```shell
-# file
-dotnet mysql2csharp --file -i "./MySQLToCsharp.Tests/test_data/sql/create_table.sql" -o bin/out -n MyNameSpace.Data
+$ MySQLToCsharp query --help
+
+Usage: MySQLToCsharp query [options...]
+
+Convert DDL sql query and generate C# class.
+
+Options:
+  -i, -input <String>        input mysql ddl query to parse (Required)
+  -o, -output <String>       output directory path of generated C# class file (Required)
+  -n, -namespace <String>    namespace to write (Required)
+  -c, -converter <String>    converter name to use (Default: StandardConverter)
+  -addbom <Boolean>           (Default: False)
+  -dry <Boolean>              (Default: False)
 ```
 
-read directory and generate for all *.sql
+sample 
 
 ```shell
-# dirctory
-dotnet mysql2csharp --dir -i "./MySQLToCsharp.Tests/test_data/sql/" -o bin/out -n MyNameSpace.Data
+dotnet mysql2csharp query -i "CREATE TABLE sercol1 (id INT, val INT);" -o bin/out -n MyNameSpace.Data
+```
+
+### file
+
+help.
+
+```shell
+$ MySQLToCsharp file --help
+
+Usage: MySQLToCsharp file [options...]
+
+Convert DDL sql file and generate C# class.
+
+Options:
+  -i, -input <String>        input file path to parse mysql ddl query (Required)
+  -o, -output <String>       output directory path of generated C# class file (Required)
+  -n, -namespace <String>    namespace to write (Required)
+  -c, -converter <String>    converter name to use (Default: StandardConverter)
+  -addbom <Boolean>           (Default: False)
+  -dry <Boolean>              (Default: False)
+```
+
+sample
+
+```shell
+dotnet mysql2csharp file -i "./MySQLToCsharp.Tests/test_data/sql/create_table.sql" -o bin/out -n MyNameSpace.Data
+```
+
+### dir
+
+help.
+
+```shell
+$ MySQLToCsharp dir --help
+
+Usage: MySQLToCsharp dir [options...]
+
+Convert DDL sql files in the folder and generate C# class.
+
+Options:
+  -i, -input <String>        input folder path to parse mysql ddl query (Required)
+  -o, -output <String>       output directory path of generated C# class files (Required)
+  -n, -namespace <String>    namespace to write (Required)
+  -c, -converter <String>    converter name to use (Default: StandardConverter)
+  -addbom <Boolean>           (Default: False)
+  -dry <Boolean>              (Default: False)
+```
+
+sample
+
+```shell
+dotnet mysql2csharp dir -i "./MySQLToCsharp.Tests/test_data/sql/" -o bin/out -n MyNameSpace.Data
+```
+
+## Available Conveters
+
+* StandardConverter
+* StandardBitAsBoolConverter
+* StandardDateTimeAsOffsetConverter
+
+## Help
+
+```
+$ dotnet mysql2csharp query --help
+$ dotnet mysql2csharp dir --help
+$ dotnet mysql2csharp file --help
 ```
 
 ## Generate MySQL Lexer/Parser/Listener/Visitor from ANTLR4 grammer
