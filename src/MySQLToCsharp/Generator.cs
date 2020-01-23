@@ -27,14 +27,14 @@ namespace MySQLToCsharp
             encoding = new UTF8Encoding(addbom);
         }
 
-        public void Save(string @namespace, IEnumerable<MySqlTableDefinition> tables, string outputFolderPath)
+        public void Save(string @namespace, IEnumerable<MySqlTableDefinition> tables, string outputFolderPath, bool dry)
         {
             foreach (var table in tables)
             {
-                Save(@namespace, table, outputFolderPath);
+                Save(@namespace, table, outputFolderPath, dry);
             }
         }
-        public void Save(string @namespace, MySqlTableDefinition table, string outputFolderPath)
+        public void Save(string @namespace, MySqlTableDefinition table, string outputFolderPath, bool dry)
         {
             var @class = GetClassName(table.Name);
             var fileName = @class + extension;
@@ -56,7 +56,10 @@ namespace MySQLToCsharp
                 }
             }
             Console.WriteLine($"[o] generate: {fileName}");
-            File.WriteAllText(outputFile, generated, encoding);
+            if (!dry)
+            {
+                File.WriteAllText(outputFile, generated, encoding);
+            }
         }
 
         private string Generate(string @namespace, string classname, MySqlTableDefinition table, ITypeConverter typeConverter)
