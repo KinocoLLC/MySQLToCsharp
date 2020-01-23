@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,6 +13,7 @@ namespace MySQLToCsharp.TypeConverters
             converterDict = new Dictionary<string, ITypeConverter>();
             converterDict.Add(nameof(StandardConverter), new StandardConverter());
             converterDict.Add(nameof(StandardBitAsBoolConverter), new StandardBitAsBoolConverter());
+            converterDict.Add(nameof(StandardDateTimeAsOffsetConverter), new StandardDateTimeAsOffsetConverter());
         }
         public static ITypeConverter Resolve(string key)
         {

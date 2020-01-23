@@ -20,7 +20,7 @@ namespace MySQLToCsharp.TypeConverters
     /// FLOAT            | float          | FLOAT               | O        |
     /// DOUBLE           | double         | DOUBLE              | O        |
     /// DECIMAL(18,2)    | decimal        | DECIMAL(18,2)       | O        | NUMERIC is DECIMAL base
-    /// TINYINT(1)       | bool           | TINYINT(1)          | O        |
+    /// TINYINT(1)       | bool           | BIT                 | X        | [Column(TypeName = "BIT(1)")]
     /// INT(11)          | char           | <throw>             | X        | not handle on DB
     /// TEXT             | string         | VARCHAR(N)          | X        | [Column[TypeName = "VARCHAR(255)"]
     /// TINYTEXT         | string         | TINYTEXT            | O        | 2^8 should not use TEXT, try use VARCHAR
@@ -32,7 +32,7 @@ namespace MySQLToCsharp.TypeConverters
     /// VARBINARY(65535) | byte[]         | BLOB                | O        | 2^16
     /// VARBINARY(65535) | byte[]         | MEDIUMBLOB          | O        | 2^24
     /// VARBINARY(65535) | byte[]         | LONGBLOB            | O        | 2^32
-    /// DATETIME         | DateTime       | DATETIME            | O        | should not use TIMESTAMP. if you want offset, try use DATETIME + TIMEZONE + OFFSET column
+    /// DATETIME         | DateTimeOffset | DATETIME            | O        | should not use TIMESTAMP. if you want offset, try use DATETIME + TIMEZONE + OFFSET column
     /// TIMESTAMP        | DateTime       | n/a                 | O        | DB TIMESTAMP should not use for DATETIME.
     /// TIMESTAMP        | byte[]         | TIMESTAMP           | X        | Converter on C# (Equivalant to MSSQL RowVersion)
     /// </summary>
@@ -42,7 +42,7 @@ namespace MySQLToCsharp.TypeConverters
     /// numeric: https://dev.mysql.com/doc/refman/5.6/ja/fixed-point-types.html
     /// float: https://dev.mysql.com/doc/refman/5.6/ja/floating-point-types.html
     /// </remarks>
-    public class StandardBitAsBoolConverter : ITypeConverter
+    public class StandardDateTimeAsOffsetConverter : ITypeConverter
     {
         private static readonly string[] none = Array.Empty<string>();
 
@@ -66,7 +66,8 @@ namespace MySQLToCsharp.TypeConverters
         {
             switch (data.DataType)
             {
-                // sbyte/byte
+                // bool/sbyte/byte
+                case "TINYINT" when data.Length == 1: return ("bool", none);
                 case "TINYINT" when data.IsUnsigned && data.Length == 4: return ("byte", none);
                 case "TINYINT" when data.Length == 4: return ("sbyte", none);
                 case "TINYINT": return ("byte", none);
@@ -85,8 +86,6 @@ namespace MySQLToCsharp.TypeConverters
                 case "DOUBLE": return ("double", none);
                 // decimal
                 case "DECIMAL": return ("decimal", none);
-                // bool
-                case "BIT": return ("bool", none);
                 // clr char: no hanlding
                 // string
                 case "TINYTEXT": // fallthrough
@@ -102,7 +101,7 @@ namespace MySQLToCsharp.TypeConverters
                 case "BINARY": // fallthrough
                 case "VARBINARY": return ("byte[]", ArrayLength(data) is string al ? new[] { Required, al } : new[] { Required });
                 // DateTime
-                case "DATETIME": return ("DateTime", none);
+                case "DATETIME": return ("DateTimeOffset", none);
                 // byte[]
                 // mysql TIMESTAMP should handle as RowVersion in MSSQL, means CLR byte[] and [Timestamp] attribute
                 case "TIMESTAMP": return ("byte[]", new[] { Timestamp });
@@ -115,6 +114,7 @@ namespace MySQLToCsharp.TypeConverters
             switch (data.DataType)
             {
                 // sbyte/byte
+                case "TINYINT" when data.Length == 1: return ("bool?", none);
                 case "TINYINT" when data.IsUnsigned && data.Length == 4: return ("byte?", none);
                 case "TINYINT" when data.Length == 4: return ("sbyte?", none);
                 case "TINYINT": return ("byte?", none);
@@ -133,8 +133,6 @@ namespace MySQLToCsharp.TypeConverters
                 case "DOUBLE": return ("double?", none);
                 // decimal
                 case "DECIMAL": return ("decimal?", none);
-                // bool
-                case "BIT": return ("bool?", none);
                 // clr char: no hanlding
                 // string
                 case "TINYTEXT": // fallthrough
@@ -150,7 +148,7 @@ namespace MySQLToCsharp.TypeConverters
                 case "BINARY": // fallthrough
                 case "VARBINARY": return ("byte[]", ArrayLength(data) is string al ? new[] { al } : none);
                 // DateTime
-                case "DATETIME": return ("DateTime?", none);
+                case "DATETIME": return ("DateTimeOffset?", none);
                 // byte[]
                 // mysql TIMESTAMP should handle as RowVersion in MSSQL, means CLR byte[] and [Timestamp] attribute
                 case "TIMESTAMP": return ("byte[]", new[] { Timestamp });
