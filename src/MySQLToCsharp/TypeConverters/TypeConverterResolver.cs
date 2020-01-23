@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace MySQLToCsharp.TypeConverters
@@ -7,13 +8,25 @@ namespace MySQLToCsharp.TypeConverters
     public static class TypeConverterResolver
     {
         static readonly Dictionary<string, ITypeConverter> converterDict;
+        static readonly Type type;
 
         static TypeConverterResolver()
         {
+            type = typeof(ITypeConverter);
             converterDict = new Dictionary<string, ITypeConverter>();
-            converterDict.Add(nameof(StandardConverter), new StandardConverter());
-            converterDict.Add(nameof(StandardBitAsBoolConverter), new StandardBitAsBoolConverter());
-            converterDict.Add(nameof(StandardDateTimeAsOffsetConverter), new StandardDateTimeAsOffsetConverter());
+
+            AddResolver(nameof(StandardConverter));
+            AddResolver(nameof(StandardBitAsBoolConverter));
+            AddResolver(nameof(StandardDateTimeAsOffsetConverter));
+        }
+
+        public static void AddResolver(string resolverType)
+        {
+            if (!converterDict.ContainsKey(resolverType))
+            {
+                var instance = (ITypeConverter)type.Assembly.CreateInstance($"{type.Namespace}.{resolverType}");
+                converterDict.Add(resolverType, instance);
+            }
         }
         public static ITypeConverter Resolve(string key)
         {
