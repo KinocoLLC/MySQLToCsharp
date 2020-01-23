@@ -26,7 +26,6 @@
 
   <PropertyGroup Condition="'$(PublishSingleFile)' == 'true'">
     <AssemblyName>MySQLToCsharp_$(RuntimeIdentifier)_$(Version)</AssemblyName>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
     <PublishSingleFile>true</PublishSingleFile>
     <PublishTrimmed>true</PublishTrimmed>
     <IncludeSymbolsInSingleFile>true</IncludeSymbolsInSingleFile>

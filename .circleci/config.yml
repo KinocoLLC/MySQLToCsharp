@@ -2,21 +2,45 @@ version: 2.1
 executors:
   dotnet:
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:2.1
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.1
     environment:
       DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
       NUGET_XMLDOC_MODE: skip
-      BUILD_CONFIG: Release
       CIRCLE_TEST_REPORTS: /workspace/circleci-test-results
-  dotnet3:
-    docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:3.0
-    environment:
-      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
-      NUGET_XMLDOC_MODE: skip
   go:
     docker:
       - image: circleci/golang
+
+workflows:
+  build-and-push:
+    jobs:
+      - build-test:
+          filters:
+            tags:
+              only: /.*/
+      - build-singlepackage:
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
+      - build-push:
+          requires:
+            - build-singlepackage
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
+      - upload-github:
+          requires:
+            - build-singlepackage
+          filters:
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
+
 jobs:
   build-test:
     executor: dotnet
@@ -24,7 +48,7 @@ jobs:
       - checkout
       - run: dotnet tool install -g dotnet-reportgenerator-globaltool
       - run: dotnet build -c Debug
-      - run: dotnet test -c Debug --no-build -p:CollectCoverage=true -p:CoverletOutputFormat=opencover --test-adapter-path:. --logger:"xunit;LogFilePath=results.xml"
+      - run: dotnet test -c Debug --no-build -p:CollectCoverage=true -p:CoverletOutputFormat=opencover --test-adapter-path:. --logger:"xunit;LogFilePath=results.xml" < /dev/null
       - run: curl -s https://codecov.io/bash > codecov
       - run: chmod +x codecov
       - run: ./codecov -f ./src/MySQLToCsharp.Tests/coverage.opencover.xml
@@ -48,7 +72,7 @@ jobs:
           path: ./src/MySQLToCsharp/bin/Release
           destination: ./MySQLToCsharp/
   build-singlepackage:
-    executor: dotnet3
+    executor: dotnet
     steps:
       - checkout
       - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./MySQLToCsharp -r win-x64 -p:PublishSingleFile=true -p:Version=${CIRCLE_TAG}
@@ -67,30 +91,3 @@ jobs:
       - run: ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -delete ${CIRCLE_TAG} ./artifacts/MySQLToCsharp/
       - store_artifacts:
           path: ./artifacts/MySQLToCsharp
-workflows:
-  build-and-push:
-    jobs:
-      - build-test:
-          filters:
-            tags:
-              only: /.*/
-      - build-push:
-          filters:
-            tags:
-              only: /^\d+\.\d+\.\d+$/
-            branches:
-              ignore: /.*/
-      - build-singlepackage:
-          filters:
-            tags:
-              only: /^\d+\.\d+\.\d+$/
-            branches:
-              ignore: /.*/
-      - upload-github:
-          requires:
-            - build-singlepackage
-          filters:
-            tags:
-              only: /^\d+\.\d+\.\d+$/
-            branches:
-              ignore: /.*/
