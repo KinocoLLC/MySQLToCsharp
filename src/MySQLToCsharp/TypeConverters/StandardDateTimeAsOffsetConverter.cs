@@ -51,11 +51,11 @@ namespace MySQLToCsharp.TypeConverters
         private static string StringLength(MySqlColumnDataDefinition data)
             => data.Length.HasValue && data.Length != 0
                 ? $"StringLength({data.Length})"
-                : null;
+                : "";
         private static string ArrayLength(MySqlColumnDataDefinition data)
             => data.Length.HasValue && data.Length != 0
                 ? $"MaxLength({data.Length})"
-                : null;
+                : "";
 
         public (string typeName, string[] attributes) Convert(MySqlColumnDataDefinition data) 
             => data.IsNullable

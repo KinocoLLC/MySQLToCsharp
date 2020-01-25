@@ -36,16 +36,18 @@ namespace MySQLToCsharp.TypeConverters
         {
             if (!converterDict.ContainsKey(resolverType))
             {
-                var instance = (ITypeConverter)type.Assembly.CreateInstance($"{type.Namespace}.{resolverType}");
-                converterDict.Add(resolverType, instance);
+                var instance = type.Assembly.CreateInstance($"{type.Namespace}.{resolverType}");
+                if (instance == null) throw new NullReferenceException($"could not retrieve instance of {nameof(resolverType)}.");
+                converterDict.Add(resolverType, (ITypeConverter)instance);
             }
         }
         public static void AddResolver(Type resolverType)
         {
             if (!converterDict.ContainsKey(resolverType.Name))
             {
-                var instance = (ITypeConverter)Activator.CreateInstance(resolverType);
-                converterDict.Add(resolverType.Name, instance);
+                var instance = Activator.CreateInstance(resolverType);
+                if (instance == null) throw new NullReferenceException($"could not retrieve instance of {nameof(resolverType)}.");
+                converterDict.Add(resolverType.Name, (ITypeConverter)instance);
             }
         }
 
