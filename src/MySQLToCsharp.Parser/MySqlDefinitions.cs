@@ -52,7 +52,7 @@ namespace MySQLToCsharp
         {
             var fullIdContext = context.GetChild<FullIdContext>();
             var schemaName = "";
-            var tableName = "";
+            string tableName;
 
             //MEMO: TableNameContext.tablename() contains schema name if query style is `schema`.`table`.
             // 3     = schema.table (expr + . + expr)
@@ -91,10 +91,11 @@ namespace MySQLToCsharp
         {
             if (context == null) return null;
 
-            var column = new MySqlColumnDefinition();
-
-            // column name
-            column.Name = context.GetColumnName();
+            var column = new MySqlColumnDefinition
+            {
+                // column name
+                Name = context.GetColumnName()
+            };
 
             // check column definitions
             var definitionContext = context.GetChild<ColumnDefinitionContext>();

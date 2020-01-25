@@ -120,7 +120,7 @@ namespace MySQLToCsharp
         /// <returns></returns>
         private static string GetClassName(string tableName)
             => tableName.Last() == 's'
-                ? tableName.Substring(0, tableName.Length - 1)
+                ? tableName[0..^1] // Foos -> Foo
                 : tableName;
     }
 
