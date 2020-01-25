@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <Version>0.1.0</Version>
     <AssemblyVersion>$(Version)</AssemblyVersion>
@@ -49,6 +50,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MySQLToCsharp.Parser\MySQLToCsharp.Parser.csproj" />
   </ItemGroup>
 
 </Project>

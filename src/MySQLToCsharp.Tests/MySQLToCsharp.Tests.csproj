@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MySQLToCsharp.Parser\MySQLToCsharp.Parser.csproj" />
     <ProjectReference Include="..\MySQLToCsharp\MySQLToCsharp.csproj" />
   </ItemGroup>
 

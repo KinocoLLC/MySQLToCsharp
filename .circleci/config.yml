@@ -51,7 +51,7 @@ jobs:
       - run: dotnet test -c Debug --no-build -p:CollectCoverage=true -p:CoverletOutputFormat=opencover --test-adapter-path:. --logger:"xunit;LogFilePath=results.xml" < /dev/null
       - run: curl -s https://codecov.io/bash > codecov
       - run: chmod +x codecov
-      - run: ./codecov -f ./src/MySQLToCsharp.Tests/coverage.opencover.xml
+      - run: ./codecov -f ./src/MySQLToCsharp.Tests/coverage.netcoreapp3.1.opencover.xml
       - run:
           command: |
             mkdir -p $CIRCLE_TEST_REPORTS
