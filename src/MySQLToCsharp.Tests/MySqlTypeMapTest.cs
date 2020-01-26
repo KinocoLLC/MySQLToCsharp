@@ -34,29 +34,24 @@ namespace MySQLToCsharp.Tests
         // TODO: should be fail as it were invalid
         [Theory]
         [InlineData("TINYBLOB(100)")]
-        [InlineData("BLOB(100)")]
         [InlineData("MEDIUMBLOB(100)")]
         [InlineData("LONGBLOB(100)")]
         [InlineData("TINYTEXT(100)")]
-        [InlineData("TEXT(100)")]
         [InlineData("MEDIUMTEXT(100)")]
         [InlineData("LONGTEXT(100)")]
         public void StringType2(string typeName)
         {
             var mapper = new MySqlTypeMapper();
-            var type = mapper.Map(typeName);
-            Assert.IsType<StringMySqlType>(type);
+            Assert.Throws<ArgumentOutOfRangeException>(() => mapper.Map(typeName));
         }
 
         [Theory]
-        [InlineData("TINYBLOB(100")]
+        [InlineData("CHAR(20")]
+        [InlineData("VARCHAR(255")]
+        [InlineData("BINARY(10")]
+        [InlineData("VARBINARY(100")]
         [InlineData("BLOB(100")]
-        [InlineData("MEDIUMBLOB(100")]
-        [InlineData("LONGBLOB(100")]
-        [InlineData("TINYTEXT(100")]
         [InlineData("TEXT(100")]
-        [InlineData("MEDIUMTEXT(100")]
-        [InlineData("LONGTEXT(100")]
         public void ThrowsStringTypeInvalidParentheses(string typeName)
         {
             var mapper = new MySqlTypeMapper();
@@ -140,12 +135,13 @@ namespace MySQLToCsharp.Tests
         [InlineData("MUTILINESTRING")]
         [InlineData("MULTIPOLYGON")]
         [InlineData("GEOMETRYCOLLECTION")]
+        [InlineData("ENUM")]
         [InlineData("SET")]
         public void FollbackType(string typeName)
         {
             var mapper = new MySqlTypeMapper();
             var type = mapper.Map(typeName);
-            Assert.IsType<FollbackMySqlType>(type);
+            Assert.IsType<FallbackMySqlType>(type);
         }
 
     }

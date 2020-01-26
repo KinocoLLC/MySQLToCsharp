@@ -7,20 +7,20 @@ namespace MySQLToCsharp
     {
         string TypeName { get; }
         public ushort? Length { get; }
-        string[]? Aliases { get; set; }
+        string[] Aliases { get; set; }
     }
 
     /// <summary>
+    /// MySql Numeric Data Type
     /// https://dev.mysql.com/doc/refman/5.6/ja/numeric-type-overview.html
     /// https://dev.mysql.com/doc/refman/8.0/en/numeric-type-syntax.html
     /// </summary>
     public class NumericMySqlType : IMySqlType
     {
-        private static readonly string[] _typeNames = new[] { "BIT", "TINYINT", "SMALLINT", "MEDIUMINT", "INT", "BIGINT", "FLOAT", "DOUBLE", "DECIMAL" };
-        public string TypeName { get; protected set; }
-        public ushort? Length { get; protected set; }
-        public byte? Decimal { get; set; }
-        public string[]? Aliases { get; set; }
+        public string TypeName { get; }
+        public ushort? Length { get; }
+        public byte? Decimal { get; }
+        public string[] Aliases { get; set; } = Array.Empty<string>();
 
         public bool CanNegative { get; set; }
 
@@ -37,19 +37,17 @@ namespace MySQLToCsharp
         {
             Decimal = @decimal;
         }
-
-        public static bool IsType(string typeName) => _typeNames.Contains(typeName, StringComparer.OrdinalIgnoreCase);
     }
 
     /// <summary>
+    /// MySql Date Data Type
     /// https://dev.mysql.com/doc/refman/8.0/en/date-and-time-types.html
     /// </summary>
     public class DateMySqlType : IMySqlType
     {
-        private static readonly string[] _typeNames = new[] { "DATE", "TIME", "DATETIME", "TIMESTAMP", "YEAR" };
-        public string TypeName { get; protected set; }
+        public string TypeName { get; }
         public ushort? Length { get; }
-        public string[]? Aliases { get; set; }
+        public string[] Aliases { get; set; } = Array.Empty<string>();
 
         public DateMySqlType(string typeName)
         {
@@ -59,11 +57,10 @@ namespace MySQLToCsharp
         {
             Length = length;
         }
-
-        public static bool IsType(string typeName) => _typeNames.Contains(typeName, StringComparer.OrdinalIgnoreCase);
     }
 
     /// <summary>
+    /// MySql String Data Type
     /// https://dev.mysql.com/doc/refman/8.0/en/string-types.html
     /// https://dev.mysql.com/doc/refman/8.0/en/char.html
     /// https://dev.mysql.com/doc/refman/8.0/en/binary-varbinary.html
@@ -71,16 +68,9 @@ namespace MySQLToCsharp
     /// </summary>
     public class StringMySqlType : IMySqlType
     {
-        private static readonly string[] _typeNames = new[] 
-        { 
-            "CHAR", "VARCHAR", 
-            "BINARY", "VARBINARY", 
-            "TINYBLOB", "MEDIUMBLOB", "BLOB", "LONGBLOB", 
-            "TINYTEXT", "MEDIUMTEXT", "TEXT", "LONGTEXT",
-        };
-        public string TypeName { get; protected set; }
-        public ushort? Length { get; set; }
-        public string[]? Aliases { get; set; }
+        public string TypeName { get; }
+        public ushort? Length { get; }
+        public string[] Aliases { get; set; } = Array.Empty<string>();
 
         public StringMySqlType(string typeName)
         {
@@ -90,21 +80,20 @@ namespace MySQLToCsharp
         {
             Length = length;
         }
-
-        public static bool IsType(string typeName) => _typeNames.Contains(typeName, StringComparer.OrdinalIgnoreCase);
     }
 
-    public class FollbackMySqlType : IMySqlType
+    /// <summary>
+    /// Fallback MySql Data Type
+    /// </summary>
+    public class FallbackMySqlType : IMySqlType
     {
-        public string TypeName { get; protected set; }
-        public ushort? Length { get; set; }
-        public string[]? Aliases { get; set; }
+        public string TypeName { get; }
+        public ushort? Length { get; }
+        public string[] Aliases { get; set; } = Array.Empty<string>();
 
-        public FollbackMySqlType(string typeName)
+        public FallbackMySqlType(string typeName)
         {
             TypeName = typeName;
         }
-
-        public static bool IsType(string typeName) => true;
     }
 }
