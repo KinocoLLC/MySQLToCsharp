@@ -1,91 +1,105 @@
-﻿using ConsoleAppFramework;
-using Microsoft.Extensions.Hosting;
+﻿using Cocona;
 using Microsoft.Extensions.Logging;
 using MySQLToCsharp.Listeners;
 using MySQLToCsharp.Parsers;
 using MySQLToCsharp.TypeConverters;
+using System;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MySQLToCsharp
 {
-    partial class Program
+    class Program
     {
-        static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            await Host.CreateDefaultBuilder()
-                .ConfigureLogging(logging => logging.ReplaceToSimpleConsole())
-                .RunConsoleAppFrameworkAsync<QueryToCSharp>(args);
+            CoconaApp.Run<QueryToCSharp>(args);
         }
     }
-    public class QueryToCSharp : ConsoleAppBase
+    public class QueryToCSharp : CoconaConsoleAppBase
     {
         const string defaultConverter = nameof(StandardConverter);
-        readonly ILogger<QueryToCSharp> logger;
 
-        public QueryToCSharp(ILogger<QueryToCSharp> logger) => (this.logger) = logger;
-
-        [Command(new[] { "query" }, "Convert DDL sql query and generate C# class.")]
-        public void ParseString(
-            [Option("-i", "input mysql ddl query to parse")]string input,
-            [Option("-o", "output directory path of generated C# class file")]string output,
-            [Option("-n", "namespace to write")]string @namespace,
-            [Option("-c", "converter name to use")]string converter = defaultConverter,
-            bool addbom = false,
-            bool dry = false)
+        [Command(Description = "Convert DDL sql query and generate C# class.")]
+        public void Query(
+            [Option('i', Description = "input mysql ddl query to parse")]string input,
+            [Option('o', Description = "output directory path of generated C# class file")]string output,
+            [Option('n', Description = "namespace to write")]string @namespace,
+            [Option('c', Description = "converter name to use")]string converter = defaultConverter,
+            [Option(Description = "true to add bom")]bool addbom = false,
+            [Option(Description = "true to dry-run")]bool dry = false)
         {
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
             parser.Parse(input, listener);
-            var definition = listener.TableDefinition;
+            var table = listener.TableDefinition;
             var resolvedConverter = TypeConverterResolver.Resolve(converter);
+            var className = Generator.GetClassName(table.Name);
 
             PrintDryMessage(dry);
-            logger.LogInformation($"Output Directory: {output}");
-            new Generator(addbom, resolvedConverter).Save(@namespace, definition, output, dry);
-        }
-
-        [Command(new[] { "file" }, "Convert DDL sql file and generate C# class.")]
-        public void ParseFromFile(
-            [Option("-i", "input file path to parse mysql ddl query")]string input,
-            [Option("-o", "output directory path of generated C# class file")]string output,
-            [Option("-n", "namespace to write")]string @namespace,
-            [Option("-c", "converter name to use")]string converter = defaultConverter,
-            bool addbom = false,
-            bool dry = false)
-        {
-            var definition = Parser.FromFile(input, false);
-            var resolvedConverter = TypeConverterResolver.Resolve(converter);
-
-            PrintDryMessage(dry);
-            logger.LogInformation($"Output Directory: {output}");
-            new Generator(addbom, resolvedConverter).Save(@namespace, definition, output, dry);
-        }
-
-        [Command(new[] { "dir" }, "Convert DDL sql files in the folder and generate C# class.")]
-        public void ParseFromFolder(
-            [Option("-i", "input folder path to parse mysql ddl query")]string input,
-            [Option("-o", "output directory path of generated C# class files")]string output,
-            [Option("-n", "namespace to write")]string @namespace,
-            [Option("-c", "converter name to use")]string converter = defaultConverter,
-            bool addbom = false,
-            bool dry = false)
-        {
-            var definitions = Parser.FromFolder(input, false).ToArray();
-            var resolvedConverter = TypeConverterResolver.Resolve(converter);
+            Console.WriteLine($"Output Directory: {output}");
             var generator = new Generator(addbom, resolvedConverter);
+            var generated =generator.Generate(@namespace, className, table, resolvedConverter);
+            generator.Save(className, generated, output, dry);
+
+            // TraceLogger
+            Context.Logger.LogTrace(generated);
+        }
+
+        [Command(Description = "Convert DDL sql file and generate C# class.")]
+        public void File(
+            [Option('i', Description = "input file path to parse mysql ddl query")]string input,
+            [Option('o', Description = "output directory path of generated C# class file")]string output,
+            [Option('n', Description = "namespace to write")]string @namespace,
+            [Option('c', Description = "converter name to use")]string converter = defaultConverter,
+            bool addbom = false,
+            bool dry = false)
+        {
+            var table = Parser.FromFile(input, false);
+            var resolvedConverter = TypeConverterResolver.Resolve(converter);
+            var className = Generator.GetClassName(table.Name);
 
             PrintDryMessage(dry);
-            logger.LogInformation($"Output Directory: {output}");
-            foreach (var definition in definitions)
+            Console.WriteLine($"Output Directory: {output}");
+            var generator = new Generator(addbom, resolvedConverter);
+            var generated = generator.Generate(@namespace, className, table, resolvedConverter);
+            generator.Save(@namespace, generated, output, dry);
+
+            // TraceLogger
+            Context.Logger.LogTrace(generated);
+        }
+
+        [Command(Description = "Convert DDL sql files in the folder and generate C# class.")]
+        public void Dir(
+            [Option('i', Description = "input folder path to parse mysql ddl query")]string input,
+            [Option('o', Description = "output directory path of generated C# class files")]string output,
+            [Option('n', Description = "namespace to write")]string @namespace,
+            [Option('c', Description = "converter name to use")]string converter = defaultConverter,
+            bool addbom = false,
+            bool dry = false)
+        {
+            var tables = Parser.FromFolder(input, false).ToArray();
+            var resolvedConverter = TypeConverterResolver.Resolve(converter);
+
+            PrintDryMessage(dry);
+            Console.WriteLine($"Output Directory: {output}");
+            var generator = new Generator(addbom, resolvedConverter);
+            foreach (var table in tables)
             {
-                generator.Save(@namespace, definition, output, dry);
+                var className = Generator.GetClassName(table.Name);
+                var generated = generator.Generate(@namespace, className, table, resolvedConverter);
+                generator.Save(@namespace, generated, output, dry);
+
+                // TraceLogger
+                Context.Logger.LogTrace(generated);
             }
         }
 
         private void PrintDryMessage(bool dry)
         {
-            if (dry) logger.LogInformation($"[NOTE] dry run mode, {nameof(QueryToCSharp)} will not save to file.");
+            if (dry)
+            {
+                Console.WriteLine($"[NOTE] dry run mode, {nameof(QueryToCSharp)} will not save to file.");
+            }
         }
     }
 }
