@@ -9,12 +9,12 @@ namespace MySQLToCsharp.Tests
 {
     // collection test will execute serial
     [Collection("cli")]
-    public class CommandLineQueryTest
+    public class CommandLineFileTest
     {
         [Fact]
-        public void QueryExecutionTest()
+        public void FileExecutionTest()
         {
-            var args = new[] { "query", "-i", "create table ships_guns(guns_id int, ship_id int);", "-o", "hoge", "-n", "Fuga" };
+            var args = new[] { "file", "-i", "test_data/simple/create_tables_simple.sql", "-o", "hoge", "-n", "Fuga" };
             CoconaApp.Create().ConfigureLogging(logging =>
             {
                 logging.ReplaceToTraceLogger();
@@ -41,9 +41,9 @@ namespace Fuga
         }
 
         [Fact]
-        public void QueryExecutionAnnotationTest()
+        public void FileExecutionAnnotationTest()
         {
-            var args = new[] { "query", "-i", "create table quengine(id int auto_increment key, class varchar(10), data binary) engine='InnoDB';", "-o", "hoge", "-n", "Fuga" };
+            var args = new[] { "file", "-i", "test_data/simple_annotation/create_tables_simple_annotation.sql", "-o", "hoge", "-n", "Fuga" };
             CoconaApp.Create().ConfigureLogging(logging =>
             {
                 logging.ReplaceToTraceLogger();
