@@ -16,24 +16,12 @@ namespace MySQLToCsharp
 
         private readonly Encoding encoding;
 
-        public Generator(bool addbom)
-        {
-            TypeConverter = defaultTypeConverter;
-            encoding = new UTF8Encoding(addbom);
-        }
         public Generator(bool addbom, ITypeConverter typeConverter)
         {
             TypeConverter = typeConverter;
             encoding = new UTF8Encoding(addbom);
         }
 
-        public void Save(string className, IEnumerable<string> texts, string outputFolderPath, bool dry)
-        {
-            foreach (var text in texts)
-            {
-                Save(className, text, outputFolderPath, dry);
-            }
-        }
         public void Save(string className, string text, string outputFolderPath, bool dry)
         {
             var fileName = className + extension;
