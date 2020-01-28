@@ -28,6 +28,9 @@ namespace MySQLToCsharp
             [Option(Description = "true to add bom")]bool addbom = false,
             [Option(Description = "true to dry-run")]bool dry = false)
         {
+            PrintDryMessage(dry);
+            Console.WriteLine($"quey executed. Output Directory: {output}");
+
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
             parser.Parse(input, listener);
@@ -35,8 +38,6 @@ namespace MySQLToCsharp
             var resolvedConverter = TypeConverterResolver.Resolve(converter);
             var className = Generator.GetClassName(table.Name);
 
-            PrintDryMessage(dry);
-            Console.WriteLine($"Output Directory: {output}");
             var generator = new Generator(addbom, resolvedConverter);
             var generated =generator.Generate(@namespace, className, table, resolvedConverter);
             generator.Save(className, generated, output, dry);
@@ -54,15 +55,16 @@ namespace MySQLToCsharp
             bool addbom = false,
             bool dry = false)
         {
+            PrintDryMessage(dry);
+            Console.WriteLine($"file executed. Output Directory: {output}");
+
             var table = Parser.FromFile(input, false);
             var resolvedConverter = TypeConverterResolver.Resolve(converter);
-            var className = Generator.GetClassName(table.Name);
 
-            PrintDryMessage(dry);
-            Console.WriteLine($"Output Directory: {output}");
+            var className = Generator.GetClassName(table.Name);
             var generator = new Generator(addbom, resolvedConverter);
             var generated = generator.Generate(@namespace, className, table, resolvedConverter);
-            generator.Save(@namespace, generated, output, dry);
+            generator.Save(className, generated, output, dry);
 
             // TraceLogger
             Context.Logger.LogTrace(generated);
@@ -77,17 +79,17 @@ namespace MySQLToCsharp
             bool addbom = false,
             bool dry = false)
         {
+            PrintDryMessage(dry);
+            Console.WriteLine($"dir executed. Output Directory: {output}");
+
             var tables = Parser.FromFolder(input, false).ToArray();
             var resolvedConverter = TypeConverterResolver.Resolve(converter);
-
-            PrintDryMessage(dry);
-            Console.WriteLine($"Output Directory: {output}");
             var generator = new Generator(addbom, resolvedConverter);
             foreach (var table in tables)
             {
                 var className = Generator.GetClassName(table.Name);
                 var generated = generator.Generate(@namespace, className, table, resolvedConverter);
-                generator.Save(@namespace, generated, output, dry);
+                generator.Save(className, generated, output, dry);
 
                 // TraceLogger
                 Context.Logger.LogTrace(generated);
