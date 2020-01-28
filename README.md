@@ -171,7 +171,7 @@ $ dotnet mysql2csharp file --help
 
 ## Generate MySQL Lexer/Parser/Listener/Visitor from ANTLR4 grammer
 
-Referencing MySQL ANTLR4 Grammer from [antlr/grammars-v4](> https://github.com/antlr/grammars-v4/tree/master/sql/mysql/Positive-Technologies).
+Referencing MySQL ANTLR4 Grammer from [antlr/grammars-v4](https://github.com/antlr/grammars-v4/tree/master/sql/mysql/Positive-Technologies).
 
 Follow step to update lexer and parser.
 
