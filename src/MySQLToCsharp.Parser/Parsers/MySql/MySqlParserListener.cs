@@ -4020,6 +4020,18 @@ public interface IMySqlParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitDefiniteFullTablePrivLevel([NotNull] MySqlParser.DefiniteFullTablePrivLevelContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>definiteFullTablePrivLevel2</c>
+	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterDefiniteFullTablePrivLevel2([NotNull] MySqlParser.DefiniteFullTablePrivLevel2Context context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>definiteFullTablePrivLevel2</c>
+	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitDefiniteFullTablePrivLevel2([NotNull] MySqlParser.DefiniteFullTablePrivLevel2Context context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>definiteTablePrivLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
 	/// </summary>
@@ -4667,6 +4679,26 @@ public interface IMySqlParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitUseStatement([NotNull] MySqlParser.UseStatementContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MySqlParser.signalStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterSignalStatement([NotNull] MySqlParser.SignalStatementContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MySqlParser.signalStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitSignalStatement([NotNull] MySqlParser.SignalStatementContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MySqlParser.signalConditionInformation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterSignalConditionInformation([NotNull] MySqlParser.SignalConditionInformationContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MySqlParser.signalConditionInformation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitSignalConditionInformation([NotNull] MySqlParser.SignalConditionInformationContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>describeStatements</c>
 	/// labeled alternative in <see cref="MySqlParser.describeObjectClause"/>.

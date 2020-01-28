@@ -4748,6 +4748,20 @@ public partial class MySqlParserBaseListener : IMySqlParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitDefiniteFullTablePrivLevel([NotNull] MySqlParser.DefiniteFullTablePrivLevelContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by the <c>definiteFullTablePrivLevel2</c>
+	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDefiniteFullTablePrivLevel2([NotNull] MySqlParser.DefiniteFullTablePrivLevel2Context context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>definiteFullTablePrivLevel2</c>
+	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDefiniteFullTablePrivLevel2([NotNull] MySqlParser.DefiniteFullTablePrivLevel2Context context) { }
+	/// <summary>
 	/// Enter a parse tree produced by the <c>definiteTablePrivLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -5513,6 +5527,30 @@ public partial class MySqlParserBaseListener : IMySqlParserListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitUseStatement([NotNull] MySqlParser.UseStatementContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MySqlParser.signalStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSignalStatement([NotNull] MySqlParser.SignalStatementContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MySqlParser.signalStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSignalStatement([NotNull] MySqlParser.SignalStatementContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MySqlParser.signalConditionInformation"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSignalConditionInformation([NotNull] MySqlParser.SignalConditionInformationContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MySqlParser.signalConditionInformation"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSignalConditionInformation([NotNull] MySqlParser.SignalConditionInformationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>describeStatements</c>
 	/// labeled alternative in <see cref="MySqlParser.describeObjectClause"/>.

@@ -2389,6 +2389,13 @@ public interface IMySqlParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitDefiniteFullTablePrivLevel([NotNull] MySqlParser.DefiniteFullTablePrivLevelContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>definiteFullTablePrivLevel2</c>
+	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitDefiniteFullTablePrivLevel2([NotNull] MySqlParser.DefiniteFullTablePrivLevel2Context context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>definiteTablePrivLevel</c>
 	/// labeled alternative in <see cref="MySqlParser.privilegeLevel"/>.
 	/// </summary>
@@ -2771,6 +2778,18 @@ public interface IMySqlParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitUseStatement([NotNull] MySqlParser.UseStatementContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="MySqlParser.signalStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSignalStatement([NotNull] MySqlParser.SignalStatementContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="MySqlParser.signalConditionInformation"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSignalConditionInformation([NotNull] MySqlParser.SignalConditionInformationContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>describeStatements</c>
 	/// labeled alternative in <see cref="MySqlParser.describeObjectClause"/>.
