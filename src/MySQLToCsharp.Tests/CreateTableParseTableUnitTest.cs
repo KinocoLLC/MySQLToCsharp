@@ -1,11 +1,7 @@
 ﻿using FluentAssertions;
 using MySQLToCsharp.Listeners;
 using MySQLToCsharp.Parsers;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace MySQLToCsharp.Tests
