@@ -352,5 +352,5 @@ MigrationBackup/
 
 # custom
 launchSettings.json
-coverage.opencover.xml
+coverage.*.opencover.xml
 results.xml

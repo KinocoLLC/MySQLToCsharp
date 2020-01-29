@@ -48,11 +48,11 @@ namespace MySQLToCsharp.TypeConverters
 
         private const string Required = "Required";
         private const string Timestamp = "Timestamp";
-        private static string StringLength(MySqlColumnDataDefinition data)
+        private static string? StringLength(MySqlColumnDataDefinition data)
             => data.Length.HasValue && data.Length != 0
                 ? $"StringLength({data.Length})"
-                : "";
-        private static string ArrayLength(MySqlColumnDataDefinition data)
+                : null;
+        private static string? ArrayLength(MySqlColumnDataDefinition data)
             => data.Length.HasValue && data.Length != 0
                 ? $"MaxLength({data.Length})"
                 : "";

@@ -113,7 +113,7 @@ administrationStatement
 
 utilityStatement
     : simpleDescribeStatement | fullDescribeStatement
-    | helpStatement | useStatement
+    | helpStatement | useStatement | signalStatement
     ;
 
 
@@ -174,7 +174,7 @@ createFunction
       '(' functionParameter? (',' functionParameter)* ')'
       RETURNS dataType
       routineOption*
-    routineBody
+    (routineBody | returnStatement)
     ;
 
 createServer
@@ -246,7 +246,7 @@ createView
 // details
 
 createDatabaseOption
-    : DEFAULT? (CHARACTER SET | CHARSET) '='? charsetName
+    : DEFAULT? (CHARACTER SET | CHARSET) '='? (charsetName | DEFAULT)
     | DEFAULT? COLLATE '='? collationName
     ;
 
@@ -258,11 +258,11 @@ scheduleExpression
     : AT timestampValue intervalExpr*                               #preciseSchedule
     | EVERY (decimalLiteral | expression) intervalType
         (
-          STARTS start=timestampValue
+          STARTS startTimestamp=timestampValue
           (startIntervals+=intervalExpr)*
         )?
         (
-          ENDS end=timestampValue
+          ENDS endTimestamp=timestampValue
           (endIntervals+=intervalExpr)*
         )?                                                          #intervalSchedule
     ;
@@ -299,6 +299,8 @@ indexOption
     | indexType
     | WITH PARSER uid
     | COMMENT STRING_LITERAL
+    | INVISIBLE
+    | VISIBLE
     ;
 
 procedureParameter
@@ -406,7 +408,7 @@ tableOption
     : ENGINE '='? engineName                                        #tableOptionEngine
     | AUTO_INCREMENT '='? decimalLiteral                            #tableOptionAutoIncrement
     | AVG_ROW_LENGTH '='? decimalLiteral                            #tableOptionAverage
-    | DEFAULT? (CHARACTER SET | CHARSET) '='? charsetName           #tableOptionCharset
+    | DEFAULT? (CHARACTER SET | CHARSET) '='? (charsetName|DEFAULT) #tableOptionCharset
     | (CHECKSUM | PAGE_CHECKSUM) '='? boolValue=('0' | '1')         #tableOptionChecksum
     | DEFAULT? COLLATE '='? collationName                           #tableOptionCollate
     | COMMENT '='? STRING_LITERAL                                   #tableOptionComment
@@ -1582,6 +1584,7 @@ privilege
     | SELECT
     | SHOW (VIEW | DATABASES)
     | SHUTDOWN | SUPER | TRIGGER | UPDATE | USAGE
+    | SESSION_VARIABLES_ADMIN
     ;
 
 privilegeLevel
@@ -1589,6 +1592,7 @@ privilegeLevel
     | '*' '.' '*'                                                   #globalPrivLevel
     | uid '.' '*'                                                   #definiteSchemaPrivLevel
     | uid '.' uid                                                   #definiteFullTablePrivLevel
+    | uid dottedId                                                  #definiteFullTablePrivLevel2
     | uid                                                           #definiteTablePrivLevel
     ;
 
@@ -1836,6 +1840,26 @@ useStatement
     : USE uid
     ;
 
+signalStatement
+    : SIGNAL ( ( SQLSTATE VALUE? stringLiteral ) | ID | REVERSE_QUOTE_ID )
+        ( SET signalConditionInformation ( ',' signalConditionInformation)* )?
+    ;
+
+signalConditionInformation
+    : ( CLASS_ORIGIN
+          | SUBCLASS_ORIGIN
+          | MESSAGE_TEXT
+          | MYSQL_ERRNO
+          | CONSTRAINT_CATALOG
+          | CONSTRAINT_SCHEMA
+          | CONSTRAINT_NAME
+          | CATALOG_NAME
+          | SCHEMA_NAME
+          | TABLE_NAME
+          | COLUMN_NAME
+        ) '=' ( stringLiteral | DECIMAL_LITERAL )
+    ;
+
 // details
 
 describeObjectClause
@@ -1889,6 +1913,7 @@ engineName
     : ARCHIVE | BLACKHOLE | CSV | FEDERATED | INNODB | MEMORY
     | MRG_MYISAM | MYISAM | NDB | NDBCLUSTER | PERFORMANCE_SCHEMA
     | TOKUDB
+    | ID
     | STRING_LITERAL | REVERSE_QUOTE_ID
     ;
 
@@ -2031,7 +2056,7 @@ collectionOptions
 convertedDataType
     : typeName=(BINARY| NCHAR) lengthOneDimension?
     | typeName=CHAR lengthOneDimension? ((CHARACTER SET | CHARSET) charsetName)?
-    | typeName=(DATE | DATETIME | TIME)
+    | typeName=(DATE | DATETIME | TIME | JSON)
     | typeName=DECIMAL lengthTwoDimension?
     | (SIGNED | UNSIGNED) INTEGER?
     ;
@@ -2370,10 +2395,12 @@ keywordsCanBeId
     | AT | AUTHORS | AUTOCOMMIT | AUTOEXTEND_SIZE
     | AUTO_INCREMENT | AVG_ROW_LENGTH | BEGIN | BINLOG | BIT
     | BLOCK | BOOL | BOOLEAN | BTREE | CACHE | CASCADED | CHAIN | CHANGED
-    | CHANNEL | CHECKSUM | PAGE_CHECKSUM | CIPHER | CLIENT | CLOSE | COALESCE | CODE
-    | COLUMNS | COLUMN_FORMAT | COMMENT | COMMIT | COMPACT
+    | CHANNEL | CHECKSUM | PAGE_CHECKSUM | CATALOG_NAME | CIPHER
+    | CLASS_ORIGIN | CLIENT | CLOSE | COALESCE | CODE
+    | COLUMNS | COLUMN_FORMAT | COLUMN_NAME | COMMENT | COMMIT | COMPACT
     | COMPLETION | COMPRESSED | COMPRESSION | CONCURRENT
-    | CONNECTION | CONSISTENT | CONTAINS | CONTEXT
+    | CONNECTION | CONSISTENT | CONSTRAINT_CATALOG | CONSTRAINT_NAME
+    | CONSTRAINT_SCHEMA | CONTAINS | CONTEXT
     | CONTRIBUTORS | COPY | CPU | DATA | DATAFILE | DEALLOCATE
     | DEFAULT_AUTH | DEFINER | DELAY_KEY_WRITE | DES_KEY_FILE | DIRECTORY
     | DISABLE | DISCARD | DISK | DO | DUMPFILE | DUPLICATE
@@ -2397,8 +2424,9 @@ keywordsCanBeId
     | MASTER_TLS_VERSION | MASTER_USER
     | MAX_CONNECTIONS_PER_HOUR | MAX_QUERIES_PER_HOUR
     | MAX_ROWS | MAX_SIZE | MAX_UPDATES_PER_HOUR
-    | MAX_USER_CONNECTIONS | MEDIUM | MEMORY | MERGE | MID | MIGRATE
-    | MIN_ROWS | MODE | MODIFY | MUTEX | MYSQL | NAME | NAMES
+    | MAX_USER_CONNECTIONS | MEDIUM | MEMORY | MERGE | MESSAGE_TEXT
+    | MID | MIGRATE
+    | MIN_ROWS | MODE | MODIFY | MUTEX | MYSQL | MYSQL_ERRNO | NAME | NAMES
     | NCHAR | NEVER | NEXT | NO | NODEGROUP | NONE | OFFLINE | OFFSET
     | OJ | OLD_PASSWORD | ONE | ONLINE | ONLY | OPEN | OPTIMIZER_COSTS
     | OPTIONS | OWNER | PACK_KEYS | PAGE | PARSER | PARTIAL
@@ -2412,15 +2440,15 @@ keywordsCanBeId
     | REPLICATE_REWRITE_DB | REPLICATE_WILD_DO_TABLE
     | REPLICATE_WILD_IGNORE_TABLE | REPLICATION | RESET | RESUME
     | RETURNS | ROLLBACK | ROLLUP | ROTATE | ROW | ROWS
-    | ROW_FORMAT | SAVEPOINT | SCHEDULE | SECURITY | SERIAL | SERVER
+    | ROW_FORMAT | SAVEPOINT | SCHEDULE | SCHEMA_NAME | SECURITY | SERIAL | SERVER
     | SESSION | SHARE | SHARED | SIGNED | SIMPLE | SLAVE
     | SLOW | SNAPSHOT | SOCKET | SOME | SONAME | SOUNDS | SOURCE
     | SQL_AFTER_GTIDS | SQL_AFTER_MTS_GAPS | SQL_BEFORE_GTIDS
     | SQL_BUFFER_RESULT | SQL_CACHE | SQL_NO_CACHE | SQL_THREAD
     | START | STARTS | STATS_AUTO_RECALC | STATS_PERSISTENT
     | STATS_SAMPLE_PAGES | STATUS | STOP | STORAGE | STRING
-    | SUBJECT | SUBPARTITION | SUBPARTITIONS | SUSPEND | SWAPS
-    | SWITCHES | TABLESPACE | TEMPORARY | TEMPTABLE | THAN | TRADITIONAL
+    | SUBCLASS_ORIGIN | SUBJECT | SUBPARTITION | SUBPARTITIONS | SUSPEND | SWAPS
+    | SWITCHES | TABLE_NAME | TABLESPACE | TEMPORARY | TEMPTABLE | THAN | TRADITIONAL
     | TRANSACTION | TRIGGERS | TRUNCATE | UNDEFINED | UNDOFILE
     | UNDO_BUFFER_SIZE | UNINSTALL | UNKNOWN | UNTIL | UPGRADE | USER | USE_FRM | USER_RESOURCES
     | VALIDATION | VALUE | VARIABLES | VIEW | WAIT | WARNINGS | WITHOUT
@@ -2452,7 +2480,8 @@ functionNameBase
     | GEOMFROMWKB | GET_FORMAT | GET_LOCK | GLENGTH | GREATEST
     | GTID_SUBSET | GTID_SUBTRACT | HEX | HOUR | IFNULL
     | INET6_ATON | INET6_NTOA | INET_ATON | INET_NTOA | INSTR
-    | INTERIORRINGN | INTERSECTS | ISCLOSED | ISEMPTY | ISNULL
+    | INTERIORRINGN | INTERSECTS | INVISIBLE
+    | ISCLOSED | ISEMPTY | ISNULL
     | ISSIMPLE | IS_FREE_LOCK | IS_IPV4 | IS_IPV4_COMPAT
     | IS_IPV4_MAPPED | IS_IPV6 | IS_USED_LOCK | LAST_INSERT_ID
     | LCASE | LEAST | LEFT | LENGTH | LINEFROMTEXT | LINEFROMWKB
@@ -2474,7 +2503,8 @@ functionNameBase
     | POSITION| POW | POWER | QUARTER | QUOTE | RADIANS | RAND
     | RANDOM_BYTES | RELEASE_LOCK | REVERSE | RIGHT | ROUND
     | ROW_COUNT | RPAD | RTRIM | SECOND | SEC_TO_TIME
-    | SESSION_USER | SHA | SHA1 | SHA2 | SIGN | SIN | SLEEP
+    | SESSION_USER | SESSION_VARIABLES_ADMIN
+    | SHA | SHA1 | SHA2 | SIGN | SIN | SLEEP
     | SOUNDEX | SQL_THREAD_WAIT_AFTER_GTIDS | SQRT | SRID
     | STARTPOINT | STRCMP | STR_TO_DATE | ST_AREA | ST_ASBINARY
     | ST_ASTEXT | ST_ASWKB | ST_ASWKT | ST_BUFFER | ST_CENTROID
@@ -2501,7 +2531,7 @@ functionNameBase
     | TOUCHES | TO_BASE64 | TO_DAYS | TO_SECONDS | UCASE
     | UNCOMPRESS | UNCOMPRESSED_LENGTH | UNHEX | UNIX_TIMESTAMP
     | UPDATEXML | UPPER | UUID | UUID_SHORT
-    | VALIDATE_PASSWORD_STRENGTH | VERSION
+    | VALIDATE_PASSWORD_STRENGTH | VERSION | VISIBLE
     | WAIT_UNTIL_SQL_THREAD_AFTER_GTIDS | WEEK | WEEKDAY
     | WEEKOFYEAR | WEIGHT_STRING | WITHIN | YEAR | YEARWEEK
     | Y_FUNCTION | X_FUNCTION
