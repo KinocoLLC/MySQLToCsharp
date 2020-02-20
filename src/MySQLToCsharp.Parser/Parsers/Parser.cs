@@ -72,6 +72,16 @@ namespace MySQLToCsharp.Parsers
 
         #region loader
 
+        public static MySqlTableDefinition FromQuery(string query)
+            => FromQuery(query, new CreateTableStatementDetectListener());
+
+        public static MySqlTableDefinition FromQuery(string query, ICreateTableListener listener)
+        {
+            IParser parser = new Parser();
+            parser.Parse(query, listener);
+            return listener.TableDefinition;
+        }
+
         /// <summary>
         /// load query from folder. specify sql file is utf8(bom) or utf8(bomless).
         /// </summary>
@@ -113,12 +123,10 @@ namespace MySQLToCsharp.Parsers
         /// <param name="encoding"></param>
         public static MySqlTableDefinition FromFile(string path, ICreateTableListener listener, Encoding encoding)
         {
-            using (var reader = new StreamReader(path, encoding))
-            {
-                var parser = new Parser();
-                parser.Parse(reader, listener);
-                return listener.TableDefinition;
-            }
+            using var reader = new StreamReader(path, encoding);
+            var parser = new Parser();
+            parser.Parse(reader, listener);
+            return listener.TableDefinition;
         }
         #endregion
 
