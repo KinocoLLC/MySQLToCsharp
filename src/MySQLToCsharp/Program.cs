@@ -25,6 +25,7 @@ namespace MySQLToCsharp
             [Option('o', Description = "output directory path of generated C# class file")]string output,
             [Option('n', Description = "namespace to write")]string @namespace,
             [Option('c', Description = "converter name to use")]string converter = defaultConverter,
+            [Option(Description = "true to ignore eol")]bool ignoreeol = true,
             [Option(Description = "true to add bom")]bool addbom = false,
             [Option(Description = "true to dry-run")]bool dry = false,
             [Option(Description = "executionid to detect execution")]string executionid = nameof(Query))
@@ -34,7 +35,7 @@ namespace MySQLToCsharp
 
             var table = Parser.FromQuery(input);
             var resolvedConverter = TypeConverterResolver.Resolve(converter);
-            var generator = new Generator(addbom, resolvedConverter);
+            var generator = new Generator(resolvedConverter, addbom, ignoreeol);
 
             var className = Generator.GetClassName(table.Name);
             var generated =generator.Generate(@namespace, className, table, resolvedConverter);
@@ -49,6 +50,7 @@ namespace MySQLToCsharp
             [Option('o', Description = "output directory path of generated C# class file")]string output,
             [Option('n', Description = "namespace to write")]string @namespace,
             [Option('c', Description = "converter name to use")]string converter = defaultConverter,
+            [Option(Description = "true to ignore eol")]bool ignoreeol = true,
             [Option(Description = "true to add bom")]bool addbom = false,
             [Option(Description = "true to dry-run")]bool dry = false,
             [Option(Description = "executionid to detect execution")]string executionid = nameof(Query))
@@ -58,7 +60,7 @@ namespace MySQLToCsharp
 
             var table = Parser.FromFile(input, false);
             var resolvedConverter = TypeConverterResolver.Resolve(converter);
-            var generator = new Generator(addbom, resolvedConverter);
+            var generator = new Generator(resolvedConverter, addbom, ignoreeol);
 
             var className = Generator.GetClassName(table.Name);
             var generated = generator.Generate(@namespace, className, table, resolvedConverter);
@@ -73,6 +75,7 @@ namespace MySQLToCsharp
             [Option('o', Description = "output directory path of generated C# class files")]string output,
             [Option('n', Description = "namespace to write")]string @namespace,
             [Option('c', Description = "converter name to use")]string converter = defaultConverter,
+            [Option(Description = "true to ignore eol")]bool ignoreeol = true,
             [Option(Description = "true to add bom")]bool addbom = false,
             [Option(Description = "true to dry-run")]bool dry = false,
             [Option(Description = "executionid to detect execution")]string executionid = nameof(Query))
@@ -82,7 +85,7 @@ namespace MySQLToCsharp
 
             var tables = Parser.FromFolder(input, false).ToArray();
             var resolvedConverter = TypeConverterResolver.Resolve(converter);
-            var generator = new Generator(addbom, resolvedConverter);
+            var generator = new Generator(resolvedConverter, addbom, ignoreeol);
             foreach (var table in tables)
             {
                 var className = Generator.GetClassName(table.Name);
