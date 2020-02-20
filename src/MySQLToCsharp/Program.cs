@@ -1,6 +1,4 @@
 ﻿using Cocona;
-using Microsoft.Extensions.Logging;
-using MySQLToCsharp.Listeners;
 using MySQLToCsharp.Parsers;
 using MySQLToCsharp.TypeConverters;
 using System;
@@ -12,11 +10,13 @@ namespace MySQLToCsharp
     {
         public static void Main(string[] args)
         {
-            CoconaApp.Run<QueryToCSharp>(args);
+            CoconaLiteApp.Run<QueryToCSharp>(args);
         }
     }
-    public class QueryToCSharp : CoconaConsoleAppBase
+
+    public class QueryToCSharp
     {
+        public static QueryToCsharpContext Context = QueryToCsharpContext.Current;
         const string defaultConverter = nameof(StandardConverter);
 
         [Command(Description = "Convert DDL sql query and generate C# class.")]
@@ -26,24 +26,21 @@ namespace MySQLToCsharp
             [Option('n', Description = "namespace to write")]string @namespace,
             [Option('c', Description = "converter name to use")]string converter = defaultConverter,
             [Option(Description = "true to add bom")]bool addbom = false,
-            [Option(Description = "true to dry-run")]bool dry = false)
+            [Option(Description = "true to dry-run")]bool dry = false,
+            [Option(Description = "executionid to detect execution")]string executionid = nameof(Query))
         {
             PrintDryMessage(dry);
             Console.WriteLine($"quey executed. Output Directory: {output}");
 
-            var listener = new CreateTableStatementDetectListener();
-            IParser parser = new Parser();
-            parser.Parse(input, listener);
-            var table = listener.TableDefinition;
+            var table = Parser.FromQuery(input);
             var resolvedConverter = TypeConverterResolver.Resolve(converter);
-            var className = Generator.GetClassName(table.Name);
-
             var generator = new Generator(addbom, resolvedConverter);
+
+            var className = Generator.GetClassName(table.Name);
             var generated =generator.Generate(@namespace, className, table, resolvedConverter);
             generator.Save(className, generated, output, dry);
 
-            // TraceLogger
-            Context.Logger.LogTrace(generated);
+            QueryToCsharpContext.Current.AddLog(executionid, generated);
         }
 
         [Command(Description = "Convert DDL sql file and generate C# class.")]
@@ -52,22 +49,22 @@ namespace MySQLToCsharp
             [Option('o', Description = "output directory path of generated C# class file")]string output,
             [Option('n', Description = "namespace to write")]string @namespace,
             [Option('c', Description = "converter name to use")]string converter = defaultConverter,
-            bool addbom = false,
-            bool dry = false)
+            [Option(Description = "true to add bom")]bool addbom = false,
+            [Option(Description = "true to dry-run")]bool dry = false,
+            [Option(Description = "executionid to detect execution")]string executionid = nameof(Query))
         {
             PrintDryMessage(dry);
             Console.WriteLine($"file executed. Output Directory: {output}");
 
             var table = Parser.FromFile(input, false);
             var resolvedConverter = TypeConverterResolver.Resolve(converter);
+            var generator = new Generator(addbom, resolvedConverter);
 
             var className = Generator.GetClassName(table.Name);
-            var generator = new Generator(addbom, resolvedConverter);
             var generated = generator.Generate(@namespace, className, table, resolvedConverter);
             generator.Save(className, generated, output, dry);
 
-            // TraceLogger
-            Context.Logger.LogTrace(generated);
+            QueryToCsharpContext.Current.AddLog(executionid, generated);
         }
 
         [Command(Description = "Convert DDL sql files in the folder and generate C# class.")]
@@ -76,8 +73,9 @@ namespace MySQLToCsharp
             [Option('o', Description = "output directory path of generated C# class files")]string output,
             [Option('n', Description = "namespace to write")]string @namespace,
             [Option('c', Description = "converter name to use")]string converter = defaultConverter,
-            bool addbom = false,
-            bool dry = false)
+            [Option(Description = "true to add bom")]bool addbom = false,
+            [Option(Description = "true to dry-run")]bool dry = false,
+            [Option(Description = "executionid to detect execution")]string executionid = nameof(Query))
         {
             PrintDryMessage(dry);
             Console.WriteLine($"dir executed. Output Directory: {output}");
@@ -91,8 +89,7 @@ namespace MySQLToCsharp
                 var generated = generator.Generate(@namespace, className, table, resolvedConverter);
                 generator.Save(className, generated, output, dry);
 
-                // TraceLogger
-                Context.Logger.LogTrace(generated);
+                QueryToCsharpContext.Current.AddLog(executionid, generated);
             }
         }
 

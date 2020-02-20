@@ -36,7 +36,7 @@ namespace MySQLToCsharp.TypeConverters
         {
             if (!converterDict.ContainsKey(resolverType))
             {
-                var instance = (ITypeConverter)type.Assembly.CreateInstance($"{type.Namespace}.{resolverType}");
+                var instance = (ITypeConverter)type.Assembly.CreateInstance($"{type.Namespace}.{resolverType}")!;
                 converterDict.Add(resolverType, instance);
             }
         }
@@ -44,7 +44,7 @@ namespace MySQLToCsharp.TypeConverters
         {
             if (!converterDict.ContainsKey(resolverType.Name))
             {
-                var instance = (ITypeConverter)Activator.CreateInstance(resolverType);
+                var instance = (ITypeConverter)Activator.CreateInstance(resolverType)!;
                 converterDict.Add(resolverType.Name, instance);
             }
         }
