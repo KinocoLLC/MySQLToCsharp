@@ -15,11 +15,13 @@ namespace MySQLToCsharp
         public ITypeConverter TypeConverter { get; }
 
         private readonly Encoding encoding;
+        private readonly bool ignoreEol;
 
-        public Generator(bool addbom, ITypeConverter typeConverter)
+        public Generator(ITypeConverter typeConverter, bool addbom = false, bool ignoreeol = true)
         {
             TypeConverter = typeConverter;
             encoding = new UTF8Encoding(addbom);
+            ignoreEol = ignoreeol;
         }
 
         public void Save(string className, string text, string outputFolderPath, bool dry)
@@ -40,12 +42,24 @@ namespace MySQLToCsharp
                     Console.WriteLine($"[-] skipped: {fileName} (no change)");
                     return;
                 }
+                else if (ignoreEol && Equals(text, current))
+                {
+                    Console.WriteLine($"[-] skipped: {fileName} (ignore eol changed)");
+                    return;
+                }
             }
             Console.WriteLine($"[o] generate: {fileName}");
             if (!dry)
             {
                 File.WriteAllText(outputFile, text, encoding);
             }
+        }
+
+        private bool Equals(string lh, string rh)
+        {
+            var l = lh.Replace("\r\n", "").Replace("\n", "");
+            var r = rh.Replace("\r\n", "").Replace("\n", "");
+            return l == r;
         }
 
         public string Generate(string @namespace, string className, MySqlTableDefinition table, ITypeConverter typeConverter)
