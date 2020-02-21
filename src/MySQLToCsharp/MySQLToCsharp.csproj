@@ -3,6 +3,9 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <!-- see https://github.com/dotnet/docs/issues/12237 -->
+    <RollForward>LatestMajor</RollForward>
+    
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <Version>0.1.0</Version>
