@@ -119,7 +119,7 @@ namespace Fuga
         [Fact]
         public void FileExecutionIgnoreEolLinuxTest()
         {
-            var dir = "file_eol_windows";
+            var dir = "file_eol_linux";
             var id = Guid.NewGuid().ToString();
             var args = new[] { "file", "-i", "test_data/simple_eol/create_tables_simple_eol.sql", "-o", dir, "-n", "Fuga", "--executionid", id };
             CoconaLiteApp.Run<QueryToCSharp>(args);
