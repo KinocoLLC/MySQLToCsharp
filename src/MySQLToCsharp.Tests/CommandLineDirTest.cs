@@ -105,7 +105,7 @@ namespace Fuga
             QueryToCSharp.Context.Clear();
 
             // replace existing for windows test
-            var replaced = File.ReadAllText($"{dir}/Eol.cs").Replace("\r\n", "\n");
+            var replaced = File.ReadAllText($"{dir}/eol.cs").Replace("\r\n", "\n");
             File.WriteAllText($"{dir}/eol.cs", replaced);
 
             CoconaLiteApp.Run<QueryToCSharp>(args);
@@ -147,7 +147,7 @@ namespace Fuga
             QueryToCSharp.Context.Clear();
 
             // replace existing for windows test
-            var replaced = File.ReadAllText($"{dir}/Eol.cs").Replace("\r\n", "\n").Replace("\n", "\r\n");
+            var replaced = File.ReadAllText($"{dir}/eol.cs").Replace("\r\n", "\n").Replace("\n", "\r\n");
             File.WriteAllText($"{dir}/eol.cs", replaced);
 
             CoconaLiteApp.Run<QueryToCSharp>(args);
