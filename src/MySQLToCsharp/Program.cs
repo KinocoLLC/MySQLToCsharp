@@ -54,7 +54,7 @@ namespace MySQLToCsharp
             [Option(Description = "true to ignore eol")]bool ignoreeol = true,
             [Option(Description = "true to add bom")]bool addbom = false,
             [Option(Description = "true to dry-run")]bool dry = false,
-            [Option(Description = "executionid to detect execution")]string executionid = nameof(Query))
+            [Option(Description = "executionid to detect execution")]string executionid = nameof(File))
         {
             PrintDryMessage(dry);
             Console.WriteLine($"file executed. Output Directory: {output}");
@@ -80,7 +80,7 @@ namespace MySQLToCsharp
             [Option(Description = "true to ignore eol")]bool ignoreeol = true,
             [Option(Description = "true to add bom")]bool addbom = false,
             [Option(Description = "true to dry-run")]bool dry = false,
-            [Option(Description = "executionid to detect execution")]string executionid = nameof(Query))
+            [Option(Description = "executionid to detect execution")]string executionid = nameof(Dir))
         {
             PrintDryMessage(dry);
             Console.WriteLine($"dir executed. Output Directory: {output}");
