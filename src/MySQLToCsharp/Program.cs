@@ -3,6 +3,7 @@ using MySQLToCsharp.Parsers;
 using MySQLToCsharp.TypeConverters;
 using System;
 using System.Linq;
+using System.Text;
 
 namespace MySQLToCsharp
 {
@@ -58,7 +59,8 @@ namespace MySQLToCsharp
             PrintDryMessage(dry);
             Console.WriteLine($"file executed. Output Directory: {output}");
 
-            var table = Parser.FromFile(input, false);
+            var encoding = new UTF8Encoding(false);
+            var table = Parser.FromFile(input, encoding);
             var resolvedConverter = TypeConverterResolver.Resolve(converter);
             var generator = new Generator(resolvedConverter, addbom, ignoreeol);
 
@@ -82,10 +84,11 @@ namespace MySQLToCsharp
         {
             PrintDryMessage(dry);
             Console.WriteLine($"dir executed. Output Directory: {output}");
-
-            var tables = Parser.FromFolder(input, false).ToArray();
+            var encoding = new UTF8Encoding(false);
+            var tables = Parser.FromFolder(input, encoding).ToArray();
             var resolvedConverter = TypeConverterResolver.Resolve(converter);
             var generator = new Generator(resolvedConverter, addbom, ignoreeol);
+
             foreach (var table in tables)
             {
                 var className = Generator.GetClassName(table.Name);

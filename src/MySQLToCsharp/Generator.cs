@@ -34,18 +34,28 @@ namespace MySQLToCsharp
                 Directory.CreateDirectory(outputFolderPath);
             }
 
+            Span<byte> byteToWrite = encoding.GetBytes(text);
             if (File.Exists(outputFile))
             {
-                var current = File.ReadAllText(outputFile, encoding);
-                if (text == current)
+                Span<byte> current = File.ReadAllBytes(outputFile);
+                if (byteToWrite.SequenceEqual(current))
                 {
                     Console.WriteLine($"[-] skipped: {fileName} (no change)");
                     return;
                 }
-                else if (ignoreEol && Equals(text, current))
+                else
                 {
-                    Console.WriteLine($"[-] skipped: {fileName} (ignore eol changed)");
-                    return;
+                    // bom must be same before ignore eol
+                    if (current.Length >= 3 && byteToWrite[0] == current[0] && byteToWrite[1] == current[1] && byteToWrite[2] == current[2])
+                    {
+                        // check eol
+                        var readText = encoding.GetString(current);
+                        if (ignoreEol && Equals(text, readText))
+                        {
+                            Console.WriteLine($"[-] skipped: {fileName} (ignore eol changed)");
+                            return;
+                        }
+                    }
                 }
             }
             Console.WriteLine($"[o] generate: {fileName}");
@@ -113,7 +123,7 @@ namespace MySQLToCsharp
             builder.AppendLineIndent4(@"}");
             builder.AppendLine("}");
 
-            return builder.ToString();
+            return NormalizeNewLines(builder.ToString());
         }
 
         /// <summary>
@@ -125,6 +135,18 @@ namespace MySQLToCsharp
             => tableName.Last() == 's'
                 ? tableName[0..^1] // Foos -> Foo
                 : tableName;
+
+        /// <summary>
+        /// Normalize NewLine (EndOfLine) with current Operating System.
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        static string NormalizeNewLines(string content)
+        {
+            // The generated code may be text with mixed line ending types. (CR + CRLF)
+            // We need to normalize the line ending type in each Operating Systems. (e.g. Windows=CRLF, Linux/macOS=LF)
+            return content.Replace("\r\n", "\n").Replace("\n", Environment.NewLine);
+        }
     }
 
     internal static class StringBuilderExtensions

@@ -88,8 +88,8 @@ namespace MySQLToCsharp.Parsers
         /// <param name="path"></param>
         /// <param name="bom"></param>
         /// <returns></returns>
-        public static IEnumerable<MySqlTableDefinition> FromFolder(string path, bool bom = false)
-            => FromFolder(path, new CreateTableStatementDetectListener(), new UTF8Encoding(bom));
+        public static IEnumerable<MySqlTableDefinition> FromFolder(string path, Encoding encoding)
+            => FromFolder(path, new CreateTableStatementDetectListener(), encoding);
 
         /// <summary>
         /// load query from folder. specify sql file encoding.
@@ -112,8 +112,8 @@ namespace MySQLToCsharp.Parsers
         /// <param name="path"></param>
         /// <param name="bom"></param>
         /// <returns></returns>
-        public static MySqlTableDefinition FromFile(string path, bool bom = false)
-            => FromFile(path, new CreateTableStatementDetectListener(), new UTF8Encoding(bom));
+        public static MySqlTableDefinition FromFile(string path, Encoding encoding)
+            => FromFile(path, new CreateTableStatementDetectListener(), encoding);
 
         /// <summary>
         /// load query from file. specify sql file encoding.
