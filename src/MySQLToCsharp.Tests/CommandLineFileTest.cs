@@ -106,14 +106,14 @@ namespace Fuga
 
             // replace existing for windows test
             var replaced = File.ReadAllText($"{dir}/Eol.cs").Replace("\r\n", "\n");
-            File.WriteAllText($"{dir}/Eol.cs", replaced);
+            File.WriteAllText($"{dir}/eol.cs", replaced);
 
             CoconaLiteApp.Run<QueryToCSharp>(args);
-            File.ReadAllText($"{dir}/Eol.cs").Should().Be(replaced);
+            File.ReadAllText($"{dir}/eol.cs").Should().Be(replaced);
 
             var ignoreeolArgs = new[] { "dir", "-i", "test_data/simple_eol/", "-o", dir, "-n", "Fuga", "--ignoreeol=false", "--executionid", id };
             CoconaLiteApp.Run<QueryToCSharp>(ignoreeolArgs);
-            File.ReadAllText($"{dir}/Eol.cs").Replace("\r\n", "\n").Should().Be(replaced);
+            File.ReadAllText($"{dir}/eol.cs").Replace("\r\n", "\n").Should().Be(replaced);
         }
 
         [Fact]
@@ -148,14 +148,14 @@ namespace Fuga
 
             // replace existing for windows test
             var replaced = File.ReadAllText($"{dir}/Eol.cs").Replace("\r\n", "\n").Replace("\n", "\r\n");
-            File.WriteAllText($"{dir}/Eol.cs", replaced);
+            File.WriteAllText($"{dir}/eol.cs", replaced);
 
             CoconaLiteApp.Run<QueryToCSharp>(args);
-            File.ReadAllText($"{dir}/Eol.cs").Should().Be(replaced);
+            File.ReadAllText($"{dir}/eol.cs").Should().Be(replaced);
 
             var ignoreeolArgs = new[] { "dir", "-i", "test_data/simple_eol/", "-o", dir, "-n", "Fuga", "--ignoreeol=false", "--executionid", id };
             CoconaLiteApp.Run<QueryToCSharp>(ignoreeolArgs);
-            File.ReadAllText($"{dir}/Eol.cs").Replace("\r\n", "\n").Replace("\n", "\r\n").Should().Be(replaced);
+            File.ReadAllText($"{dir}/eol.cs").Replace("\r\n", "\n").Replace("\n", "\r\n").Should().Be(replaced);
         }
     }
 }
