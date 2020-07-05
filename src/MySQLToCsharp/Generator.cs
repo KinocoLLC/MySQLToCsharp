@@ -1,4 +1,4 @@
-using MySQLToCsharp.TypeConverters;
+﻿using MySQLToCsharp.TypeConverters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,18 +34,28 @@ namespace MySQLToCsharp
                 Directory.CreateDirectory(outputFolderPath);
             }
 
+            Span<byte> byteToWrite = encoding.GetBytes(text);
             if (File.Exists(outputFile))
             {
-                var current = File.ReadAllText(outputFile, encoding);
-                if (text == current)
+                Span<byte> current = File.ReadAllBytes(outputFile);
+                if (byteToWrite.SequenceEqual(current))
                 {
                     Console.WriteLine($"[-] skipped: {fileName} (no change)");
                     return;
                 }
-                else if (ignoreEol && Equals(text, current))
+                else
                 {
-                    Console.WriteLine($"[-] skipped: {fileName} (ignore eol changed)");
-                    return;
+                    // bom must be same before ignore eol
+                    if (current.Length >= 3 && byteToWrite[0] == current[0] && byteToWrite[1] == current[1] && byteToWrite[2] == current[2])
+                    {
+                        // check eol
+                        var readText = encoding.GetString(current);
+                        if (ignoreEol && Equals(text, readText))
+                        {
+                            Console.WriteLine($"[-] skipped: {fileName} (ignore eol changed)");
+                            return;
+                        }
+                    }
                 }
             }
             Console.WriteLine($"[o] generate: {fileName}");
