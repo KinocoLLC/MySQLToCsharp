@@ -1,4 +1,5 @@
-﻿using MySQLToCsharp.TypeConverters;
+﻿using MySQLToCsharp.Internal;
+using MySQLToCsharp.TypeConverters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -123,7 +124,7 @@ namespace MySQLToCsharp
             builder.AppendLineIndent4(@"}");
             builder.AppendLine("}");
 
-            return NormalizeNewLines(builder.ToString());
+            return InternalUtils.NormalizeNewLines(builder.ToString());
         }
 
         /// <summary>
@@ -135,18 +136,6 @@ namespace MySQLToCsharp
             => tableName.Last() == 's'
                 ? tableName[0..^1] // Foos -> Foo
                 : tableName;
-
-        /// <summary>
-        /// Normalize NewLine (EndOfLine) with current Operating System.
-        /// </summary>
-        /// <param name="content"></param>
-        /// <returns></returns>
-        static string NormalizeNewLines(string content)
-        {
-            // The generated code may be text with mixed line ending types. (CR + CRLF)
-            // We need to normalize the line ending type in each Operating Systems. (e.g. Windows=CRLF, Linux/macOS=LF)
-            return content.Replace("\r\n", "\n").Replace("\n", Environment.NewLine);
-        }
     }
 
     internal static class StringBuilderExtensions

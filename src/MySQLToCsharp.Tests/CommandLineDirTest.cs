@@ -1,5 +1,6 @@
 ﻿using Cocona;
 using FluentAssertions;
+using MySQLToCsharp.Internal;
 using System;
 using System.Linq;
 using Xunit;
@@ -34,7 +35,7 @@ namespace Fuga
 }
 ";
             var msg = QueryToCSharp.Context.GetLogs(id).First();
-            msg.Should().Be(expected);
+            msg.Should().Be(InternalUtils.NormalizeNewLines(expected));
         }
 
         [Fact]
@@ -67,7 +68,7 @@ namespace Fuga
 }
 ";
             var msg = QueryToCSharp.Context.GetLogs(id).First();
-            msg.Should().Be(expected);
+            msg.Should().Be(InternalUtils.NormalizeNewLines(expected));
         }
     }
 }
