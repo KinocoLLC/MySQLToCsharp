@@ -1,5 +1,3 @@
-using System;
-
 namespace MySQLToCsharpSAmpleConsoleApp;
 
 class Program

@@ -1,6 +1,5 @@
 using MySQLToCsharp.Listeners;
 using MySQLToCsharp.Parsers;
-using System.Collections.Generic;
 using Xunit;
 
 namespace MySQLToCsharp.Tests;

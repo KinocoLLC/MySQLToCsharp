@@ -1,7 +1,5 @@
 using Cocona;
 using MySQLToCsharp.Internal;
-using System;
-using System.Linq;
 using Xunit;
 
 namespace MySQLToCsharp.Tests;

@@ -1,9 +1,6 @@
-﻿using Antlr4.Runtime;
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using MySQLToCsharp.Parsers.MySql;
-using System;
-using System.Linq;
 using static MySQLToCsharp.Parsers.MySql.MySqlParser;
 
 namespace MySQLToCsharp.Listeners

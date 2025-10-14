@@ -1,11 +1,6 @@
 using MySQLToCsharp.Listeners;
 using MySQLToCsharp.Parsers;
 using MySQLToCsharp.TypeConverters;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace MySQLToCsharp.Tests;

@@ -1,8 +1,6 @@
 using Cocona;
 using MySQLToCsharp.Parsers;
 using MySQLToCsharp.TypeConverters;
-using System;
-using System.Linq;
 using System.Text;
 
 namespace MySQLToCsharp;
