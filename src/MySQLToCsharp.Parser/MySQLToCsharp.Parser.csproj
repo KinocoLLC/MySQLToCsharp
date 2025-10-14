@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Antlr4.Runtime.Standard" />
+    <PackageReference Include="PolySharp" />
   </ItemGroup>
 
 </Project>

@@ -6,8 +6,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- Core -->
-    <PackageVersion  Include="Antlr4.Runtime.Standard" Version="4.8.0" />
+    <PackageVersion Include="Antlr4.Runtime.Standard" Version="4.8.0" />
     <PackageVersion Include="Cocona.Lite" Version="2.2.0" />
+    <PackageVersion Include="PolySharp" Version="1.15.0" />
     <!-- Sandbox -->
     <!-- Tests -->
     <PackageVersion Include="GitHubActionsTestLogger" Version="2.4.1" />
