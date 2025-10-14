@@ -50,11 +50,13 @@ jobs:
             8.0.x
       # Create Release
       - name: Create Release
-        uses: guitarrapc/actions/.github/actions/create-release@main
-        with:
-          tag: ${{ github.ref_name }}
-          title: ${{ github.ref_name }}
-          gh-token: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: gh release create "${TAG}" --title "${TITLE}" --generate-notes --draft
+        env:
+          TAG: ${{ github.ref_name }}
+          TITLE: ${{ github.ref_name }}
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Release Asset (Windows)
         run: gh release upload "${{ github.ref_name }}" MySQLToCsharp_win-x64_${{ github.ref_name }}.exe --clobber
         working-directory: publish/
