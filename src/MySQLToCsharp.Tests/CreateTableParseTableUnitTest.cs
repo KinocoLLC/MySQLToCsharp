@@ -1,4 +1,3 @@
-﻿using FluentAssertions;
 using MySQLToCsharp.Listeners;
 using MySQLToCsharp.Parsers;
 using System.Collections.Generic;
@@ -16,13 +15,13 @@ namespace MySQLToCsharp.Tests
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
             var definition = listener.TableDefinition;
-            listener.IsTargetStatement.Should().BeTrue();
-            listener.IsParseBegin.Should().BeTrue();
-            listener.IsParseCompleted.Should().BeTrue();
-            listener.TableDefinition.Should().NotBeNull();
+            Assert.True(listener.IsTargetStatement);
+            Assert.True(listener.IsParseBegin);
+            Assert.True(listener.IsParseCompleted);
+            Assert.NotNull(listener.TableDefinition);
 
-            definition.Collation.Should().Be(data.Expected.Collation);
-            definition.Engine.Should().Be(data.Expected.Engine);
+            Assert.Equal(data.Expected.Collation, definition.Collation);
+            Assert.Equal(data.Expected.Engine, definition.Engine);
         }
         [Theory]
         [MemberData(nameof(SqlTableCommentTestData))]
@@ -32,14 +31,14 @@ namespace MySQLToCsharp.Tests
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
             var definition = listener.TableDefinition;
-            listener.IsTargetStatement.Should().BeTrue();
-            listener.IsParseBegin.Should().BeTrue();
-            listener.IsParseCompleted.Should().BeTrue();
-            listener.TableDefinition.Should().NotBeNull();
+            Assert.True(listener.IsTargetStatement);
+            Assert.True(listener.IsParseBegin);
+            Assert.True(listener.IsParseCompleted);
+            Assert.NotNull(listener.TableDefinition);
 
-            definition.Collation.Should().Be(data.Expected.Collation);
-            definition.Engine.Should().Be(data.Expected.Engine);
-            definition.Comment.Should().Be(data.Expected.Comment);
+            Assert.Equal(data.Expected.Collation, definition.Collation);
+            Assert.Equal(data.Expected.Engine, definition.Engine);
+            Assert.Equal(data.Expected.Comment, definition.Comment);
         }
 
         public static IEnumerable<object[]> GenerateParseTestData()

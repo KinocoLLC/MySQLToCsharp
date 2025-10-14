@@ -1,4 +1,3 @@
-﻿using FluentAssertions;
 using MySQLToCsharp.Listeners;
 using MySQLToCsharp.Parsers;
 using MySQLToCsharp.TypeConverters;
@@ -21,16 +20,16 @@ namespace MySQLToCsharp.Tests
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
-            listener.IsTargetStatement.Should().BeTrue();
-            listener.IsParseBegin.Should().BeTrue();
-            listener.IsParseCompleted.Should().BeTrue();
-            listener.TableDefinition.Should().NotBeNull();
+            Assert.True(listener.IsTargetStatement);
+            Assert.True(listener.IsParseBegin);
+            Assert.True(listener.IsParseCompleted);
+            Assert.NotNull(listener.TableDefinition);
 
             var typeConverter = TypeConverterResolver.Resolve(converter);
             for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
             {
                 var (clrType, _) = typeConverter.Convert(listener.TableDefinition.Columns[i].Data);
-                clrType.Should().Be(data.Expected[i].clr);
+                Assert.Equal(data.Expected[i].clr, clrType);
             }
 
         }
@@ -41,59 +40,30 @@ namespace MySQLToCsharp.Tests
             // non nullable
             [Theory]
             [MemberData(nameof(TinyInt_TestData))]
-            public void TINYINT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(SmallInt_TestData))]
-            public void SMALLINT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(Int_TestData))]
-            public void INT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(BigInt_TestData))]
-            public void BIGINT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(Float_TestData))]
-            public void FLOAT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(Double_TestData))]
-            public void DOUBLE_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(Decimal_TestData))]
-            public void DECIMAL_ConvertTest(ColumnDataTestItem data)
+            [MemberData(nameof(TinyText_TestData))]
+            [MemberData(nameof(Text_TestData))]
+            [MemberData(nameof(MediumText_TestData))]
+            [MemberData(nameof(LongText_TestData))]
+            [MemberData(nameof(VarChar_TestData))]
+            [MemberData(nameof(TinyBlob_TestData))]
+            [MemberData(nameof(Blob_TestData))]
+            [MemberData(nameof(MediumBlob_TestData))]
+            [MemberData(nameof(LONGBlob_TestData))]
+            [MemberData(nameof(Binary_TestData))]
+            [MemberData(nameof(VarBinary_TestData))]
+            [MemberData(nameof(DateTime_TestData))]
+            [MemberData(nameof(TimeStamp_TestData))]
+            public void ConvertTest(ColumnDataTestItem data)
             {
                 var typeConverter = TypeConverterResolver.Resolve(converter);
                 var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
+                Assert.Equal(data.Expected, t);
             }
             [Theory]
             [MemberData(nameof(Bit_TestData))]
@@ -102,110 +72,6 @@ namespace MySQLToCsharp.Tests
                 var typeConverter = TypeConverterResolver.Resolve(converter);
                 Assert.Throws<NotSupportedException>(() => typeConverter.Convert(data.MySqlColumnData));
 
-            }
-            [Theory]
-            [MemberData(nameof(TinyText_TestData))]
-            public void TINYTEXT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(Text_TestData))]
-            public void TEXT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(MediumText_TestData))]
-            public void MEDIUMTEXT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(LongText_TestData))]
-            public void LONGTEXT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(VarChar_TestData))]
-            public void VARCHAR_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(TinyBlob_TestData))]
-            public void TINYBLOB_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(Blob_TestData))]
-            public void BLOB_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(MediumBlob_TestData))]
-            public void MEDIUMBLOB_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(LONGBlob_TestData))]
-            public void LONGBLOB_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(Binary_TestData))]
-            public void BINARY_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(VarBinary_TestData))]
-            public void VARBINARY_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(DateTime_TestData))]
-            public void DATETIME_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(TimeStamp_TestData))]
-            public void TIMESTAMP_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
             }
             [Theory]
             [MemberData(nameof(Date_TestData))]
@@ -867,59 +733,30 @@ namespace MySQLToCsharp.Tests
             // non nullable
             [Theory]
             [MemberData(nameof(TinyInt_TestData))]
-            public void TINYINT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(SmallInt_TestData))]
-            public void SMALLINT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(Int_TestData))]
-            public void INT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(BigInt_TestData))]
-            public void BIGINT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(Float_TestData))]
-            public void FLOAT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(Double_TestData))]
-            public void DOUBLE_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
             [MemberData(nameof(Decimal_TestData))]
-            public void DECIMAL_ConvertTest(ColumnDataTestItem data)
+            [MemberData(nameof(TinyText_TestData))]
+            [MemberData(nameof(Text_TestData))]
+            [MemberData(nameof(MediumText_TestData))]
+            [MemberData(nameof(LongText_TestData))]
+            [MemberData(nameof(VarChar_TestData))]
+            [MemberData(nameof(TinyBlob_TestData))]
+            [MemberData(nameof(Blob_TestData))]
+            [MemberData(nameof(MediumBlob_TestData))]
+            [MemberData(nameof(LONGBlob_TestData))]
+            [MemberData(nameof(Binary_TestData))]
+            [MemberData(nameof(VarBinary_TestData))]
+            [MemberData(nameof(DateTime_TestData))]
+            [MemberData(nameof(TimeStamp_TestData))]
+            public void ConvertTest(ColumnDataTestItem data)
             {
                 var typeConverter = TypeConverterResolver.Resolve(converter);
                 var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
+                Assert.Equal(data.Expected, t);
             }
             [Theory]
             [MemberData(nameof(Bit_TestData))]
@@ -927,110 +764,6 @@ namespace MySQLToCsharp.Tests
             {
                 var typeConverter = TypeConverterResolver.Resolve(converter);
                 Assert.Throws<NotSupportedException>(() => typeConverter.Convert(data.MySqlColumnData));
-            }
-            [Theory]
-            [MemberData(nameof(TinyText_TestData))]
-            public void TINYTEXT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(Text_TestData))]
-            public void TEXT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(MediumText_TestData))]
-            public void MEDIUMTEXT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(LongText_TestData))]
-            public void LONGTEXT_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(VarChar_TestData))]
-            public void VARCHAR_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(TinyBlob_TestData))]
-            public void TINYBLOB_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(Blob_TestData))]
-            public void BLOB_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(MediumBlob_TestData))]
-            public void MEDIUMBLOB_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(LONGBlob_TestData))]
-            public void LONGBLOB_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(Binary_TestData))]
-            public void BINARY_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(VarBinary_TestData))]
-            public void VARBINARY_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(DateTime_TestData))]
-            public void DATETIME_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
-            }
-            [Theory]
-            [MemberData(nameof(TimeStamp_TestData))]
-            public void TIMESTAMP_ConvertTest(ColumnDataTestItem data)
-            {
-                var typeConverter = TypeConverterResolver.Resolve(converter);
-                var (t, _) = typeConverter.Convert(data.MySqlColumnData);
-                t.Should().Be(data.Expected);
             }
             [Theory]
             [MemberData(nameof(Date_TestData))]

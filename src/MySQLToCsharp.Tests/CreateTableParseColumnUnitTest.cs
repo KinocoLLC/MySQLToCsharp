@@ -1,4 +1,3 @@
-﻿using FluentAssertions;
 using MySQLToCsharp.Listeners;
 using MySQLToCsharp.Parsers;
 using System;
@@ -19,10 +18,10 @@ namespace MySQLToCsharp.Tests
             var listener = new CreateTableStatementDetectListener();
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
-            listener.IsTargetStatement.Should().BeTrue();
-            listener.IsParseBegin.Should().BeTrue();
-            listener.IsParseCompleted.Should().BeTrue();
-            listener.TableDefinition.Should().NotBeNull();
+            Assert.True(listener.IsTargetStatement);
+            Assert.True(listener.IsParseBegin);
+            Assert.True(listener.IsParseCompleted);
+            Assert.NotNull(listener.TableDefinition);
         }
         [Theory]
         [MemberData(nameof(SqlColumnCommentTestData))]
@@ -32,23 +31,23 @@ namespace MySQLToCsharp.Tests
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
             var definition = listener.TableDefinition;
-            listener.IsTargetStatement.Should().BeTrue();
-            listener.IsParseBegin.Should().BeTrue();
-            listener.IsParseCompleted.Should().BeTrue();
-            listener.TableDefinition.Should().NotBeNull();
+            Assert.True(listener.IsTargetStatement);
+            Assert.True(listener.IsParseBegin);
+            Assert.True(listener.IsParseCompleted);
+            Assert.NotNull(listener.TableDefinition);
 
             for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
             {
-                definition.Columns[i].Name.Should().Be(data.Expected[i].Name);
-                definition.Columns[i].Order.Should().Be(data.Expected[i].Order);
-                definition.Columns[i].AutoIncrement.Should().Be(data.Expected[i].AutoIncrement);
-                definition.Columns[i].Data.IsNullable.Should().Be(data.Expected[i].Data.IsNullable);
-                definition.Columns[i].Data.IsUnsigned.Should().Be(data.Expected[i].Data.IsUnsigned);
-                definition.Columns[i].Data.Length.Should().Be(data.Expected[i].Data.Length);
-                definition.Columns[i].Data.DataType.Should().Be(data.Expected[i].Data.DataType);
-                definition.Columns[i].HasDefault.Should().Be(data.Expected[i].HasDefault);
-                definition.Columns[i].Comment.Should().Be(data.Expected[i].Comment);
-                definition.Columns[i].DefaultValue.Should().Be(data.Expected[i].DefaultValue);
+                Assert.Equal(data.Expected[i].Name, definition.Columns[i].Name);
+                Assert.Equal(data.Expected[i].Order, definition.Columns[i].Order);
+                Assert.Equal(data.Expected[i].AutoIncrement, definition.Columns[i].AutoIncrement);
+                Assert.Equal(data.Expected[i].Data.IsNullable, definition.Columns[i].Data.IsNullable);
+                Assert.Equal(data.Expected[i].Data.IsUnsigned, definition.Columns[i].Data.IsUnsigned);
+                Assert.Equal(data.Expected[i].Data.Length, definition.Columns[i].Data.Length);
+                Assert.Equal(data.Expected[i].Data.DataType, definition.Columns[i].Data.DataType);
+                Assert.Equal(data.Expected[i].HasDefault, definition.Columns[i].HasDefault);
+                Assert.Equal(data.Expected[i].Comment, definition.Columns[i].Comment);
+                Assert.Equal(data.Expected[i].DefaultValue, definition.Columns[i].DefaultValue);
             }
         }
         [Theory]
@@ -59,22 +58,22 @@ namespace MySQLToCsharp.Tests
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
             var definition = listener.TableDefinition;
-            listener.IsTargetStatement.Should().BeTrue();
-            listener.IsParseBegin.Should().BeTrue();
-            listener.IsParseCompleted.Should().BeTrue();
-            listener.TableDefinition.Should().NotBeNull();
+            Assert.True(listener.IsTargetStatement);
+            Assert.True(listener.IsParseBegin);
+            Assert.True(listener.IsParseCompleted);
+            Assert.NotNull(listener.TableDefinition);
 
             for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
             {
-                definition.Columns[i].Name.Should().Be(data.Expected[i].Name);
-                definition.Columns[i].Order.Should().Be(data.Expected[i].Order);
-                definition.Columns[i].AutoIncrement.Should().Be(data.Expected[i].AutoIncrement);
-                definition.Columns[i].Data.IsNullable.Should().Be(data.Expected[i].Data.IsNullable);
-                definition.Columns[i].Data.IsUnsigned.Should().Be(data.Expected[i].Data.IsUnsigned);
-                definition.Columns[i].Data.Length.Should().Be(data.Expected[i].Data.Length);
-                definition.Columns[i].Data.DataType.Should().Be(data.Expected[i].Data.DataType);
-                definition.Columns[i].HasDefault.Should().Be(data.Expected[i].HasDefault);
-                definition.Columns[i].DefaultValue.Should().Be(data.Expected[i].DefaultValue);
+                Assert.Equal(data.Expected[i].Name, definition.Columns[i].Name);
+                Assert.Equal(data.Expected[i].Order, definition.Columns[i].Order);
+                Assert.Equal(data.Expected[i].AutoIncrement, definition.Columns[i].AutoIncrement);
+                Assert.Equal(data.Expected[i].Data.IsNullable, definition.Columns[i].Data.IsNullable);
+                Assert.Equal(data.Expected[i].Data.IsUnsigned, definition.Columns[i].Data.IsUnsigned);
+                Assert.Equal(data.Expected[i].Data.Length, definition.Columns[i].Data.Length);
+                Assert.Equal(data.Expected[i].Data.DataType, definition.Columns[i].Data.DataType);
+                Assert.Equal(data.Expected[i].HasDefault, definition.Columns[i].HasDefault);
+                Assert.Equal(data.Expected[i].DefaultValue, definition.Columns[i].DefaultValue);
             }
         }
         [Theory]
@@ -85,28 +84,28 @@ namespace MySQLToCsharp.Tests
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
             var definition = listener.TableDefinition;
-            listener.IsTargetStatement.Should().BeTrue();
-            listener.IsParseBegin.Should().BeTrue();
-            listener.IsParseCompleted.Should().BeTrue();
-            listener.TableDefinition.Should().NotBeNull();
+            Assert.True(listener.IsTargetStatement);
+            Assert.True(listener.IsParseBegin);
+            Assert.True(listener.IsParseCompleted);
+            Assert.NotNull(listener.TableDefinition);
 
             for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
             {
                 if (data.Expected[i].PrimaryKeyReference != null)
                 {
-                    definition.Columns[i].PrimaryKeyReference.KeyName.Should().Be(data.Expected[i].PrimaryKeyReference.KeyName);
-                    definition.Columns[i].PrimaryKeyReference.Should().NotBeNull();
-                    definition.PrimaryKey.Should().NotBeNull();
-                    definition.PrimaryKey.KeyName.Should().Be(definition.Columns[i].PrimaryKeyReference.KeyName);
-                    definition.PrimaryKey.Indexes.Should().NotBeNull();
-                    definition.PrimaryKey.Indexes.Length.Should().Be(definition.Columns[i].PrimaryKeyReference.Indexes.Length);
+                    Assert.Equal(data.Expected[i].PrimaryKeyReference.KeyName, definition.Columns[i].PrimaryKeyReference.KeyName);
+                    Assert.NotNull(definition.Columns[i].PrimaryKeyReference);
+                    Assert.NotNull(definition.PrimaryKey);
+                    Assert.Equal(definition.Columns[i].PrimaryKeyReference.KeyName, definition.PrimaryKey.KeyName);
+                    Assert.NotNull(definition.PrimaryKey.Indexes);
+                    Assert.Equal(definition.Columns[i].PrimaryKeyReference.Indexes.Length, definition.PrimaryKey.Indexes.Length);
 
                     // index name must match to referenced column name
                     foreach (var index in definition.PrimaryKey.Indexes)
                     {
                         foreach (var reference in index.ColumnReference)
                         {
-                            index.IndexKey.Should().Be(reference.Name);
+                            Assert.Equal(reference.Name, index.IndexKey);
                         }
                     }
                 }
@@ -120,10 +119,10 @@ namespace MySQLToCsharp.Tests
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
             var definition = listener.TableDefinition;
-            listener.IsTargetStatement.Should().BeTrue();
-            listener.IsParseBegin.Should().BeTrue();
-            listener.IsParseCompleted.Should().BeTrue();
-            listener.TableDefinition.Should().NotBeNull();
+            Assert.True(listener.IsTargetStatement);
+            Assert.True(listener.IsParseBegin);
+            Assert.True(listener.IsParseCompleted);
+            Assert.NotNull(listener.TableDefinition);
 
             for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
             {
@@ -132,22 +131,22 @@ namespace MySQLToCsharp.Tests
                     var j = 0;
                     foreach (var key in definition.Columns[i].IndexKeysReferences)
                     {
-                        key.KeyName.Should().Be(data.Expected[i].IndexKeysReferences.Skip(j).First().KeyName);
-                        key.Indexes.Should().NotBeNull();
+                        Assert.Equal(data.Expected[i].IndexKeysReferences.Skip(j).First().KeyName, key.KeyName);
+                        Assert.NotNull(key.Indexes);
                         j++;
                     }
-                    definition.IndexKeys.Should().NotBeNull();
+                    Assert.NotNull(definition.IndexKeys);
                     foreach (var key in definition.IndexKeys)
                     {
-                        key.Indexes.Should().NotBeNull();
-                        key.Indexes.Where(x => x.IndexKey == definition.Columns[i].Name).Should().NotBeNull();
+                        Assert.NotNull(key.Indexes);
+                        Assert.NotNull(key.Indexes.Where(x => x.IndexKey == definition.Columns[i].Name));
 
                         // index name must match to referenced column name
                         foreach (var index in key.Indexes)
                         {
                             foreach (var reference in index.ColumnReference)
                             {
-                                index.IndexKey.Should().Be(reference.Name);
+                                Assert.Equal(reference.Name, index.IndexKey);
                             }
                         }
                     }
@@ -162,10 +161,10 @@ namespace MySQLToCsharp.Tests
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
             var definition = listener.TableDefinition;
-            listener.IsTargetStatement.Should().BeTrue();
-            listener.IsParseBegin.Should().BeTrue();
-            listener.IsParseCompleted.Should().BeTrue();
-            listener.TableDefinition.Should().NotBeNull();
+            Assert.True(listener.IsTargetStatement);
+            Assert.True(listener.IsParseBegin);
+            Assert.True(listener.IsParseCompleted);
+            Assert.NotNull(listener.TableDefinition);
 
             for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
             {
@@ -174,21 +173,21 @@ namespace MySQLToCsharp.Tests
                     var j = 0;
                     foreach (var key in definition.Columns[i].UniqueKeysReferences)
                     {
-                        key.KeyName.Should().Be(data.Expected[i].UniqueKeysReferences.Skip(j).First().KeyName);
-                        key.Indexes.Should().NotBeNull();
+                        Assert.Equal(data.Expected[i].UniqueKeysReferences.Skip(j).First().KeyName, key.KeyName);
+                        Assert.NotNull(key.Indexes);
                         j++;
                     }
-                    definition.UniqueKeys.Should().NotBeNull();
+                    Assert.NotNull(definition.UniqueKeys);
                     foreach (var key in definition.UniqueKeys)
                     {
-                        key.Indexes.Should().NotBeNull();
-                        key.Indexes.Where(x => x.IndexKey == definition.Columns[i].Name).Should().NotBeNull();
+                        Assert.NotNull(key.Indexes);
+                        Assert.NotNull(key.Indexes.Where(x => x.IndexKey == definition.Columns[i].Name));
                         // index name must match to referenced column name
                         foreach (var index in key.Indexes)
                         {
                             foreach (var reference in index.ColumnReference)
                             {
-                                index.IndexKey.Should().Be(reference.Name);
+                                Assert.Equal(reference.Name, index.IndexKey);
                             }
                         }
                     }
@@ -203,20 +202,20 @@ namespace MySQLToCsharp.Tests
             IParser parser = new Parser();
             parser.Parse(data.Statement, listener);
             var definition = listener.TableDefinition;
-            listener.IsTargetStatement.Should().BeTrue();
-            listener.IsParseBegin.Should().BeTrue();
-            listener.IsParseCompleted.Should().BeTrue();
-            listener.TableDefinition.Should().NotBeNull();
+            Assert.True(listener.IsTargetStatement);
+            Assert.True(listener.IsParseBegin);
+            Assert.True(listener.IsParseCompleted);
+            Assert.NotNull(listener.TableDefinition);
 
             for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
             {
-                definition.Columns[i].Name.Should().Be(data.Expected[i].Name);
-                definition.Columns[i].Order.Should().Be(data.Expected[i].Order);
-                definition.Columns[i].AutoIncrement.Should().Be(data.Expected[i].AutoIncrement);
-                definition.Columns[i].Data.IsNullable.Should().Be(data.Expected[i].Data.IsNullable);
-                definition.Columns[i].Data.IsUnsigned.Should().Be(data.Expected[i].Data.IsUnsigned);
-                definition.Columns[i].Data.Length.Should().Be(data.Expected[i].Data.Length);
-                definition.Columns[i].Data.DataType.Should().Be(data.Expected[i].Data.DataType);
+                Assert.Equal(data.Expected[i].Name, definition.Columns[i].Name);
+                Assert.Equal(data.Expected[i].Order, definition.Columns[i].Order);
+                Assert.Equal(data.Expected[i].AutoIncrement, definition.Columns[i].AutoIncrement);
+                Assert.Equal(data.Expected[i].Data.IsNullable, definition.Columns[i].Data.IsNullable);
+                Assert.Equal(data.Expected[i].Data.IsUnsigned, definition.Columns[i].Data.IsUnsigned);
+                Assert.Equal(data.Expected[i].Data.Length, definition.Columns[i].Data.Length);
+                Assert.Equal(data.Expected[i].Data.DataType, definition.Columns[i].Data.DataType);
             }
         }
 
