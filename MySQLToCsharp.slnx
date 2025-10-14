@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/MySQLToCsharpSampleConsoleApp/MySQLToCsharpSampleConsoleApp.csproj" />
+  </Folder>
+  <Project Path="src/MySQLToCsharp.Parser/MySQLToCsharp.Parser.csproj" />
+  <Project Path="src/MySQLToCsharp.Tests/MySQLToCsharp.Tests.csproj" />
+  <Project Path="src/MySQLToCsharp/MySQLToCsharp.csproj" />
+</Solution>

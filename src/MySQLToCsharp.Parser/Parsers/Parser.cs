@@ -1,11 +1,7 @@
-﻿using Antlr4.Runtime;
+using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
-using MySQLToCsharp;
 using MySQLToCsharp.Listeners;
 using MySQLToCsharp.Parsers.MySql;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Text;
 
 namespace MySQLToCsharp.Parsers
@@ -21,9 +17,9 @@ namespace MySQLToCsharp.Parsers
 
     public class Parser : IParser
     {
-        public IParseTreeListener[] Listeners { get; private set; }
+        public IParseTreeListener[] Listeners { get; private set; } = Array.Empty<IParseTreeListener>();
 
-        private MySqlParser.SqlStatementContext context;
+        private MySqlParser.SqlStatementContext context = default!;
 
         public void Parse(TextReader reader, IParseTreeListener listener)
         {
@@ -57,7 +53,7 @@ namespace MySQLToCsharp.Parsers
         public void PrintTokens(bool showTypeHint = false)
         {
             if (context == null) throw new ArgumentNullException($"missing {nameof(context)}. Please run Parse(qeury) beforehand.");
-            Action<Type, string> action = null;
+            Action<Type, string>? action = null;
             if (showTypeHint)
             {
                 action = (t, s) => Console.WriteLine($"{t.Name}: {s}");

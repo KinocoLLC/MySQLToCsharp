@@ -1,8 +1,5 @@
-﻿using Antlr4.Runtime;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Antlr4.Runtime;
+using System.Diagnostics;
 using static MySQLToCsharp.Parsers.MySql.MySqlParser;
 
 namespace MySQLToCsharp
@@ -12,15 +9,15 @@ namespace MySQLToCsharp
     /// </summary>
     public class MySqlTableDefinition
     {
-        public string SchemaName { get; set; }
-        public string Name { get; set; }
-        public MySqlColumnDefinition[] Columns { get; set; }
-        public MySqlKeyDefinition PrimaryKey { get; set; }
-        public ISet<MySqlKeyDefinition> UniqueKeys { get; private set; }
-        public ISet<MySqlKeyDefinition> IndexKeys { get; private set; }
-        public string Comment { get; set; }
-        public string Collation { get; set; }
-        public string Engine { get; set; }
+        public string SchemaName { get; set; } = default!;
+        public string Name { get; set; } = default!;
+        public MySqlColumnDefinition[] Columns { get; set; } = [];
+        public MySqlKeyDefinition PrimaryKey { get; set; } = default!;
+        public ISet<MySqlKeyDefinition>? UniqueKeys { get; private set; }
+        public ISet<MySqlKeyDefinition>? IndexKeys { get; private set; }
+        public string Comment { get; set; } = default!;
+        public string? Collation { get; set; }
+        public string Engine { get; set; } = default!;
 
         public void AddIndexKey(MySqlKeyDefinition index)
         {
@@ -33,16 +30,17 @@ namespace MySQLToCsharp
 
         public void AddUniqueKey(MySqlKeyDefinition index)
         {
-            if (IndexKeys == null)
+            if (UniqueKeys == null)
             {
                 UniqueKeys = new HashSet<MySqlKeyDefinition>();
             }
             UniqueKeys.Add(index);
         }
 
-        public MySqlColumnDefinition LookupColumnDefinition(ParserRuleContext context)
+        public MySqlColumnDefinition? LookupColumnDefinition(ParserRuleContext context)
         {
             var columnDeclaretionContext = context.Ascendant<ColumnDeclarationContext>();
+            if (columnDeclaretionContext is null) return null;
             var columnName = columnDeclaretionContext.GetColumnName();
             var column = this.Columns.Where(x => x.Name == columnName).FirstOrDefault();
             return column;
@@ -52,19 +50,19 @@ namespace MySQLToCsharp
         {
             var fullIdContext = context.GetChild<FullIdContext>();
             var schemaName = "";
-            string tableName;
+            string tableName = "";
 
             //MEMO: TableNameContext.tablename() contains schema name if query style is `schema`.`table`.
             // 3     = schema.table (expr + . + expr)
             // other = table
             if (fullIdContext.ChildCount == 3)
             {
-                schemaName = fullIdContext.GetChild<UidContext>().GetText()?.RemoveBackQuote();
-                tableName = fullIdContext.GetChild<UidContext>(1).GetText()?.RemoveBackQuote();
+                schemaName = fullIdContext.GetChild<UidContext>().GetText().RemoveBackQuote();
+                tableName = fullIdContext.GetChild<UidContext>(1).GetText().RemoveBackQuote();
             }
             else
             { 
-                tableName = fullIdContext.GetChild<UidContext>().GetText()?.RemoveBackQuote();
+                tableName = fullIdContext.GetChild<UidContext>().GetText().RemoveBackQuote();
             }
             return (schemaName, tableName);
         }
@@ -73,21 +71,21 @@ namespace MySQLToCsharp
     public class MySqlColumnDefinition
     {
         public int Order { get; set; }
-        public string Name { get; set; }
-        public MySqlColumnDataDefinition Data { get; set; }
+        public required string Name { get; set; }
+        public MySqlColumnDataDefinition Data { get; set; } = default!;
         public bool AutoIncrement { get; set; }
         public bool HasDefault { get; set; }
-        public string DefaultValue { get; set; }
-        public string Comment { get; set; }
-        public GeneratedColumnDefinition GeneratedColumn { get; set; }
-        public ReferenceColumnDefinition ReferenceColumn { get; set; }
+        public string? DefaultValue { get; set; }
+        public string Comment { get; set; } = default!;
+        public GeneratedColumnDefinition? GeneratedColumn { get; set; }
+        public ReferenceColumnDefinition? ReferenceColumn { get; set; }
 
         // key reference
-        public MySqlKeyDefinition PrimaryKeyReference { get; set; }
-        public ISet<MySqlKeyDefinition> UniqueKeysReferences { get; set; }
-        public ISet<MySqlKeyDefinition> IndexKeysReferences { get; set; }
+        public MySqlKeyDefinition? PrimaryKeyReference { get; set; }
+        public ISet<MySqlKeyDefinition>? UniqueKeysReferences { get; set; }
+        public ISet<MySqlKeyDefinition>? IndexKeysReferences { get; set; }
 
-        public static MySqlColumnDefinition Extract(ColumnDeclarationContext context)
+        public static MySqlColumnDefinition? Extract(ColumnDeclarationContext context)
         {
             if (context == null) return null;
 
@@ -102,8 +100,13 @@ namespace MySQLToCsharp
             if (definitionContext == null) return null;
 
             // BITINT(20): DimensionDataTypeContext
-            column.Data = new MySqlColumnDataDefinition();
-            (column.Data.DataType, column.Data.Length, column.Data.IsUnsigned) = definitionContext.ExtractColumnDataDefinition();
+            var dataDefinition = definitionContext.ExtractColumnDataDefinition();
+            column.Data = new MySqlColumnDataDefinition
+            {
+                DataType = dataDefinition.dataTypeName,
+                Length = dataDefinition.dataLength,
+                IsUnsigned = dataDefinition.unsigned,
+            };
 
             // NOTNULL: NullColumnConstraintContext
             var notnull = definitionContext.GetChild<NullColumnConstraintContext>();
@@ -158,7 +161,7 @@ namespace MySQLToCsharp
 
     public class MySqlColumnDataDefinition
     {
-        public string DataType { get; set; }
+        public required string DataType { get; set; }
         public int? Length { get; set; }
         public bool IsUnsigned { get; set; }
         public bool IsNullable { get; set; }
@@ -170,7 +173,7 @@ namespace MySQLToCsharp
     public class GeneratedColumnDefinition
     {
         public bool Always { get; set; }
-        public string Statement { get; set; }
+        public required string Statement { get; set; }
         /// <summary>
         /// STORED or VIRTUAL
         /// </summary>
@@ -210,8 +213,8 @@ namespace MySQLToCsharp
     /// </summary>
     public class ReferenceColumnDefinition
     {
-        public string TableName { get; set; }
-        public string ColumnName { get; set; }
+        public required string TableName { get; set; }
+        public required string ColumnName { get; set; }
 
         public static ReferenceColumnDefinition Extract(ReferenceDefinitionContext context)
         {
@@ -241,8 +244,8 @@ namespace MySQLToCsharp
 
     public class MySqlKeyDefinition
     {
-        public string KeyName { get; set; }
-        public MySqlKeyDetailDefinition[] Indexes { get; set; }
+        public required string KeyName { get; set; }
+        public MySqlKeyDetailDefinition[] Indexes { get; set; } = [];
 
         /// <summary>
         /// Extract PrimaryKey Definition from context
@@ -380,9 +383,9 @@ namespace MySQLToCsharp
     public class MySqlKeyDetailDefinition
     {
         public int Order { get; set; }
-        public string IndexKey { get; set; }
+        public required string IndexKey { get; set; }
         // column reference
-        public ISet<MySqlColumnDefinition> ColumnReference { get; private set; }
+        public ISet<MySqlColumnDefinition>? ColumnReference { get; private set; }
 
         /// <summary>
         /// Add Reference between Column -> Key.

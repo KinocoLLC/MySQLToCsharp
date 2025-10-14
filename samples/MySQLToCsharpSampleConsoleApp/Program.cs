@@ -1,11 +1,8 @@
-﻿using System;
+namespace MySQLToCsharpSAmpleConsoleApp;
 
-namespace MySQLToCsharpSAmpleConsoleApp
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
