@@ -1,8 +1,7 @@
-# MySQLToCsharp
-
-[![CircleCI](https://circleci.com/gh/KinocoLLC/MySQLToCsharp.svg?style=svg)](https://circleci.com/gh/KinocoLLC/MySQLToCsharp) [![codecov](https://codecov.io/gh/KinocoLLC/MySQLToCsharp/branch/master/graph/badge.svg)](https://codecov.io/gh/KinocoLLC/MySQLToCsharp) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
+[![dotnet-build](https://github.com/KinocoLLC/MySQLToCsharp/actions/workflows/build.yaml/badge.svg)](https://github.com/KinocoLLC/MySQLToCsharp/actions/workflows/build.yaml)
 [![NuGet](https://img.shields.io/nuget/v/MySQLToCsharp.svg?label=MySQLToCsharp%20nuget)](https://www.nuget.org/packages/MySQLToCsharp)
+
+# MySQLToCsharp
 
 MySQL version of [SqlToCsharp](https://github.com/ufcpp/SqlToCsharp).
 
