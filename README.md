@@ -1,6 +1,6 @@
 # MySQLToCsharp
 
-[![CircleCI](https://circleci.com/gh/KinocoLLC/MySQLToCsharp.svg?style=svg)](https://circleci.com/gh/KinocoLLC/MySQLToCsharp) [![codecov](https://codecov.io/gh/KinocoLLC/MySQLToCsharp/branch/master/graph/badge.svg)](https://codecov.io/gh/KinocoLLC/MySQLToCsharp) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) 
+[![CircleCI](https://circleci.com/gh/KinocoLLC/MySQLToCsharp.svg?style=svg)](https://circleci.com/gh/KinocoLLC/MySQLToCsharp) [![codecov](https://codecov.io/gh/KinocoLLC/MySQLToCsharp/branch/master/graph/badge.svg)](https://codecov.io/gh/KinocoLLC/MySQLToCsharp) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 [![NuGet](https://img.shields.io/nuget/v/MySQLToCsharp.svg?label=MySQLToCsharp%20nuget)](https://www.nuget.org/packages/MySQLToCsharp)
 
@@ -97,7 +97,7 @@ Options:
   -dry <Boolean>              (Default: False)
 ```
 
-sample 
+sample
 
 ```shell
 dotnet mysql2csharp query -i "CREATE TABLE sercol1 (id INT, val INT);" -o bin/out -n MyNameSpace.Data
@@ -177,7 +177,7 @@ Follow step to update lexer and parser.
 
 1. Update MySqlLexer.g4 and MySqlParser.g4 to the latest.
 1. Run script to generate C# class files.
-  * it calls `docker-compose up` and generate lexer, parser, listener and visitor class.
+  * it calls `docker compose up` and generate lexer, parser, listener and visitor class.
 1. Run Build and Test and confirm what changed and actual effect.
 
 ```
@@ -208,4 +208,3 @@ ANTLR4 samples
 MSSQL Parser reference
 
 * [JaCraig/SQLParser: An SQL Parser/Lexer for C\#](https://github.com/JaCraig/SQLParser)
-
