@@ -13,7 +13,7 @@ namespace MySQLToCsharp.Listeners
         public bool IsTargetStatement { get; private set; }
         public bool IsParseBegin { get; set; }
         public bool IsParseCompleted { get; set; }
-        public MySqlTableDefinition TableDefinition { get; private set; }
+        public MySqlTableDefinition TableDefinition { get; private set; } = default!;
 
         /// <summary>
         /// pick timing when listener begin (initializer)
@@ -66,10 +66,10 @@ namespace MySQLToCsharp.Listeners
             TableDefinition.Columns = Enumerable.Range(0, createDefinitions.ChildCount)
                 .Select(x => createDefinitions.GetChild<ColumnDeclarationContext>(x))
                 .Select(x => MySqlColumnDefinition.Extract(x))
-                .Where(x => x != null)
+                .Where(x => x is not null)
                 .Select((x, i) =>
                 {
-                    x.Order = i;
+                    x!.Order = i;
                     return x;
                 })
                 .ToArray();
@@ -91,6 +91,9 @@ namespace MySQLToCsharp.Listeners
 
             // column comment
             var column = TableDefinition.LookupColumnDefinition(context);
+            if (column is null)
+                return;
+
             // 0: COMMENT
             // 1: 'Your comment'
             var comment = context.GetChild<TerminalNodeImpl>(1).GetText().RemoveStartEndChar('\'');
@@ -171,6 +174,9 @@ namespace MySQLToCsharp.Listeners
             base.EnterGeneratedColumnConstraint(context);
             // generated column
             var column = TableDefinition.LookupColumnDefinition(context);
+            if (column is null)
+                return;
+
             var generatedColumn = GeneratedColumnDefinition.Extract(context);
             column.GeneratedColumn = generatedColumn;
         }
@@ -184,6 +190,9 @@ namespace MySQLToCsharp.Listeners
             base.EnterReferenceColumnConstraint(context);
             // reference column
             var column = TableDefinition.LookupColumnDefinition(context);
+            if (column is null)
+                return;
+
             var referenceDefinitionContext = context.GetChild<ReferenceDefinitionContext>();
             var referenceColumn = ReferenceColumnDefinition.Extract(referenceDefinitionContext);
             column.ReferenceColumn = referenceColumn;

@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <LangVersion>Latest</LangVersion>
-    <!-- <Nullable>enable</Nullable> -->
+    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>

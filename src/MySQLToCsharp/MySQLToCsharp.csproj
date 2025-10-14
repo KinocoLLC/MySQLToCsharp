@@ -5,7 +5,6 @@
     <TargetFrameworks>net8.0</TargetFrameworks>
     <!-- see https://github.com/dotnet/docs/issues/12237 -->
     <RollForward>LatestMajor</RollForward>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>

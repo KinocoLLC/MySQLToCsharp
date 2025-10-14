@@ -82,7 +82,7 @@ public class CreateTableParseTableUnitTest
     }
     public class TestItem
     {
-        public string Statement { get; set; }
-        public MySqlTableDefinition Expected { get; set; }
+        public required string Statement { get; set; }
+        public required MySqlTableDefinition Expected { get; set; }
     }
 }

@@ -1369,13 +1369,13 @@ public class StandardBitAsBoolConverterTest
 
     public class TestItem
     {
-        public string Statement { get; set; }
-        public (string mysql, string clr)[] Expected { get; set; }
+        public required string Statement { get; set; }
+        public required (string mysql, string clr)[] Expected { get; set; }
     }
 
     public class ColumnDataTestItem
     {
-        public MySqlColumnDataDefinition MySqlColumnData { get; set; }
-        public string Expected { get; set; }
+        public required MySqlColumnDataDefinition MySqlColumnData { get; set; }
+        public required string Expected { get; set; }
     }
 }

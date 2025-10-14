@@ -87,18 +87,26 @@ public class CreateTableParseColumnUnitTest
 
         for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
         {
-            if (data.Expected[i].PrimaryKeyReference != null)
+            var primaryKeyRef = data.Expected[i].PrimaryKeyReference;
+            if (primaryKeyRef is not null)
             {
-                Assert.Equal(data.Expected[i].PrimaryKeyReference.KeyName, definition.Columns[i].PrimaryKeyReference.KeyName);
+                var definePrimaryKeyRef = definition.Columns[i].PrimaryKeyReference;
+                if (definePrimaryKeyRef is null)
+                    throw new Exception("PrimaryKeyReference is null");
+                if (definePrimaryKeyRef.Indexes is null)
+                    throw new Exception("PrimaryKeyReference.Indexes is null");
+                Assert.Equal(primaryKeyRef.KeyName, definePrimaryKeyRef.KeyName);
                 Assert.NotNull(definition.Columns[i].PrimaryKeyReference);
                 Assert.NotNull(definition.PrimaryKey);
-                Assert.Equal(definition.Columns[i].PrimaryKeyReference.KeyName, definition.PrimaryKey.KeyName);
+                Assert.Equal(definePrimaryKeyRef.KeyName, definition.PrimaryKey.KeyName);
                 Assert.NotNull(definition.PrimaryKey.Indexes);
-                Assert.Equal(definition.Columns[i].PrimaryKeyReference.Indexes.Length, definition.PrimaryKey.Indexes.Length);
+                Assert.Equal(definePrimaryKeyRef.Indexes.Length, definition.PrimaryKey.Indexes.Length);
 
                 // index name must match to referenced column name
                 foreach (var index in definition.PrimaryKey.Indexes)
                 {
+                    if (index.ColumnReference is null)
+                        throw new Exception("PrimaryKey.Indexes.ColumnReference is null");
                     foreach (var reference in index.ColumnReference)
                     {
                         Assert.Equal(reference.Name, index.IndexKey);
@@ -122,12 +130,13 @@ public class CreateTableParseColumnUnitTest
 
         for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
         {
-            if (data.Expected[i].IndexKeysReferences != null)
+            var indexKeyRef = data.Expected[i].IndexKeysReferences;
+            if (indexKeyRef is not null)
             {
                 var j = 0;
-                foreach (var key in definition.Columns[i].IndexKeysReferences)
+                foreach (var key in indexKeyRef)
                 {
-                    Assert.Equal(data.Expected[i].IndexKeysReferences.Skip(j).First().KeyName, key.KeyName);
+                    Assert.Equal(data.Expected[i].IndexKeysReferences?.Skip(j).First().KeyName, key.KeyName);
                     Assert.NotNull(key.Indexes);
                     j++;
                 }
@@ -140,6 +149,8 @@ public class CreateTableParseColumnUnitTest
                     // index name must match to referenced column name
                     foreach (var index in key.Indexes)
                     {
+                        if (index.ColumnReference is null)
+                            throw new Exception("IndexKeys.Indexes.ColumnReference is null");
                         foreach (var reference in index.ColumnReference)
                         {
                             Assert.Equal(reference.Name, index.IndexKey);
@@ -164,12 +175,13 @@ public class CreateTableParseColumnUnitTest
 
         for (var i = 0; i < listener.TableDefinition.Columns.Length; i++)
         {
-            if (data.Expected[i].UniqueKeysReferences != null)
+            var uniqueKeyRef = data.Expected[i].UniqueKeysReferences;
+            if (uniqueKeyRef is not null)
             {
                 var j = 0;
-                foreach (var key in definition.Columns[i].UniqueKeysReferences)
+                foreach (var key in uniqueKeyRef)
                 {
-                    Assert.Equal(data.Expected[i].UniqueKeysReferences.Skip(j).First().KeyName, key.KeyName);
+                    Assert.Equal(uniqueKeyRef.Skip(j).First().KeyName, key.KeyName);
                     Assert.NotNull(key.Indexes);
                     j++;
                 }
@@ -181,6 +193,8 @@ public class CreateTableParseColumnUnitTest
                     // index name must match to referenced column name
                     foreach (var index in key.Indexes)
                     {
+                        if (index.ColumnReference is null)
+                            throw new Exception("UniqueKeys.Indexes.ColumnReference is null");
                         foreach (var reference in index.ColumnReference)
                         {
                             Assert.Equal(reference.Name, index.IndexKey);
@@ -225,6 +239,7 @@ public class CreateTableParseColumnUnitTest
                 new TestItem
                 {
                     Statement = statement,
+                    Expected = [],
                 },
             };
         }
@@ -560,8 +575,8 @@ public class CreateTableParseColumnUnitTest
 
     public class TestItem
     {
-        public string Statement { get; set; }
-        public MySqlColumnDefinition[] Expected { get; set; }
+        public required string Statement { get; init; }
+        public required MySqlColumnDefinition[] Expected { get; set; }
     }
 }
 
@@ -623,5 +638,5 @@ public static class StringExtensions
     public static string ToJoinedString(this IEnumerable<string> values, string separator = "")
         => string.Join(separator, values);
     public static string RemoveNewLine(this string value)
-        => value?.Replace("\r\n", "")?.Replace("\n", "");
+        => value.Replace("\r\n", "").Replace("\n", "");
 }

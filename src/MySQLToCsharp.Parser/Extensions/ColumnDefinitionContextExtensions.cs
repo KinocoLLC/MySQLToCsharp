@@ -24,7 +24,7 @@ namespace MySQLToCsharp
         /// <typeparam name="T"></typeparam>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static T Ascendant<T>(this RuleContext context) where T : ParserRuleContext
+        public static T? Ascendant<T>(this RuleContext context) where T : ParserRuleContext
         {
             if (context == null) throw new ArgumentNullException($"{nameof(context)} is null");
             if (context.Parent == null) return null;
@@ -38,7 +38,7 @@ namespace MySQLToCsharp
         /// <typeparam name="T"></typeparam>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static T Descendant<T>(this ParserRuleContext context) where T : ParserRuleContext
+        public static T? Descendant<T>(this ParserRuleContext context) where T : ParserRuleContext
         {
             if (context == null) throw new ArgumentNullException($"{nameof(context)} is null");
             if (context is T type) return type;
