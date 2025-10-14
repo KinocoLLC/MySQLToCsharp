@@ -72,13 +72,22 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Release Asset (Windows)
         run: gh release upload "${{ github.ref_name }}" MySQLToCsharp_win-x64_${{ github.ref_name }}.exe --clobber
+        env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         working-directory: publish/
       - name: Upload Release Asset (Linux)
         run: gh release upload "${{ github.ref_name }}" MySQLToCsharp_linux-x64_${{ github.ref_name }} --clobber
         working-directory: publish/
+        env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload Release Asset (macOS)
         run: gh release upload "${{ github.ref_name }}" MySQLToCsharp_osx-x64_${{ github.ref_name }} --clobber
         working-directory: publish/
+        env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # upload nuget
       - run: dotnet nuget push "./nuget/*.nupkg" --skip-duplicate -k "${NUGET_KEY}"
         env:
