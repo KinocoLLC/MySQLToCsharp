@@ -5,27 +5,16 @@
     <TargetFrameworks>net8.0</TargetFrameworks>
     <!-- see https://github.com/dotnet/docs/issues/12237 -->
     <RollForward>LatestMajor</RollForward>
-
     <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
-    <Version>0.1.0</Version>
-    <AssemblyVersion>$(Version)</AssemblyVersion>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(PublishSingleFile)' != 'true'">
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
     <PackAsTool>true</PackAsTool>
     <PackageId>MySQLToCsharp</PackageId>
     <ToolCommandName>dotnet-mysqltocsharp</ToolCommandName>
-    <Authors>KinocoLLC</Authors>
-    <Company>KinocoLLC</Company>
-    <Copyright>KinocoLLC</Copyright>
     <Description>A C# class generator from SQL CREATE TABLE Statements (MySQL)</Description>
-    <PackageProjectUrl>https://github.com/KinocoLLC/MySQLToCsharp</PackageProjectUrl>
-    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
     <PackageTags>mysql,parser,generator</PackageTags>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(PublishSingleFile)' == 'true'">
@@ -33,25 +22,11 @@
     <PublishSingleFile>true</PublishSingleFile>
     <PublishTrimmed>true</PublishTrimmed>
     <IncludeSymbolsInSingleFile>true</IncludeSymbolsInSingleFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702;3021</NoWarn>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>1701;1702;3021</NoWarn>
+    <SelfContained>true</SelfContained>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Cocona.Lite" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
