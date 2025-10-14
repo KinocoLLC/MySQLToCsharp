@@ -26,9 +26,9 @@ jobs:
           name: nuget
           path: ./pack/
       # publish
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./publish -f netcoreapp3.1 -r win-x64 -p:PublishSingleFile=true -p:Version=${{ github.ref_name }}
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./publish -f netcoreapp3.1 -r linux-x64 -p:PublishSingleFile=true -p:Version=${{ github.ref_name }}
-      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./publish -f netcoreapp3.1 -r osx-x64 -p:PublishSingleFile=true -p:Version=${{ github.ref_name }}
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./publish -r win-x64 -p:PublishSingleFile=true -p:Version=${{ github.ref_name }}
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./publish -r linux-x64 -p:PublishSingleFile=true -p:Version=${{ github.ref_name }}
+      - run: dotnet publish ./src/MySQLToCsharp/ -c Release -o ./publish -r osx-x64 -p:PublishSingleFile=true -p:Version=${{ github.ref_name }}
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: publish

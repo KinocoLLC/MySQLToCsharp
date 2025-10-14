@@ -18,10 +18,11 @@
 
   <PropertyGroup Condition="'$(PublishSingleFile)' == 'true'">
     <AssemblyName>MySQLToCsharp_$(RuntimeIdentifier)_$(Version)</AssemblyName>
+    <DebugType>embedded</DebugType>
     <PublishSingleFile>true</PublishSingleFile>
     <PublishTrimmed>true</PublishTrimmed>
-    <IncludeSymbolsInSingleFile>true</IncludeSymbolsInSingleFile>
     <SelfContained>true</SelfContained>
+    <IncludeSymbols>false</IncludeSymbols>
   </PropertyGroup>
 
   <ItemGroup>
