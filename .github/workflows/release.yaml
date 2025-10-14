@@ -89,6 +89,6 @@ jobs:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # upload nuget
-      - run: dotnet nuget push "./nuget/*.nupkg" --skip-duplicate -k "${NUGET_KEY}"
+      - run: dotnet nuget push "./nuget/*.nupkg" --skip-duplicate -s https://api.nuget.org/v3/index.json -k "${NUGET_KEY}"
         env:
           NUGET_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
