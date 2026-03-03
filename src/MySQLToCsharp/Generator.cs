@@ -23,7 +23,7 @@ public class Generator
 
     public void Save(string className, string text, string outputFolderPath, bool dry)
     {
-        var fileName = className + extension;
+        var fileName = Path.GetFileName(className) + extension;
         var outputFile = Path.Combine(outputFolderPath, fileName);
 
         if (!Directory.Exists(outputFolderPath))
