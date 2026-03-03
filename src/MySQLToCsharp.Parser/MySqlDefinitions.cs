@@ -364,10 +364,8 @@ namespace MySQLToCsharp
         private void AddKeyReferenceOnColumnCore(MySqlColumnDefinition[] columnDefinitions, Action<MySqlColumnDefinition> mapper)
         {
             var indexKeyNames = this.Indexes.Select(x => x.IndexKey).ToArray();
-            foreach (var column in columnDefinitions)
+            foreach (var column in columnDefinitions.Where(column => indexKeyNames.Contains(column.Name)))
             {
-                if (!indexKeyNames.Contains(column.Name)) continue;
-
                 // column -> key reference mapper
                 mapper(column);
 
